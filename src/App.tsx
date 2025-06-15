@@ -47,21 +47,21 @@ function App() {
   return (
     <C.Container>
       <C.Area>
-        <C.Header>Galeria de Fotos</C.Header>
+        <C.Header>PixelVault</C.Header>
 
         <C.UploadForm
           method="POST"
           onSubmit={handleFormSubmit}>
             <input type="file" name="image" />
-            <input type="submit" value="Enviar" />
+            <input type="submit" value="Upload" />
 
-            {uploading && "Enviando..."}
+            {uploading && "Uploading..."}
         </C.UploadForm>
 
         {loading &&
           <C.ScreenWarning>
             <div className="emoji">✋</div> 
-            <div>Carregando...</div>
+            <div>Loading...</div>
           </C.ScreenWarning>
         }
 
@@ -76,7 +76,7 @@ function App() {
         {!loading && photos.length === 0 &&
           <C.ScreenWarning>
             <div className="emoji">😞</div> 
-            <div>Não há fotos cadastradas...</div>
+            <div>No photos found. Upload some!</div>
           </C.ScreenWarning>
         }
       </C.Area>

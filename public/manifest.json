@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "PixelVault",
+  "name": "PixelVault - Modern Photo Gallery",
   "icons": [
     {
       "src": "favicon.ico",
