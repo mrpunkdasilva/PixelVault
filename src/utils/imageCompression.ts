@@ -1,4 +1,4 @@
-interface CompressionOptions {
+export interface CompressionOptions {
   maxWidth?: number;
   maxHeight?: number;
   quality?: number;
@@ -7,7 +7,7 @@ interface CompressionOptions {
   maintainAspectRatio?: boolean;
 }
 
-interface CompressionResult {
+export interface CompressionResult {
   file: File;
   originalSize: number;
   compressedSize: number;

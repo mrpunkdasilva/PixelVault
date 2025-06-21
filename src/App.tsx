@@ -120,6 +120,45 @@ function App() {
     }
   }
 
+  const handleMultipleFilesSelect = async (files: File[]) => {
+    setUploading(true);
+    let successCount = 0;
+    let errorCount = 0;
+    let newPhotoList = [...photos];
+
+    for (const file of files) {
+      try {
+        let result = await Photos.insert(file);
+        if (result instanceof Error) {
+          errorCount++;
+        } else {
+          newPhotoList.unshift(result); // Add to beginning for better UX
+          successCount++;
+        }
+      } catch (error) {
+        errorCount++;
+      }
+    }
+
+    setUploading(false);
+    setPhotos(newPhotoList);
+
+    // Show appropriate notification
+    if (successCount > 0 && errorCount === 0) {
+      showSuccess(
+        'Photos Uploaded', 
+        `${successCount} photo${successCount > 1 ? 's' : ''} uploaded successfully!`
+      );
+    } else if (successCount > 0 && errorCount > 0) {
+      showError(
+        'Partial Upload', 
+        `${successCount} photos uploaded, ${errorCount} failed`
+      );
+    } else {
+      showError('Upload Failed', 'All uploads failed');
+    }
+  }
+
   const handlePhotoClick = (photo: Photo) => {
     setSelectedPhoto(photo);
     setIsModalOpen(true);
@@ -161,7 +200,9 @@ function App() {
 
         <UploadZone 
           onFileSelect={handleFileSelect}
+          onMultipleFilesSelect={handleMultipleFilesSelect}
           uploading={uploading}
+          enableCompression={true}
         />
 
         {loading &&

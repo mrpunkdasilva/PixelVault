@@ -12,6 +12,12 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "build:analyze": "tsc && vite build --mode analyze",
+    "build:optimized": "npm run build && gulp optimize",
+    "build:production": "npm run build && gulp",
+    "optimize": "gulp optimize",
+    "optimize:images": "gulp optimize:images",
+    "analyze:bundle": "gulp analyze",
+    "check:budget": "gulp budget",
     "preview": "vite preview",
     "bundle-analyze": "npm run build && npx vite-bundle-analyzer dist"
   },
