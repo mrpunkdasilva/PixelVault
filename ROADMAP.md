@@ -47,7 +47,7 @@ Este roadmap define o plano de desenvolvimento para transformar o PixelVault em 
   - [x] Preview das imagens antes do upload
   - [x] Barra de progresso detalhada
   - [x] Validação de tipos de arquivo
-  - [ ] Compressão automática de imagens grandes
+  - [x] Compressão automática de imagens grandes
 
 - [x] **Loading States e Feedback**
   - [x] Skeletons para carregamento de galeria
