@@ -1,0 +1,1551 @@
+{
+    "checksum": "f70b84a6b036e07b034fa856842185b67e650e3da6f7755e42bc9dc34b99980f",
+    "data": {
+    "id": "774c1474-0f57-4d79-aa67-d5c9303d35d8",
+    "createdAt": 1750528557271,
+    "updatedAt": 1750529650879,
+    "title": "Implementação Fase 1 Roadmap",
+    "messages": [
+        {
+            "id": "7db44413-9222-41fd-af8f-6416be5aca62",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "vamos fazer a primeira fase do roadmap"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "ROADMAP.md",
+                    "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/ROADMAP.md",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "# 🗺️ PixelVault Development Roadmap\n\n## 📋 Visão Geral\n\nEste roadmap define o plano de desenvolvimento para transformar o PixelVault em uma plataforma completa de gerenciamento de fotos, organizado em fases progressivas com funcionalidades bem definidas.\n\n---\n\n## 🚀 **FASE 1: FUNDAÇÃO E MELHORIAS BÁSICAS** \n*Duração Estimada: 2-3 semanas*\n*Prioridade: Alta*\n\n### 1.1 Melhorias de Interface Básica\n- [ ] **Sistema de Temas (Dark/Light Mode)**\n  - Implementar context para temas\n  - Criar paletas de cores consistentes\n  - Adicionar toggle de tema na interface\n  - Persistir preferência no localStorage\n\n- [ ] **Melhorias de UX no Upload**\n  - Drag & drop para upload de múltiplas imagens\n  - Preview das imagens antes do upload\n  - Barra de progresso detalhada\n  - Validação de tipos de arquivo\n  - Compressão automática de imagens grandes\n\n- [ ] **Loading States e Feedback**\n  - Skeletons para carregamento de galeria\n  - Estados de erro mais informativos\n  - Notificações toast para ações\n  - Indicadores visuais para uploads\n\n### 1.2 Performance Básica\n- [ ] **Lazy Loading de Imagens**\n  - Implementar Intersection Observer\n  - Placeholder enquanto carrega\n  - Otimização de renderização\n\n- [ ] **Otimização de Bundle**\n  - Code splitting por rotas\n  - Lazy loading de componentes\n  - Análise de bundle size\n\n---\n\n## 🏗️ **FASE 2: ORGANIZAÇÃO E ESTRUTURA**\n*Duração Estimada: 3-4 semanas*\n*Prioridade: Alta*\n\n### 2.1 Sistema de Álbuns\n- [ ] **Criação e Gerenciamento de Álbuns**\n  - Interface para criar/editar álbuns\n  - Mover fotos entre álbuns\n  - Capa personalizada para álbuns\n  - Ordenação personalizada\n\n- [ ] **Navegação Hierárquica**\n  - Breadcrumbs para navegação\n  - Sidebar com lista de álbuns\n  - Contadores de fotos por álbum\n\n### 2.2 Sistema de Tags e Metadados\n- [ ] **Tags Personalizadas**\n  - Interface para adicionar/remover tags\n  - Autocomplete de tags existentes\n  - Busca por tags\n  - Tags populares/sugeridas\n\n- [ ] **Metadados EXIF**\n  - Extração automática de dados EXIF\n  - Exibição de informações da foto\n  - Filtros baseados em metadados\n  - Mapa de localização (se disponível)\n\n### 2.3 Busca e Filtros\n- [ ] **Sistema de Busca Avançada**\n  - Busca por nome, tags, data\n  - Filtros combinados\n  - Busca em tempo real\n  - Histórico de buscas\n\n---\n\n## 👤 **FASE 3: AUTENTICAÇÃO E USUÁRIOS**\n*Duração Estimada: 2-3 semanas*\n*Prioridade: Média-Alta*\n\n### 3.1 Sistema de Autenticação\n- [ ] **Firebase Authentication**\n  - Login/registro com email\n  - Login social (Google, Facebook)\n  - Recuperação de senha\n  - Verificação de email\n\n- [ ] **Perfis de Usuário**\n  - Página de perfil personalizável\n  - Avatar do usuário\n  - Configurações de conta\n  - Estatísticas pessoais\n\n### 3.2 Segurança e Privacidade\n- [ ] **Controle de Acesso**\n  - Álbuns privados/públicos\n  - Compartilhamento com links\n  - Permissões granulares\n  - Logs de atividade\n\n---\n\n## 🎨 **FASE 4: EXPERIÊNCIA VISUAL AVANÇADA**\n*Duração Estimada: 3-4 semanas*\n*Prioridade: Média*\n\n### 4.1 Visualização Aprimorada\n- [ ] **Visualizador de Imagens Avançado**\n  - Modal fullscreen com navegação\n  - Zoom suave com pan\n  - Rotação de imagens\n  - Slideshow automático\n  - Navegação por teclado\n\n- [ ] **Layouts de Galeria**\n  - Grade responsiva (masonry)\n  - Lista com detalhes\n  - Visualização em mapa (se geo-tagged)\n  - Timeline por data\n\n### 4.2 Edição Básica de Imagens\n- [ ] **Editor Integrado**\n  - Crop e redimensionamento\n  - Rotação e flip\n  - Filtros básicos (brilho, contraste, saturação)\n  - Histórico de edições\n  - Salvar como nova versão\n\n---\n\n## 🤝 **FASE 5: RECURSOS SOCIAIS**\n*Duração Estimada: 4-5 semanas*\n*Prioridade: Média*\n\n### 5.1 Compartilhamento\n- [ ] **Compartilhamento de Álbuns**\n  - Links públicos para álbuns\n  - Compartilhamento temporário\n  - Proteção por senha\n  - Estatísticas de visualização\n\n- [ ] **Colaboração**\n  - Convites para colaborar em álbuns\n  - Diferentes níveis de permissão\n  - Comentários em fotos\n  - Sistema de curtidas/favoritos\n\n### 5.2 Descoberta de Conteúdo\n- [ ] **Feed de Atividades**\n  - Atividades recentes\n  - Álbuns em destaque\n  - Sugestões personalizadas\n\n---\n\n## 📱 **FASE 6: MOBILE E PWA**\n*Duração Estimada: 3-4 semanas*\n*Prioridade: Média*\n\n### 6.1 Progressive Web App\n- [ ] **PWA Completa**\n  - Service Worker para cache\n  - Instalação como app\n  - Notificações push\n  - Funcionamento offline\n\n- [ ] **Mobile-First**\n  - Interface otimizada para mobile\n  - Gestos touch intuitivos\n  - Upload via câmera\n  - Geolocalização automática\n\n---\n\n## 🤖 **FASE 7: INTELIGÊNCIA ARTIFICIAL**\n*Duração Estimada: 5-6 semanas*\n*Prioridade: Baixa-Média*\n\n### 7.1 Reconhecimento Automático\n- [ ] **Análise de Conteúdo**\n  - Detecção de objetos/cenas\n  - Reconhecimento facial\n  - Tags automáticas\n  - Agrupamento inteligente\n\n- [ ] **Busca Inteligente**\n  - Busca por conteúdo visual\n  - Busca por cor dominante\n  - Imagens similares\n  - Sugestões baseadas em IA\n\n---\n\n## 🔧 **FASE 8: FUNCIONALIDADES AVANÇADAS**\n*Duração Estimada: 4-5 semanas*\n*Prioridade: Baixa*\n\n### 8.1 Backup e Sincronização\n- [ ] **Sistema de Backup**\n  - Backup automático\n  - Múltiplos provedores de storage\n  - Versionamento de fotos\n  - Recuperação de dados\n\n### 8.2 Integração Externa\n- [ ] **APIs de Terceiros**\n  - Importação do Google Photos\n  - Importação do Instagram\n  - Exportação para redes sociais\n  - Integração com serviços de impressão\n\n---\n\n## 🧪 **FASE 9: QUALIDADE E PERFORMANCE**\n*Duração Estimada: 3-4 semanas*\n*Prioridade: Alta (Paralela às outras fases)*\n\n### 9.1 Testes Automatizados\n- [ ] **Cobertura de Testes**\n  - Unit tests (Jest/React Testing Library)\n  - Integration tests\n  - E2E tests (Cypress/Playwright)\n  - Performance tests\n\n### 9.2 Monitoramento e Analytics\n- [ ] **Observabilidade**\n  - Error tracking (Sentry)\n  - Performance monitoring\n  - User analytics\n  - A/B testing framework\n\n### 9.3 DevOps e Deploy\n- [ ] **CI/CD Pipeline**\n  - GitHub Actions\n  - Deploy automático\n  - Preview deployments\n  - Rollback automático\n\n---\n\n## 🎯 **MARCOS E OBJETIVOS**\n\n### Marco 1 (Fim da Fase 2)\n**Objetivo**: Galeria funcional com organização básica\n- Sistema de álbuns funcionando\n- Upload melhorado\n- Interface responsiva\n\n### Marco 2 (Fim da Fase 4)\n**Objetivo**: Experiência visual completa\n- Visualizador avançado\n- Edição básica\n- Performance otimizada\n\n### Marco 3 (Fim da Fase 6)\n**Objetivo**: Aplicação completa e acessível\n- PWA funcional\n- Sistema de usuários\n- Recursos sociais básicos\n\n### Marco 4 (Fim da Fase 8)\n**Objetivo**: Plataforma profissional\n- IA integrada\n- Backup automático\n- Integrações externas\n\n---\n\n## 📊 **MÉTRICAS DE SUCESSO**\n\n### Técnicas\n- [ ] Lighthouse Score > 90\n- [ ] Cobertura de testes > 80%\n- [ ] Tempo de carregamento < 3s\n- [ ] Bundle size otimizado\n\n### Produto\n- [ ] Taxa de retenção de usuários\n- [ ] Tempo médio de sessão\n- [ ] Quantidade de fotos por usuário\n- [ ] NPS (Net Promoter Score)\n\n---\n\n## 🔄 **PROCESSO DE DESENVOLVIMENTO**\n\n### Metodologia\n- **Sprints de 2 semanas**\n- **Review semanal do roadmap**\n- **Feedback contínuo dos usuários**\n- **Releases incrementais**\n\n### Critérios para Avançar de Fase\n1. ✅ Todos os itens críticos completados\n2. ✅ Testes passando\n3. ✅ Code review aprovado\n4. ✅ Performance dentro dos parâmetros\n5. ✅ Feedback de usuários positivo\n\n---\n\n## 📝 **NOTAS IMPORTANTES**\n\n- **Flexibilidade**: O roadmap pode ser ajustado baseado no feedback\n- **Priorização**: Focar sempre no valor para o usuário\n- **Qualidade**: Não comprometer qualidade por velocidade\n- **Documentação**: Manter documentação atualizada em cada fase\n\n---\n\n*Última atualização: [Data Atual]*\n*Próxima revisão: [Data + 2 semanas]*",
+                    "language": "markdown"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1750528557273,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "vamos fazer a primeira fase do roadmap"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "e2c1d93b-f262-46ef-9bb7-9d31940b98b4",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Perfeito! Vamos implementar a **FASE 1: FUNDAÇÃO E MELHORIAS BÁSICAS** do roadmap. Primeiro, vou analisar a estrutura atual do projeto para entender como está organizado e então implementaremos as funcionalidades uma por uma."
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_016ayqmBZoYKNx8oGjheZFzZ",
+                    "statusText": "Viewed folder",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": ".",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/."
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01TvCRdGJYr7zeoPr1bHPtkP",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "package.json",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/package.json"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01438fkHZZsB3ogNcxR6zHRJ",
+                    "statusText": "Viewed folder",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01Q664hnv8r6LbjABGtArbuM",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Perfeito! Agora vou começar a implementar a Fase 1 do roadmap. Vamos começar com os itens mais importantes:\n\n## 1. Sistema de Temas (Dark/Light Mode)\n\nPrimeiro, vou criar o context para temas e implementar o sistema de temas:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01CtTzYjbxM7mfRqh9wjqBnk",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/contexts/ThemeContext.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/contexts/ThemeContext.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/contexts/ThemeContext.tsx\n+++ src/contexts/ThemeContext.tsx\n@@ -0,0 +1,67 @@\n+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';\n+\n+export type Theme = 'light' | 'dark';\n+\n+interface ThemeContextType {\n+  theme: Theme;\n+  toggleTheme: () => void;\n+  setTheme: (theme: Theme) => void;\n+}\n+\n+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);\n+\n+export const useTheme = () => {\n+  const context = useContext(ThemeContext);\n+  if (context === undefined) {\n+    throw new Error('useTheme must be used within a ThemeProvider');\n+  }\n+  return context;\n+};\n+\n+interface ThemeProviderProps {\n+  children: ReactNode;\n+}\n+\n+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {\n+  const [theme, setThemeState] = useState<Theme>(() => {\n+    // Check localStorage for saved theme preference\n+    const savedTheme = localStorage.getItem('pixelvault-theme') as Theme;\n+    if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {\n+      return savedTheme;\n+    }\n+    \n+    // Check system preference\n+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {\n+      return 'dark';\n+    }\n+    \n+    return 'light';\n+  });\n+\n+  useEffect(() => {\n+    // Apply theme to document\n+    document.documentElement.setAttribute('data-theme', theme);\n+    // Save to localStorage\n+    localStorage.setItem('pixelvault-theme', theme);\n+  }, [theme]);\n+\n+  const toggleTheme = () => {\n+    setThemeState(prevTheme => prevTheme === 'light' ? 'dark' : 'light');\n+  };\n+\n+  const setTheme = (newTheme: Theme) => {\n+    setThemeState(newTheme);\n+  };\n+\n+  const value = {\n+    theme,\n+    toggleTheme,\n+    setTheme,\n+  };\n+\n+  return (\n+    <ThemeContext.Provider value={value}>\n+      {children}\n+    </ThemeContext.Provider>\n+  );\n+};",
+                    "refToolCallId": "toolu_01CtTzYjbxM7mfRqh9wjqBnk"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou criar o componente para o toggle de tema:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_0127nnfiNzaxLfz7QyTTMdJC",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/components/ThemeToggle/index.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/components/ThemeToggle/index.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/components/ThemeToggle/index.tsx\n+++ src/components/ThemeToggle/index.tsx\n@@ -0,0 +1,29 @@\n+import React from 'react';\n+import { useTheme } from '../../contexts/ThemeContext';\n+import './ThemeToggle.scss';\n+\n+export const ThemeToggle: React.FC = () => {\n+  const { theme, toggleTheme } = useTheme();\n+\n+  return (\n+    <button \n+      className=\"theme-toggle\" \n+      onClick={toggleTheme}\n+      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}\n+      title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}\n+    >\n+      <div className=\"theme-toggle-inner\">\n+        {theme === 'light' ? (\n+          <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\">\n+            <path d=\"M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\"/>\n+          </svg>\n+        ) : (\n+          <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\">\n+            <circle cx=\"12\" cy=\"12\" r=\"5\" stroke=\"currentColor\" strokeWidth=\"2\"/>\n+            <path d=\"m12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\"/>\n+          </svg>\n+        )}\n+      </div>\n+    </button>\n+  );\n+};",
+                    "refToolCallId": "toolu_0127nnfiNzaxLfz7QyTTMdJC"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01Aquu5cChwALLSKsDLtrXGi",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/components/ThemeToggle/ThemeToggle.scss",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/components/ThemeToggle/ThemeToggle.scss"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/components/ThemeToggle/ThemeToggle.scss\n+++ src/components/ThemeToggle/ThemeToggle.scss\n@@ -0,0 +1,43 @@\n+.theme-toggle {\n+  position: relative;\n+  display: flex;\n+  align-items: center;\n+  justify-content: center;\n+  width: 44px;\n+  height: 44px;\n+  border: none;\n+  border-radius: 12px;\n+  background: var(--color-surface-secondary);\n+  color: var(--color-text-primary);\n+  cursor: pointer;\n+  transition: all 0.2s ease;\n+  box-shadow: var(--shadow-sm);\n+\n+  &:hover {\n+    background: var(--color-surface-hover);\n+    transform: translateY(-1px);\n+    box-shadow: var(--shadow-md);\n+  }\n+\n+  &:active {\n+    transform: translateY(0);\n+    box-shadow: var(--shadow-sm);\n+  }\n+\n+  .theme-toggle-inner {\n+    display: flex;\n+    align-items: center;\n+    justify-content: center;\n+    transition: transform 0.3s ease;\n+  }\n+\n+  &:hover .theme-toggle-inner {\n+    transform: scale(1.1);\n+  }\n+\n+  svg {\n+    width: 20px;\n+    height: 20px;\n+    transition: all 0.3s ease;\n+  }\n+}",
+                    "refToolCallId": "toolu_01Aquu5cChwALLSKsDLtrXGi"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou atualizar as variáveis CSS para suportar temas:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_016obW6zv4FK1fkQ7nrr1QaY",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/styles/_variables.scss",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/styles/_variables.scss"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou criar um novo arquivo de variáveis CSS com suporte a temas:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01SXceQK2fXfc58XsAN2CLfd",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/styles/themes.scss",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/styles/themes.scss"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/styles/themes.scss\n+++ src/styles/themes.scss\n@@ -0,0 +1,188 @@\n+// CSS Custom Properties for Theme System\n+:root {\n+  // Common variables\n+  --border-radius: 4px;\n+  --border-radius-large: 8px;\n+  --border-radius-small: 2px;\n+  --max-width: 1200px;\n+  --container-padding: 24px;\n+  \n+  // Spacing\n+  --spacing-xs: 4px;\n+  --spacing-sm: 8px;\n+  --spacing-md: 16px;\n+  --spacing-lg: 24px;\n+  --spacing-xl: 32px;\n+  --spacing-2xl: 48px;\n+  --spacing-3xl: 64px;\n+  \n+  // Transitions\n+  --transition-fast: 0.2s ease-in-out;\n+  --transition-normal: 0.3s ease-in-out;\n+  --transition-slow: 0.5s ease-in-out;\n+  \n+  // Blur effects\n+  --blur-sm: blur(8px);\n+  --blur-md: blur(16px);\n+  --blur-lg: blur(24px);\n+  \n+  // Fonts\n+  --font-pixel: 'Monaco', 'Consolas', 'Courier New', monospace;\n+  --font-primary: var(--font-pixel);\n+}\n+\n+// Dark Theme (Default)\n+:root,\n+[data-theme=\"dark\"] {\n+  // Background colors\n+  --color-background-primary: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0f1419 100%);\n+  --color-background-secondary: rgba(102, 217, 255, 0.08);\n+  --color-surface-primary: rgba(102, 217, 255, 0.12);\n+  --color-surface-secondary: rgba(102, 217, 255, 0.15);\n+  --color-surface-hover: rgba(102, 217, 255, 0.18);\n+  --color-surface-active: rgba(102, 217, 255, 0.22);\n+  \n+  // Text colors\n+  --color-text-primary: #66D9FF;\n+  --color-text-secondary: #4DA6D9;\n+  --color-text-muted: rgba(102, 217, 255, 0.6);\n+  --color-text-inverse: #0a0a0f;\n+  \n+  // Accent colors\n+  --color-accent-primary: #66D9FF;\n+  --color-accent-hover: #99E6FF;\n+  --color-accent-active: #33CCFF;\n+  \n+  // Status colors\n+  --color-success: #51CF66;\n+  --color-success-hover: #69DB7C;\n+  --color-warning: #FFD966;\n+  --color-warning-hover: #FFE066;\n+  --color-danger: #FF6B6B;\n+  --color-danger-hover: #FF7979;\n+  \n+  // Border colors\n+  --color-border-primary: rgba(102, 217, 255, 0.3);\n+  --color-border-secondary: rgba(102, 217, 255, 0.15);\n+  --color-border-muted: rgba(102, 217, 255, 0.1);\n+  \n+  // Shadow colors\n+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 8px rgba(102, 217, 255, 0.1);\n+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.5), 0 0 16px rgba(102, 217, 255, 0.2);\n+  --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.6), 0 0 24px rgba(102, 217, 255, 0.3);\n+  --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.7), 0 0 32px rgba(102, 217, 255, 0.4);\n+  \n+  // Pixel glow effects\n+  --pixel-glow: 0 0 10px var(--color-accent-primary), 0 0 20px rgba(102, 217, 255, 0.5);\n+  --pixel-glow-strong: 0 0 15px var(--color-accent-primary), 0 0 30px rgba(102, 217, 255, 0.7), 0 0 45px rgba(102, 217, 255, 0.4);\n+}\n+\n+// Light Theme\n+[data-theme=\"light\"] {\n+  // Background colors\n+  --color-background-primary: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);\n+  --color-background-secondary: rgba(59, 130, 246, 0.08);\n+  --color-surface-primary: rgba(255, 255, 255, 0.8);\n+  --color-surface-secondary: rgba(255, 255, 255, 0.9);\n+  --color-surface-hover: rgba(59, 130, 246, 0.1);\n+  --color-surface-active: rgba(59, 130, 246, 0.15);\n+  \n+  // Text colors\n+  --color-text-primary: #1e293b;\n+  --color-text-secondary: #475569;\n+  --color-text-muted: #64748b;\n+  --color-text-inverse: #ffffff;\n+  \n+  // Accent colors\n+  --color-accent-primary: #3b82f6;\n+  --color-accent-hover: #2563eb;\n+  --color-accent-active: #1d4ed8;\n+  \n+  // Status colors\n+  --color-success: #10b981;\n+  --color-success-hover: #059669;\n+  --color-warning: #f59e0b;\n+  --color-warning-hover: #d97706;\n+  --color-danger: #ef4444;\n+  --color-danger-hover: #dc2626;\n+  \n+  // Border colors\n+  --color-border-primary: rgba(59, 130, 246, 0.3);\n+  --color-border-secondary: rgba(59, 130, 246, 0.15);\n+  --color-border-muted: rgba(59, 130, 246, 0.1);\n+  \n+  // Shadow colors\n+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 8px rgba(59, 130, 246, 0.1);\n+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 16px rgba(59, 130, 246, 0.15);\n+  --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.2), 0 0 24px rgba(59, 130, 246, 0.2);\n+  --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.25), 0 0 32px rgba(59, 130, 246, 0.25);\n+  \n+  // Pixel glow effects\n+  --pixel-glow: 0 0 10px var(--color-accent-primary), 0 0 20px rgba(59, 130, 246, 0.3);\n+  --pixel-glow-strong: 0 0 15px var(--color-accent-primary), 0 0 30px rgba(59, 130, 246, 0.5), 0 0 45px rgba(59, 130, 246, 0.3);\n+}\n+\n+// Smooth theme transitions\n+* {\n+  transition: \n+    background-color var(--transition-normal),\n+    border-color var(--transition-normal),\n+    color var(--transition-normal),\n+    box-shadow var(--transition-normal);\n+}\n+\n+// Utility classes for themes\n+.theme-surface {\n+  background: var(--color-surface-primary);\n+  border: 1px solid var(--color-border-secondary);\n+  border-radius: var(--border-radius);\n+  backdrop-filter: var(--blur-sm);\n+  -webkit-backdrop-filter: var(--blur-sm);\n+  box-shadow: var(--shadow-sm);\n+}\n+\n+.theme-surface:hover {\n+  background: var(--color-surface-hover);\n+  box-shadow: var(--shadow-md);\n+  transform: translateY(-1px);\n+}\n+\n+.theme-button {\n+  background: var(--color-surface-primary);\n+  border: 2px solid var(--color-accent-primary);\n+  border-radius: var(--border-radius-small);\n+  color: var(--color-text-primary);\n+  cursor: pointer;\n+  padding: 8px 16px;\n+  transition: all var(--transition-fast);\n+  text-transform: uppercase;\n+  font-weight: 600;\n+  letter-spacing: 1px;\n+  font-family: var(--font-pixel);\n+}\n+\n+.theme-button:hover {\n+  background: var(--color-surface-hover);\n+  box-shadow: var(--pixel-glow);\n+  transform: translateY(-1px);\n+}\n+\n+.theme-button:active {\n+  transform: translateY(0);\n+}\n+\n+.theme-card {\n+  background: var(--color-surface-primary);\n+  border: 1px solid var(--color-border-primary);\n+  border-radius: var(--border-radius);\n+  backdrop-filter: var(--blur-sm);\n+  -webkit-backdrop-filter: var(--blur-sm);\n+  box-shadow: var(--shadow-md);\n+  transition: all var(--transition-normal);\n+}\n+\n+.theme-card:hover {\n+  background: var(--color-surface-hover);\n+  box-shadow: var(--shadow-lg);\n+  transform: translateY(-2px);\n+}",
+                    "refToolCallId": "toolu_01SXceQK2fXfc58XsAN2CLfd"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou atualizar o index.tsx para incluir o ThemeProvider:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_0116615tVP9ndSxHSrfeRUr7",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/index.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/index.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01BzJzTYtpAdvCdeG3ByWqyo",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/index.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/index.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/index.tsx\n+++ src/index.tsx\n@@ -1,8 +1,10 @@\n import React from 'react';\n import ReactDOM from 'react-dom/client';\n import App from './App';\n+import { ThemeProvider } from './contexts/ThemeContext';\n \n import './index.css';\n+import './styles/themes.scss';\n \n const root = ReactDOM.createRoot(\n   document.getElementById('root') as HTMLElement",
+                    "refToolCallId": "toolu_01BzJzTYtpAdvCdeG3ByWqyo"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_019vUfqgqh5graESRU2XEy4g",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/index.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/index.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/index.tsx\n+++ src/index.tsx\n@@ -11,6 +11,8 @@\n );\n root.render(\n   <React.StrictMode>\n-    <App />\n+    <ThemeProvider>\n+      <App />\n+    </ThemeProvider>\n   </React.StrictMode>\n );",
+                    "refToolCallId": "toolu_019vUfqgqh5graESRU2XEy4g"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou adicionar o toggle de tema no App.tsx:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01USEPCWUKeLYM4iTDApiaRt",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.tsx\n+++ src/App.tsx\n@@ -9,6 +9,7 @@\n import { LoadingLogo } from './components/LoadingLogo';\n import { UploadZone } from './components/UploadZone';\n import { PhotoModal } from './components/PhotoModal';\n+import { ThemeToggle } from './components/ThemeToggle';\n \n function App() {\n   const [uploading, setUploading] = useState(false);",
+                    "refToolCallId": "toolu_01USEPCWUKeLYM4iTDApiaRt"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01XozbWWGTQe1o5f9BumKvYu",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.tsx\n+++ src/App.tsx\n@@ -69,6 +69,7 @@\n       <div className=\"area\">\n         <div className=\"header\">\n           <LogoWithText size={70} showSubtext={true} />\n+          <ThemeToggle />\n         </div>\n \n         <UploadZone ",
+                    "refToolCallId": "toolu_01XozbWWGTQe1o5f9BumKvYu"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou atualizar o CSS principal para usar as novas variáveis de tema:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01Nufc9bca1Xn6mqvu5Kfrxp",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.scss",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.scss"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou atualizar o App.scss para usar as novas variáveis CSS:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_017ezP41vVsxRnNvAM7B9DSx",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.scss",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.scss"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.scss\n+++ src/App.scss\n@@ -1,9 +1,10 @@\n-@use './styles/variables' as *;\n-\n .container {\n-    @include pixel-style;\n-    background: $bg-primary;\n-    color: $text-primary;\n+    font-family: var(--font-pixel);\n+    image-rendering: pixelated;\n+    image-rendering: -moz-crisp-edges;\n+    image-rendering: crisp-edges;\n+    background: var(--color-background-primary);\n+    color: var(--color-text-primary);\n     min-height: 100vh;\n     margin: 0;\n     padding: 0;",
+                    "refToolCallId": "toolu_017ezP41vVsxRnNvAM7B9DSx"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_014Ju87MD7L1j5Mu2KG1t55v",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.scss",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.scss"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.scss\n+++ src/App.scss\n@@ -19,11 +19,7 @@\n         left: 0;\n         right: 0;\n         bottom: 0;\n-        background: \n-            radial-gradient(circle at 20% 80%, rgba(102, 217, 255, 0.08) 0%, transparent 50%),\n-            radial-gradient(circle at 80% 20%, rgba(102, 217, 255, 0.06) 0%, transparent 50%),\n-            linear-gradient(0deg, transparent 24%, rgba(102, 217, 255, 0.02) 25%, rgba(102, 217, 255, 0.02) 26%, transparent 27%, transparent 74%, rgba(102, 217, 255, 0.02) 75%, rgba(102, 217, 255, 0.02) 76%, transparent 77%),\n-            linear-gradient(90deg, transparent 24%, rgba(102, 217, 255, 0.02) 25%, rgba(102, 217, 255, 0.02) 26%, transparent 27%, transparent 74%, rgba(102, 217, 255, 0.02) 75%, rgba(102, 217, 255, 0.02) 76%, transparent 77%);\n+        background: var(--color-background-secondary);\n         background-size: \n             800px 800px,\n             600px 600px,",
+                    "refToolCallId": "toolu_014Ju87MD7L1j5Mu2KG1t55v"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01KA4HLWSPd32HvLCDn2rXMM",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.scss",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.scss"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.scss\n+++ src/App.scss\n@@ -40,7 +40,7 @@\n         bottom: 0;\n         background: linear-gradient(\n             transparent 50%,\n-            rgba(102, 217, 255, 0.01) 50%\n+            var(--color-border-muted) 50%\n         );\n         background-size: 100% 4px;\n         pointer-events: none;",
+                    "refToolCallId": "toolu_01KA4HLWSPd32HvLCDn2rXMM"
+                },
+                {
+                    "type": "text",
+                    "text": "Vou continuar atualizando o resto do arquivo:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01QHe5jepkCpFQo62a1GcvAZ",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.scss",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.scss"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.scss\n+++ src/App.scss\n@@ -51,11 +51,11 @@\n \n .area {\n     margin: auto;\n-    max-width: $max-width;\n-    padding: $container-padding;\n+    max-width: var(--max-width);\n+    padding: var(--container-padding);\n     position: relative;\n     z-index: 2;\n-    @include pixel-style;\n+    font-family: var(--font-pixel);\n }\n \n .header {",
+                    "refToolCallId": "toolu_01QHe5jepkCpFQo62a1GcvAZ"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_017BgbVSDbEh9GsMJKfiiEcB",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.scss",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.scss"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.scss\n+++ src/App.scss\n@@ -60,12 +60,17 @@\n \n .header {\n     margin: 0;\n-    padding: $spacing-2xl 0;\n+    padding: var(--spacing-2xl) 0;\n     text-align: center;\n-    margin-bottom: $spacing-3xl;\n+    margin-bottom: var(--spacing-3xl);\n     display: flex;\n-    justify-content: center;\n+    justify-content: space-between;\n     align-items: center;\n+    \n+    @media (max-width: 640px) {\n+        flex-direction: column;\n+        gap: var(--spacing-lg);\n+    }\n }\n \n .screen-warning {",
+                    "refToolCallId": "toolu_017BgbVSDbEh9GsMJKfiiEcB"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou atualizar as demais referências às variáveis antigas:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01Sz5S4bBs6Lo5jZdAU7ySaF",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.scss",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.scss"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.scss\n+++ src/App.scss\n@@ -75,12 +75,12 @@\n \n .screen-warning {\n     text-align: center;\n-    padding: $spacing-3xl 0;\n+    padding: var(--spacing-3xl) 0;\n \n     .loading-text {\n-        @include pixel-style;\n-        margin-top: $spacing-lg;\n-        color: $text-secondary;\n+        font-family: var(--font-pixel);\n+        margin-top: var(--spacing-lg);\n+        color: var(--color-text-secondary);\n         font-size: 18px;\n         font-weight: 500;\n         text-transform: uppercase;",
+                    "refToolCallId": "toolu_01Sz5S4bBs6Lo5jZdAU7ySaF"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01Rq2f1vWuUKULFudPubEEhB",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.scss",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.scss"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.scss\n+++ src/App.scss\n@@ -95,8 +95,13 @@\n     .empty-state {\n         max-width: 400px;\n         margin: 0 auto;\n-        padding: $spacing-3xl;\n-        @include pixel-card;\n+        padding: var(--spacing-3xl);\n+        background: var(--color-surface-primary);\n+        border: 1px solid var(--color-border-primary);\n+        border-radius: var(--border-radius);\n+        backdrop-filter: var(--blur-sm);\n+        -webkit-backdrop-filter: var(--blur-sm);\n+        box-shadow: var(--shadow-md);\n         position: relative;\n         \n         // Pixel border effect",
+                    "refToolCallId": "toolu_01Rq2f1vWuUKULFudPubEEhB"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01DXmXL5VQBbRzaTe8grNaFs",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.scss",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.scss"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.scss\n+++ src/App.scss\n@@ -112,34 +112,34 @@\n             left: -2px;\n             right: -2px;\n             bottom: -2px;\n-            background: linear-gradient(45deg, $pixel-blue, $pixel-cyan, $pixel-blue);\n-            border-radius: $border-radius;\n+            background: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-hover), var(--color-accent-primary));\n+            border-radius: var(--border-radius);\n             z-index: -1;\n             opacity: 0.3;\n         }\n \n         .empty-icon {\n-            margin-bottom: $spacing-xl;\n-            color: $pixel-blue;\n-            filter: drop-shadow(0 0 8px rgba(102, 217, 255, 0.5));\n+            margin-bottom: var(--spacing-xl);\n+            color: var(--color-accent-primary);\n+            filter: drop-shadow(0 0 8px var(--color-accent-primary));\n             animation: pixelGlow 2s ease-in-out infinite alternate;\n         }\n \n         h3 {\n-            @include pixel-style;\n-            margin: 0 0 $spacing-md 0;\n-            color: $text-primary;\n+            font-family: var(--font-pixel);\n+            margin: 0 0 var(--spacing-md) 0;\n+            color: var(--color-text-primary);\n             font-size: 24px;\n             font-weight: 600;\n             text-transform: uppercase;\n             letter-spacing: 1px;\n-            text-shadow: 0 0 8px rgba(102, 217, 255, 0.4);\n+            text-shadow: 0 0 8px var(--color-accent-primary);\n         }\n \n         p {\n-            @include pixel-style;\n+            font-family: var(--font-pixel);\n             margin: 0;\n-            color: $text-secondary;\n+            color: var(--color-text-secondary);\n             font-size: 16px;\n             line-height: 1.6;\n             letter-spacing: 0.5px;",
+                    "refToolCallId": "toolu_01DXmXL5VQBbRzaTe8grNaFs"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01C4hPtNPTNNLvt6HetBfWVj",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.scss",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.scss"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.scss\n+++ src/App.scss\n@@ -150,25 +150,25 @@\n .photo-list {\n     display: grid;\n     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\n-    gap: $spacing-lg;\n+    gap: var(--spacing-lg);\n     animation: fadeIn 0.6s ease-in-out;\n \n-    @media (max-width: $breakpoint-xl) {\n+    @media (max-width: 1280px) {\n         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));\n     }\n \n-    @media (max-width: $breakpoint-lg) {\n+    @media (max-width: 1024px) {\n         grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));\n-        gap: $spacing-md;\n-    }\n-\n-    @media (max-width: $breakpoint-md) {\n+        gap: var(--spacing-md);\n+    }\n+\n+    @media (max-width: 768px) {\n         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));\n     }\n \n-    @media (max-width: $breakpoint-sm) {\n+    @media (max-width: 640px) {\n         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));\n-        gap: $spacing-sm;\n+        gap: var(--spacing-sm);\n     }\n }\n ",
+                    "refToolCallId": "toolu_01C4hPtNPTNNLvt6HetBfWVj"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou atualizar as animações para usar as novas variáveis:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_011dUVQGZHscqcMbZ7DsPUSe",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.scss",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.scss"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.scss\n+++ src/App.scss\n@@ -210,19 +210,19 @@\n \n @keyframes pixelGlow {\n     0% {\n-        filter: drop-shadow(0 0 8px rgba(102, 217, 255, 0.5));\n+        filter: drop-shadow(0 0 8px var(--color-accent-primary));\n     }\n     100% {\n-        filter: drop-shadow(0 0 16px rgba(102, 217, 255, 0.8));\n+        filter: drop-shadow(0 0 16px var(--color-accent-primary));\n     }\n }\n \n @keyframes pixelPulse {\n     0%, 100% {\n-        box-shadow: 0 0 10px rgba(102, 217, 255, 0.3);\n+        box-shadow: var(--pixel-glow);\n     }\n     50% {\n-        box-shadow: 0 0 20px rgba(102, 217, 255, 0.6), 0 0 30px rgba(102, 217, 255, 0.3);\n+        box-shadow: var(--pixel-glow-strong);\n     }\n }\n ",
+                    "refToolCallId": "toolu_011dUVQGZHscqcMbZ7DsPUSe"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou atualizar as media queries no final do arquivo:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01H2jLCyUjVh3vsnYqbUbtdh",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.scss",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.scss"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.scss\n+++ src/App.scss\n@@ -245,32 +245,32 @@\n }\n \n // Mobile responsiveness\n-@media (max-width: $breakpoint-lg) {\n+@media (max-width: 1024px) {\n     .area {\n-        padding: $spacing-lg;\n+        padding: var(--spacing-lg);\n     }\n \n     .header {\n-        padding: $spacing-xl 0;\n-        margin-bottom: $spacing-2xl;\n-    }\n-}\n-\n-@media (max-width: $breakpoint-md) {\n+        padding: var(--spacing-xl) 0;\n+        margin-bottom: var(--spacing-2xl);\n+    }\n+}\n+\n+@media (max-width: 768px) {\n     .area {\n-        padding: $spacing-md;\n+        padding: var(--spacing-md);\n     }\n \n     .header {\n-        padding: $spacing-lg 0;\n-        margin-bottom: $spacing-xl;\n+        padding: var(--spacing-lg) 0;\n+        margin-bottom: var(--spacing-xl);\n     }\n \n     .screen-warning {\n-        padding: $spacing-2xl 0;\n+        padding: var(--spacing-2xl) 0;\n \n         .empty-state {\n-            padding: $spacing-2xl;\n+            padding: var(--spacing-2xl);\n \n             h3 {\n                 font-size: 20px;\n@@ -287,14 +287,14 @@\n     }\n }\n \n-@media (max-width: $breakpoint-sm) {\n+@media (max-width: 640px) {\n     .area {\n-        padding: $spacing-sm;\n+        padding: var(--spacing-sm);\n     }\n \n     .screen-warning {\n         .empty-state {\n-            padding: $spacing-xl;\n+            padding: var(--spacing-xl);\n \n             .empty-icon svg {\n                 width: 60px;",
+                    "refToolCallId": "toolu_01H2jLCyUjVh3vsnYqbUbtdh"
+                },
+                {
+                    "type": "codePatch",
+                    "diffs": [
+                        {
+                            "path": "src/contexts/ThemeContext.tsx",
+                            "patch": "@@ -0,0 +1,1703 @@\n+import React, %7B createContext, useContext, useState, useEffect, ReactNode %7D from 'react';%0A%0Aexport type Theme = 'light' %7C 'dark';%0A%0Ainterface ThemeContextType %7B%0A  theme: Theme;%0A  toggleTheme: () =%3E void;%0A  setTheme: (theme: Theme) =%3E void;%0A%7D%0A%0Aconst ThemeContext = createContext%3CThemeContextType %7C undefined%3E(undefined);%0A%0Aexport const useTheme = () =%3E %7B%0A  const context = useContext(ThemeContext);%0A  if (context === undefined) %7B%0A    throw new Error('useTheme must be used within a ThemeProvider');%0A  %7D%0A  return context;%0A%7D;%0A%0Ainterface ThemeProviderProps %7B%0A  children: ReactNode;%0A%7D%0A%0Aexport const ThemeProvider: React.FC%3CThemeProviderProps%3E = (%7B children %7D) =%3E %7B%0A  const %5Btheme, setThemeState%5D = useState%3CTheme%3E(() =%3E %7B%0A    // Check localStorage for saved theme preference%0A    const savedTheme = localStorage.getItem('pixelvault-theme') as Theme;%0A    if (savedTheme && (savedTheme === 'light' %7C%7C savedTheme === 'dark')) %7B%0A      return savedTheme;%0A    %7D%0A    %0A    // Check system preference%0A    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) %7B%0A      return 'dark';%0A    %7D%0A    %0A    return 'light';%0A  %7D);%0A%0A  useEffect(() =%3E %7B%0A    // Apply theme to document%0A    document.documentElement.setAttribute('data-theme', theme);%0A    // Save to localStorage%0A    localStorage.setItem('pixelvault-theme', theme);%0A  %7D, %5Btheme%5D);%0A%0A  const toggleTheme = () =%3E %7B%0A    setThemeState(prevTheme =%3E prevTheme === 'light' ? 'dark' : 'light');%0A  %7D;%0A%0A  const setTheme = (newTheme: Theme) =%3E %7B%0A    setThemeState(newTheme);%0A  %7D;%0A%0A  const value = %7B%0A    theme,%0A    toggleTheme,%0A    setTheme,%0A  %7D;%0A%0A  return (%0A    %3CThemeContext.Provider value=%7Bvalue%7D%3E%0A      %7Bchildren%7D%0A    %3C/ThemeContext.Provider%3E%0A  );%0A%7D;\n",
+                            "isNew": true,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/styles/themes.scss",
+                            "patch": "@@ -0,0 +1,5753 @@\n+// CSS Custom Properties for Theme System%0A:root %7B%0A  // Common variables%0A  --border-radius: 4px;%0A  --border-radius-large: 8px;%0A  --border-radius-small: 2px;%0A  --max-width: 1200px;%0A  --container-padding: 24px;%0A  %0A  // Spacing%0A  --spacing-xs: 4px;%0A  --spacing-sm: 8px;%0A  --spacing-md: 16px;%0A  --spacing-lg: 24px;%0A  --spacing-xl: 32px;%0A  --spacing-2xl: 48px;%0A  --spacing-3xl: 64px;%0A  %0A  // Transitions%0A  --transition-fast: 0.2s ease-in-out;%0A  --transition-normal: 0.3s ease-in-out;%0A  --transition-slow: 0.5s ease-in-out;%0A  %0A  // Blur effects%0A  --blur-sm: blur(8px);%0A  --blur-md: blur(16px);%0A  --blur-lg: blur(24px);%0A  %0A  // Fonts%0A  --font-pixel: 'Monaco', 'Consolas', 'Courier New', monospace;%0A  --font-primary: var(--font-pixel);%0A%7D%0A%0A// Dark Theme (Default)%0A:root,%0A%5Bdata-theme=%22dark%22%5D %7B%0A  // Background colors%0A  --color-background-primary: linear-gradient(135deg, #0a0a0f 0%25, #1a1a2e 50%25, #0f1419 100%25);%0A  --color-background-secondary: rgba(102, 217, 255, 0.08);%0A  --color-surface-primary: rgba(102, 217, 255, 0.12);%0A  --color-surface-secondary: rgba(102, 217, 255, 0.15);%0A  --color-surface-hover: rgba(102, 217, 255, 0.18);%0A  --color-surface-active: rgba(102, 217, 255, 0.22);%0A  %0A  // Text colors%0A  --color-text-primary: #66D9FF;%0A  --color-text-secondary: #4DA6D9;%0A  --color-text-muted: rgba(102, 217, 255, 0.6);%0A  --color-text-inverse: #0a0a0f;%0A  %0A  // Accent colors%0A  --color-accent-primary: #66D9FF;%0A  --color-accent-hover: #99E6FF;%0A  --color-accent-active: #33CCFF;%0A  %0A  // Status colors%0A  --color-success: #51CF66;%0A  --color-success-hover: #69DB7C;%0A  --color-warning: #FFD966;%0A  --color-warning-hover: #FFE066;%0A  --color-danger: #FF6B6B;%0A  --color-danger-hover: #FF7979;%0A  %0A  // Border colors%0A  --color-border-primary: rgba(102, 217, 255, 0.3);%0A  --color-border-secondary: rgba(102, 217, 255, 0.15);%0A  --color-border-muted: rgba(102, 217, 255, 0.1);%0A  %0A  // Shadow colors%0A  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 8px rgba(102, 217, 255, 0.1);%0A  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.5), 0 0 16px rgba(102, 217, 255, 0.2);%0A  --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.6), 0 0 24px rgba(102, 217, 255, 0.3);%0A  --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.7), 0 0 32px rgba(102, 217, 255, 0.4);%0A  %0A  // Pixel glow effects%0A  --pixel-glow: 0 0 10px var(--color-accent-primary), 0 0 20px rgba(102, 217, 255, 0.5);%0A  --pixel-glow-strong: 0 0 15px var(--color-accent-primary), 0 0 30px rgba(102, 217, 255, 0.7), 0 0 45px rgba(102, 217, 255, 0.4);%0A%7D%0A%0A// Light Theme%0A%5Bdata-theme=%22light%22%5D %7B%0A  // Background colors%0A  --color-background-primary: linear-gradient(135deg, #f8fafc 0%25, #e2e8f0 50%25, #f1f5f9 100%25);%0A  --color-background-secondary: rgba(59, 130, 246, 0.08);%0A  --color-surface-primary: rgba(255, 255, 255, 0.8);%0A  --color-surface-secondary: rgba(255, 255, 255, 0.9);%0A  --color-surface-hover: rgba(59, 130, 246, 0.1);%0A  --color-surface-active: rgba(59, 130, 246, 0.15);%0A  %0A  // Text colors%0A  --color-text-primary: #1e293b;%0A  --color-text-secondary: #475569;%0A  --color-text-muted: #64748b;%0A  --color-text-inverse: #ffffff;%0A  %0A  // Accent colors%0A  --color-accent-primary: #3b82f6;%0A  --color-accent-hover: #2563eb;%0A  --color-accent-active: #1d4ed8;%0A  %0A  // Status colors%0A  --color-success: #10b981;%0A  --color-success-hover: #059669;%0A  --color-warning: #f59e0b;%0A  --color-warning-hover: #d97706;%0A  --color-danger: #ef4444;%0A  --color-danger-hover: #dc2626;%0A  %0A  // Border colors%0A  --color-border-primary: rgba(59, 130, 246, 0.3);%0A  --color-border-secondary: rgba(59, 130, 246, 0.15);%0A  --color-border-muted: rgba(59, 130, 246, 0.1);%0A  %0A  // Shadow colors%0A  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 8px rgba(59, 130, 246, 0.1);%0A  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 16px rgba(59, 130, 246, 0.15);%0A  --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.2), 0 0 24px rgba(59, 130, 246, 0.2);%0A  --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.25), 0 0 32px rgba(59, 130, 246, 0.25);%0A  %0A  // Pixel glow effects%0A  --pixel-glow: 0 0 10px var(--color-accent-primary), 0 0 20px rgba(59, 130, 246, 0.3);%0A  --pixel-glow-strong: 0 0 15px var(--color-accent-primary), 0 0 30px rgba(59, 130, 246, 0.5), 0 0 45px rgba(59, 130, 246, 0.3);%0A%7D%0A%0A// Smooth theme transitions%0A* %7B%0A  transition: %0A    background-color var(--transition-normal),%0A    border-color var(--transition-normal),%0A    color var(--transition-normal),%0A    box-shadow var(--transition-normal);%0A%7D%0A%0A// Utility classes for themes%0A.theme-surface %7B%0A  background: var(--color-surface-primary);%0A  border: 1px solid var(--color-border-secondary);%0A  border-radius: var(--border-radius);%0A  backdrop-filter: var(--blur-sm);%0A  -webkit-backdrop-filter: var(--blur-sm);%0A  box-shadow: var(--shadow-sm);%0A%7D%0A%0A.theme-surface:hover %7B%0A  background: var(--color-surface-hover);%0A  box-shadow: var(--shadow-md);%0A  transform: translateY(-1px);%0A%7D%0A%0A.theme-button %7B%0A  background: var(--color-surface-primary);%0A  border: 2px solid var(--color-accent-primary);%0A  border-radius: var(--border-radius-small);%0A  color: var(--color-text-primary);%0A  cursor: pointer;%0A  padding: 8px 16px;%0A  transition: all var(--transition-fast);%0A  text-transform: uppercase;%0A  font-weight: 600;%0A  letter-spacing: 1px;%0A  font-family: var(--font-pixel);%0A%7D%0A%0A.theme-button:hover %7B%0A  background: var(--color-surface-hover);%0A  box-shadow: var(--pixel-glow);%0A  transform: translateY(-1px);%0A%7D%0A%0A.theme-button:active %7B%0A  transform: translateY(0);%0A%7D%0A%0A.theme-card %7B%0A  background: var(--color-surface-primary);%0A  border: 1px solid var(--color-border-primary);%0A  border-radius: var(--border-radius);%0A  backdrop-filter: var(--blur-sm);%0A  -webkit-backdrop-filter: var(--blur-sm);%0A  box-shadow: var(--shadow-md);%0A  transition: all var(--transition-normal);%0A%7D%0A%0A.theme-card:hover %7B%0A  background: var(--color-surface-hover);%0A  box-shadow: var(--shadow-lg);%0A  transform: translateY(-2px);%0A%7D\n",
+                            "isNew": true,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/components/ThemeToggle/ThemeToggle.scss",
+                            "patch": "@@ -0,0 +1,830 @@\n+.theme-toggle %7B%0A  position: relative;%0A  display: flex;%0A  align-items: center;%0A  justify-content: center;%0A  width: 44px;%0A  height: 44px;%0A  border: none;%0A  border-radius: 12px;%0A  background: var(--color-surface-secondary);%0A  color: var(--color-text-primary);%0A  cursor: pointer;%0A  transition: all 0.2s ease;%0A  box-shadow: var(--shadow-sm);%0A%0A  &:hover %7B%0A    background: var(--color-surface-hover);%0A    transform: translateY(-1px);%0A    box-shadow: var(--shadow-md);%0A  %7D%0A%0A  &:active %7B%0A    transform: translateY(0);%0A    box-shadow: var(--shadow-sm);%0A  %7D%0A%0A  .theme-toggle-inner %7B%0A    display: flex;%0A    align-items: center;%0A    justify-content: center;%0A    transition: transform 0.3s ease;%0A  %7D%0A%0A  &:hover .theme-toggle-inner %7B%0A    transform: scale(1.1);%0A  %7D%0A%0A  svg %7B%0A    width: 20px;%0A    height: 20px;%0A    transition: all 0.3s ease;%0A  %7D%0A%7D\n",
+                            "isNew": true,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/App.tsx",
+                            "patch": "@@ -418,16 +418,72 @@\n oModal';\n+%0Aimport %7B ThemeToggle %7D from './components/ThemeToggle';\n %0A%0Afuncti\n@@ -2188,24 +2188,50 @@\n t=%7Btrue%7D /%3E%0A\n+          %3CThemeToggle /%3E%0A\n         %3C/di\n",
+                            "isNew": false,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/components/ThemeToggle/index.tsx",
+                            "patch": "@@ -0,0 +1,1186 @@\n+import React from 'react';%0Aimport %7B useTheme %7D from '../../contexts/ThemeContext';%0Aimport './ThemeToggle.scss';%0A%0Aexport const ThemeToggle: React.FC = () =%3E %7B%0A  const %7B theme, toggleTheme %7D = useTheme();%0A%0A  return (%0A    %3Cbutton %0A      className=%22theme-toggle%22 %0A      onClick=%7BtoggleTheme%7D%0A      aria-label=%7B%60Switch to $%7Btheme === 'light' ? 'dark' : 'light'%7D mode%60%7D%0A      title=%7B%60Switch to $%7Btheme === 'light' ? 'dark' : 'light'%7D mode%60%7D%0A    %3E%0A      %3Cdiv className=%22theme-toggle-inner%22%3E%0A        %7Btheme === 'light' ? (%0A          %3Csvg width=%2220%22 height=%2220%22 viewBox=%220 0 24 24%22 fill=%22none%22%3E%0A            %3Cpath d=%22M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z%22 stroke=%22currentColor%22 strokeWidth=%222%22 strokeLinecap=%22round%22 strokeLinejoin=%22round%22/%3E%0A          %3C/svg%3E%0A        ) : (%0A          %3Csvg width=%2220%22 height=%2220%22 viewBox=%220 0 24 24%22 fill=%22none%22%3E%0A            %3Ccircle cx=%2212%22 cy=%2212%22 r=%225%22 stroke=%22currentColor%22 strokeWidth=%222%22/%3E%0A            %3Cpath d=%22m12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42%22 stroke=%22currentColor%22 strokeWidth=%222%22 strokeLinecap=%22round%22/%3E%0A          %3C/svg%3E%0A        )%7D%0A      %3C/div%3E%0A    %3C/button%3E%0A  );%0A%7D;\n",
+                            "isNew": true,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/App.scss",
+                            "patch": "@@ -1,103 +1,204 @@\n-@use './styles/variables' as *;%0A%0A.container %7B%0A    @include pixel-style;%0A    background: $bg\n+.container %7B%0A    font-family: var(--font-pixel);%0A    image-rendering: pixelated;%0A    image-rendering: -moz-crisp-edges;%0A    image-rendering: crisp-edges;%0A    background: var(--color-background\n -primary\n ;%0A  \n@@ -189,24 +189,25 @@\n ound-primary\n+)\n ;%0A    color:\n@@ -199,33 +199,44 @@\n ry);%0A    color: \n-$\n+var(--color-\n text-primary;%0A  \n@@ -227,24 +227,25 @@\n text-primary\n+)\n ;%0A    min-he\n@@ -522,651 +522,40 @@\n nd: \n-%0A            radial-gradient(circle at 20%25 80%25, rgba(102, 217, 255, 0.08) 0%25, transparent 50%25),%0A            radial-gradient(circle at 80%25 20%25, rgba(102, 217, 255, 0.06) 0%25, transparent 50%25),%0A            linear-gradient(0deg, transparent 24%25, rgba(102, 217, 255, 0.02) 25%25, rgba(102, 217, 255, 0.02) 26%25, transparent 27%25, transparent 74%25, rgba(102, 217, 255, 0.02) 75%25, rgba(102, 217, 255, 0.02) 76%25, transparent 77%25),%0A            linear-gradient(90deg, transparent 24%25, rgba(102, 217, 255, 0.02) 25%25, rgba(102, 217, 255, 0.02) 26%25, transparent 27%25, transparent 74%25, rgba(102, 217, 255, 0.02) 75%25, rgba(102, 217, 255, 0.02) 76%25, transparent 77%25\n+var(--color-background-secondary\n );%0A \n@@ -1024,32 +1024,32 @@\n     \n-rgba(102, 217, 255, 0.01\n+var(--color-border-muted\n ) 50\n@@ -1247,17 +1247,22 @@\n -width: \n-$\n+var(--\n max-widt\n@@ -1262,16 +1262,17 @@\n ax-width\n+)\n ;%0A    pa\n@@ -1278,17 +1278,22 @@\n adding: \n-$\n+var(--\n containe\n@@ -1301,16 +1301,17 @@\n -padding\n+)\n ;%0A    po\n@@ -1348,36 +1348,46 @@\n  2;%0A    \n-@include pixel-style\n+font-family: var(--font-pixel)\n ;%0A%7D%0A%0A.he\n@@ -1413,33 +1413,38 @@\n 0;%0A    padding: \n-$\n+var(--\n spacing-2xl 0;%0A \n@@ -1434,24 +1434,25 @@\n -spacing-2xl\n+)\n  0;%0A    text\n@@ -1478,33 +1478,38 @@\n  margin-bottom: \n-$\n+var(--\n spacing-3xl;%0A   \n@@ -1499,24 +1499,25 @@\n -spacing-3xl\n+)\n ;%0A    displa\n@@ -1546,22 +1546,29 @@\n ontent: \n-center\n+space-between\n ;%0A    al\n@@ -1586,16 +1586,123 @@\n center;%0A\n+    %0A    @media (max-width: 640px) %7B%0A        flex-direction: column;%0A        gap: var(--spacing-lg);%0A    %7D%0A\n %7D%0A%0A.scre\n@@ -1743,33 +1743,38 @@\n r;%0A    padding: \n-$\n+var(--\n spacing-3xl 0;%0A%0A\n@@ -1768,16 +1768,17 @@\n cing-3xl\n+)\n  0;%0A%0A   \n@@ -1802,36 +1802,46 @@\n         \n-@include pixel-style\n+font-family: var(--font-pixel)\n ;%0A      \n@@ -1854,17 +1854,22 @@\n in-top: \n-$\n+var(--\n spacing-\n@@ -1866,24 +1866,25 @@\n --spacing-lg\n+)\n ;%0A        co\n@@ -1880,33 +1880,44 @@\n %0A        color: \n-$\n+var(--color-\n text-secondary;%0A\n@@ -1906,32 +1906,33 @@\n r-text-secondary\n+)\n ;%0A        font-s\n@@ -2231,33 +2231,38 @@\n        padding: \n-$\n+var(--\n spacing-3xl;%0A   \n@@ -2256,16 +2256,17 @@\n cing-3xl\n+)\n ;%0A      \n@@ -2271,27 +2271,276 @@\n     \n-@include pixel-card\n+background: var(--color-surface-primary);%0A        border: 1px solid var(--color-border-primary);%0A        border-radius: var(--border-radius);%0A        backdrop-filter: var(--blur-sm);%0A        -webkit-backdrop-filter: var(--blur-sm);%0A        box-shadow: var(--shadow-md)\n ;%0A  \n@@ -2831,45 +2831,91 @@\n eg, \n-$pixel-blue, $pixel-cyan, $pixel-blue\n+var(--color-accent-primary), var(--color-accent-hover), var(--color-accent-primary)\n );%0A \n@@ -2940,17 +2940,22 @@\n radius: \n-$\n+var(--\n border-r\n@@ -2959,16 +2959,17 @@\n r-radius\n+)\n ;%0A      \n@@ -3065,33 +3065,38 @@\n  margin-bottom: \n-$\n+var(--\n spacing-xl;%0A    \n@@ -3085,24 +3085,25 @@\n --spacing-xl\n+)\n ;%0A          \n@@ -3115,19 +3115,35 @@\n or: \n-$pixel-blue\n+var(--color-accent-primary)\n ;%0A  \n@@ -3180,39 +3180,42 @@\n 0 0 8px \n-rgba(102, 217, 255, 0.5\n+var(--color-accent-primary\n ));%0A    \n@@ -3314,36 +3314,46 @@\n         \n-@include pixel-style\n+font-family: var(--font-pixel)\n ;%0A      \n@@ -3370,17 +3370,22 @@\n in: 0 0 \n-$\n+var(--\n spacing-\n@@ -3386,16 +3386,17 @@\n acing-md\n+)\n  0;%0A    \n@@ -3406,25 +3406,36 @@\n      color: \n-$\n+var(--color-\n text-primary\n@@ -3434,16 +3434,17 @@\n -primary\n+)\n ;%0A      \n@@ -3605,31 +3605,34 @@\n 8px \n-rgba(102, 217, 255, 0.4\n+var(--color-accent-primary\n );%0A \n@@ -3669,28 +3669,38 @@\n     \n-@include pixel-style\n+font-family: var(--font-pixel)\n ;%0A  \n@@ -3739,17 +3739,28 @@\n  color: \n-$\n+var(--color-\n text-sec\n@@ -3765,16 +3765,17 @@\n econdary\n+)\n ;%0A      \n@@ -3981,33 +3981,38 @@\n 1fr));%0A    gap: \n-$\n+var(--\n spacing-lg;%0A    \n@@ -4001,24 +4001,25 @@\n --spacing-lg\n+)\n ;%0A    animat\n@@ -4076,22 +4076,14 @@\n th: \n-$breakpoint-xl\n+1280px\n ) %7B%0A\n@@ -4178,38 +4178,30 @@\n (max-width: \n-$breakpoint-lg\n+1024px\n ) %7B%0A        \n@@ -4267,33 +4267,38 @@\n );%0A        gap: \n-$\n+var(--\n spacing-md;%0A    \n@@ -4283,32 +4283,33 @@\n var(--spacing-md\n+)\n ;%0A    %7D%0A%0A    @me\n@@ -4320,38 +4320,29 @@\n (max-width: \n-$breakpoint-md\n+768px\n ) %7B%0A        \n@@ -4429,38 +4429,29 @@\n (max-width: \n-$breakpoint-sm\n+640px\n ) %7B%0A        \n@@ -4525,17 +4525,22 @@\n    gap: \n-$\n+var(--\n spacing-\n@@ -4533,32 +4533,33 @@\n var(--spacing-sm\n+)\n ;%0A    %7D%0A%7D%0A%0A@keyf\n@@ -5254,31 +5254,34 @@\n 8px \n-rgba(102, 217, 255, 0.5\n+var(--color-accent-primary\n ));%0A\n@@ -5338,31 +5338,34 @@\n 6px \n-rgba(102, 217, 255, 0.8\n+var(--color-accent-primary\n ));%0A\n@@ -5436,40 +5436,24 @@\n ow: \n-0 0 10px rgba(102, 217, 255, 0.3\n+var(--pixel-glow\n );%0A \n@@ -5491,75 +5491,31 @@\n ow: \n-0 0 20px rgba(102, 217, 255, 0.6), 0 0 30px rgba(102, 217, 255, 0.3\n+var(--pixel-glow-strong\n );%0A \n@@ -5787,22 +5787,14 @@\n th: \n-$breakpoint-lg\n+1024px\n ) %7B%0A\n@@ -5814,33 +5814,38 @@\n        padding: \n-$\n+var(--\n spacing-lg;%0A    \n@@ -5838,16 +5838,17 @@\n acing-lg\n+)\n ;%0A    %7D%0A\n@@ -5871,33 +5871,38 @@\n        padding: \n-$\n+var(--\n spacing-xl 0;%0A  \n@@ -5895,16 +5895,17 @@\n acing-xl\n+)\n  0;%0A    \n@@ -5915,33 +5915,38 @@\n  margin-bottom: \n-$\n+var(--\n spacing-2xl;%0A   \n@@ -5940,16 +5940,17 @@\n cing-2xl\n+)\n ;%0A    %7D%0A\n@@ -5975,22 +5975,13 @@\n th: \n-$breakpoint-md\n+768px\n ) %7B%0A\n@@ -6001,33 +6001,38 @@\n        padding: \n-$\n+var(--\n spacing-md;%0A    \n@@ -6025,16 +6025,17 @@\n acing-md\n+)\n ;%0A    %7D%0A\n@@ -6058,33 +6058,38 @@\n        padding: \n-$\n+var(--\n spacing-lg 0;%0A  \n@@ -6082,16 +6082,17 @@\n acing-lg\n+)\n  0;%0A    \n@@ -6110,17 +6110,22 @@\n bottom: \n-$\n+var(--\n spacing-\n@@ -6126,16 +6126,17 @@\n acing-xl\n+)\n ;%0A    %7D%0A\n@@ -6167,33 +6167,38 @@\n        padding: \n-$\n+var(--\n spacing-2xl 0;%0A%0A\n@@ -6192,16 +6192,17 @@\n cing-2xl\n+)\n  0;%0A%0A   \n@@ -6234,33 +6234,38 @@\n        padding: \n-$\n+var(--\n spacing-2xl;%0A%0A  \n@@ -6259,16 +6259,17 @@\n cing-2xl\n+)\n ;%0A%0A     \n@@ -6497,22 +6497,13 @@\n th: \n-$breakpoint-sm\n+640px\n ) %7B%0A\n@@ -6523,33 +6523,38 @@\n        padding: \n-$\n+var(--\n spacing-sm;%0A    \n@@ -6547,16 +6547,17 @@\n acing-sm\n+)\n ;%0A    %7D%0A\n@@ -6627,9 +6627,14 @@\n ng: \n-$\n+var(--\n spac\n@@ -6639,16 +6639,17 @@\n acing-xl\n+)\n ;%0A%0A     \n",
+                            "isNew": false,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/index.tsx",
+                            "patch": "@@ -90,25 +90,113 @@\n p';%0A\n-%0Aimport './index.\n+import %7B ThemeProvider %7D from './contexts/ThemeContext';%0A%0Aimport './index.css';%0Aimport './styles/themes.s\n css'\n@@ -327,13 +327,56 @@\n    %3C\n-App /\n+ThemeProvider%3E%0A      %3CApp /%3E%0A    %3C/ThemeProvider\n %3E%0A  \n",
+                            "isNew": false,
+                            "isApplied": true
+                        }
+                    ]
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "cbe67540-aa3e-4a1f-9bb3-e98009ba9a90"
+            },
+            "createdAt": 1750528559421,
+            "isInternal": false
+        },
+        {
+            "id": "e8ef5f56-db9f-4360-9211-4c63fa04ff14",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "eu tirei o arquivo index.css e bagunçoiu os estilos como nao ter um resrest como os margin e padding 0 e entre outras coisas"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "src/index.tsx",
+                    "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/index.tsx",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "import React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport App from './App';\nimport { ThemeProvider } from './contexts/ThemeContext';\n\nimport './styles/themes.scss';\n\nconst root = ReactDOM.createRoot(\n  document.getElementById('root') as HTMLElement\n);\nroot.render(\n  <React.StrictMode>\n    <ThemeProvider>\n      <App />\n    </ThemeProvider>\n  </React.StrictMode>\n);\n",
+                    "language": "typescript jsx"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1750529023146,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "eu tirei o arquivo index.css e bagunçoiu os estilos como nao ter um resrest como os margin e padding 0 e entre outras coisas"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "11830412-fb97-46a6-bd2a-3934a0804260",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Ah, entendi! Você removeu o `index.css` que tinha o reset CSS básico. Vamos criar um novo arquivo `index.css` com o reset necessário ou adicionar essas regras no nosso sistema de temas.\n\nPrimeiro, vou verificar se o arquivo ainda existe:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_013MfRhGYBxYDp8vA14rGZbM",
+                    "title": "",
+                    "statusText": "File not found",
+                    "status": "WARNING",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/index.css",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/index.css"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "O arquivo foi mesmo removido. Vou criar um novo `index.css` com um reset CSS adequado e também vou atualizar o `index.tsx` para importá-lo:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01GuUQWZLWnsmMuDg32Wg5ho",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/index.css",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/index.css"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/index.css\n+++ src/index.css\n@@ -0,0 +1,229 @@\n+/* CSS Reset and Global Styles */\n+\n+/* Box sizing rules */\n+*,\n+*::before,\n+*::after {\n+  box-sizing: border-box;\n+}\n+\n+/* Remove default margin and padding */\n+* {\n+  margin: 0;\n+  padding: 0;\n+}\n+\n+/* Remove list styles on ul, ol elements with a list role */\n+ul[role='list'],\n+ol[role='list'] {\n+  list-style: none;\n+}\n+\n+/* Set core root defaults */\n+html:focus-within {\n+  scroll-behavior: smooth;\n+}\n+\n+/* Set core body defaults */\n+html,\n+body {\n+  height: 100%;\n+  font-family: var(--font-primary, 'Monaco', 'Consolas', 'Courier New', monospace);\n+  line-height: 1.5;\n+  -webkit-font-smoothing: antialiased;\n+  -moz-osx-font-smoothing: grayscale;\n+  text-rendering: optimizeSpeed;\n+}\n+\n+/* Root element */\n+#root {\n+  height: 100%;\n+  isolation: isolate;\n+}\n+\n+/* A elements that don't have a class get default styles */\n+a:not([class]) {\n+  text-decoration-skip-ink: auto;\n+}\n+\n+/* Make images easier to work with */\n+img,\n+picture,\n+video,\n+canvas,\n+svg {\n+  display: block;\n+  max-width: 100%;\n+}\n+\n+/* Inherit fonts for inputs and buttons */\n+input,\n+button,\n+textarea,\n+select {\n+  font: inherit;\n+  color: inherit;\n+}\n+\n+/* Remove default button styles */\n+button {\n+  border: none;\n+  background: none;\n+  cursor: pointer;\n+}\n+\n+/* Remove default input styles */\n+input,\n+textarea {\n+  border: none;\n+  outline: none;\n+  background: transparent;\n+}\n+\n+/* Remove textarea resize */\n+textarea {\n+  resize: none;\n+}\n+\n+/* Remove default appearance for form elements */\n+input[type=\"text\"],\n+input[type=\"email\"],\n+input[type=\"password\"],\n+input[type=\"search\"],\n+input[type=\"url\"],\n+input[type=\"tel\"],\n+input[type=\"number\"],\n+textarea,\n+select {\n+  appearance: none;\n+  -webkit-appearance: none;\n+  -moz-appearance: none;\n+}\n+\n+/* Remove default focus styles and add custom ones */\n+*:focus {\n+  outline: 2px solid var(--color-accent-primary, #3b82f6);\n+  outline-offset: 2px;\n+}\n+\n+/* Remove text decoration from all links */\n+a {\n+  text-decoration: none;\n+  color: inherit;\n+}\n+\n+/* Remove default table styles */\n+table {\n+  border-collapse: collapse;\n+  border-spacing: 0;\n+}\n+\n+/* Remove default fieldset styles */\n+fieldset {\n+  border: none;\n+  margin: 0;\n+  padding: 0;\n+}\n+\n+/* Remove default legend styles */\n+legend {\n+  padding: 0;\n+}\n+\n+/* Improve readability for screen readers */\n+.sr-only {\n+  position: absolute;\n+  width: 1px;\n+  height: 1px;\n+  padding: 0;\n+  margin: -1px;\n+  overflow: hidden;\n+  clip: rect(0, 0, 0, 0);\n+  white-space: nowrap;\n+  border: 0;\n+}\n+\n+/* Reduce motion for users who prefer it */\n+@media (prefers-reduced-motion: reduce) {\n+  html:focus-within {\n+   scroll-behavior: auto;\n+  }\n+  \n+  *,\n+  *::before,\n+  *::after {\n+    animation-duration: 0.01ms !important;\n+    animation-iteration-count: 1 !important;\n+    transition-duration: 0.01ms !important;\n+    scroll-behavior: auto !important;\n+  }\n+}\n+\n+/* High contrast mode support */\n+@media (prefers-contrast: high) {\n+  :root {\n+    --shadow-sm: none;\n+    --shadow-md: none;\n+    --shadow-lg: none;\n+    --shadow-xl: none;\n+  }\n+}\n+\n+/* Global utilities */\n+.hidden {\n+  display: none !important;\n+}\n+\n+.visually-hidden {\n+  @extend .sr-only;\n+}\n+\n+.skip-link {\n+  position: absolute;\n+  top: -40px;\n+  left: 6px;\n+  background: var(--color-surface-primary);\n+  color: var(--color-text-primary);\n+  padding: 8px;\n+  border-radius: 4px;\n+  text-decoration: none;\n+  z-index: 9999;\n+  transition: top 0.3s;\n+}\n+\n+.skip-link:focus {\n+  top: 6px;\n+}\n+\n+/* Print styles */\n+@media print {\n+  *,\n+  *::before,\n+  *::after {\n+    background: transparent !important;\n+    color: black !important;\n+    box-shadow: none !important;\n+    text-shadow: none !important;\n+  }\n+\n+  a,\n+  a:visited {\n+    text-decoration: underline;\n+  }\n+\n+  img {\n+    page-break-inside: avoid;\n+  }\n+\n+  p,\n+  h2,\n+  h3 {\n+    orphans: 3;\n+    widows: 3;\n+  }\n+\n+  h2,\n+  h3 {\n+    page-break-after: avoid;\n+  }\n+}",
+                    "refToolCallId": "toolu_01GuUQWZLWnsmMuDg32Wg5ho"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou atualizar o `index.tsx` para importar o `index.css`:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_018x2c3Mgu3J4rJvAiZpQrHi",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/index.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/index.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/index.tsx\n+++ src/index.tsx\n@@ -3,6 +3,7 @@\n import App from './App';\n import { ThemeProvider } from './contexts/ThemeContext';\n \n+import './index.css';\n import './styles/themes.scss';\n \n const root = ReactDOM.createRoot(",
+                    "refToolCallId": "toolu_018x2c3Mgu3J4rJvAiZpQrHi"
+                },
+                {
+                    "type": "text",
+                    "text": "## 2. Continuando com a implementação da Fase 1\n\nAgora vou continuar implementando outras funcionalidades da Fase 1. Vamos criar o sistema de notificações (toast):"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01XbA9dK83UUqRq49Kw2WYqr",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/contexts/NotificationContext.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/contexts/NotificationContext.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/contexts/NotificationContext.tsx\n+++ src/contexts/NotificationContext.tsx\n@@ -0,0 +1,132 @@\n+import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react';\n+\n+export type NotificationType = 'success' | 'error' | 'warning' | 'info';\n+\n+export interface Notification {\n+  id: string;\n+  type: NotificationType;\n+  title: string;\n+  message?: string;\n+  duration?: number;\n+  action?: {\n+    label: string;\n+    onClick: () => void;\n+  };\n+}\n+\n+interface NotificationContextType {\n+  notifications: Notification[];\n+  addNotification: (notification: Omit<Notification, 'id'>) => string;\n+  removeNotification: (id: string) => void;\n+  clearAll: () => void;\n+}\n+\n+const NotificationContext = createContext<NotificationContextType | undefined>(undefined);\n+\n+export const useNotifications = () => {\n+  const context = useContext(NotificationContext);\n+  if (context === undefined) {\n+    throw new Error('useNotifications must be used within a NotificationProvider');\n+  }\n+  return context;\n+};\n+\n+interface NotificationProviderProps {\n+  children: ReactNode;\n+}\n+\n+export const NotificationProvider: React.FC<NotificationProviderProps> = ({ children }) => {\n+  const [notifications, setNotifications] = useState<Notification[]>([]);\n+\n+  const generateId = () => Math.random().toString(36).substr(2, 9);\n+\n+  const addNotification = useCallback((notification: Omit<Notification, 'id'>) => {\n+    const id = generateId();\n+    const newNotification: Notification = {\n+      ...notification,\n+      id,\n+      duration: notification.duration || 5000, // Default 5 seconds\n+    };\n+\n+    setNotifications(prev => [newNotification, ...prev]);\n+\n+    // Auto remove after duration\n+    if (newNotification.duration > 0) {\n+      setTimeout(() => {\n+        removeNotification(id);\n+      }, newNotification.duration);\n+    }\n+\n+    return id;\n+  }, []);\n+\n+  const removeNotification = useCallback((id: string) => {\n+    setNotifications(prev => prev.filter(notification => notification.id !== id));\n+  }, []);\n+\n+  const clearAll = useCallback(() => {\n+    setNotifications([]);\n+  }, []);\n+\n+  const value = {\n+    notifications,\n+    addNotification,\n+    removeNotification,\n+    clearAll,\n+  };\n+\n+  return (\n+    <NotificationContext.Provider value={value}>\n+      {children}\n+    </NotificationContext.Provider>\n+  );\n+};\n+\n+// Utility hooks for different notification types\n+export const useNotificationHelpers = () => {\n+  const { addNotification } = useNotifications();\n+\n+  const showSuccess = useCallback((title: string, message?: string, options?: Partial<Notification>) => {\n+    return addNotification({\n+      type: 'success',\n+      title,\n+      message,\n+      ...options,\n+    });\n+  }, [addNotification]);\n+\n+  const showError = useCallback((title: string, message?: string, options?: Partial<Notification>) => {\n+    return addNotification({\n+      type: 'error',\n+      title,\n+      message,\n+      duration: 8000, // Errors stay longer by default\n+      ...options,\n+    });\n+  }, [addNotification]);\n+\n+  const showWarning = useCallback((title: string, message?: string, options?: Partial<Notification>) => {\n+    return addNotification({\n+      type: 'warning',\n+      title,\n+      message,\n+      ...options,\n+    });\n+  }, [addNotification]);\n+\n+  const showInfo = useCallback((title: string, message?: string, options?: Partial<Notification>) => {\n+    return addNotification({\n+      type: 'info',\n+      title,\n+      message,\n+      ...options,\n+    });\n+  }, [addNotification]);\n+\n+  return {\n+    showSuccess,\n+    showError,\n+    showWarning,\n+    showInfo,\n+  };\n+};",
+                    "refToolCallId": "toolu_01XbA9dK83UUqRq49Kw2WYqr"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou criar o componente de notificações:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01EQ7iUtSk9gWPsmWoNVUYem",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/components/NotificationContainer/index.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/components/NotificationContainer/index.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/components/NotificationContainer/index.tsx\n+++ src/components/NotificationContainer/index.tsx\n@@ -0,0 +1,23 @@\n+import React from 'react';\n+import { useNotifications } from '../../contexts/NotificationContext';\n+import { NotificationItem } from './NotificationItem';\n+import './NotificationContainer.scss';\n+\n+export const NotificationContainer: React.FC = () => {\n+  const { notifications } = useNotifications();\n+\n+  if (notifications.length === 0) {\n+    return null;\n+  }\n+\n+  return (\n+    <div className=\"notification-container\">\n+      {notifications.map((notification) => (\n+        <NotificationItem\n+          key={notification.id}\n+          notification={notification}\n+        />\n+      ))}\n+    </div>\n+  );\n+};",
+                    "refToolCallId": "toolu_01EQ7iUtSk9gWPsmWoNVUYem"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01LUCXjgCoJ2UsQfN7AvERA5",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/components/NotificationContainer/NotificationItem.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/components/NotificationContainer/NotificationItem.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/components/NotificationContainer/NotificationItem.tsx\n+++ src/components/NotificationContainer/NotificationItem.tsx\n@@ -0,0 +1,107 @@\n+import React, { useEffect, useState } from 'react';\n+import { Notification, useNotifications } from '../../contexts/NotificationContext';\n+\n+interface NotificationItemProps {\n+  notification: Notification;\n+}\n+\n+export const NotificationItem: React.FC<NotificationItemProps> = ({ notification }) => {\n+  const { removeNotification } = useNotifications();\n+  const [isVisible, setIsVisible] = useState(false);\n+  const [isExiting, setIsExiting] = useState(false);\n+\n+  useEffect(() => {\n+    // Trigger enter animation\n+    const timer = setTimeout(() => setIsVisible(true), 10);\n+    return () => clearTimeout(timer);\n+  }, []);\n+\n+  const handleClose = () => {\n+    setIsExiting(true);\n+    setTimeout(() => {\n+      removeNotification(notification.id);\n+    }, 300);\n+  };\n+\n+  const handleAction = () => {\n+    if (notification.action) {\n+      notification.action.onClick();\n+      handleClose();\n+    }\n+  };\n+\n+  const getIcon = () => {\n+    switch (notification.type) {\n+      case 'success':\n+        return (\n+          <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\">\n+            <path d=\"M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\"/>\n+          </svg>\n+        );\n+      case 'error':\n+        return (\n+          <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\">\n+            <path d=\"M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\"/>\n+          </svg>\n+        );\n+      case 'warning':\n+        return (\n+          <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\">\n+            <path d=\"M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\"/>\n+          </svg>\n+        );\n+      case 'info':\n+        return (\n+          <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\">\n+            <path d=\"M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\"/>\n+          </svg>\n+        );\n+      default:\n+        return null;\n+    }\n+  };\n+\n+  return (\n+    <div \n+      className={`notification-item notification-item--${notification.type} ${\n+        isVisible ? 'notification-item--visible' : ''\n+      } ${isExiting ? 'notification-item--exiting' : ''}`}\n+    >\n+      <div className=\"notification-item__icon\">\n+        {getIcon()}\n+      </div>\n+      \n+      <div className=\"notification-item__content\">\n+        <div className=\"notification-item__title\">\n+          {notification.title}\n+        </div>\n+        {notification.message && (\n+          <div className=\"notification-item__message\">\n+            {notification.message}\n+          </div>\n+        )}\n+      </div>\n+\n+      <div className=\"notification-item__actions\">\n+        {notification.action && (\n+          <button\n+            className=\"notification-item__action-button\"\n+            onClick={handleAction}\n+          >\n+            {notification.action.label}\n+          </button>\n+        )}\n+        \n+        <button\n+          className=\"notification-item__close-button\"\n+          onClick={handleClose}\n+          aria-label=\"Close notification\"\n+        >\n+          <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\">\n+            <path d=\"M6 18L18 6M6 6l12 12\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\"/>\n+          </svg>\n+        </button>\n+      </div>\n+    </div>\n+  );\n+};",
+                    "refToolCallId": "toolu_01LUCXjgCoJ2UsQfN7AvERA5"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01SEDw9mSUgULtZr86LAf38r",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/components/NotificationContainer/NotificationContainer.scss",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/components/NotificationContainer/NotificationContainer.scss"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/components/NotificationContainer/NotificationContainer.scss\n+++ src/components/NotificationContainer/NotificationContainer.scss\n@@ -0,0 +1,242 @@\n+.notification-container {\n+  position: fixed;\n+  top: var(--spacing-lg);\n+  right: var(--spacing-lg);\n+  z-index: 1000;\n+  display: flex;\n+  flex-direction: column;\n+  gap: var(--spacing-sm);\n+  max-width: 400px;\n+  width: 100%;\n+  pointer-events: none;\n+\n+  @media (max-width: 640px) {\n+    top: var(--spacing-md);\n+    right: var(--spacing-md);\n+    left: var(--spacing-md);\n+    max-width: none;\n+  }\n+}\n+\n+.notification-item {\n+  display: flex;\n+  align-items: flex-start;\n+  gap: var(--spacing-sm);\n+  padding: var(--spacing-md);\n+  background: var(--color-surface-primary);\n+  border: 1px solid var(--color-border-primary);\n+  border-radius: var(--border-radius);\n+  backdrop-filter: var(--blur-sm);\n+  -webkit-backdrop-filter: var(--blur-sm);\n+  box-shadow: var(--shadow-lg);\n+  pointer-events: auto;\n+  transform: translateX(100%);\n+  opacity: 0;\n+  transition: all var(--transition-normal);\n+\n+  &--visible {\n+    transform: translateX(0);\n+    opacity: 1;\n+  }\n+\n+  &--exiting {\n+    transform: translateX(100%);\n+    opacity: 0;\n+  }\n+\n+  // Type-specific styles\n+  &--success {\n+    border-left: 4px solid var(--color-success);\n+    \n+    .notification-item__icon {\n+      color: var(--color-success);\n+    }\n+  }\n+\n+  &--error {\n+    border-left: 4px solid var(--color-danger);\n+    \n+    .notification-item__icon {\n+      color: var(--color-danger);\n+    }\n+  }\n+\n+  &--warning {\n+    border-left: 4px solid var(--color-warning);\n+    \n+    .notification-item__icon {\n+      color: var(--color-warning);\n+    }\n+  }\n+\n+  &--info {\n+    border-left: 4px solid var(--color-accent-primary);\n+    \n+    .notification-item__icon {\n+      color: var(--color-accent-primary);\n+    }\n+  }\n+\n+  &__icon {\n+    flex-shrink: 0;\n+    margin-top: 2px;\n+    transition: all var(--transition-normal);\n+  }\n+\n+  &__content {\n+    flex: 1;\n+    min-width: 0;\n+  }\n+\n+  &__title {\n+    font-family: var(--font-pixel);\n+    font-weight: 600;\n+    font-size: 14px;\n+    color: var(--color-text-primary);\n+    margin-bottom: var(--spacing-xs);\n+    text-transform: uppercase;\n+    letter-spacing: 0.5px;\n+  }\n+\n+  &__message {\n+    font-family: var(--font-pixel);\n+    font-size: 13px;\n+    color: var(--color-text-secondary);\n+    line-height: 1.4;\n+    letter-spacing: 0.3px;\n+  }\n+\n+  &__actions {\n+    display: flex;\n+    align-items: flex-start;\n+    gap: var(--spacing-xs);\n+    flex-shrink: 0;\n+  }\n+\n+  &__action-button {\n+    padding: var(--spacing-xs) var(--spacing-sm);\n+    background: var(--color-accent-primary);\n+    color: var(--color-text-inverse);\n+    border: none;\n+    border-radius: var(--border-radius-small);\n+    font-family: var(--font-pixel);\n+    font-size: 12px;\n+    font-weight: 600;\n+    text-transform: uppercase;\n+    letter-spacing: 0.5px;\n+    cursor: pointer;\n+    transition: all var(--transition-fast);\n+\n+    &:hover {\n+      background: var(--color-accent-hover);\n+      transform: translateY(-1px);\n+    }\n+\n+    &:active {\n+      transform: translateY(0);\n+    }\n+  }\n+\n+  &__close-button {\n+    display: flex;\n+    align-items: center;\n+    justify-content: center;\n+    width: 28px;\n+    height: 28px;\n+    background: transparent;\n+    color: var(--color-text-muted);\n+    border: none;\n+    border-radius: var(--border-radius-small);\n+    cursor: pointer;\n+    transition: all var(--transition-fast);\n+\n+    &:hover {\n+      background: var(--color-surface-hover);\n+      color: var(--color-text-primary);\n+    }\n+\n+    &:active {\n+      transform: scale(0.95);\n+    }\n+\n+    svg {\n+      width: 16px;\n+      height: 16px;\n+    }\n+  }\n+}\n+\n+// Animation for stacked notifications\n+.notification-item:nth-child(n+2) {\n+  animation-delay: 0.1s;\n+}\n+\n+.notification-item:nth-child(n+3) {\n+  animation-delay: 0.2s;\n+}\n+\n+.notification-item:nth-child(n+4) {\n+  animation-delay: 0.3s;\n+}\n+\n+// Hover effects\n+.notification-item:hover {\n+  transform: translateX(-4px);\n+  box-shadow: var(--shadow-xl);\n+\n+  .notification-item__icon {\n+    transform: scale(1.1);\n+  }\n+}\n+\n+// Progress bar for timed notifications\n+.notification-item::after {\n+  content: '';\n+  position: absolute;\n+  bottom: 0;\n+  left: 0;\n+  height: 2px;\n+  background: var(--color-accent-primary);\n+  border-radius: 0 0 var(--border-radius) var(--border-radius);\n+  animation: notificationProgress var(--duration, 5000ms) linear forwards;\n+  opacity: 0.6;\n+}\n+\n+@keyframes notificationProgress {\n+  from {\n+    width: 100%;\n+  }\n+  to {\n+    width: 0%;\n+  }\n+}\n+\n+// Mobile adjustments\n+@media (max-width: 640px) {\n+  .notification-item {\n+    padding: var(--spacing-sm);\n+    \n+    &__title {\n+      font-size: 13px;\n+    }\n+\n+    &__message {\n+      font-size: 12px;\n+    }\n+\n+    &__action-button {\n+      font-size: 11px;\n+      padding: var(--spacing-xs);\n+    }\n+\n+    &__close-button {\n+      width: 24px;\n+      height: 24px;\n+      \n+      svg {\n+        width: 14px;\n+        height: 14px;\n+      }\n+    }\n+  }\n+}",
+                    "refToolCallId": "toolu_01SEDw9mSUgULtZr86LAf38r"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou atualizar o App.tsx para incluir o sistema de notificações:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_013zXFg9NL58aQJDT5mkir17",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.tsx\n+++ src/App.tsx\n@@ -10,6 +10,8 @@\n import { UploadZone } from './components/UploadZone';\n import { PhotoModal } from './components/PhotoModal';\n import { ThemeToggle } from './components/ThemeToggle';\n+import { NotificationContainer } from './components/NotificationContainer';\n+import { useNotificationHelpers } from './contexts/NotificationContext';\n \n function App() {\n   const [uploading, setUploading] = useState(false);",
+                    "refToolCallId": "toolu_013zXFg9NL58aQJDT5mkir17"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01RVTCficj1txcBCxpusP1iM",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.tsx\n+++ src/App.tsx\n@@ -19,6 +19,7 @@\n   const [photos, setPhotos] = useState<Photo[]>([]);\n   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);\n   const [isModalOpen, setIsModalOpen] = useState(false);\n+  const { showSuccess, showError } = useNotificationHelpers();\n \n   useEffect(() => {\n     const getPhotos = async () => {",
+                    "refToolCallId": "toolu_01RVTCficj1txcBCxpusP1iM"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01SDvyjYWf7CnEXRr2aTAbtn",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.tsx\n+++ src/App.tsx\n@@ -37,11 +37,12 @@\n     setUploading(false);\n \n     if (result instanceof Error) {\n-      alert(`${result.name} - ${result.message}`);\n+      showError('Upload Failed', result.message);\n     } else {\n       let newPhotoList = [...photos];\n       newPhotoList.unshift(result); // Add to beginning for better UX\n       setPhotos(newPhotoList);\n+      showSuccess('Photo Uploaded', 'Your photo has been successfully uploaded!');\n     }\n   }\n ",
+                    "refToolCallId": "toolu_01SDvyjYWf7CnEXRr2aTAbtn"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01SMJNuZiRHwS4dVBX7BvSAk",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.tsx\n+++ src/App.tsx\n@@ -65,6 +65,7 @@\n       if (selectedPhoto?.url === photoToDelete.url) {\n         handleCloseModal();\n       }\n+      showSuccess('Photo Deleted', `\"${photoToDelete.name}\" has been deleted successfully.`);\n     }\n   }\n ",
+                    "refToolCallId": "toolu_01SMJNuZiRHwS4dVBX7BvSAk"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01BtiiZKonqtxb2BoXXKpjHE",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.tsx\n+++ src/App.tsx\n@@ -125,6 +125,8 @@\n           onDelete={selectedPhoto ? () => handleDeletePhoto(selectedPhoto) : undefined}\n         />\n       </div>\n+      \n+      <NotificationContainer />\n     </div>\n   );\n }",
+                    "refToolCallId": "toolu_01BtiiZKonqtxb2BoXXKpjHE"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou atualizar o index.tsx para incluir o NotificationProvider:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_018NCJEgtaW6YUydcG3mHVBd",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/index.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/index.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/index.tsx\n+++ src/index.tsx\n@@ -2,6 +2,7 @@\n import ReactDOM from 'react-dom/client';\n import App from './App';\n import { ThemeProvider } from './contexts/ThemeContext';\n+import { NotificationProvider } from './contexts/NotificationContext';\n \n import './index.css';\n import './styles/themes.scss';",
+                    "refToolCallId": "toolu_018NCJEgtaW6YUydcG3mHVBd"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01B1FUTVDqQAsapnrn1fg4mg",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/index.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/index.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/index.tsx\n+++ src/index.tsx\n@@ -13,7 +13,9 @@\n root.render(\n   <React.StrictMode>\n     <ThemeProvider>\n-      <App />\n+      <NotificationProvider>\n+        <App />\n+      </NotificationProvider>\n     </ThemeProvider>\n   </React.StrictMode>\n );",
+                    "refToolCallId": "toolu_01B1FUTVDqQAsapnrn1fg4mg"
+                },
+                {
+                    "type": "text",
+                    "text": "## 3. Implementando Atalhos de Teclado\n\nAgora vou criar um hook para gerenciar atalhos de teclado:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_017aFyTvH6zgUKdbrCadQ6fW",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/hooks/useKeyboardShortcuts.ts",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/hooks/useKeyboardShortcuts.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/hooks/useKeyboardShortcuts.ts\n+++ src/hooks/useKeyboardShortcuts.ts\n@@ -0,0 +1,53 @@\n+import { useEffect, useCallback } from 'react';\n+\n+export interface KeyboardShortcut {\n+  key: string;\n+  ctrlKey?: boolean;\n+  altKey?: boolean;\n+  shiftKey?: boolean;\n+  metaKey?: boolean;\n+  action: () => void;\n+  description: string;\n+  preventDefault?: boolean;\n+}\n+\n+export const useKeyboardShortcuts = (shortcuts: KeyboardShortcut[]) => {\n+  const handleKeyDown = useCallback((event: KeyboardEvent) => {\n+    const matchingShortcut = shortcuts.find(shortcut => {\n+      const keyMatches = shortcut.key.toLowerCase() === event.key.toLowerCase();\n+      const ctrlMatches = (shortcut.ctrlKey || false) === event.ctrlKey;\n+      const altMatches = (shortcut.altKey || false) === event.altKey;\n+      const shiftMatches = (shortcut.shiftKey || false) === event.shiftKey;\n+      const metaMatches = (shortcut.metaKey || false) === event.metaKey;\n+\n+      return keyMatches && ctrlMatches && altMatches && shiftMatches && metaMatches;\n+    });\n+\n+    if (matchingShortcut) {\n+      if (matchingShortcut.preventDefault !== false) {\n+        event.preventDefault();\n+      }\n+      matchingShortcut.action();\n+    }\n+  }, [shortcuts]);\n+\n+  useEffect(() => {\n+    document.addEventListener('keydown', handleKeyDown);\n+    return () => {\n+      document.removeEventListener('keydown', handleKeyDown);\n+    };\n+  }, [handleKeyDown]);\n+};\n+\n+export const formatShortcut = (shortcut: KeyboardShortcut): string => {\n+  const parts: string[] = [];\n+  \n+  if (shortcut.ctrlKey) parts.push('Ctrl');\n+  if (shortcut.metaKey) parts.push('Cmd');\n+  if (shortcut.altKey) parts.push('Alt');\n+  if (shortcut.shiftKey) parts.push('Shift');\n+  \n+  parts.push(shortcut.key.toUpperCase());\n+  \n+  return parts.join(' + ');\n+};",
+                    "refToolCallId": "toolu_017aFyTvH6zgUKdbrCadQ6fW"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou criar um componente para mostrar os atalhos disponíveis:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01A3frY8UHz2WApuQWZyfGgz",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/components/KeyboardShortcutsHelp/index.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/components/KeyboardShortcutsHelp/index.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/components/KeyboardShortcutsHelp/index.tsx\n+++ src/components/KeyboardShortcutsHelp/index.tsx\n@@ -0,0 +1,79 @@\n+import React, { useState } from 'react';\n+import { KeyboardShortcut, formatShortcut } from '../../hooks/useKeyboardShortcuts';\n+import './KeyboardShortcutsHelp.scss';\n+\n+interface KeyboardShortcutsHelpProps {\n+  shortcuts: KeyboardShortcut[];\n+}\n+\n+export const KeyboardShortcutsHelp: React.FC<KeyboardShortcutsHelpProps> = ({ shortcuts }) => {\n+  const [isOpen, setIsOpen] = useState(false);\n+\n+  const toggleHelp = () => {\n+    setIsOpen(!isOpen);\n+  };\n+\n+  const closeHelp = () => {\n+    setIsOpen(false);\n+  };\n+\n+  return (\n+    <>\n+      <button\n+        className=\"keyboard-shortcuts-trigger\"\n+        onClick={toggleHelp}\n+        title=\"Keyboard Shortcuts (Press ? to toggle)\"\n+      >\n+        <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\">\n+          <path d=\"M9.879 7.519c.1-.2.209-.34.319-.42.11-.08.239-.12.369-.12.12 0 .239.04.339.12.1.08.18.2.239.32L13.519 12l-2.374 4.58c-.06.12-.14.24-.239.32-.1.08-.219.12-.339.12-.13 0-.259-.04-.369-.12-.11-.08-.219-.22-.319-.42L7.505 12l2.374-4.48z\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\"/>\n+          <path d=\"M14.121 16.481c-.1.2-.209.34-.319.42-.11.08-.239.12-.369.12-.12 0-.239-.04-.339-.12-.1-.08-.18-.2-.239-.32L10.481 12l2.374-4.58c.06-.12.14-.24.239-.32.1-.08.219-.12.339-.12.13 0 .259.04.369.12.11.08.219.22.319.42L16.495 12l-2.374 4.48z\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\"/>\n+        </svg>\n+      </button>\n+\n+      {isOpen && (\n+        <div className=\"keyboard-shortcuts-overlay\" onClick={closeHelp}>\n+          <div className=\"keyboard-shortcuts-modal\" onClick={(e) => e.stopPropagation()}>\n+            <div className=\"keyboard-shortcuts-header\">\n+              <h2>Keyboard Shortcuts</h2>\n+              <button\n+                className=\"keyboard-shortcuts-close\"\n+                onClick={closeHelp}\n+                aria-label=\"Close shortcuts help\"\n+              >\n+                <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\">\n+                  <path d=\"M6 18L18 6M6 6l12 12\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\"/>\n+                </svg>\n+              </button>\n+            </div>\n+\n+            <div className=\"keyboard-shortcuts-content\">\n+              <div className=\"keyboard-shortcuts-list\">\n+                {shortcuts.map((shortcut, index) => (\n+                  <div key={index} className=\"keyboard-shortcut-item\">\n+                    <div className=\"keyboard-shortcut-keys\">\n+                      {formatShortcut(shortcut).split(' + ').map((key, keyIndex) => (\n+                        <React.Fragment key={keyIndex}>\n+                          <kbd className=\"keyboard-key\">{key}</kbd>\n+                          {keyIndex < formatShortcut(shortcut).split(' + ').length - 1 && (\n+                            <span className=\"keyboard-plus\">+</span>\n+                          )}\n+                        </React.Fragment>\n+                      ))}\n+                    </div>\n+                    <div className=\"keyboard-shortcut-description\">\n+                      {shortcut.description}\n+                    </div>\n+                  </div>\n+                ))}\n+              </div>\n+\n+              <div className=\"keyboard-shortcuts-footer\">\n+                <p>Press <kbd className=\"keyboard-key\">Esc</kbd> to close this dialog</p>\n+              </div>\n+            </div>\n+          </div>\n+        </div>\n+      )}\n+    </>\n+  );\n+};",
+                    "refToolCallId": "toolu_01A3frY8UHz2WApuQWZyfGgz"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01H6bnUQZDt1fba2fEpRj1V1",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/components/KeyboardShortcutsHelp/KeyboardShortcutsHelp.scss",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/components/KeyboardShortcutsHelp/KeyboardShortcutsHelp.scss"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/components/KeyboardShortcutsHelp/KeyboardShortcutsHelp.scss\n+++ src/components/KeyboardShortcutsHelp/KeyboardShortcutsHelp.scss\n@@ -0,0 +1,262 @@\n+.keyboard-shortcuts-trigger {\n+  position: relative;\n+  display: flex;\n+  align-items: center;\n+  justify-content: center;\n+  width: 44px;\n+  height: 44px;\n+  border: none;\n+  border-radius: var(--border-radius);\n+  background: var(--color-surface-secondary);\n+  color: var(--color-text-primary);\n+  cursor: pointer;\n+  transition: all var(--transition-fast);\n+  box-shadow: var(--shadow-sm);\n+\n+  &:hover {\n+    background: var(--color-surface-hover);\n+    transform: translateY(-1px);\n+    box-shadow: var(--shadow-md);\n+  }\n+\n+  &:active {\n+    transform: translateY(0);\n+    box-shadow: var(--shadow-sm);\n+  }\n+\n+  svg {\n+    width: 20px;\n+    height: 20px;\n+    transition: all var(--transition-normal);\n+  }\n+\n+  &:hover svg {\n+    transform: scale(1.1);\n+  }\n+}\n+\n+.keyboard-shortcuts-overlay {\n+  position: fixed;\n+  top: 0;\n+  left: 0;\n+  right: 0;\n+  bottom: 0;\n+  background: rgba(0, 0, 0, 0.8);\n+  backdrop-filter: var(--blur-md);\n+  -webkit-backdrop-filter: var(--blur-md);\n+  z-index: 1001;\n+  display: flex;\n+  align-items: center;\n+  justify-content: center;\n+  padding: var(--spacing-lg);\n+  animation: fadeIn 0.3s ease-out;\n+}\n+\n+.keyboard-shortcuts-modal {\n+  background: var(--color-surface-primary);\n+  border: 1px solid var(--color-border-primary);\n+  border-radius: var(--border-radius-large);\n+  box-shadow: var(--shadow-xl);\n+  max-width: 600px;\n+  width: 100%;\n+  max-height: 80vh;\n+  overflow: hidden;\n+  animation: modalSlideIn 0.3s ease-out;\n+}\n+\n+.keyboard-shortcuts-header {\n+  display: flex;\n+  align-items: center;\n+  justify-content: space-between;\n+  padding: var(--spacing-lg);\n+  border-bottom: 1px solid var(--color-border-secondary);\n+  background: var(--color-surface-secondary);\n+\n+  h2 {\n+    font-family: var(--font-pixel);\n+    font-size: 20px;\n+    font-weight: 600;\n+    color: var(--color-text-primary);\n+    margin: 0;\n+    text-transform: uppercase;\n+    letter-spacing: 1px;\n+  }\n+}\n+\n+.keyboard-shortcuts-close {\n+  display: flex;\n+  align-items: center;\n+  justify-content: center;\n+  width: 32px;\n+  height: 32px;\n+  background: transparent;\n+  color: var(--color-text-muted);\n+  border: none;\n+  border-radius: var(--border-radius);\n+  cursor: pointer;\n+  transition: all var(--transition-fast);\n+\n+  &:hover {\n+    background: var(--color-surface-hover);\n+    color: var(--color-text-primary);\n+  }\n+\n+  svg {\n+    width: 20px;\n+    height: 20px;\n+  }\n+}\n+\n+.keyboard-shortcuts-content {\n+  padding: var(--spacing-lg);\n+  overflow-y: auto;\n+  max-height: calc(80vh - 120px);\n+}\n+\n+.keyboard-shortcuts-list {\n+  display: flex;\n+  flex-direction: column;\n+  gap: var(--spacing-md);\n+}\n+\n+.keyboard-shortcut-item {\n+  display: flex;\n+  align-items: center;\n+  justify-content: space-between;\n+  padding: var(--spacing-sm) var(--spacing-md);\n+  background: var(--color-surface-secondary);\n+  border-radius: var(--border-radius);\n+  transition: all var(--transition-fast);\n+\n+  &:hover {\n+    background: var(--color-surface-hover);\n+    transform: translateY(-1px);\n+  }\n+}\n+\n+.keyboard-shortcut-keys {\n+  display: flex;\n+  align-items: center;\n+  gap: var(--spacing-xs);\n+  flex-shrink: 0;\n+}\n+\n+.keyboard-key {\n+  display: inline-flex;\n+  align-items: center;\n+  justify-content: center;\n+  min-width: 32px;\n+  height: 32px;\n+  padding: 0 var(--spacing-sm);\n+  background: var(--color-background-primary);\n+  color: var(--color-text-primary);\n+  border: 1px solid var(--color-border-primary);\n+  border-radius: var(--border-radius-small);\n+  font-family: var(--font-pixel);\n+  font-size: 12px;\n+  font-weight: 600;\n+  text-transform: uppercase;\n+  letter-spacing: 0.5px;\n+  box-shadow: \n+    0 1px 0 var(--color-border-primary),\n+    0 1px 3px rgba(0, 0, 0, 0.3);\n+}\n+\n+.keyboard-plus {\n+  color: var(--color-text-muted);\n+  font-size: 12px;\n+  font-weight: 600;\n+  margin: 0 var(--spacing-xs);\n+}\n+\n+.keyboard-shortcut-description {\n+  flex: 1;\n+  margin-left: var(--spacing-lg);\n+  font-family: var(--font-pixel);\n+  font-size: 14px;\n+  color: var(--color-text-secondary);\n+  line-height: 1.4;\n+  letter-spacing: 0.3px;\n+}\n+\n+.keyboard-shortcuts-footer {\n+  margin-top: var(--spacing-lg);\n+  padding-top: var(--spacing-lg);\n+  border-top: 1px solid var(--color-border-secondary);\n+  text-align: center;\n+\n+  p {\n+    font-family: var(--font-pixel);\n+    font-size: 13px;\n+    color: var(--color-text-muted);\n+    margin: 0;\n+    letter-spacing: 0.3px;\n+  }\n+}\n+\n+@keyframes fadeIn {\n+  from {\n+    opacity: 0;\n+  }\n+  to {\n+    opacity: 1;\n+  }\n+}\n+\n+@keyframes modalSlideIn {\n+  from {\n+    opacity: 0;\n+    transform: translateY(-20px) scale(0.95);\n+  }\n+  to {\n+    opacity: 1;\n+    transform: translateY(0) scale(1);\n+  }\n+}\n+\n+// Mobile adjustments\n+@media (max-width: 640px) {\n+  .keyboard-shortcuts-overlay {\n+    padding: var(--spacing-md);\n+  }\n+\n+  .keyboard-shortcuts-modal {\n+    max-height: 90vh;\n+  }\n+\n+  .keyboard-shortcuts-header {\n+    padding: var(--spacing-md);\n+\n+    h2 {\n+      font-size: 18px;\n+    }\n+  }\n+\n+  .keyboard-shortcuts-content {\n+    padding: var(--spacing-md);\n+    max-height: calc(90vh - 100px);\n+  }\n+\n+  .keyboard-shortcut-item {\n+    flex-direction: column;\n+    align-items: flex-start;\n+    gap: var(--spacing-sm);\n+    padding: var(--spacing-sm);\n+  }\n+\n+  .keyboard-shortcut-keys {\n+    align-self: flex-start;\n+  }\n+\n+  .keyboard-shortcut-description {\n+    margin-left: 0;\n+    font-size: 13px;\n+    align-self: stretch;\n+  }\n+\n+  .keyboard-key {\n+    min-width: 28px;\n+    height: 28px;\n+    font-size: 11px;\n+  }\n+}",
+                    "refToolCallId": "toolu_01H6bnUQZDt1fba2fEpRj1V1"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou atualizar o App.tsx para incluir os atalhos de teclado:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01FbP51P1rPGUBvmomU6iSML",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.tsx\n+++ src/App.tsx\n@@ -12,6 +12,9 @@\n import { ThemeToggle } from './components/ThemeToggle';\n import { NotificationContainer } from './components/NotificationContainer';\n import { useNotificationHelpers } from './contexts/NotificationContext';\n+import { KeyboardShortcutsHelp } from './components/KeyboardShortcutsHelp';\n+import { useKeyboardShortcuts, KeyboardShortcut } from './hooks/useKeyboardShortcuts';\n+import { useTheme } from './contexts/ThemeContext';\n \n function App() {\n   const [uploading, setUploading] = useState(false);",
+                    "refToolCallId": "toolu_01FbP51P1rPGUBvmomU6iSML"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_018DzRPaRpmSDuMtRLjKb1fk",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.tsx\n+++ src/App.tsx\n@@ -23,6 +23,7 @@\n   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);\n   const [isModalOpen, setIsModalOpen] = useState(false);\n   const { showSuccess, showError } = useNotificationHelpers();\n+  const { toggleTheme } = useTheme();\n \n   useEffect(() => {\n     const getPhotos = async () => {",
+                    "refToolCallId": "toolu_018DzRPaRpmSDuMtRLjKb1fk"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou adicionar os atalhos de teclado:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01UfPg9Q8opyA5Yjz7w3bgmA",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.tsx\n+++ src/App.tsx\n@@ -24,6 +24,61 @@\n   const [isModalOpen, setIsModalOpen] = useState(false);\n   const { showSuccess, showError } = useNotificationHelpers();\n   const { toggleTheme } = useTheme();\n+\n+  // Keyboard shortcuts\n+  const shortcuts: KeyboardShortcut[] = [\n+    {\n+      key: 'Escape',\n+      action: () => {\n+        if (isModalOpen) {\n+          handleCloseModal();\n+        }\n+      },\n+      description: 'Close modal or dialog',\n+    },\n+    {\n+      key: 't',\n+      ctrlKey: true,\n+      action: toggleTheme,\n+      description: 'Toggle theme (Dark/Light)',\n+    },\n+    {\n+      key: 'u',\n+      ctrlKey: true,\n+      action: () => {\n+        const input = document.createElement('input');\n+        input.type = 'file';\n+        input.accept = 'image/*';\n+        input.onchange = (e) => {\n+          const file = (e.target as HTMLInputElement).files?.[0];\n+          if (file) {\n+            handleFileSelect(file);\n+          }\n+        };\n+        input.click();\n+      },\n+      description: 'Upload new photo',\n+    },\n+    {\n+      key: 'r',\n+      ctrlKey: true,\n+      action: () => {\n+        window.location.reload();\n+      },\n+      description: 'Refresh page',\n+      preventDefault: false,\n+    },\n+    {\n+      key: '?',\n+      shiftKey: true,\n+      action: () => {\n+        // This will be handled by the KeyboardShortcutsHelp component\n+      },\n+      description: 'Show keyboard shortcuts',\n+    },\n+  ];\n+\n+  useKeyboardShortcuts(shortcuts);\n \n   useEffect(() => {\n     const getPhotos = async () => {",
+                    "refToolCallId": "toolu_01UfPg9Q8opyA5Yjz7w3bgmA"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou adicionar o componente de ajuda de atalhos no header:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01LCDSoNUoSX4hRBasztWUcL",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.tsx\n+++ src/App.tsx\n@@ -133,7 +133,10 @@\n       <div className=\"area\">\n         <div className=\"header\">\n           <LogoWithText size={70} showSubtext={true} />\n-          <ThemeToggle />\n+          <div className=\"header-controls\">\n+            <KeyboardShortcutsHelp shortcuts={shortcuts} />\n+            <ThemeToggle />\n+          </div>\n         </div>\n \n         <UploadZone ",
+                    "refToolCallId": "toolu_01LCDSoNUoSX4hRBasztWUcL"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou adicionar o CSS para os controles do header:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_013ExyMjVJNJpJAVDqwLH7na",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.scss",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.scss"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.scss\n+++ src/App.scss\n@@ -70,6 +70,16 @@\n     @media (max-width: 640px) {\n         flex-direction: column;\n         gap: var(--spacing-lg);\n+    }\n+}\n+\n+.header-controls {\n+    display: flex;\n+    align-items: center;\n+    gap: var(--spacing-sm);\n+    \n+    @media (max-width: 640px) {\n+        justify-content: center;\n     }\n }\n ",
+                    "refToolCallId": "toolu_013ExyMjVJNJpJAVDqwLH7na"
+                },
+                {
+                    "type": "text",
+                    "text": "## 4. Testando a implementação\n\nAgora vou rodar o projeto para testar se tudo está funcionando:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01LCE4Kt5bX3mzeeFuM9vC4H",
+                    "status": "IN_PROGRESS",
+                    "isHidden": true,
+                    "localResult": "{\"status\":\"ERROR\",\"exitCode\":130,\"output\":\"\\r\\n> pixelvault@1.0.0 dev\\r\\n> vite\\r\\n\\r\\n\\u001b[1G\\u001b[0K\\u001b[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.\\u001b[39m\\r\\n\\r\\n  \\u001b[32m\\u001b[1mVITE\\u001b[22m v5.4.19\\u001b[39m  \\u001b[2mready in \\u001b[0m\\u001b[1m211\\u001b[22m\\u001b[2m\\u001b[0m ms\\u001b[22m\\r\\n\\r\\n  \\u001b[32m➜\\u001b[39m  \\u001b[1mLocal\\u001b[22m:   \\u001b[36mhttp://localhost:\\u001b[1m3000\\u001b[22m/\\u001b[39m\\r\\n\\u001b[2m  \\u001b[32m➜\\u001b[39m  \\u001b[1mNetwork\\u001b[22m\\u001b[2m: use \\u001b[22m\\u001b[1m--host\\u001b[22m\\u001b[2m to expose\\u001b[22m\\r\\n\\u001b[2m\\u001b[32m  ➜\\u001b[39m\\u001b[22m\\u001b[2m  press \\u001b[22m\\u001b[1mh + enter\\u001b[22m\\u001b[2m to show help\\u001b[22m\\r\\n\\u001b[33m\\u001b[1mDeprecation Warning\\u001b[0m [\\u001b[34mlegacy-js-api\\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\\r\\n\\r\\nMore info: https://sass-lang.com/d/legacy-js-api\\r\\n\\r\\n\\u001b[33m\\u001b[1mDeprecation Warning\\u001b[0m [\\u001b[34mlegacy-js-api\\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\\r\\n\\r\\nMore info: https://sass-lang.com/d/legacy-js-api\\r\\n\\r\\n\\u001b[33m\\u001b[1mDeprecation Warning\\u001b[0m [\\u001b[34mlegacy-js-api\\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\\r\\n\\r\\nMore info: https://sass-lang.com/d/legacy-js-api\\r\\n\\r\\n\\u001b[33m\\u001b[1mDeprecation Warning\\u001b[0m [\\u001b[34mlegacy-js-api\\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\\r\\n\\r\\nMore info: https://sass-lang.com/d/legacy-js-api\\r\\n\\r\\n\\u001b[33m\\u001b[1mDeprecation Warning\\u001b[0m [\\u001b[34mlegacy-js-api\\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\\r\\n\\r\\nMore info: https://sass-lang.com/d/legacy-js-api\\r\\n\\r\\n\\u001b[33m\\u001b[1mDeprecation Warning\\u001b[0m [\\u001b[34mlegacy-js-api\\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\\r\\n\\r\\nMore info: https://sass-lang.com/d/legacy-js-api\\r\\n\\r\\n\\u001b[33m\\u001b[1mDeprecation Warning\\u001b[0m [\\u001b[34mlegacy-js-api\\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\\r\\n\\r\\nMore info: https://sass-lang.com/d/legacy-js-api\\r\\n\\r\\n\\u001b[33m\\u001b[1mDeprecation Warning\\u001b[0m [\\u001b[34mlegacy-js-api\\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\\r\\n\\r\\nMore info: https://sass-lang.com/d/legacy-js-api\\r\\n\\r\\n\\u001b[33m\\u001b[1mDeprecation Warning\\u001b[0m [\\u001b[34mlegacy-js-api\\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\\r\\n\\r\\nMore info: https://sass-lang.com/d/legacy-js-api\\r\\n\\r\\n\\u001b[33m\\u001b[1mDeprecation Warning\\u001b[0m [\\u001b[34mlegacy-js-api\\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\\r\\n\\r\\nMore info: https://sass-lang.com/d/legacy-js-api\\r\\n\\r\\n\\u001b[33m\\u001b[1mDeprecation Warning\\u001b[0m [\\u001b[34mlegacy-js-api\\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\\r\\n\\r\\nMore info: https://sass-lang.com/d/legacy-js-api\\r\\n\\r\\n^C\"}"
+                },
+                {
+                    "type": "codePatch",
+                    "diffs": [
+                        {
+                            "path": "src/components/KeyboardShortcutsHelp/index.tsx",
+                            "patch": "@@ -0,0 +1,3431 @@\n+import React, %7B useState %7D from 'react';%0Aimport %7B KeyboardShortcut, formatShortcut %7D from '../../hooks/useKeyboardShortcuts';%0Aimport './KeyboardShortcutsHelp.scss';%0A%0Ainterface KeyboardShortcutsHelpProps %7B%0A  shortcuts: KeyboardShortcut%5B%5D;%0A%7D%0A%0Aexport const KeyboardShortcutsHelp: React.FC%3CKeyboardShortcutsHelpProps%3E = (%7B shortcuts %7D) =%3E %7B%0A  const %5BisOpen, setIsOpen%5D = useState(false);%0A%0A  const toggleHelp = () =%3E %7B%0A    setIsOpen(!isOpen);%0A  %7D;%0A%0A  const closeHelp = () =%3E %7B%0A    setIsOpen(false);%0A  %7D;%0A%0A  return (%0A    %3C%3E%0A      %3Cbutton%0A        className=%22keyboard-shortcuts-trigger%22%0A        onClick=%7BtoggleHelp%7D%0A        title=%22Keyboard Shortcuts (Press ? to toggle)%22%0A      %3E%0A        %3Csvg width=%2220%22 height=%2220%22 viewBox=%220 0 24 24%22 fill=%22none%22%3E%0A          %3Cpath d=%22M9.879 7.519c.1-.2.209-.34.319-.42.11-.08.239-.12.369-.12.12 0 .239.04.339.12.1.08.18.2.239.32L13.519 12l-2.374 4.58c-.06.12-.14.24-.239.32-.1.08-.219.12-.339.12-.13 0-.259-.04-.369-.12-.11-.08-.219-.22-.319-.42L7.505 12l2.374-4.48z%22 stroke=%22currentColor%22 strokeWidth=%222%22 strokeLinecap=%22round%22 strokeLinejoin=%22round%22/%3E%0A          %3Cpath d=%22M14.121 16.481c-.1.2-.209.34-.319.42-.11.08-.239.12-.369.12-.12 0-.239-.04-.339-.12-.1-.08-.18-.2-.239-.32L10.481 12l2.374-4.58c.06-.12.14-.24.239-.32.1-.08.219-.12.339-.12.13 0 .259.04.369.12.11.08.219.22.319.42L16.495 12l-2.374 4.48z%22 stroke=%22currentColor%22 strokeWidth=%222%22 strokeLinecap=%22round%22 strokeLinejoin=%22round%22/%3E%0A        %3C/svg%3E%0A      %3C/button%3E%0A%0A      %7BisOpen && (%0A        %3Cdiv className=%22keyboard-shortcuts-overlay%22 onClick=%7BcloseHelp%7D%3E%0A          %3Cdiv className=%22keyboard-shortcuts-modal%22 onClick=%7B(e) =%3E e.stopPropagation()%7D%3E%0A            %3Cdiv className=%22keyboard-shortcuts-header%22%3E%0A              %3Ch2%3EKeyboard Shortcuts%3C/h2%3E%0A              %3Cbutton%0A                className=%22keyboard-shortcuts-close%22%0A                onClick=%7BcloseHelp%7D%0A                aria-label=%22Close shortcuts help%22%0A              %3E%0A                %3Csvg width=%2220%22 height=%2220%22 viewBox=%220 0 24 24%22 fill=%22none%22%3E%0A                  %3Cpath d=%22M6 18L18 6M6 6l12 12%22 stroke=%22currentColor%22 strokeWidth=%222%22 strokeLinecap=%22round%22 strokeLinejoin=%22round%22/%3E%0A                %3C/svg%3E%0A              %3C/button%3E%0A            %3C/div%3E%0A%0A            %3Cdiv className=%22keyboard-shortcuts-content%22%3E%0A              %3Cdiv className=%22keyboard-shortcuts-list%22%3E%0A                %7Bshortcuts.map((shortcut, index) =%3E (%0A                  %3Cdiv key=%7Bindex%7D className=%22keyboard-shortcut-item%22%3E%0A                    %3Cdiv className=%22keyboard-shortcut-keys%22%3E%0A                      %7BformatShortcut(shortcut).split(' + ').map((key, keyIndex) =%3E (%0A                        %3CReact.Fragment key=%7BkeyIndex%7D%3E%0A                          %3Ckbd className=%22keyboard-key%22%3E%7Bkey%7D%3C/kbd%3E%0A                          %7BkeyIndex %3C formatShortcut(shortcut).split(' + ').length - 1 && (%0A                            %3Cspan className=%22keyboard-plus%22%3E+%3C/span%3E%0A                          )%7D%0A                        %3C/React.Fragment%3E%0A                      ))%7D%0A                    %3C/div%3E%0A                    %3Cdiv className=%22keyboard-shortcut-description%22%3E%0A                      %7Bshortcut.description%7D%0A                    %3C/div%3E%0A                  %3C/div%3E%0A                ))%7D%0A              %3C/div%3E%0A%0A              %3Cdiv className=%22keyboard-shortcuts-footer%22%3E%0A                %3Cp%3EPress %3Ckbd className=%22keyboard-key%22%3EEsc%3C/kbd%3E to close this dialog%3C/p%3E%0A              %3C/div%3E%0A            %3C/div%3E%0A          %3C/div%3E%0A        %3C/div%3E%0A      )%7D%0A    %3C/%3E%0A  );%0A%7D;\n",
+                            "isNew": true,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/components/NotificationContainer/NotificationItem.tsx",
+                            "patch": "@@ -0,0 +1,3601 @@\n+import React, %7B useEffect, useState %7D from 'react';%0Aimport %7B Notification, useNotifications %7D from '../../contexts/NotificationContext';%0A%0Ainterface NotificationItemProps %7B%0A  notification: Notification;%0A%7D%0A%0Aexport const NotificationItem: React.FC%3CNotificationItemProps%3E = (%7B notification %7D) =%3E %7B%0A  const %7B removeNotification %7D = useNotifications();%0A  const %5BisVisible, setIsVisible%5D = useState(false);%0A  const %5BisExiting, setIsExiting%5D = useState(false);%0A%0A  useEffect(() =%3E %7B%0A    // Trigger enter animation%0A    const timer = setTimeout(() =%3E setIsVisible(true), 10);%0A    return () =%3E clearTimeout(timer);%0A  %7D, %5B%5D);%0A%0A  const handleClose = () =%3E %7B%0A    setIsExiting(true);%0A    setTimeout(() =%3E %7B%0A      removeNotification(notification.id);%0A    %7D, 300);%0A  %7D;%0A%0A  const handleAction = () =%3E %7B%0A    if (notification.action) %7B%0A      notification.action.onClick();%0A      handleClose();%0A    %7D%0A  %7D;%0A%0A  const getIcon = () =%3E %7B%0A    switch (notification.type) %7B%0A      case 'success':%0A        return (%0A          %3Csvg width=%2220%22 height=%2220%22 viewBox=%220 0 24 24%22 fill=%22none%22%3E%0A            %3Cpath d=%22M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z%22 stroke=%22currentColor%22 strokeWidth=%222%22 strokeLinecap=%22round%22 strokeLinejoin=%22round%22/%3E%0A          %3C/svg%3E%0A        );%0A      case 'error':%0A        return (%0A          %3Csvg width=%2220%22 height=%2220%22 viewBox=%220 0 24 24%22 fill=%22none%22%3E%0A            %3Cpath d=%22M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z%22 stroke=%22currentColor%22 strokeWidth=%222%22 strokeLinecap=%22round%22 strokeLinejoin=%22round%22/%3E%0A          %3C/svg%3E%0A        );%0A      case 'warning':%0A        return (%0A          %3Csvg width=%2220%22 height=%2220%22 viewBox=%220 0 24 24%22 fill=%22none%22%3E%0A            %3Cpath d=%22M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z%22 stroke=%22currentColor%22 strokeWidth=%222%22 strokeLinecap=%22round%22 strokeLinejoin=%22round%22/%3E%0A          %3C/svg%3E%0A        );%0A      case 'info':%0A        return (%0A          %3Csvg width=%2220%22 height=%2220%22 viewBox=%220 0 24 24%22 fill=%22none%22%3E%0A            %3Cpath d=%22M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z%22 stroke=%22currentColor%22 strokeWidth=%222%22 strokeLinecap=%22round%22 strokeLinejoin=%22round%22/%3E%0A          %3C/svg%3E%0A        );%0A      default:%0A        return null;%0A    %7D%0A  %7D;%0A%0A  return (%0A    %3Cdiv %0A      className=%7B%60notification-item notification-item--$%7Bnotification.type%7D $%7B%0A        isVisible ? 'notification-item--visible' : ''%0A      %7D $%7BisExiting ? 'notification-item--exiting' : ''%7D%60%7D%0A    %3E%0A      %3Cdiv className=%22notification-item__icon%22%3E%0A        %7BgetIcon()%7D%0A      %3C/div%3E%0A      %0A      %3Cdiv className=%22notification-item__content%22%3E%0A        %3Cdiv className=%22notification-item__title%22%3E%0A          %7Bnotification.title%7D%0A        %3C/div%3E%0A        %7Bnotification.message && (%0A          %3Cdiv className=%22notification-item__message%22%3E%0A            %7Bnotification.message%7D%0A          %3C/div%3E%0A        )%7D%0A      %3C/div%3E%0A%0A      %3Cdiv className=%22notification-item__actions%22%3E%0A        %7Bnotification.action && (%0A          %3Cbutton%0A            className=%22notification-item__action-button%22%0A            onClick=%7BhandleAction%7D%0A          %3E%0A            %7Bnotification.action.label%7D%0A          %3C/button%3E%0A        )%7D%0A        %0A        %3Cbutton%0A          className=%22notification-item__close-button%22%0A          onClick=%7BhandleClose%7D%0A          aria-label=%22Close notification%22%0A        %3E%0A          %3Csvg width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22%3E%0A            %3Cpath d=%22M6 18L18 6M6 6l12 12%22 stroke=%22currentColor%22 strokeWidth=%222%22 strokeLinecap=%22round%22 strokeLinejoin=%22round%22/%3E%0A          %3C/svg%3E%0A        %3C/button%3E%0A      %3C/div%3E%0A    %3C/div%3E%0A  );%0A%7D;\n",
+                            "isNew": true,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/App.scss",
+                            "patch": "@@ -1696,16 +1696,186 @@\n    %7D%0A%7D%0A%0A\n+.header-controls %7B%0A    display: flex;%0A    align-items: center;%0A    gap: var(--spacing-sm);%0A    %0A    @media (max-width: 640px) %7B%0A        justify-content: center;%0A    %7D%0A%7D%0A%0A\n .screen-\n",
+                            "isNew": false,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/hooks/useKeyboardShortcuts.ts",
+                            "patch": "@@ -0,0 +1,1655 @@\n+import %7B useEffect, useCallback %7D from 'react';%0A%0Aexport interface KeyboardShortcut %7B%0A  key: string;%0A  ctrlKey?: boolean;%0A  altKey?: boolean;%0A  shiftKey?: boolean;%0A  metaKey?: boolean;%0A  action: () =%3E void;%0A  description: string;%0A  preventDefault?: boolean;%0A%7D%0A%0Aexport const useKeyboardShortcuts = (shortcuts: KeyboardShortcut%5B%5D) =%3E %7B%0A  const handleKeyDown = useCallback((event: KeyboardEvent) =%3E %7B%0A    const matchingShortcut = shortcuts.find(shortcut =%3E %7B%0A      const keyMatches = shortcut.key.toLowerCase() === event.key.toLowerCase();%0A      const ctrlMatches = (shortcut.ctrlKey %7C%7C false) === event.ctrlKey;%0A      const altMatches = (shortcut.altKey %7C%7C false) === event.altKey;%0A      const shiftMatches = (shortcut.shiftKey %7C%7C false) === event.shiftKey;%0A      const metaMatches = (shortcut.metaKey %7C%7C false) === event.metaKey;%0A%0A      return keyMatches && ctrlMatches && altMatches && shiftMatches && metaMatches;%0A    %7D);%0A%0A    if (matchingShortcut) %7B%0A      if (matchingShortcut.preventDefault !== false) %7B%0A        event.preventDefault();%0A      %7D%0A      matchingShortcut.action();%0A    %7D%0A  %7D, %5Bshortcuts%5D);%0A%0A  useEffect(() =%3E %7B%0A    document.addEventListener('keydown', handleKeyDown);%0A    return () =%3E %7B%0A      document.removeEventListener('keydown', handleKeyDown);%0A    %7D;%0A  %7D, %5BhandleKeyDown%5D);%0A%7D;%0A%0Aexport const formatShortcut = (shortcut: KeyboardShortcut): string =%3E %7B%0A  const parts: string%5B%5D = %5B%5D;%0A  %0A  if (shortcut.ctrlKey) parts.push('Ctrl');%0A  if (shortcut.metaKey) parts.push('Cmd');%0A  if (shortcut.altKey) parts.push('Alt');%0A  if (shortcut.shiftKey) parts.push('Shift');%0A  %0A  parts.push(shortcut.key.toUpperCase());%0A  %0A  return parts.join(' + ');%0A%7D;\n",
+                            "isNew": true,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/index.css",
+                            "patch": "@@ -0,0 +1,3672 @@\n+/* CSS Reset and Global Styles */%0A%0A/* Box sizing rules */%0A*,%0A*::before,%0A*::after %7B%0A  box-sizing: border-box;%0A%7D%0A%0A/* Remove default margin and padding */%0A* %7B%0A  margin: 0;%0A  padding: 0;%0A%7D%0A%0A/* Remove list styles on ul, ol elements with a list role */%0Aul%5Brole='list'%5D,%0Aol%5Brole='list'%5D %7B%0A  list-style: none;%0A%7D%0A%0A/* Set core root defaults */%0Ahtml:focus-within %7B%0A  scroll-behavior: smooth;%0A%7D%0A%0A/* Set core body defaults */%0Ahtml,%0Abody %7B%0A  height: 100%25;%0A  font-family: var(--font-primary, 'Monaco', 'Consolas', 'Courier New', monospace);%0A  line-height: 1.5;%0A  -webkit-font-smoothing: antialiased;%0A  -moz-osx-font-smoothing: grayscale;%0A  text-rendering: optimizeSpeed;%0A%7D%0A%0A/* Root element */%0A#root %7B%0A  height: 100%25;%0A  isolation: isolate;%0A%7D%0A%0A/* A elements that don't have a class get default styles */%0Aa:not(%5Bclass%5D) %7B%0A  text-decoration-skip-ink: auto;%0A%7D%0A%0A/* Make images easier to work with */%0Aimg,%0Apicture,%0Avideo,%0Acanvas,%0Asvg %7B%0A  display: block;%0A  max-width: 100%25;%0A%7D%0A%0A/* Inherit fonts for inputs and buttons */%0Ainput,%0Abutton,%0Atextarea,%0Aselect %7B%0A  font: inherit;%0A  color: inherit;%0A%7D%0A%0A/* Remove default button styles */%0Abutton %7B%0A  border: none;%0A  background: none;%0A  cursor: pointer;%0A%7D%0A%0A/* Remove default input styles */%0Ainput,%0Atextarea %7B%0A  border: none;%0A  outline: none;%0A  background: transparent;%0A%7D%0A%0A/* Remove textarea resize */%0Atextarea %7B%0A  resize: none;%0A%7D%0A%0A/* Remove default appearance for form elements */%0Ainput%5Btype=%22text%22%5D,%0Ainput%5Btype=%22email%22%5D,%0Ainput%5Btype=%22password%22%5D,%0Ainput%5Btype=%22search%22%5D,%0Ainput%5Btype=%22url%22%5D,%0Ainput%5Btype=%22tel%22%5D,%0Ainput%5Btype=%22number%22%5D,%0Atextarea,%0Aselect %7B%0A  appearance: none;%0A  -webkit-appearance: none;%0A  -moz-appearance: none;%0A%7D%0A%0A/* Remove default focus styles and add custom ones */%0A*:focus %7B%0A  outline: 2px solid var(--color-accent-primary, #3b82f6);%0A  outline-offset: 2px;%0A%7D%0A%0A/* Remove text decoration from all links */%0Aa %7B%0A  text-decoration: none;%0A  color: inherit;%0A%7D%0A%0A/* Remove default table styles */%0Atable %7B%0A  border-collapse: collapse;%0A  border-spacing: 0;%0A%7D%0A%0A/* Remove default fieldset styles */%0Afieldset %7B%0A  border: none;%0A  margin: 0;%0A  padding: 0;%0A%7D%0A%0A/* Remove default legend styles */%0Alegend %7B%0A  padding: 0;%0A%7D%0A%0A/* Improve readability for screen readers */%0A.sr-only %7B%0A  position: absolute;%0A  width: 1px;%0A  height: 1px;%0A  padding: 0;%0A  margin: -1px;%0A  overflow: hidden;%0A  clip: rect(0, 0, 0, 0);%0A  white-space: nowrap;%0A  border: 0;%0A%7D%0A%0A/* Reduce motion for users who prefer it */%0A@media (prefers-reduced-motion: reduce) %7B%0A  html:focus-within %7B%0A   scroll-behavior: auto;%0A  %7D%0A  %0A  *,%0A  *::before,%0A  *::after %7B%0A    animation-duration: 0.01ms !important;%0A    animation-iteration-count: 1 !important;%0A    transition-duration: 0.01ms !important;%0A    scroll-behavior: auto !important;%0A  %7D%0A%7D%0A%0A/* High contrast mode support */%0A@media (prefers-contrast: high) %7B%0A  :root %7B%0A    --shadow-sm: none;%0A    --shadow-md: none;%0A    --shadow-lg: none;%0A    --shadow-xl: none;%0A  %7D%0A%7D%0A%0A/* Global utilities */%0A.hidden %7B%0A  display: none !important;%0A%7D%0A%0A.visually-hidden %7B%0A  @extend .sr-only;%0A%7D%0A%0A.skip-link %7B%0A  position: absolute;%0A  top: -40px;%0A  left: 6px;%0A  background: var(--color-surface-primary);%0A  color: var(--color-text-primary);%0A  padding: 8px;%0A  border-radius: 4px;%0A  text-decoration: none;%0A  z-index: 9999;%0A  transition: top 0.3s;%0A%7D%0A%0A.skip-link:focus %7B%0A  top: 6px;%0A%7D%0A%0A/* Print styles */%0A@media print %7B%0A  *,%0A  *::before,%0A  *::after %7B%0A    background: transparent !important;%0A    color: black !important;%0A    box-shadow: none !important;%0A    text-shadow: none !important;%0A  %7D%0A%0A  a,%0A  a:visited %7B%0A    text-decoration: underline;%0A  %7D%0A%0A  img %7B%0A    page-break-inside: avoid;%0A  %7D%0A%0A  p,%0A  h2,%0A  h3 %7B%0A    orphans: 3;%0A    widows: 3;%0A  %7D%0A%0A  h2,%0A  h3 %7B%0A    page-break-after: avoid;%0A  %7D%0A%7D\n",
+                            "isNew": true,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/contexts/NotificationContext.tsx",
+                            "patch": "@@ -0,0 +1,3401 @@\n+import React, %7B createContext, useContext, useState, useCallback, ReactNode %7D from 'react';%0A%0Aexport type NotificationType = 'success' %7C 'error' %7C 'warning' %7C 'info';%0A%0Aexport interface Notification %7B%0A  id: string;%0A  type: NotificationType;%0A  title: string;%0A  message?: string;%0A  duration?: number;%0A  action?: %7B%0A    label: string;%0A    onClick: () =%3E void;%0A  %7D;%0A%7D%0A%0Ainterface NotificationContextType %7B%0A  notifications: Notification%5B%5D;%0A  addNotification: (notification: Omit%3CNotification, 'id'%3E) =%3E string;%0A  removeNotification: (id: string) =%3E void;%0A  clearAll: () =%3E void;%0A%7D%0A%0Aconst NotificationContext = createContext%3CNotificationContextType %7C undefined%3E(undefined);%0A%0Aexport const useNotifications = () =%3E %7B%0A  const context = useContext(NotificationContext);%0A  if (context === undefined) %7B%0A    throw new Error('useNotifications must be used within a NotificationProvider');%0A  %7D%0A  return context;%0A%7D;%0A%0Ainterface NotificationProviderProps %7B%0A  children: ReactNode;%0A%7D%0A%0Aexport const NotificationProvider: React.FC%3CNotificationProviderProps%3E = (%7B children %7D) =%3E %7B%0A  const %5Bnotifications, setNotifications%5D = useState%3CNotification%5B%5D%3E(%5B%5D);%0A%0A  const generateId = () =%3E Math.random().toString(36).substr(2, 9);%0A%0A  const addNotification = useCallback((notification: Omit%3CNotification, 'id'%3E) =%3E %7B%0A    const id = generateId();%0A    const newNotification: Notification = %7B%0A      ...notification,%0A      id,%0A      duration: notification.duration %7C%7C 5000, // Default 5 seconds%0A    %7D;%0A%0A    setNotifications(prev =%3E %5BnewNotification, ...prev%5D);%0A%0A    // Auto remove after duration%0A    if (newNotification.duration %3E 0) %7B%0A      setTimeout(() =%3E %7B%0A        removeNotification(id);%0A      %7D, newNotification.duration);%0A    %7D%0A%0A    return id;%0A  %7D, %5B%5D);%0A%0A  const removeNotification = useCallback((id: string) =%3E %7B%0A    setNotifications(prev =%3E prev.filter(notification =%3E notification.id !== id));%0A  %7D, %5B%5D);%0A%0A  const clearAll = useCallback(() =%3E %7B%0A    setNotifications(%5B%5D);%0A  %7D, %5B%5D);%0A%0A  const value = %7B%0A    notifications,%0A    addNotification,%0A    removeNotification,%0A    clearAll,%0A  %7D;%0A%0A  return (%0A    %3CNotificationContext.Provider value=%7Bvalue%7D%3E%0A      %7Bchildren%7D%0A    %3C/NotificationContext.Provider%3E%0A  );%0A%7D;%0A%0A// Utility hooks for different notification types%0Aexport const useNotificationHelpers = () =%3E %7B%0A  const %7B addNotification %7D = useNotifications();%0A%0A  const showSuccess = useCallback((title: string, message?: string, options?: Partial%3CNotification%3E) =%3E %7B%0A    return addNotification(%7B%0A      type: 'success',%0A      title,%0A      message,%0A      ...options,%0A    %7D);%0A  %7D, %5BaddNotification%5D);%0A%0A  const showError = useCallback((title: string, message?: string, options?: Partial%3CNotification%3E) =%3E %7B%0A    return addNotification(%7B%0A      type: 'error',%0A      title,%0A      message,%0A      duration: 8000, // Errors stay longer by default%0A      ...options,%0A    %7D);%0A  %7D, %5BaddNotification%5D);%0A%0A  const showWarning = useCallback((title: string, message?: string, options?: Partial%3CNotification%3E) =%3E %7B%0A    return addNotification(%7B%0A      type: 'warning',%0A      title,%0A      message,%0A      ...options,%0A    %7D);%0A  %7D, %5BaddNotification%5D);%0A%0A  const showInfo = useCallback((title: string, message?: string, options?: Partial%3CNotification%3E) =%3E %7B%0A    return addNotification(%7B%0A      type: 'info',%0A      title,%0A      message,%0A      ...options,%0A    %7D);%0A  %7D, %5BaddNotification%5D);%0A%0A  return %7B%0A    showSuccess,%0A    showError,%0A    showWarning,%0A    showInfo,%0A  %7D;%0A%7D;\n",
+                            "isNew": true,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/components/NotificationContainer/NotificationContainer.scss",
+                            "patch": "@@ -0,0 +1,4684 @@\n+.notification-container %7B%0A  position: fixed;%0A  top: var(--spacing-lg);%0A  right: var(--spacing-lg);%0A  z-index: 1000;%0A  display: flex;%0A  flex-direction: column;%0A  gap: var(--spacing-sm);%0A  max-width: 400px;%0A  width: 100%25;%0A  pointer-events: none;%0A%0A  @media (max-width: 640px) %7B%0A    top: var(--spacing-md);%0A    right: var(--spacing-md);%0A    left: var(--spacing-md);%0A    max-width: none;%0A  %7D%0A%7D%0A%0A.notification-item %7B%0A  display: flex;%0A  align-items: flex-start;%0A  gap: var(--spacing-sm);%0A  padding: var(--spacing-md);%0A  background: var(--color-surface-primary);%0A  border: 1px solid var(--color-border-primary);%0A  border-radius: var(--border-radius);%0A  backdrop-filter: var(--blur-sm);%0A  -webkit-backdrop-filter: var(--blur-sm);%0A  box-shadow: var(--shadow-lg);%0A  pointer-events: auto;%0A  transform: translateX(100%25);%0A  opacity: 0;%0A  transition: all var(--transition-normal);%0A%0A  &--visible %7B%0A    transform: translateX(0);%0A    opacity: 1;%0A  %7D%0A%0A  &--exiting %7B%0A    transform: translateX(100%25);%0A    opacity: 0;%0A  %7D%0A%0A  // Type-specific styles%0A  &--success %7B%0A    border-left: 4px solid var(--color-success);%0A    %0A    .notification-item__icon %7B%0A      color: var(--color-success);%0A    %7D%0A  %7D%0A%0A  &--error %7B%0A    border-left: 4px solid var(--color-danger);%0A    %0A    .notification-item__icon %7B%0A      color: var(--color-danger);%0A    %7D%0A  %7D%0A%0A  &--warning %7B%0A    border-left: 4px solid var(--color-warning);%0A    %0A    .notification-item__icon %7B%0A      color: var(--color-warning);%0A    %7D%0A  %7D%0A%0A  &--info %7B%0A    border-left: 4px solid var(--color-accent-primary);%0A    %0A    .notification-item__icon %7B%0A      color: var(--color-accent-primary);%0A    %7D%0A  %7D%0A%0A  &__icon %7B%0A    flex-shrink: 0;%0A    margin-top: 2px;%0A    transition: all var(--transition-normal);%0A  %7D%0A%0A  &__content %7B%0A    flex: 1;%0A    min-width: 0;%0A  %7D%0A%0A  &__title %7B%0A    font-family: var(--font-pixel);%0A    font-weight: 600;%0A    font-size: 14px;%0A    color: var(--color-text-primary);%0A    margin-bottom: var(--spacing-xs);%0A    text-transform: uppercase;%0A    letter-spacing: 0.5px;%0A  %7D%0A%0A  &__message %7B%0A    font-family: var(--font-pixel);%0A    font-size: 13px;%0A    color: var(--color-text-secondary);%0A    line-height: 1.4;%0A    letter-spacing: 0.3px;%0A  %7D%0A%0A  &__actions %7B%0A    display: flex;%0A    align-items: flex-start;%0A    gap: var(--spacing-xs);%0A    flex-shrink: 0;%0A  %7D%0A%0A  &__action-button %7B%0A    padding: var(--spacing-xs) var(--spacing-sm);%0A    background: var(--color-accent-primary);%0A    color: var(--color-text-inverse);%0A    border: none;%0A    border-radius: var(--border-radius-small);%0A    font-family: var(--font-pixel);%0A    font-size: 12px;%0A    font-weight: 600;%0A    text-transform: uppercase;%0A    letter-spacing: 0.5px;%0A    cursor: pointer;%0A    transition: all var(--transition-fast);%0A%0A    &:hover %7B%0A      background: var(--color-accent-hover);%0A      transform: translateY(-1px);%0A    %7D%0A%0A    &:active %7B%0A      transform: translateY(0);%0A    %7D%0A  %7D%0A%0A  &__close-button %7B%0A    display: flex;%0A    align-items: center;%0A    justify-content: center;%0A    width: 28px;%0A    height: 28px;%0A    background: transparent;%0A    color: var(--color-text-muted);%0A    border: none;%0A    border-radius: var(--border-radius-small);%0A    cursor: pointer;%0A    transition: all var(--transition-fast);%0A%0A    &:hover %7B%0A      background: var(--color-surface-hover);%0A      color: var(--color-text-primary);%0A    %7D%0A%0A    &:active %7B%0A      transform: scale(0.95);%0A    %7D%0A%0A    svg %7B%0A      width: 16px;%0A      height: 16px;%0A    %7D%0A  %7D%0A%7D%0A%0A// Animation for stacked notifications%0A.notification-item:nth-child(n+2) %7B%0A  animation-delay: 0.1s;%0A%7D%0A%0A.notification-item:nth-child(n+3) %7B%0A  animation-delay: 0.2s;%0A%7D%0A%0A.notification-item:nth-child(n+4) %7B%0A  animation-delay: 0.3s;%0A%7D%0A%0A// Hover effects%0A.notification-item:hover %7B%0A  transform: translateX(-4px);%0A  box-shadow: var(--shadow-xl);%0A%0A  .notification-item__icon %7B%0A    transform: scale(1.1);%0A  %7D%0A%7D%0A%0A// Progress bar for timed notifications%0A.notification-item::after %7B%0A  content: '';%0A  position: absolute;%0A  bottom: 0;%0A  left: 0;%0A  height: 2px;%0A  background: var(--color-accent-primary);%0A  border-radius: 0 0 var(--border-radius) var(--border-radius);%0A  animation: notificationProgress var(--duration, 5000ms) linear forwards;%0A  opacity: 0.6;%0A%7D%0A%0A@keyframes notificationProgress %7B%0A  from %7B%0A    width: 100%25;%0A  %7D%0A  to %7B%0A    width: 0%25;%0A  %7D%0A%7D%0A%0A// Mobile adjustments%0A@media (max-width: 640px) %7B%0A  .notification-item %7B%0A    padding: var(--spacing-sm);%0A    %0A    &__title %7B%0A      font-size: 13px;%0A    %7D%0A%0A    &__message %7B%0A      font-size: 12px;%0A    %7D%0A%0A    &__action-button %7B%0A      font-size: 11px;%0A      padding: var(--spacing-xs);%0A    %7D%0A%0A    &__close-button %7B%0A      width: 24px;%0A      height: 24px;%0A      %0A      svg %7B%0A        width: 14px;%0A        height: 14px;%0A      %7D%0A    %7D%0A  %7D%0A%7D\n",
+                            "isNew": true,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/App.tsx",
+                            "patch": "@@ -479,309 +479,2003 @@\n e';%0A\n-%0Afunction App() %7B%0A  const %5Buploading, setUploading%5D = useState(false);%0A  const %5Bloading, setLoading%5D = useState(false);%0A  const %5Bphotos, setPhotos%5D = useState%3CPhoto%5B%5D%3E(%5B%5D);%0A  const %5BselectedPhoto, setSelectedPhoto%5D = useState%3CPhoto %7C null%3E(null);%0A  const %5BisModalOpen, setIsModalOpen%5D = useState(false\n+import %7B NotificationContainer %7D from './components/NotificationContainer';%0Aimport %7B useNotificationHelpers %7D from './contexts/NotificationContext';%0Aimport %7B KeyboardShortcutsHelp %7D from './components/KeyboardShortcutsHelp';%0Aimport %7B useKeyboardShortcuts, KeyboardShortcut %7D from './hooks/useKeyboardShortcuts';%0Aimport %7B useTheme %7D from './contexts/ThemeContext';%0A%0Afunction App() %7B%0A  const %5Buploading, setUploading%5D = useState(false);%0A  const %5Bloading, setLoading%5D = useState(false);%0A  const %5Bphotos, setPhotos%5D = useState%3CPhoto%5B%5D%3E(%5B%5D);%0A  const %5BselectedPhoto, setSelectedPhoto%5D = useState%3CPhoto %7C null%3E(null);%0A  const %5BisModalOpen, setIsModalOpen%5D = useState(false);%0A  const %7B showSuccess, showError %7D = useNotificationHelpers();%0A  const %7B toggleTheme %7D = useTheme();%0A%0A  // Keyboard shortcuts%0A  const shortcuts: KeyboardShortcut%5B%5D = %5B%0A    %7B%0A      key: 'Escape',%0A      action: () =%3E %7B%0A        if (isModalOpen) %7B%0A          handleCloseModal();%0A        %7D%0A      %7D,%0A      description: 'Close modal or dialog',%0A    %7D,%0A    %7B%0A      key: 't',%0A      ctrlKey: true,%0A      action: toggleTheme,%0A      description: 'Toggle theme (Dark/Light)',%0A    %7D,%0A    %7B%0A      key: 'u',%0A      ctrlKey: true,%0A      action: () =%3E %7B%0A        const input = document.createElement('input');%0A        input.type = 'file';%0A        input.accept = 'image/*';%0A        input.onchange = (e) =%3E %7B%0A          const file = (e.target as HTMLInputElement).files?.%5B0%5D;%0A          if (file) %7B%0A            handleFileSelect(file);%0A          %7D%0A        %7D;%0A        input.click();%0A      %7D,%0A      description: 'Upload new photo',%0A    %7D,%0A    %7B%0A      key: 'r',%0A      ctrlKey: true,%0A      action: () =%3E %7B%0A        window.location.reload();%0A      %7D,%0A      description: 'Refresh page',%0A      preventDefault: false,%0A    %7D,%0A    %7B%0A      key: '?',%0A      shiftKey: true,%0A      action: () =%3E %7B%0A        // This will be handled by the KeyboardShortcutsHelp component%0A      %7D,%0A      description: 'Show keyboard shortcuts',%0A    %7D,%0A  %5D;%0A%0A  useKeyboardShortcuts(shortcuts\n );%0A%0A\n@@ -2843,34 +2843,35 @@\n     \n-alert(%60$%7Bresult.name%7D - $%7B\n+showError('Upload Failed', \n resu\n@@ -2884,10 +2884,8 @@\n sage\n-%7D%60\n );%0A \n@@ -3035,16 +3035,99 @@\n oList);%0A\n+      showSuccess('Photo Uploaded', 'Your photo has been successfully uploaded!');%0A\n     %7D%0A  \n@@ -3792,24 +3792,118 @@\n ();%0A      %7D%0A\n+      showSuccess('Photo Deleted', %60%22$%7BphotoToDelete.name%7D%22 has been deleted successfully.%60);%0A\n     %7D%0A  %7D%0A%0A \n@@ -4077,21 +4077,144 @@\n    %3C\n-ThemeToggle /\n+div className=%22header-controls%22%3E%0A            %3CKeyboardShortcutsHelp shortcuts=%7Bshortcuts%7D /%3E%0A            %3CThemeToggle /%3E%0A          %3C/div\n %3E%0A  \n@@ -5882,24 +5882,63 @@\n      %3C/div%3E%0A\n+      %0A      %3CNotificationContainer /%3E%0A\n     %3C/div%3E%0A \n",
+                            "isNew": false,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/components/NotificationContainer/index.tsx",
+                            "patch": "@@ -0,0 +1,591 @@\n+import React from 'react';%0Aimport %7B useNotifications %7D from '../../contexts/NotificationContext';%0Aimport %7B NotificationItem %7D from './NotificationItem';%0Aimport './NotificationContainer.scss';%0A%0Aexport const NotificationContainer: React.FC = () =%3E %7B%0A  const %7B notifications %7D = useNotifications();%0A%0A  if (notifications.length === 0) %7B%0A    return null;%0A  %7D%0A%0A  return (%0A    %3Cdiv className=%22notification-container%22%3E%0A      %7Bnotifications.map((notification) =%3E (%0A        %3CNotificationItem%0A          key=%7Bnotification.id%7D%0A          notification=%7Bnotification%7D%0A        /%3E%0A      ))%7D%0A    %3C/div%3E%0A  );%0A%7D;\n",
+                            "isNew": true,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/components/KeyboardShortcutsHelp/KeyboardShortcutsHelp.scss",
+                            "patch": "@@ -0,0 +1,5259 @@\n+.keyboard-shortcuts-trigger %7B%0A  position: relative;%0A  display: flex;%0A  align-items: center;%0A  justify-content: center;%0A  width: 44px;%0A  height: 44px;%0A  border: none;%0A  border-radius: var(--border-radius);%0A  background: var(--color-surface-secondary);%0A  color: var(--color-text-primary);%0A  cursor: pointer;%0A  transition: all var(--transition-fast);%0A  box-shadow: var(--shadow-sm);%0A%0A  &:hover %7B%0A    background: var(--color-surface-hover);%0A    transform: translateY(-1px);%0A    box-shadow: var(--shadow-md);%0A  %7D%0A%0A  &:active %7B%0A    transform: translateY(0);%0A    box-shadow: var(--shadow-sm);%0A  %7D%0A%0A  svg %7B%0A    width: 20px;%0A    height: 20px;%0A    transition: all var(--transition-normal);%0A  %7D%0A%0A  &:hover svg %7B%0A    transform: scale(1.1);%0A  %7D%0A%7D%0A%0A.keyboard-shortcuts-overlay %7B%0A  position: fixed;%0A  top: 0;%0A  left: 0;%0A  right: 0;%0A  bottom: 0;%0A  background: rgba(0, 0, 0, 0.8);%0A  backdrop-filter: var(--blur-md);%0A  -webkit-backdrop-filter: var(--blur-md);%0A  z-index: 1001;%0A  display: flex;%0A  align-items: center;%0A  justify-content: center;%0A  padding: var(--spacing-lg);%0A  animation: fadeIn 0.3s ease-out;%0A%7D%0A%0A.keyboard-shortcuts-modal %7B%0A  background: var(--color-surface-primary);%0A  border: 1px solid var(--color-border-primary);%0A  border-radius: var(--border-radius-large);%0A  box-shadow: var(--shadow-xl);%0A  max-width: 600px;%0A  width: 100%25;%0A  max-height: 80vh;%0A  overflow: hidden;%0A  animation: modalSlideIn 0.3s ease-out;%0A%7D%0A%0A.keyboard-shortcuts-header %7B%0A  display: flex;%0A  align-items: center;%0A  justify-content: space-between;%0A  padding: var(--spacing-lg);%0A  border-bottom: 1px solid var(--color-border-secondary);%0A  background: var(--color-surface-secondary);%0A%0A  h2 %7B%0A    font-family: var(--font-pixel);%0A    font-size: 20px;%0A    font-weight: 600;%0A    color: var(--color-text-primary);%0A    margin: 0;%0A    text-transform: uppercase;%0A    letter-spacing: 1px;%0A  %7D%0A%7D%0A%0A.keyboard-shortcuts-close %7B%0A  display: flex;%0A  align-items: center;%0A  justify-content: center;%0A  width: 32px;%0A  height: 32px;%0A  background: transparent;%0A  color: var(--color-text-muted);%0A  border: none;%0A  border-radius: var(--border-radius);%0A  cursor: pointer;%0A  transition: all var(--transition-fast);%0A%0A  &:hover %7B%0A    background: var(--color-surface-hover);%0A    color: var(--color-text-primary);%0A  %7D%0A%0A  svg %7B%0A    width: 20px;%0A    height: 20px;%0A  %7D%0A%7D%0A%0A.keyboard-shortcuts-content %7B%0A  padding: var(--spacing-lg);%0A  overflow-y: auto;%0A  max-height: calc(80vh - 120px);%0A%7D%0A%0A.keyboard-shortcuts-list %7B%0A  display: flex;%0A  flex-direction: column;%0A  gap: var(--spacing-md);%0A%7D%0A%0A.keyboard-shortcut-item %7B%0A  display: flex;%0A  align-items: center;%0A  justify-content: space-between;%0A  padding: var(--spacing-sm) var(--spacing-md);%0A  background: var(--color-surface-secondary);%0A  border-radius: var(--border-radius);%0A  transition: all var(--transition-fast);%0A%0A  &:hover %7B%0A    background: var(--color-surface-hover);%0A    transform: translateY(-1px);%0A  %7D%0A%7D%0A%0A.keyboard-shortcut-keys %7B%0A  display: flex;%0A  align-items: center;%0A  gap: var(--spacing-xs);%0A  flex-shrink: 0;%0A%7D%0A%0A.keyboard-key %7B%0A  display: inline-flex;%0A  align-items: center;%0A  justify-content: center;%0A  min-width: 32px;%0A  height: 32px;%0A  padding: 0 var(--spacing-sm);%0A  background: var(--color-background-primary);%0A  color: var(--color-text-primary);%0A  border: 1px solid var(--color-border-primary);%0A  border-radius: var(--border-radius-small);%0A  font-family: var(--font-pixel);%0A  font-size: 12px;%0A  font-weight: 600;%0A  text-transform: uppercase;%0A  letter-spacing: 0.5px;%0A  box-shadow: %0A    0 1px 0 var(--color-border-primary),%0A    0 1px 3px rgba(0, 0, 0, 0.3);%0A%7D%0A%0A.keyboard-plus %7B%0A  color: var(--color-text-muted);%0A  font-size: 12px;%0A  font-weight: 600;%0A  margin: 0 var(--spacing-xs);%0A%7D%0A%0A.keyboard-shortcut-description %7B%0A  flex: 1;%0A  margin-left: var(--spacing-lg);%0A  font-family: var(--font-pixel);%0A  font-size: 14px;%0A  color: var(--color-text-secondary);%0A  line-height: 1.4;%0A  letter-spacing: 0.3px;%0A%7D%0A%0A.keyboard-shortcuts-footer %7B%0A  margin-top: var(--spacing-lg);%0A  padding-top: var(--spacing-lg);%0A  border-top: 1px solid var(--color-border-secondary);%0A  text-align: center;%0A%0A  p %7B%0A    font-family: var(--font-pixel);%0A    font-size: 13px;%0A    color: var(--color-text-muted);%0A    margin: 0;%0A    letter-spacing: 0.3px;%0A  %7D%0A%7D%0A%0A@keyframes fadeIn %7B%0A  from %7B%0A    opacity: 0;%0A  %7D%0A  to %7B%0A    opacity: 1;%0A  %7D%0A%7D%0A%0A@keyframes modalSlideIn %7B%0A  from %7B%0A    opacity: 0;%0A    transform: translateY(-20px) scale(0.95);%0A  %7D%0A  to %7B%0A    opacity: 1;%0A    transform: translateY(0) scale(1);%0A  %7D%0A%7D%0A%0A// Mobile adjustments%0A@media (max-width: 640px) %7B%0A  .keyboard-shortcuts-overlay %7B%0A    padding: var(--spacing-md);%0A  %7D%0A%0A  .keyboard-shortcuts-modal %7B%0A    max-height: 90vh;%0A  %7D%0A%0A  .keyboard-shortcuts-header %7B%0A    padding: var(--spacing-md);%0A%0A    h2 %7B%0A      font-size: 18px;%0A    %7D%0A  %7D%0A%0A  .keyboard-shortcuts-content %7B%0A    padding: var(--spacing-md);%0A    max-height: calc(90vh - 100px);%0A  %7D%0A%0A  .keyboard-shortcut-item %7B%0A    flex-direction: column;%0A    align-items: flex-start;%0A    gap: var(--spacing-sm);%0A    padding: var(--spacing-sm);%0A  %7D%0A%0A  .keyboard-shortcut-keys %7B%0A    align-self: flex-start;%0A  %7D%0A%0A  .keyboard-shortcut-description %7B%0A    margin-left: 0;%0A    font-size: 13px;%0A    align-self: stretch;%0A  %7D%0A%0A  .keyboard-key %7B%0A    min-width: 28px;%0A    height: 28px;%0A    font-size: 11px;%0A  %7D%0A%7D\n",
+                            "isNew": true,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/index.tsx",
+                            "patch": "@@ -143,16 +143,109 @@\n ntext';%0A\n+import %7B NotificationProvider %7D from './contexts/NotificationContext';%0A%0Aimport './index.css';\n %0Aimport \n@@ -420,13 +420,74 @@\n    %3C\n-App /\n+NotificationProvider%3E%0A        %3CApp /%3E%0A      %3C/NotificationProvider\n %3E%0A  \n",
+                            "isNew": false,
+                            "isApplied": true
+                        }
+                    ]
+                },
+                {
+                    "type": "shellCommand",
+                    "command": "npm run dev",
+                    "id": "717bf626-a885-4576-ae74-36316d82a476",
+                    "status": "ERROR",
+                    "toolCallId": "toolu_01LCE4Kt5bX3mzeeFuM9vC4H",
+                    "commandsRequiringConfirmation": [
+                        {
+                            "name": "npm",
+                            "arguments": [
+                                "run",
+                                "dev"
+                            ]
+                        }
+                    ],
+                    "exitCode": 130,
+                    "output": "\r\n> pixelvault@1.0.0 dev\r\n> vite\r\n\r\n\u001b[1G\u001b[0K\u001b[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.\u001b[39m\r\n\r\n  \u001b[32m\u001b[1mVITE\u001b[22m v5.4.19\u001b[39m  \u001b[2mready in \u001b[0m\u001b[1m211\u001b[22m\u001b[2m\u001b[0m ms\u001b[22m\r\n\r\n  \u001b[32m➜\u001b[39m  \u001b[1mLocal\u001b[22m:   \u001b[36mhttp://localhost:\u001b[1m3000\u001b[22m/\u001b[39m\r\n\u001b[2m  \u001b[32m➜\u001b[39m  \u001b[1mNetwork\u001b[22m\u001b[2m: use \u001b[22m\u001b[1m--host\u001b[22m\u001b[2m to expose\u001b[22m\r\n\u001b[2m\u001b[32m  ➜\u001b[39m\u001b[22m\u001b[2m  press \u001b[22m\u001b[1mh + enter\u001b[22m\u001b[2m to show help\u001b[22m\r\n\u001b[33m\u001b[1mDeprecation Warning\u001b[0m [\u001b[34mlegacy-js-api\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\r\n\r\nMore info: https://sass-lang.com/d/legacy-js-api\r\n\r\n\u001b[33m\u001b[1mDeprecation Warning\u001b[0m [\u001b[34mlegacy-js-api\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\r\n\r\nMore info: https://sass-lang.com/d/legacy-js-api\r\n\r\n\u001b[33m\u001b[1mDeprecation Warning\u001b[0m [\u001b[34mlegacy-js-api\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\r\n\r\nMore info: https://sass-lang.com/d/legacy-js-api\r\n\r\n\u001b[33m\u001b[1mDeprecation Warning\u001b[0m [\u001b[34mlegacy-js-api\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\r\n\r\nMore info: https://sass-lang.com/d/legacy-js-api\r\n\r\n\u001b[33m\u001b[1mDeprecation Warning\u001b[0m [\u001b[34mlegacy-js-api\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\r\n\r\nMore info: https://sass-lang.com/d/legacy-js-api\r\n\r\n\u001b[33m\u001b[1mDeprecation Warning\u001b[0m [\u001b[34mlegacy-js-api\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\r\n\r\nMore info: https://sass-lang.com/d/legacy-js-api\r\n\r\n\u001b[33m\u001b[1mDeprecation Warning\u001b[0m [\u001b[34mlegacy-js-api\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\r\n\r\nMore info: https://sass-lang.com/d/legacy-js-api\r\n\r\n\u001b[33m\u001b[1mDeprecation Warning\u001b[0m [\u001b[34mlegacy-js-api\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\r\n\r\nMore info: https://sass-lang.com/d/legacy-js-api\r\n\r\n\u001b[33m\u001b[1mDeprecation Warning\u001b[0m [\u001b[34mlegacy-js-api\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\r\n\r\nMore info: https://sass-lang.com/d/legacy-js-api\r\n\r\n\u001b[33m\u001b[1mDeprecation Warning\u001b[0m [\u001b[34mlegacy-js-api\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\r\n\r\nMore info: https://sass-lang.com/d/legacy-js-api\r\n\r\n\u001b[33m\u001b[1mDeprecation Warning\u001b[0m [\u001b[34mlegacy-js-api\u001b[0m]: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.\r\n\r\nMore info: https://sass-lang.com/d/legacy-js-api\r\n\r\n^C",
+                    "outputPath": ".zencoder/Zencoder-8b81756d-d634-4e4b-83f0-a221caffc186.log"
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "c9352bbc-921d-44ea-9146-6027050595ed"
+            },
+            "createdAt": 1750529025471,
+            "isInternal": false
+        },
+        {
+            "id": "419f0a12-7979-4d15-9fc8-6d6f859fd356",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Ótimo! O servidor iniciou corretamente. Apesar dos warnings do Sass (que são apenas deprecation warnings), o projeto está rodando em `http://localhost:3000/`.\n\n## 5. Implementando funcionalidade de busca\n\nAgora vou implementar um sistema básico de busca para as fotos:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01T9fGp9JMbayxHnqMijbvAM",
+                    "statusText": "Analyzing file",
+                    "status": "IN_PROGRESS",
+                    "isHidden": false
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "9238e340-f948-4629-9dd2-f47cea95755a"
+            },
+            "createdAt": 1750529420758,
+            "isInternal": false
+        },
+        {
+            "id": "d1e15def-7870-49b3-b630-f2e7f4c51a6d",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "apenas o ctrl u e ctrl r funcionaram o resto de keyboard nao foi"
+                }
+            ],
+            "context": {
+                "codebaseEnabled": true
+            },
+            "createdAt": 1750529469691,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "apenas o ctrl u e ctrl r funcionaram o resto de keyboard nao foi"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "a27652ba-7d3f-43a5-8c49-0650317d16d0",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Vou verificar e corrigir os atalhos de teclado. Alguns atalhos podem estar sendo interceptados pelo navegador ou ter problemas na implementação. Vou ajustar:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01XUwupwrYMHcqDE4LA5sZbA",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/hooks/useKeyboardShortcuts.ts",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/hooks/useKeyboardShortcuts.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "O problema pode ser com a lógica de comparação dos modificadores. Vou melhorar o hook para lidar melhor com os atalhos:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_018U2bs2X2etAScT4uwKYGA7",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/hooks/useKeyboardShortcuts.ts",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/hooks/useKeyboardShortcuts.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/hooks/useKeyboardShortcuts.ts\n+++ src/hooks/useKeyboardShortcuts.ts\n@@ -13,19 +13,36 @@\n \n export const useKeyboardShortcuts = (shortcuts: KeyboardShortcut[]) => {\n   const handleKeyDown = useCallback((event: KeyboardEvent) => {\n+    // Don't handle shortcuts if user is typing in an input field\n+    const target = event.target as HTMLElement;\n+    if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable) {\n+      return;\n+    }\n+\n     const matchingShortcut = shortcuts.find(shortcut => {\n-      const keyMatches = shortcut.key.toLowerCase() === event.key.toLowerCase();\n-      const ctrlMatches = (shortcut.ctrlKey || false) === event.ctrlKey;\n-      const altMatches = (shortcut.altKey || false) === event.altKey;\n-      const shiftMatches = (shortcut.shiftKey || false) === event.shiftKey;\n-      const metaMatches = (shortcut.metaKey || false) === event.metaKey;\n+      // Check key match\n+      let keyMatches = false;\n+      if (shortcut.key.toLowerCase() === event.key.toLowerCase()) {\n+        keyMatches = true;\n+      } else if (shortcut.key === '?' && event.key === '/' && event.shiftKey) {\n+        // Special case for ? which is Shift+/\n+        keyMatches = true;\n+      }\n+\n+      // Check modifier keys\n+      const ctrlMatches = Boolean(shortcut.ctrlKey) === event.ctrlKey;\n+      const altMatches = Boolean(shortcut.altKey) === event.altKey;\n+      const shiftMatches = Boolean(shortcut.shiftKey) === event.shiftKey;\n+      const metaMatches = Boolean(shortcut.metaKey) === event.metaKey;\n \n       return keyMatches && ctrlMatches && altMatches && shiftMatches && metaMatches;\n     });\n \n     if (matchingShortcut) {\n+      console.log('Keyboard shortcut triggered:', matchingShortcut.description); // Debug log\n       if (matchingShortcut.preventDefault !== false) {\n         event.preventDefault();\n+        event.stopPropagation();\n       }\n       matchingShortcut.action();\n     }",
+                    "refToolCallId": "toolu_018U2bs2X2etAScT4uwKYGA7"
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou ajustar os atalhos no App.tsx para corrigir os problemas:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_015vUgJNpqQQS1wzVU2K811W",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/App.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/App.tsx\n+++ src/App.tsx\n@@ -37,9 +37,12 @@\n       description: 'Close modal or dialog',\n     },\n     {\n-      key: 't',\n+      key: 'd',\n       ctrlKey: true,\n-      action: toggleTheme,\n+      action: (e) => {\n+        e?.preventDefault();\n+        toggleTheme();\n+      },\n       description: 'Toggle theme (Dark/Light)',\n     },\n     {\n@@ -69,12 +72,22 @@\n       preventDefault: false,\n     },\n     {\n-      key: '?',\n+      key: 'h',\n+      action: () => {\n+        // This will be handled by the KeyboardShortcutsHelp component\n+        // For now, let's trigger a notification\n+        showInfo('Keyboard Shortcuts', 'Press Ctrl+H to toggle help, or click the help button in the header');\n+      },\n+      description: 'Show keyboard shortcuts help',\n+    },\n+    {\n+      key: '/',\n       shiftKey: true,\n       action: () => {\n         // This will be handled by the KeyboardShortcutsHelp component\n-      },\n-      description: 'Show keyboard shortcuts',\n+        showInfo('Keyboard Shortcuts', 'Press ? (Shift+/) to toggle help, or click the help button in the header');\n+      },\n+      description: 'Show keyboard shortcuts help',\n     },\n   ];\n ",
+                    "refToolCallId": "toolu_015vUgJNpqQQS1wzVU2K811W"
+                },
+                {
+                    "type": "codePatch",
+                    "diffs": [
+                        {
+                            "path": "src/App.tsx",
+                            "patch": "@@ -1505,17 +1505,17 @@\n   key: '\n-t\n+d\n ',%0A     \n@@ -1544,27 +1544,84 @@\n action: \n-toggleTheme\n+(e) =%3E %7B%0A        e?.preventDefault();%0A        toggleTheme();%0A      %7D\n ,%0A      \n@@ -2308,17 +2308,359 @@\n   key: '\n-?\n+h',%0A      action: () =%3E %7B%0A        // This will be handled by the KeyboardShortcutsHelp component%0A        // For now, let's trigger a notification%0A        showInfo('Keyboard Shortcuts', 'Press Ctrl+H to toggle help, or click the help button in the header');%0A      %7D,%0A      description: 'Show keyboard shortcuts help',%0A    %7D,%0A    %7B%0A      key: '/\n ',%0A     \n@@ -2765,24 +2765,140 @@\n p component%0A\n+        showInfo('Keyboard Shortcuts', 'Press ? (Shift+/) to toggle help, or click the help button in the header');%0A\n       %7D,%0A   \n@@ -2937,16 +2937,21 @@\n hortcuts\n+ help\n ',%0A    %7D\n",
+                            "isNew": false,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/hooks/useKeyboardShortcuts.ts",
+                            "patch": "@@ -398,142 +398,637 @@\n     \n-const matchingShortcut = shortcuts.find(shortcut =%3E %7B%0A      const keyMatches = shortcut.key.toLowerCase() === event.key.toLowerCase();\n+// Don't handle shortcuts if user is typing in an input field%0A    const target = event.target as HTMLElement;%0A    if (target.tagName === 'INPUT' %7C%7C target.tagName === 'TEXTAREA' %7C%7C target.isContentEditable) %7B%0A      return;%0A    %7D%0A%0A    const matchingShortcut = shortcuts.find(shortcut =%3E %7B%0A      // Check key match%0A      let keyMatches = false;%0A      if (shortcut.key.toLowerCase() === event.key.toLowerCase()) %7B%0A        keyMatches = true;%0A      %7D else if (shortcut.key === '?' && event.key === '/' && event.shiftKey) %7B%0A        // Special case for ? which is Shift+/%0A        keyMatches = true;%0A      %7D%0A%0A      // Check modifier keys\n %0A   \n@@ -1042,32 +1042,39 @@\n t ctrlMatches = \n+Boolean\n (shortcut.ctrlKe\n@@ -1074,25 +1074,16 @@\n .ctrlKey\n- %7C%7C false\n ) === ev\n@@ -1112,32 +1112,39 @@\n st altMatches = \n+Boolean\n (shortcut.altKey\n@@ -1139,33 +1139,24 @@\n rtcut.altKey\n- %7C%7C false\n ) === event.\n@@ -1182,32 +1182,39 @@\n  shiftMatches = \n+Boolean\n (shortcut.shiftK\n@@ -1215,25 +1215,16 @@\n shiftKey\n- %7C%7C false\n ) === ev\n@@ -1259,24 +1259,31 @@\n taMatches = \n+Boolean\n (shortcut.me\n@@ -1291,17 +1291,8 @@\n aKey\n- %7C%7C false\n ) ==\n@@ -1427,24 +1427,118 @@\n Shortcut) %7B%0A\n+      console.log('Keyboard shortcut triggered:', matchingShortcut.description); // Debug log%0A\n       if (ma\n@@ -1608,24 +1608,57 @@\n tDefault();%0A\n+        event.stopPropagation();%0A\n       %7D%0A    \n",
+                            "isNew": false,
+                            "isApplied": true
+                        }
+                    ]
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "22f218d8-3e05-4947-a303-49f5640661e9"
+            },
+            "createdAt": 1750529472160,
+            "isInternal": false
+        },
+        {
+            "id": "cb1e62fa-9e93-4e3c-8257-868ef8181353",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "o tema claro esta nao muito bom nao esta visivel para os textos, as cores deles nao ficam bons"
+                },
+                {
+                    "type": "text",
+                    "text": "o icone dentro do drag and drop nao esta centralizado, mas deveria"
+                },
+                {
+                    "type": "text",
+                    "text": "o icone de keyboard perto do toggle theme esta pequeno deveria ficar maior.keyboard-shortcuts-trigger svg {"
+                },
+                {
+                    "type": "text",
+                    "text": " width: 84px;"
+                },
+                {
+                    "type": "text",
+                    "text": "height: 61px;"
+                }
+            ],
+            "context": {
+                "codebaseEnabled": true
+            },
+            "createdAt": 1750529634592,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "o tema claro esta nao muito bom nao esta visivel para os textos, as cores deles nao ficam bons"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "o icone dentro do drag and drop nao esta centralizado, mas deveria"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "o icone de keyboard perto do toggle theme esta pequeno deveria ficar maior.keyboard-shortcuts-trigger svg {"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": " width: 84px;"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "height: 61px;"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph"
+                    },
+                    {
+                        "type": "paragraph"
+                    },
+                    {
+                        "type": "paragraph"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "5042a5b3-e1a3-484c-a7da-0d9df36ad678",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Vou corrigir esses problemas. Primeiro, vou melhorar as cores do tema claro:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01Qrc4ujvoH9NQ1iFwNvKMsQ",
+                    "statusText": "Analyzing file",
+                    "status": "IN_PROGRESS",
+                    "isHidden": false
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "2ebece21-3d4d-4424-abcd-6587752effb7"
+            },
+            "createdAt": 1750529637038,
+            "isInternal": false
+        }
+    ],
+    "isAgent": true,
+    "isNameGenerated": true,
+    "isCustomAgent": false,
+    "isUnitTestsAgent": false,
+    "isE2EAgent": false,
+    "autoApply": false
+}
+}

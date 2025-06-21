@@ -1,114 +1,229 @@
-/* 8bit Pixel Theme Global Styles */
-*, *::before, *::after {
-    box-sizing: border-box;
+/* CSS Reset and Global Styles */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: auto; /* Disable smooth scrolling for pixel-perfect movement */
+/* Remove default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
 }
 
+/* Remove list styles on ul, ol elements with a list role */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+html,
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
-    -webkit-font-smoothing: auto;
-    -moz-osx-font-smoothing: auto;
-    text-rendering: optimizeSpeed;
-    line-height: 1.4;
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
+  height: 100%;
+  font-family: var(--font-primary, 'Monaco', 'Consolas', 'Courier New', monospace);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
 }
 
-/* Pixel fonts - no external fonts needed */
-
-code {
-    font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+/* Root element */
+#root {
+  height: 100%;
+  isolation: isolate;
 }
 
-/* 8bit Pixel Scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
 }
 
-::-webkit-scrollbar-track {
-    background: rgba(102, 217, 255, 0.08);
+/* Make images easier to work with */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
 }
 
-::-webkit-scrollbar-thumb {
-    background: #66D9FF;
-    border-radius: 2px;
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #4DA6D9;
-}
-
-/* Pixel Focus styles */
-:focus-visible {
-    outline: 2px solid #66D9FF;
-    outline-offset: 2px;
-}
-
-/* Pixel Selection styles */
-::selection {
-    background: rgba(102, 217, 255, 0.2);
-    color: #66D9FF;
-}
-
-/* Prevent text selection on 8bit UI elements */
-button, .photo-item-container, .upload-zone, .logo-container {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-/* 8bit Button styling */
+/* Remove default button styles */
 button {
-    font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
-    font-size: inherit;
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
-/* Typography for 8bit theme */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
-    margin: 0;
-    line-height: 1.2;
-    text-rendering: optimizeSpeed;
+/* Remove default input styles */
+input,
+textarea {
+  border: none;
+  outline: none;
+  background: transparent;
 }
 
-p, span, div {
-    font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
-    line-height: 1.4;
+/* Remove textarea resize */
+textarea {
+  resize: none;
 }
 
-/* Images with pixel rendering */
-img {
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
+/* Remove default appearance for form elements */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
-/* Reduced motion for accessibility */
+/* Remove default focus styles and add custom ones */
+*:focus {
+  outline: 2px solid var(--color-accent-primary, #3b82f6);
+  outline-offset: 2px;
+}
+
+/* Remove text decoration from all links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remove default table styles */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Remove default fieldset styles */
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default legend styles */
+legend {
+  padding: 0;
+}
+
+/* Improve readability for screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
-/* Mobile optimization for 8bit theme */
-@media (max-width: 768px) {
-    html {
-        font-size: 14px;
-    }
-    
-    body {
-        line-height: 1.3;
-    }
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+    --shadow-xl: none;
+  }
+}
+
+/* Global utilities */
+.hidden {
+  display: none !important;
+}
+
+.visually-hidden {
+  @extend .sr-only;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-surface-primary);
+  color: var(--color-text-primary);
+  padding: 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  z-index: 9999;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Print styles */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
 }

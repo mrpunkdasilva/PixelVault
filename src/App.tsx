@@ -9,6 +9,12 @@ import { LogoWithText } from './components/LogoWithText';
 import { LoadingLogo } from './components/LoadingLogo';
 import { UploadZone } from './components/UploadZone';
 import { PhotoModal } from './components/PhotoModal';
+import { ThemeToggle } from './components/ThemeToggle';
+import { NotificationContainer } from './components/NotificationContainer';
+import { useNotificationHelpers } from './contexts/NotificationContext';
+import { KeyboardShortcutsHelp } from './components/KeyboardShortcutsHelp';
+import { useKeyboardShortcuts, KeyboardShortcut } from './hooks/useKeyboardShortcuts';
+import { useTheme } from './contexts/ThemeContext';
 
 function App() {
   const [uploading, setUploading] = useState(false);
@@ -16,6 +22,76 @@ function App() {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { showSuccess, showError } = useNotificationHelpers();
+  const { toggleTheme } = useTheme();
+
+  // Keyboard shortcuts
+  const shortcuts: KeyboardShortcut[] = [
+    {
+      key: 'Escape',
+      action: () => {
+        if (isModalOpen) {
+          handleCloseModal();
+        }
+      },
+      description: 'Close modal or dialog',
+    },
+    {
+      key: 'd',
+      ctrlKey: true,
+      action: (e) => {
+        e?.preventDefault();
+        toggleTheme();
+      },
+      description: 'Toggle theme (Dark/Light)',
+    },
+    {
+      key: 'u',
+      ctrlKey: true,
+      action: () => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*';
+        input.onchange = (e) => {
+          const file = (e.target as HTMLInputElement).files?.[0];
+          if (file) {
+            handleFileSelect(file);
+          }
+        };
+        input.click();
+      },
+      description: 'Upload new photo',
+    },
+    {
+      key: 'r',
+      ctrlKey: true,
+      action: () => {
+        window.location.reload();
+      },
+      description: 'Refresh page',
+      preventDefault: false,
+    },
+    {
+      key: 'h',
+      action: () => {
+        // This will be handled by the KeyboardShortcutsHelp component
+        // For now, let's trigger a notification
+        showInfo('Keyboard Shortcuts', 'Press Ctrl+H to toggle help, or click the help button in the header');
+      },
+      description: 'Show keyboard shortcuts help',
+    },
+    {
+      key: '/',
+      shiftKey: true,
+      action: () => {
+        // This will be handled by the KeyboardShortcutsHelp component
+        showInfo('Keyboard Shortcuts', 'Press ? (Shift+/) to toggle help, or click the help button in the header');
+      },
+      description: 'Show keyboard shortcuts help',
+    },
+  ];
+
+  useKeyboardShortcuts(shortcuts);
 
   useEffect(() => {
     const getPhotos = async () => {
@@ -33,11 +109,12 @@ function App() {
     setUploading(false);
 
     if (result instanceof Error) {
-      alert(`${result.name} - ${result.message}`);
+      showError('Upload Failed', result.message);
     } else {
       let newPhotoList = [...photos];
       newPhotoList.unshift(result); // Add to beginning for better UX
       setPhotos(newPhotoList);
+      showSuccess('Photo Uploaded', 'Your photo has been successfully uploaded!');
     }
   }
 
@@ -60,6 +137,7 @@ function App() {
       if (selectedPhoto?.url === photoToDelete.url) {
         handleCloseModal();
       }
+      showSuccess('Photo Deleted', `"${photoToDelete.name}" has been deleted successfully.`);
     }
   }
 
@@ -68,6 +146,10 @@ function App() {
       <div className="area">
         <div className="header">
           <LogoWithText size={70} showSubtext={true} />
+          <div className="header-controls">
+            <KeyboardShortcutsHelp shortcuts={shortcuts} />
+            <ThemeToggle />
+          </div>
         </div>
 
         <UploadZone 
@@ -118,6 +200,8 @@ function App() {
           onDelete={selectedPhoto ? () => handleDeletePhoto(selectedPhoto) : undefined}
         />
       </div>
+      
+      <NotificationContainer />
     </div>
   );
 }

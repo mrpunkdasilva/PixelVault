@@ -1,9 +1,10 @@
-@use './styles/variables' as *;
-
 .container {
-    @include pixel-style;
-    background: $bg-primary;
-    color: $text-primary;
+    font-family: var(--font-pixel);
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    background: var(--color-background-primary);
+    color: var(--color-text-primary);
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -18,11 +19,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: 
-            radial-gradient(circle at 20% 80%, rgba(102, 217, 255, 0.08) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(102, 217, 255, 0.06) 0%, transparent 50%),
-            linear-gradient(0deg, transparent 24%, rgba(102, 217, 255, 0.02) 25%, rgba(102, 217, 255, 0.02) 26%, transparent 27%, transparent 74%, rgba(102, 217, 255, 0.02) 75%, rgba(102, 217, 255, 0.02) 76%, transparent 77%),
-            linear-gradient(90deg, transparent 24%, rgba(102, 217, 255, 0.02) 25%, rgba(102, 217, 255, 0.02) 26%, transparent 27%, transparent 74%, rgba(102, 217, 255, 0.02) 75%, rgba(102, 217, 255, 0.02) 76%, transparent 77%);
+        background: var(--color-background-secondary);
         background-size: 
             800px 800px,
             600px 600px,
@@ -43,7 +40,7 @@
         bottom: 0;
         background: linear-gradient(
             transparent 50%,
-            rgba(102, 217, 255, 0.01) 50%
+            var(--color-border-muted) 50%
         );
         background-size: 100% 4px;
         pointer-events: none;
@@ -54,31 +51,46 @@
 
 .area {
     margin: auto;
-    max-width: $max-width;
-    padding: $container-padding;
+    max-width: var(--max-width);
+    padding: var(--container-padding);
     position: relative;
     z-index: 2;
-    @include pixel-style;
+    font-family: var(--font-pixel);
 }
 
 .header {
     margin: 0;
-    padding: $spacing-2xl 0;
+    padding: var(--spacing-2xl) 0;
     text-align: center;
-    margin-bottom: $spacing-3xl;
+    margin-bottom: var(--spacing-3xl);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    
+    @media (max-width: 640px) {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    
+    @media (max-width: 640px) {
+        justify-content: center;
+    }
 }
 
 .screen-warning {
     text-align: center;
-    padding: $spacing-3xl 0;
+    padding: var(--spacing-3xl) 0;
 
     .loading-text {
-        @include pixel-style;
-        margin-top: $spacing-lg;
-        color: $text-secondary;
+        font-family: var(--font-pixel);
+        margin-top: var(--spacing-lg);
+        color: var(--color-text-secondary);
         font-size: 18px;
         font-weight: 500;
         text-transform: uppercase;
@@ -93,8 +105,13 @@
     .empty-state {
         max-width: 400px;
         margin: 0 auto;
-        padding: $spacing-3xl;
-        @include pixel-card;
+        padding: var(--spacing-3xl);
+        background: var(--color-surface-primary);
+        border: 1px solid var(--color-border-primary);
+        border-radius: var(--border-radius);
+        backdrop-filter: var(--blur-sm);
+        -webkit-backdrop-filter: var(--blur-sm);
+        box-shadow: var(--shadow-md);
         position: relative;
         
         // Pixel border effect
@@ -105,34 +122,34 @@
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg, $pixel-blue, $pixel-cyan, $pixel-blue);
-            border-radius: $border-radius;
+            background: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-hover), var(--color-accent-primary));
+            border-radius: var(--border-radius);
             z-index: -1;
             opacity: 0.3;
         }
 
         .empty-icon {
-            margin-bottom: $spacing-xl;
-            color: $pixel-blue;
-            filter: drop-shadow(0 0 8px rgba(102, 217, 255, 0.5));
+            margin-bottom: var(--spacing-xl);
+            color: var(--color-accent-primary);
+            filter: drop-shadow(0 0 8px var(--color-accent-primary));
             animation: pixelGlow 2s ease-in-out infinite alternate;
         }
 
         h3 {
-            @include pixel-style;
-            margin: 0 0 $spacing-md 0;
-            color: $text-primary;
+            font-family: var(--font-pixel);
+            margin: 0 0 var(--spacing-md) 0;
+            color: var(--color-text-primary);
             font-size: 24px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            text-shadow: 0 0 8px rgba(102, 217, 255, 0.4);
+            text-shadow: 0 0 8px var(--color-accent-primary);
         }
 
         p {
-            @include pixel-style;
+            font-family: var(--font-pixel);
             margin: 0;
-            color: $text-secondary;
+            color: var(--color-text-secondary);
             font-size: 16px;
             line-height: 1.6;
             letter-spacing: 0.5px;
@@ -143,25 +160,25 @@
 .photo-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: $spacing-lg;
+    gap: var(--spacing-lg);
     animation: fadeIn 0.6s ease-in-out;
 
-    @media (max-width: $breakpoint-xl) {
+    @media (max-width: 1280px) {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
 
-    @media (max-width: $breakpoint-lg) {
+    @media (max-width: 1024px) {
         grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: $spacing-md;
+        gap: var(--spacing-md);
     }
 
-    @media (max-width: $breakpoint-md) {
+    @media (max-width: 768px) {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
 
-    @media (max-width: $breakpoint-sm) {
+    @media (max-width: 640px) {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: $spacing-sm;
+        gap: var(--spacing-sm);
     }
 }
 
@@ -203,19 +220,19 @@
 
 @keyframes pixelGlow {
     0% {
-        filter: drop-shadow(0 0 8px rgba(102, 217, 255, 0.5));
+        filter: drop-shadow(0 0 8px var(--color-accent-primary));
     }
     100% {
-        filter: drop-shadow(0 0 16px rgba(102, 217, 255, 0.8));
+        filter: drop-shadow(0 0 16px var(--color-accent-primary));
     }
 }
 
 @keyframes pixelPulse {
     0%, 100% {
-        box-shadow: 0 0 10px rgba(102, 217, 255, 0.3);
+        box-shadow: var(--pixel-glow);
     }
     50% {
-        box-shadow: 0 0 20px rgba(102, 217, 255, 0.6), 0 0 30px rgba(102, 217, 255, 0.3);
+        box-shadow: var(--pixel-glow-strong);
     }
 }
 
@@ -238,32 +255,32 @@
 }
 
 // Mobile responsiveness
-@media (max-width: $breakpoint-lg) {
+@media (max-width: 1024px) {
     .area {
-        padding: $spacing-lg;
+        padding: var(--spacing-lg);
     }
 
     .header {
-        padding: $spacing-xl 0;
-        margin-bottom: $spacing-2xl;
+        padding: var(--spacing-xl) 0;
+        margin-bottom: var(--spacing-2xl);
     }
 }
 
-@media (max-width: $breakpoint-md) {
+@media (max-width: 768px) {
     .area {
-        padding: $spacing-md;
+        padding: var(--spacing-md);
     }
 
     .header {
-        padding: $spacing-lg 0;
-        margin-bottom: $spacing-xl;
+        padding: var(--spacing-lg) 0;
+        margin-bottom: var(--spacing-xl);
     }
 
     .screen-warning {
-        padding: $spacing-2xl 0;
+        padding: var(--spacing-2xl) 0;
 
         .empty-state {
-            padding: $spacing-2xl;
+            padding: var(--spacing-2xl);
 
             h3 {
                 font-size: 20px;
@@ -280,14 +297,14 @@
     }
 }
 
-@media (max-width: $breakpoint-sm) {
+@media (max-width: 640px) {
     .area {
-        padding: $spacing-sm;
+        padding: var(--spacing-sm);
     }
 
     .screen-warning {
         .empty-state {
-            padding: $spacing-xl;
+            padding: var(--spacing-xl);
 
             .empty-icon svg {
                 width: 60px;
