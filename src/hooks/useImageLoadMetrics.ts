@@ -28,11 +28,11 @@ export const useImageLoadMetrics = () => {
     const startTime = imageLoadTimes.current.get(imageUrl);
     if (startTime) {
       const loadTime = Date.now() - startTime;
-      
+
       if (success) {
         metrics.current.loadedImages++;
         metrics.current.loadTimes.push(loadTime);
-        
+
         // Calculate new average
         const sum = metrics.current.loadTimes.reduce((a, b) => a + b, 0);
         metrics.current.averageLoadTime = sum / metrics.current.loadTimes.length;

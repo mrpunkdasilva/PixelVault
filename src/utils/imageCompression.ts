@@ -32,7 +32,7 @@ const DEFAULT_OPTIONS: Required<CompressionOptions> = {
  */
 export async function compressImage(
   file: File,
-  options: CompressionOptions = {}
+  options: CompressionOptions = {},
 ): Promise<CompressionResult> {
   const opts = { ...DEFAULT_OPTIONS, ...options };
 
@@ -53,7 +53,7 @@ export async function compressImage(
         img.height,
         opts.maxWidth,
         opts.maxHeight,
-        opts.maintainAspectRatio
+        opts.maintainAspectRatio,
       );
 
       // Set canvas dimensions
@@ -69,7 +69,7 @@ export async function compressImage(
 
       // Convert to blob with compression
       canvas.toBlob(
-        (blob) => {
+        blob => {
           if (!blob) {
             reject(new Error('Failed to compress image'));
             return;
@@ -82,7 +82,7 @@ export async function compressImage(
             {
               type: `image/${opts.format}`,
               lastModified: Date.now(),
-            }
+            },
           );
 
           const result: CompressionResult = {
@@ -107,7 +107,7 @@ export async function compressImage(
           }
         },
         `image/${opts.format}`,
-        opts.quality
+        opts.quality,
       );
     };
 
@@ -128,7 +128,7 @@ function calculateDimensions(
   originalHeight: number,
   maxWidth: number,
   maxHeight: number,
-  maintainAspectRatio: boolean
+  maintainAspectRatio: boolean,
 ): { width: number; height: number } {
   if (!maintainAspectRatio) {
     return {
@@ -196,13 +196,13 @@ export function getImageDimensions(file: File): Promise<{ width: number; height:
 export async function compressImages(
   files: File[],
   options: CompressionOptions = {},
-  onProgress?: (progress: number, current: number, total: number) => void
+  onProgress?: (progress: number, current: number, total: number) => void,
 ): Promise<CompressionResult[]> {
   const results: CompressionResult[] = [];
-  
+
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
-    
+
     try {
       if (shouldCompressImage(file)) {
         const result = await compressImage(file, options);
@@ -241,10 +241,10 @@ export async function compressImages(
  */
 export function formatFileSize(bytes: number): string {
   if (bytes === 0) return '0 Bytes';
-  
+
   const k = 1024;
   const sizes = ['Bytes', 'KB', 'MB', 'GB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  
+
   return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 }

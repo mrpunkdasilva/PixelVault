@@ -1,0 +1,304 @@
+name: 🚀 Multi-Environment Deployment
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - staging
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+        - staging
+        - production
+
+env:
+  NODE_VERSION: '18'
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  # ===== DETERMINE ENVIRONMENT =====
+  setup:
+    name: 🎯 Environment Setup
+    runs-on: ubuntu-latest
+    outputs:
+      environment: ${{ steps.env-setup.outputs.environment }}
+      deploy-url: ${{ steps.env-setup.outputs.deploy-url }}
+      should-deploy: ${{ steps.env-setup.outputs.should-deploy }}
+    steps:
+      - name: 🎯 Determine Environment
+        id: env-setup
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            ENV="${{ github.event.inputs.environment }}"
+          else
+            case "${{ github.ref }}" in
+              "refs/heads/main")
+                ENV="production"
+                ;;
+              "refs/heads/develop")
+                ENV="staging"
+                ;;
+              "refs/heads/staging")
+                ENV="staging"
+                ;;
+              *)
+                ENV="preview"
+                ;;
+            esac
+          fi
+          
+          # Set deployment URL based on environment
+          case "$ENV" in
+            "production")
+              DEPLOY_URL="https://pixelvault.app"
+              ;;
+            "staging")
+              DEPLOY_URL="https://staging.pixelvault.app"
+              ;;
+            *)
+              DEPLOY_URL="https://preview-${{ github.sha }}.pixelvault.app"
+              ;;
+          esac
+          
+          echo "environment=$ENV" >> $GITHUB_OUTPUT
+          echo "deploy-url=$DEPLOY_URL" >> $GITHUB_OUTPUT
+          echo "should-deploy=true" >> $GITHUB_OUTPUT
+          
+          echo "🎯 Environment: $ENV"
+          echo "🔗 Deploy URL: $DEPLOY_URL"
+
+  # ===== BUILD FOR DEPLOYMENT =====
+  build:
+    name: 🏗️ Build for ${{ needs.setup.outputs.environment }}
+    runs-on: ubuntu-latest
+    needs: setup
+    environment: ${{ needs.setup.outputs.environment }}
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: 📥 Install dependencies
+        run: npm ci
+
+      - name: 🏗️ Build with environment config
+        env:
+          VITE_APP_ENV: ${{ needs.setup.outputs.environment }}
+          VITE_API_URL: ${{ vars.API_URL }}
+          VITE_FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
+          VITE_FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+          VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
+          VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
+          VITE_FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+        run: |
+          echo "🏗️ Building for ${{ needs.setup.outputs.environment }} environment"
+          npm run build:production
+
+      - name: 📊 Build Analysis
+        run: |
+          echo "📊 Build analysis for ${{ needs.setup.outputs.environment }}:"
+          echo "- Bundle size: $(du -sh dist/ | cut -f1)"
+          echo "- File count: $(find dist/ -type f | wc -l)"
+          echo "- Gzip size: $(tar -czf - dist/ | wc -c | numfmt --to=iec)"
+
+      - name: 📦 Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-${{ needs.setup.outputs.environment }}
+          path: dist/
+          retention-days: 30
+
+  # ===== DEPLOY TO STAGING =====
+  deploy-staging:
+    name: 🚀 Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: [setup, build]
+    if: needs.setup.outputs.environment == 'staging'
+    environment: staging
+    steps:
+      - name: 📥 Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-staging
+          path: dist/
+
+      - name: 🚀 Deploy to Vercel (Staging)
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./dist
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+
+      - name: 🔍 Health Check
+        run: |
+          sleep 30
+          curl -f ${{ needs.setup.outputs.deploy-url }} || exit 1
+          echo "✅ Staging deployment health check passed"
+
+  # ===== DEPLOY TO PRODUCTION =====
+  deploy-production:
+    name: 🚀 Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [setup, build]
+    if: needs.setup.outputs.environment == 'production'
+    environment: production
+    steps:
+      - name: 📥 Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-production
+          path: dist/
+
+      - name: 🚀 Deploy to Production (GitHub Pages)
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          cname: pixelvault.app
+
+      - name: 🚀 Alternative: Deploy to Vercel (Production)
+        if: vars.USE_VERCEL == 'true'
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          working-directory: ./dist
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+
+      - name: 🚀 Alternative: Deploy to AWS S3
+        if: vars.USE_AWS == 'true'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ vars.AWS_REGION }}
+        run: |
+          aws s3 sync dist/ s3://${{ vars.S3_BUCKET_NAME }}/ --delete
+          aws cloudfront create-invalidation --distribution-id ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+
+      - name: 🔍 Production Health Check
+        run: |
+          sleep 60
+          curl -f ${{ needs.setup.outputs.deploy-url }} || exit 1
+          echo "✅ Production deployment health check passed"
+
+  # ===== POST-DEPLOYMENT MONITORING =====
+  post-deploy:
+    name: 📊 Post-Deployment Monitoring
+    runs-on: ubuntu-latest
+    needs: [setup, build, deploy-staging, deploy-production]
+    if: always() && (needs.deploy-staging.result == 'success' || needs.deploy-production.result == 'success')
+    steps:
+      - name: 📊 Lighthouse Performance Audit
+        run: |
+          npm install -g @lhci/cli
+          
+          # Run Lighthouse CI
+          lhci autorun --upload.target=temporary-public-storage --collect.url=${{ needs.setup.outputs.deploy-url }}
+          
+          echo "🎯 Lighthouse audit completed for ${{ needs.setup.outputs.environment }}"
+
+      - name: 🔍 Availability Monitoring
+        run: |
+          # Setup uptime monitoring (example with curl)
+          for i in {1..5}; do
+            if curl -f ${{ needs.setup.outputs.deploy-url }}; then
+              echo "✅ Health check $i/5 passed"
+            else
+              echo "❌ Health check $i/5 failed"
+              exit 1
+            fi
+            sleep 30
+          done
+
+      - name: 📱 Deployment Notification
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const environment = '${{ needs.setup.outputs.environment }}';
+            const deployUrl = '${{ needs.setup.outputs.deploy-url }}';
+            const emoji = environment === 'production' ? '🚀' : '🧪';
+            
+            const body = `## ${emoji} PixelVault Deployed to ${environment.toUpperCase()}
+
+            ### 🔗 Deployment Details
+            - **Environment**: ${environment}
+            - **URL**: [${deployUrl}](${deployUrl})
+            - **Commit**: ${context.sha.substring(0, 7)}
+            - **Actor**: @${context.actor}
+
+            ### 📊 Deployment Metrics
+            - **Build Time**: ~${{ job.started_at }}
+            - **Status**: ✅ Success
+            - **Health Check**: ✅ Passed
+
+            ---
+            *Deployment completed successfully! 🎉*`;
+
+            // Create deployment status
+            github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: context.payload.deployment?.id || 'latest',
+              state: 'success',
+              environment_url: deployUrl,
+              description: `Deployed to ${environment}`
+            });
+
+  # ===== ROLLBACK CAPABILITY =====
+  rollback:
+    name: 🔄 Rollback Capability
+    runs-on: ubuntu-latest
+    if: failure() && (needs.deploy-staging.result == 'failure' || needs.deploy-production.result == 'failure')
+    needs: [setup, build, deploy-staging, deploy-production]
+    environment: ${{ needs.setup.outputs.environment }}
+    steps:
+      - name: 🔄 Rollback Deployment
+        run: |
+          echo "🚨 Deployment failed! Initiating rollback..."
+          echo "Environment: ${{ needs.setup.outputs.environment }}"
+          
+          # Add rollback logic here (e.g., revert to previous deployment)
+          echo "⚠️ Manual rollback may be required"
+          
+          # Notify team
+          echo "📱 Rollback notification sent"
+
+      - name: 📱 Failure Notification
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const environment = '${{ needs.setup.outputs.environment }}';
+            
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🚨 Deployment Failure - ${environment.toUpperCase()}`,
+              body: `## 🚨 Deployment Failed
+
+              **Environment**: ${environment}
+              **Commit**: ${context.sha}
+              **Actor**: @${context.actor}
+              **Workflow**: [${context.workflow}](${context.server_url}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})
+
+              Please investigate and fix the deployment issues.
+
+              cc: @your-team-handle`,
+              labels: ['bug', 'deployment', 'urgent']
+            });

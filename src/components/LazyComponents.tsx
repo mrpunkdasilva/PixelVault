@@ -7,13 +7,15 @@ const KeyboardShortcutsHelpLazy = lazy(() => import('./KeyboardShortcutsHelp'));
 
 // Loading component for suspense fallback
 const ComponentLoader = ({ size = 40 }: { size?: number }) => (
-  <div style={{ 
-    display: 'flex', 
-    justifyContent: 'center', 
-    alignItems: 'center', 
-    minHeight: '100px',
-    width: '100%'
-  }}>
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      minHeight: '100px',
+      width: '100%',
+    }}
+  >
     <LoadingLogo size={size} />
   </div>
 );

@@ -1,5 +1,10 @@
 import { useState, useCallback } from 'react';
-import { compressImages, CompressionResult, shouldCompressImage, formatFileSize } from '../utils/imageCompression';
+import {
+  compressImages,
+  CompressionResult,
+  shouldCompressImage,
+  formatFileSize,
+} from '../utils/imageCompression';
 import { useNotificationHelpers } from '../contexts/NotificationContext';
 
 interface CompressionProgress {
@@ -33,7 +38,7 @@ const DEFAULT_OPTIONS: UseImageCompressionOptions = {
 export const useImageCompression = (options: UseImageCompressionOptions = {}) => {
   const opts = { ...DEFAULT_OPTIONS, ...options };
   const { showSuccess, showError, showInfo } = useNotificationHelpers();
-  
+
   const [compressionState, setCompressionState] = useState<CompressionProgress>({
     isCompressing: false,
     progress: 0,
@@ -42,84 +47,89 @@ export const useImageCompression = (options: UseImageCompressionOptions = {}) =>
     results: [],
   });
 
-  const compressFiles = useCallback(async (files: File[]): Promise<File[]> => {
-    if (!files.length) return files;
+  const compressFiles = useCallback(
+    async (files: File[]): Promise<File[]> => {
+      if (!files.length) return files;
 
-    // Check which files need compression
-    const filesToCompress = files.filter(file => shouldCompressImage(file));
-    
-    if (!filesToCompress.length) {
-      if (opts.showNotifications) {
-        showInfo('No images need compression');
-      }
-      return files;
-    }
+      // Check which files need compression
+      const filesToCompress = files.filter(file => shouldCompressImage(file));
 
-    setCompressionState({
-      isCompressing: true,
-      progress: 0,
-      current: 0,
-      total: filesToCompress.length,
-      results: [],
-    });
-
-    try {
-      if (opts.showNotifications) {
-        showInfo(`Compressing ${filesToCompress.length} image${filesToCompress.length > 1 ? 's' : ''}...`);
-      }
-
-      const results = await compressImages(
-        files,
-        {
-          maxWidth: opts.maxWidth,
-          maxHeight: opts.maxHeight,
-          quality: opts.quality,
-          maxFileSize: opts.maxFileSize,
-          format: opts.format,
-        },
-        (progress, current, total) => {
-          setCompressionState(prev => ({
-            ...prev,
-            progress,
-            current,
-            total,
-          }));
+      if (!filesToCompress.length) {
+        if (opts.showNotifications) {
+          showInfo('No images need compression');
         }
-      );
+        return files;
+      }
 
-      setCompressionState(prev => ({
-        ...prev,
-        isCompressing: false,
-        results,
-      }));
+      setCompressionState({
+        isCompressing: true,
+        progress: 0,
+        current: 0,
+        total: filesToCompress.length,
+        results: [],
+      });
 
-      // Calculate total savings
-      const totalOriginalSize = results.reduce((sum, r) => sum + r.originalSize, 0);
-      const totalCompressedSize = results.reduce((sum, r) => sum + r.compressedSize, 0);
-      const totalSavings = totalOriginalSize - totalCompressedSize;
-      const savingsPercent = ((totalSavings / totalOriginalSize) * 100).toFixed(1);
+      try {
+        if (opts.showNotifications) {
+          showInfo(
+            `Compressing ${filesToCompress.length} image${filesToCompress.length > 1 ? 's' : ''}...`,
+          );
+        }
 
-      if (opts.showNotifications && totalSavings > 0) {
-        showSuccess(
-          `Images compressed successfully! Saved ${formatFileSize(totalSavings)} (${savingsPercent}%)`
+        const results = await compressImages(
+          files,
+          {
+            maxWidth: opts.maxWidth,
+            maxHeight: opts.maxHeight,
+            quality: opts.quality,
+            maxFileSize: opts.maxFileSize,
+            format: opts.format,
+          },
+          (progress, current, total) => {
+            setCompressionState(prev => ({
+              ...prev,
+              progress,
+              current,
+              total,
+            }));
+          },
         );
-      }
 
-      return results.map(r => r.file);
-    } catch (error) {
-      setCompressionState(prev => ({
-        ...prev,
-        isCompressing: false,
-      }));
+        setCompressionState(prev => ({
+          ...prev,
+          isCompressing: false,
+          results,
+        }));
 
-      if (opts.showNotifications) {
-        showError('Failed to compress images. Using original files.');
+        // Calculate total savings
+        const totalOriginalSize = results.reduce((sum, r) => sum + r.originalSize, 0);
+        const totalCompressedSize = results.reduce((sum, r) => sum + r.compressedSize, 0);
+        const totalSavings = totalOriginalSize - totalCompressedSize;
+        const savingsPercent = ((totalSavings / totalOriginalSize) * 100).toFixed(1);
+
+        if (opts.showNotifications && totalSavings > 0) {
+          showSuccess(
+            `Images compressed successfully! Saved ${formatFileSize(totalSavings)} (${savingsPercent}%)`,
+          );
+        }
+
+        return results.map(r => r.file);
+      } catch (error) {
+        setCompressionState(prev => ({
+          ...prev,
+          isCompressing: false,
+        }));
+
+        if (opts.showNotifications) {
+          showError('Failed to compress images. Using original files.');
+        }
+
+        console.error('Image compression failed:', error);
+        return files; // Return original files if compression fails
       }
-      
-      console.error('Image compression failed:', error);
-      return files; // Return original files if compression fails
-    }
-  }, [opts, showSuccess, showError, showInfo]);
+    },
+    [opts, showSuccess, showError, showInfo],
+  );
 
   const resetCompression = useCallback(() => {
     setCompressionState({
@@ -138,7 +148,8 @@ export const useImageCompression = (options: UseImageCompressionOptions = {}) =>
     const totalOriginalSize = results.reduce((sum, r) => sum + r.originalSize, 0);
     const totalCompressedSize = results.reduce((sum, r) => sum + r.compressedSize, 0);
     const totalSavings = totalOriginalSize - totalCompressedSize;
-    const averageCompression = results.reduce((sum, r) => sum + r.compressionRatio, 0) / results.length;
+    const averageCompression =
+      results.reduce((sum, r) => sum + r.compressionRatio, 0) / results.length;
 
     return {
       totalFiles: results.length,

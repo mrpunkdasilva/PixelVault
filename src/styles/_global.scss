@@ -1,11 +1,12 @@
-@use './variables' as *;
+@use "./variables" as *;
 
 // Global 8bit Pixel Styles
 * {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   font-family: $font-pixel;
@@ -39,7 +40,7 @@ html, body {
 ::-webkit-scrollbar-thumb {
   background: $pixel-blue;
   border-radius: $border-radius-small;
-  
+
   &:hover {
     background: $pixel-blue-dark;
   }
@@ -68,11 +69,12 @@ img {
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
-  
+
   &[src=""] {
-    background: linear-gradient(90deg, 
-      rgba(102, 217, 255, 0.1) 25%, 
-      rgba(102, 217, 255, 0.2) 50%, 
+    background: linear-gradient(
+      90deg,
+      rgba(102, 217, 255, 0.1) 25%,
+      rgba(102, 217, 255, 0.2) 50%,
       rgba(102, 217, 255, 0.1) 75%
     );
     background-size: 200% 100%;
@@ -90,14 +92,21 @@ img {
 }
 
 // Global typography
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $font-pixel;
   margin: 0;
   line-height: 1.2;
   text-rendering: optimizeSpeed;
 }
 
-p, span, div {
+p,
+span,
+div {
   font-family: $font-pixel;
   line-height: 1.4;
 }
@@ -112,7 +121,7 @@ html {
 .action-btn,
 .logo-container {
   cursor: pointer;
-  
+
   &:hover {
     cursor: pointer;
   }

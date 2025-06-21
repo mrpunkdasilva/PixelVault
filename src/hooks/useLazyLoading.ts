@@ -7,11 +7,7 @@ interface UseLazyLoadingOptions {
 }
 
 export const useLazyLoading = (options: UseLazyLoadingOptions = {}) => {
-  const {
-    rootMargin = '50px',
-    threshold = 0.1,
-    triggerOnce = true,
-  } = options;
+  const { rootMargin = '50px', threshold = 0.1, triggerOnce = true } = options;
 
   const [isInView, setIsInView] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -29,11 +25,11 @@ export const useLazyLoading = (options: UseLazyLoadingOptions = {}) => {
     }
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             setIsInView(true);
-            
+
             if (triggerOnce) {
               observer.unobserve(element);
             }
@@ -45,7 +41,7 @@ export const useLazyLoading = (options: UseLazyLoadingOptions = {}) => {
       {
         rootMargin,
         threshold,
-      }
+      },
     );
 
     observer.observe(element);

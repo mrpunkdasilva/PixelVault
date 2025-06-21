@@ -1,0 +1,397 @@
+name: ✨ Feature Request
+description: Suggest a new feature or enhancement for PixelVault
+title: "[FEATURE] "
+labels: ["enhancement", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! 🚀
+        Please search existing issues before creating a new one.
+
+  - type: input
+    id: feature-title
+    attributes:
+      label: ✨ Feature Title
+      description: A short, descriptive title for your feature request
+      placeholder: e.g., "Add bulk photo deletion feature"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 🎯 Problem Statement
+      description: What problem does this feature solve? What user need does it address?
+      placeholder: "As a user, I want to... so that I can..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: 💡 Proposed Solution
+      description: Describe your proposed solution in detail
+      placeholder: "I suggest implementing..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 🔄 Alternative Solutions
+      description: Have you considered any alternative solutions or workarounds?
+      placeholder: "Alternatively, we could..."
+    validations:
+      required: false
+
+  - type: dropdown
+    id: feature-type
+    attributes:
+      label: 📂 Feature Category
+      description: What category does this feature belong to?
+      options:
+        - "🖼️ Photo Management"
+        - "📁 Albums & Organization"
+        - "🎨 UI/UX Improvements"
+        - "⚡ Performance"
+        - "📱 Mobile Experience"
+        - "🔍 Search & Filtering"
+        - "🔐 Authentication & Security"
+        - "📊 Analytics & Monitoring"
+        - "🔧 Developer Tools"
+        - "🌐 Accessibility"
+        - "Other"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 🎯 Priority Level
+      description: How important is this feature to you?
+      options:
+        - "🔴 Critical - Essential for core functionality"
+        - "🟡 High - Would significantly improve user experience"
+        - "🟠 Medium - Nice to have feature"
+        - "🟢 Low - Minor enhancement"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: user-impact
+    attributes:
+      label: 👥 User Impact
+      description: Who would benefit from this feature?
+      options:
+        - label: "New users"
+        - label: "Power users"
+        - label: "Mobile users"
+        - label: "Desktop users"
+        - label: "Developers"
+        - label: "All users"
+
+  - type: textarea
+    id: user-stories
+    attributes:
+      label: 📖 User Stories
+      description: Provide specific user stories for this feature
+      placeholder: |
+        1. As a [user type], I want to [action] so that [benefit]
+        2. As a [user type], I want to [action] so that [benefit]
+      value: |
+        1. As a [user type], I want to [action] so that [benefit]
+        2. As a [user type], I want to [action] so that [benefit]
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: ✅ Acceptance Criteria
+      description: What conditions must be met for this feature to be considered complete?
+      placeholder: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+        - [ ] Criterion 3
+      value: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+        - [ ] Criterion 3
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: performance-considerations
+    attributes:
+      label: ⚡ Performance Considerations
+      description: How might this feature impact performance?
+      options:
+        - label: "This feature should not impact performance"
+        - label: "This feature might slightly impact performance"
+        - label: "This feature could significantly impact performance"
+        - label: "This feature should improve performance"
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: 🛠️ Implementation Complexity
+      description: How complex do you think this feature would be to implement?
+      options:
+        - "🟢 Simple - Few hours of work"
+        - "🟡 Medium - Few days of work"
+        - "🟠 Complex - Few weeks of work"
+        - "🔴 Very Complex - Months of work"
+        - "❓ Unknown"
+    validations:
+      required: false
+
+  - type: textarea
+    id: mockups
+    attributes:
+      label: 🎨 Mockups or Examples
+      description: Any mockups, wireframes, or examples from other apps?
+      placeholder: "Link to mockups, screenshots, or similar features in other apps..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: technical-notes
+    attributes:
+      label: 🔧 Technical Notes
+      description: Any technical considerations or implementation ideas?
+      placeholder: "This might require changes to the database schema, API endpoints, etc."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: 🤝 Contribution
+      description: Are you willing to contribute to this feature?
+      options:
+        - label: "I'm willing to work on this feature"
+        - label: "I can help with design/mockups"
+        - label: "I can help with testing"
+        - label: "I can provide feedback and requirements"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 📝 Additional Context
+      description: Any other context, screenshots, or links about the feature request
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: ✅ Checklist
+      description: Please confirm the following
+      options:
+        - label: "I have searched existing issues to avoid duplicates"
+          required: true
+        - label: "This feature aligns with PixelVault's performance-first philosophy"
+          required: true
+        - label: "I understand this is a free, open-source project"
+          required: truename: ✨ Feature Request
+description: Suggest a new feature or enhancement for PixelVault
+title: "[FEATURE] "
+labels: ["enhancement", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! 🚀
+        Please search existing issues before creating a new one.
+
+  - type: input
+    id: feature-title
+    attributes:
+      label: ✨ Feature Title
+      description: A short, descriptive title for your feature request
+      placeholder: e.g., "Add bulk photo deletion feature"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 🎯 Problem Statement
+      description: What problem does this feature solve? What user need does it address?
+      placeholder: "As a user, I want to... so that I can..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: 💡 Proposed Solution
+      description: Describe your proposed solution in detail
+      placeholder: "I suggest implementing..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 🔄 Alternative Solutions
+      description: Have you considered any alternative solutions or workarounds?
+      placeholder: "Alternatively, we could..."
+    validations:
+      required: false
+
+  - type: dropdown
+    id: feature-type
+    attributes:
+      label: 📂 Feature Category
+      description: What category does this feature belong to?
+      options:
+        - "🖼️ Photo Management"
+        - "📁 Albums & Organization"
+        - "🎨 UI/UX Improvements"
+        - "⚡ Performance"
+        - "📱 Mobile Experience"
+        - "🔍 Search & Filtering"
+        - "🔐 Authentication & Security"
+        - "📊 Analytics & Monitoring"
+        - "🔧 Developer Tools"
+        - "🌐 Accessibility"
+        - "Other"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 🎯 Priority Level
+      description: How important is this feature to you?
+      options:
+        - "🔴 Critical - Essential for core functionality"
+        - "🟡 High - Would significantly improve user experience"
+        - "🟠 Medium - Nice to have feature"
+        - "🟢 Low - Minor enhancement"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: user-impact
+    attributes:
+      label: 👥 User Impact
+      description: Who would benefit from this feature?
+      options:
+        - label: "New users"
+        - label: "Power users"
+        - label: "Mobile users"
+        - label: "Desktop users"
+        - label: "Developers"
+        - label: "All users"
+
+  - type: textarea
+    id: user-stories
+    attributes:
+      label: 📖 User Stories
+      description: Provide specific user stories for this feature
+      placeholder: |
+        1. As a [user type], I want to [action] so that [benefit]
+        2. As a [user type], I want to [action] so that [benefit]
+      value: |
+        1. As a [user type], I want to [action] so that [benefit]
+        2. As a [user type], I want to [action] so that [benefit]
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: ✅ Acceptance Criteria
+      description: What conditions must be met for this feature to be considered complete?
+      placeholder: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+        - [ ] Criterion 3
+      value: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+        - [ ] Criterion 3
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: performance-considerations
+    attributes:
+      label: ⚡ Performance Considerations
+      description: How might this feature impact performance?
+      options:
+        - label: "This feature should not impact performance"
+        - label: "This feature might slightly impact performance"
+        - label: "This feature could significantly impact performance"
+        - label: "This feature should improve performance"
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: 🛠️ Implementation Complexity
+      description: How complex do you think this feature would be to implement?
+      options:
+        - "🟢 Simple - Few hours of work"
+        - "🟡 Medium - Few days of work"
+        - "🟠 Complex - Few weeks of work"
+        - "🔴 Very Complex - Months of work"
+        - "❓ Unknown"
+    validations:
+      required: false
+
+  - type: textarea
+    id: mockups
+    attributes:
+      label: 🎨 Mockups or Examples
+      description: Any mockups, wireframes, or examples from other apps?
+      placeholder: "Link to mockups, screenshots, or similar features in other apps..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: technical-notes
+    attributes:
+      label: 🔧 Technical Notes
+      description: Any technical considerations or implementation ideas?
+      placeholder: "This might require changes to the database schema, API endpoints, etc."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: 🤝 Contribution
+      description: Are you willing to contribute to this feature?
+      options:
+        - label: "I'm willing to work on this feature"
+        - label: "I can help with design/mockups"
+        - label: "I can help with testing"
+        - label: "I can provide feedback and requirements"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 📝 Additional Context
+      description: Any other context, screenshots, or links about the feature request
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: ✅ Checklist
+      description: Please confirm the following
+      options:
+        - label: "I have searched existing issues to avoid duplicates"
+          required: true
+        - label: "This feature aligns with PixelVault's performance-first philosophy"
+          required: true
+        - label: "I understand this is a free, open-source project"
+          required: true

@@ -11,12 +11,9 @@ export const NotificationContainer: React.FC = () => {
   }
 
   return (
-    <div className="notification-container">
-      {notifications.map((notification) => (
-        <NotificationItem
-          key={notification.id}
-          notification={notification}
-        />
+    <div className='notification-container'>
+      {notifications.map(notification => (
+        <NotificationItem key={notification.id} notification={notification} />
       ))}
     </div>
   );
