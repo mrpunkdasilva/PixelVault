@@ -6,14 +6,13 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 0.98);
     backdrop-filter: $blur-lg;
     -webkit-backdrop-filter: $blur-lg;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     z-index: 1000;
-    padding: $spacing-lg;
     animation: pixelFadeIn 0.3s ease-in-out;
     
     // Pixel scanlines effect
@@ -36,27 +35,34 @@
 
 .photo-modal {
     @include pixel-card;
-    max-width: 95vw;
-    max-height: 95vh;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     animation: pixelSlideIn 0.3s ease-in-out;
     overflow: hidden;
     position: relative;
+    border-radius: 0; // Remove border radius for fullscreen
+    border: none; // Remove border for fullscreen
     
-    // Pixel border glow
+    // Pixel border glow - adjusted for fullscreen
     &::before {
         content: '';
         position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        background: linear-gradient(45deg, $pixel-blue, transparent, $pixel-cyan, transparent, $pixel-blue);
-        border-radius: $border-radius;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, 
+            rgba(102, 217, 255, 0.1) 0%, 
+            transparent 25%, 
+            rgba(102, 255, 217, 0.08) 50%, 
+            transparent 75%, 
+            rgba(102, 217, 255, 0.1) 100%
+        );
         z-index: -1;
-        opacity: 0.4;
-        animation: pixelBorderGlow 3s ease-in-out infinite;
+        opacity: 0.3;
+        animation: pixelBorderGlow 4s ease-in-out infinite;
     }
 }
 
@@ -64,10 +70,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: $spacing-lg $spacing-xl;
+    padding: $spacing-md $spacing-lg;
     border-bottom: 2px solid $border-glass;
-    background: rgba(102, 217, 255, 0.05);
+    background: rgba(102, 217, 255, 0.08);
     position: relative;
+    min-height: 60px;
+    backdrop-filter: $blur-sm;
+    -webkit-backdrop-filter: $blur-sm;
 
     .photo-modal-title {
         @include pixel-style;
@@ -152,35 +161,59 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: $spacing-lg;
+    padding: 0;
     overflow: hidden;
     position: relative;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.1);
     border-top: 1px solid $border-glass;
     border-bottom: 1px solid $border-glass;
+    
+    // Add some padding for better visual spacing
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at center, transparent 60%, rgba(0, 0, 0, 0.1) 100%);
+        pointer-events: none;
+        z-index: 0;
+    }
 }
 
 .photo-modal-image {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: calc(100vw - 40px);
+    max-height: calc(100vh - 200px); // Account for header and controls
+    width: auto;
+    height: auto;
     object-fit: contain;
     border-radius: $border-radius-small;
     box-shadow: 
-        0 4px 24px rgba(0, 0, 0, 0.5),
-        0 0 20px rgba(102, 217, 255, 0.1);
+        0 8px 32px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(102, 217, 255, 0.15),
+        inset 0 0 0 1px rgba(102, 217, 255, 0.1);
     transition: transform 0.1s ease-out;
     transform-origin: center;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
+    position: relative;
+    z-index: 1;
     
-    // Pixel rendering
+    // Pixel rendering for crisp edges
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
     image-rendering: pixelated;
 
     &.dragging {
         transition: none;
+        cursor: grabbing !important;
+    }
+    
+    // Add a subtle glow when zoomed
+    &[style*="scale"] {
+        filter: brightness(1.02) contrast(1.05);
     }
 }
 
@@ -188,10 +221,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: $spacing-md $spacing-xl;
-    background: rgba(102, 217, 255, 0.05);
+    padding: $spacing-sm $spacing-lg;
+    background: rgba(102, 217, 255, 0.08);
     border-top: 2px solid $border-glass;
-    gap: $spacing-sm;
+    gap: $spacing-xs;
+    min-height: 80px;
+    backdrop-filter: $blur-sm;
+    -webkit-backdrop-filter: $blur-sm;
+    
+    // Add subtle animation
+    position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, $pixel-blue, transparent);
+        opacity: 0.3;
+        animation: pixelSweep 3s ease-in-out infinite;
+    }
 }
 
 .zoom-controls {
@@ -308,41 +358,55 @@
     }
 }
 
-// Mobile responsiveness
+@keyframes pixelSweep {
+    0%, 100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(100%);
+        opacity: 0.3;
+    }
+}
+
+// Mobile responsiveness for fullscreen
 @media (max-width: $breakpoint-md) {
-    .photo-modal-overlay {
-        padding: $spacing-md;
-    }
-
-    .photo-modal {
-        max-width: 98vw;
-        max-height: 98vh;
-    }
-
     .photo-modal-header {
-        padding: $spacing-md;
+        padding: $spacing-sm $spacing-md;
         flex-wrap: wrap;
-        gap: $spacing-sm;
+        gap: $spacing-xs;
+        min-height: 50px;
 
         .photo-modal-title {
             font-size: 16px;
+            flex: none;
+            width: 100%;
+            order: 1;
+            margin-bottom: $spacing-xs;
         }
 
         .zoom-info {
             margin: 0;
-            order: 3;
-            flex-basis: 100%;
-            justify-content: center;
+            order: 2;
+            flex: 1;
+            justify-content: flex-start;
             
             .zoom-level {
                 font-size: 12px;
-                padding: 3px 6px;
+                padding: 2px 6px;
+                min-width: 45px;
             }
         }
 
         .photo-modal-actions {
             gap: $spacing-xs;
+            order: 3;
         }
+    }
+
+    .photo-modal-image {
+        max-width: calc(100vw - 20px);
+        max-height: calc(100vh - 180px); // Less space for mobile header/controls
     }
 
     .action-btn {
@@ -356,12 +420,9 @@
         }
     }
 
-    .photo-modal-content {
-        padding: $spacing-md;
-    }
-
     .photo-modal-controls {
-        padding: $spacing-sm $spacing-md;
+        padding: $spacing-xs $spacing-md;
+        min-height: 70px;
         
         .zoom-controls {
             gap: $spacing-xs;
@@ -398,7 +459,14 @@
         }
     }
     
+    .photo-modal-image {
+        max-width: calc(100vw - 10px);
+        max-height: calc(100vh - 160px); // Even less space for very small screens
+    }
+    
     .photo-modal-controls {
+        min-height: 60px;
+        
         .help-text {
             display: none; // Hide help text on very small screens
         }
