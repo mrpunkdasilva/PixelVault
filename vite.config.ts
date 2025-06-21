@@ -7,5 +7,30 @@ export default defineConfig({
   server: {
     port: 3000,
     open: true
+  },
+  build: {
+    // Optimize bundle
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Separate vendor chunks
+          vendor: ['react', 'react-dom'],
+          // Firebase will be handled automatically
+          // Utilities
+          utils: ['uuid']
+        }
+      }
+    },
+    // Enable source maps for debugging
+    sourcemap: true,
+    // Optimize chunk size
+    chunkSizeWarningLimit: 1000,
+    // Enable minification
+    minify: 'esbuild',
+  },
+  // Optimize dependencies
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'uuid'],
+    exclude: []
   }
 })

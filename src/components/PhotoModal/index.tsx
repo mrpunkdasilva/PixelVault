@@ -54,12 +54,6 @@ export const PhotoModal = ({ isOpen, imageUrl, imageName, onClose, onDelete }: P
     }, []);
 
     useEffect(() => {
-        const handleEscape = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') {
-                onClose();
-            }
-        };
-
         const handleKeyDown = (e: KeyboardEvent) => {
             if (!isOpen) return;
             
@@ -265,3 +259,9 @@ export const PhotoModal = ({ isOpen, imageUrl, imageName, onClose, onDelete }: P
         </div>
     );
 };
+
+// Export types for TypeScript
+export type PhotoModalProps = Props;
+
+// Default export for lazy loading
+export default PhotoModal;

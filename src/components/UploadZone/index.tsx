@@ -1,15 +1,41 @@
 import { useState, useRef, DragEvent, ChangeEvent } from 'react';
+import { useImageCompression } from '../../hooks/useImageCompression';
+import { CompressionProgress } from '../CompressionProgress';
 import './UploadZone.scss';
 
 type Props = {
     onFileSelect: (file: File) => void;
+    onMultipleFilesSelect?: (files: File[]) => void;
     uploading?: boolean;
+    enableCompression?: boolean;
 }
 
-export const UploadZone = ({ onFileSelect, uploading = false }: Props) => {
+export const UploadZone = ({ 
+    onFileSelect, 
+    onMultipleFilesSelect,
+    uploading = false, 
+    enableCompression = true 
+}: Props) => {
     const [isDragOver, setIsDragOver] = useState(false);
-    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
     const fileInputRef = useRef<HTMLInputElement>(null);
+
+    // Image compression hook
+    const {
+        isCompressing,
+        progress,
+        current,
+        total,
+        compressFiles,
+        canCompress,
+    } = useImageCompression({
+        maxWidth: 1920,
+        maxHeight: 1080,
+        quality: 0.85,
+        maxFileSize: 2 * 1024 * 1024, // 2MB
+        format: 'jpeg',
+        showNotifications: true,
+    });
 
     const handleDragEnter = (e: DragEvent) => {
         e.preventDefault();
@@ -28,29 +54,52 @@ export const UploadZone = ({ onFileSelect, uploading = false }: Props) => {
         e.stopPropagation();
     };
 
-    const handleDrop = (e: DragEvent) => {
+    const handleDrop = async (e: DragEvent) => {
         e.preventDefault();
         e.stopPropagation();
         setIsDragOver(false);
 
-        const files = e.dataTransfer.files;
-        if (files.length > 0) {
-            const file = files[0];
-            if (file.type.startsWith('image/')) {
-                setSelectedFile(file);
-                onFileSelect(file);
-            } else {
-                alert('Please select an image file');
-            }
+        const files = Array.from(e.dataTransfer.files);
+        await processFiles(files);
+    };
+
+    const handleFileInputChange = async (e: ChangeEvent<HTMLInputElement>) => {
+        const files = e.target.files;
+        if (files && files.length > 0) {
+            const filesArray = Array.from(files);
+            await processFiles(filesArray);
         }
     };
 
-    const handleFileInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const files = e.target.files;
-        if (files && files.length > 0) {
-            const file = files[0];
-            setSelectedFile(file);
-            onFileSelect(file);
+    const processFiles = async (files: File[]) => {
+        // Filter only image files
+        const imageFiles = files.filter(file => file.type.startsWith('image/'));
+        
+        if (imageFiles.length === 0) {
+            alert('Please select image files only');
+            return;
+        }
+
+        if (imageFiles.length !== files.length) {
+            alert(`${files.length - imageFiles.length} non-image files were ignored`);
+        }
+
+        // Compress images if enabled and needed
+        let processedFiles = imageFiles;
+        if (enableCompression && canCompress(imageFiles)) {
+            processedFiles = await compressFiles(imageFiles);
+        }
+
+        setSelectedFiles(processedFiles);
+
+        // Handle single vs multiple files
+        if (processedFiles.length === 1) {
+            onFileSelect(processedFiles[0]);
+        } else if (onMultipleFilesSelect) {
+            onMultipleFilesSelect(processedFiles);
+        } else {
+            // If no multiple files handler, select first file
+            onFileSelect(processedFiles[0]);
         }
     };
 
@@ -60,30 +109,32 @@ export const UploadZone = ({ onFileSelect, uploading = false }: Props) => {
         }
     };
 
-    const handleRemoveFile = (e: React.MouseEvent) => {
+    const handleRemoveFiles = (e: React.MouseEvent) => {
         e.stopPropagation();
-        setSelectedFile(null);
+        setSelectedFiles([]);
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
         }
     };
 
     return (
-        <div 
-            className={`upload-zone ${isDragOver ? 'drag-over' : ''} ${uploading ? 'uploading' : ''} ${selectedFile ? 'has-file' : ''}`}
-            onDragEnter={handleDragEnter}
-            onDragLeave={handleDragLeave}
-            onDragOver={handleDragOver}
-            onDrop={handleDrop}
-            onClick={handleClick}
-        >
-            <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*"
-                onChange={handleFileInputChange}
-                style={{ display: 'none' }}
-            />
+        <>
+            <div 
+                className={`upload-zone ${isDragOver ? 'drag-over' : ''} ${uploading || isCompressing ? 'uploading' : ''} ${selectedFiles.length > 0 ? 'has-file' : ''}`}
+                onDragEnter={handleDragEnter}
+                onDragLeave={handleDragLeave}
+                onDragOver={handleDragOver}
+                onDrop={handleDrop}
+                onClick={handleClick}
+            >
+                <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleFileInputChange}
+                    style={{ display: 'none' }}
+                />
             
             <div className="upload-content">
                 {uploading ? (
@@ -92,23 +143,34 @@ export const UploadZone = ({ onFileSelect, uploading = false }: Props) => {
                         <h3>Uploading your photo...</h3>
                         <p>Please wait while we process your image</p>
                     </>
-                ) : selectedFile ? (
+                ) : selectedFiles.length > 0 ? (
                     <>
-                        <div className="file-preview">
-                            <div className="file-icon">📷</div>
-                            <div className="file-info">
-                                <h4>{selectedFile.name}</h4>
-                                <p>{(selectedFile.size / 1024 / 1024).toFixed(2)} MB</p>
+                        <div className="files-preview">
+                            <div className="files-summary">
+                                <div className="file-icon">📷</div>
+                                <div className="files-info">
+                                    <h4>
+                                        {selectedFiles.length} image{selectedFiles.length > 1 ? 's' : ''} selected
+                                    </h4>
+                                    <p>
+                                        Total: {(selectedFiles.reduce((sum, f) => sum + f.size, 0) / 1024 / 1024).toFixed(2)} MB
+                                    </p>
+                                    {enableCompression && canCompress(selectedFiles) && (
+                                        <small className="compression-hint">
+                                            🗜️ Images will be compressed for optimal performance
+                                        </small>
+                                    )}
+                                </div>
+                                <button 
+                                    className="remove-file"
+                                    onClick={handleRemoveFiles}
+                                    aria-label="Remove files"
+                                >
+                                    ✕
+                                </button>
                             </div>
-                            <button 
-                                className="remove-file"
-                                onClick={handleRemoveFile}
-                                aria-label="Remove file"
-                            >
-                                ✕
-                            </button>
                         </div>
-                        <p className="upload-hint">Click to upload or drag a new image to replace</p>
+                        <p className="upload-hint">Click to upload or drag new images to replace</p>
                     </>
                 ) : (
                     <>
@@ -120,10 +182,24 @@ export const UploadZone = ({ onFileSelect, uploading = false }: Props) => {
                         </div>
                         <h3>Drop your photos here</h3>
                         <p>or <span className="upload-link">click to browse</span></p>
-                        <small>Supports: JPG, PNG, GIF, WebP</small>
+                        <small>Supports: JPG, PNG, GIF, WebP (Multiple files supported)</small>
+                        {enableCompression && (
+                            <small className="compression-feature">
+                                🗜️ Auto-compression enabled for better performance
+                            </small>
+                        )}
                     </>
                 )}
             </div>
-        </div>
+            </div>
+
+            {/* Compression Progress Modal */}
+            <CompressionProgress
+                isVisible={isCompressing}
+                progress={progress}
+                current={current}
+                total={total}
+            />
+        </>
     );
 };

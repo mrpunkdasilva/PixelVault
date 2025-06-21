@@ -75,6 +75,13 @@
   // Pixel glow effects (more subtle)
   --pixel-glow: 0 0 6px var(--color-accent-primary), 0 0 12px rgba(102, 217, 255, 0.2);
   --pixel-glow-strong: 0 0 8px var(--color-accent-primary), 0 0 16px rgba(102, 217, 255, 0.25), 0 0 24px rgba(102, 217, 255, 0.15);
+  
+  // Skeleton loading colors
+  --skeleton-base: rgba(102, 217, 255, 0.08);
+  --skeleton-shimmer: rgba(102, 217, 255, 0.15);
+  --surface-color: var(--color-surface-primary);
+  --surface-dark: var(--color-surface-secondary);
+  --text-secondary-dark: var(--color-text-secondary);
 }
 
 // Light Theme
@@ -120,6 +127,13 @@
   // Pixel glow effects
   --pixel-glow: 0 0 8px var(--color-accent-primary), 0 0 16px rgba(37, 99, 235, 0.2);
   --pixel-glow-strong: 0 0 12px var(--color-accent-primary), 0 0 24px rgba(37, 99, 235, 0.3), 0 0 36px rgba(37, 99, 235, 0.15);
+  
+  // Skeleton loading colors for light theme
+  --skeleton-base: rgba(15, 23, 42, 0.08);
+  --skeleton-base-dark: rgba(15, 23, 42, 0.12);
+  --skeleton-shimmer: rgba(15, 23, 42, 0.15);
+  --skeleton-shimmer-dark: rgba(15, 23, 42, 0.18);
+  --text-secondary: var(--color-text-secondary);
 }
 
 // Smooth theme transitions

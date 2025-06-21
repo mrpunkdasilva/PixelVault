@@ -11,7 +11,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build:analyze": "tsc && vite build --mode analyze",
+    "preview": "vite preview",
+    "bundle-analyze": "npm run build && npx vite-bundle-analyzer dist"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
@@ -19,6 +21,17 @@
     "@types/react-dom": "^18.0.4",
     "@types/uuid": "^8.3.4",
     "@vitejs/plugin-react": "^4.0.0",
+    "gulp": "^5.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^9.1.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-uglify": "^3.0.2",
+    "imagemin": "^9.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^10.0.0",
+    "imagemin-svgo": "^11.0.1",
+    "imagemin-webp": "^8.0.0",
     "sass": "^1.83.0",
     "typescript": "^5.0.0",
     "vite": "^5.0.0"

@@ -4,17 +4,36 @@ import './KeyboardShortcutsHelp.scss';
 
 interface KeyboardShortcutsHelpProps {
   shortcuts: KeyboardShortcut[];
+  isOpen?: boolean;
+  onToggle?: () => void;
+  onClose?: () => void;
 }
 
-export const KeyboardShortcutsHelp: React.FC<KeyboardShortcutsHelpProps> = ({ shortcuts }) => {
-  const [isOpen, setIsOpen] = useState(false);
+export const KeyboardShortcutsHelp: React.FC<KeyboardShortcutsHelpProps> = ({ 
+  shortcuts, 
+  isOpen: externalIsOpen,
+  onToggle: externalOnToggle,
+  onClose: externalOnClose 
+}) => {
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
 
+  // Use external state if provided, otherwise use internal state
+  const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
+  
   const toggleHelp = () => {
-    setIsOpen(!isOpen);
+    if (externalOnToggle) {
+      externalOnToggle();
+    } else {
+      setInternalIsOpen(!internalIsOpen);
+    }
   };
 
   const closeHelp = () => {
-    setIsOpen(false);
+    if (externalOnClose) {
+      externalOnClose();
+    } else {
+      setInternalIsOpen(false);
+    }
   };
 
   return (
@@ -22,7 +41,7 @@ export const KeyboardShortcutsHelp: React.FC<KeyboardShortcutsHelpProps> = ({ sh
       <button
         className="keyboard-shortcuts-trigger"
         onClick={toggleHelp}
-        title="Keyboard Shortcuts (Press ? to toggle)"
+        title="Keyboard Shortcuts (Press Ctrl+H to toggle)"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
           <path d="M9.879 7.519c.1-.2.209-.34.319-.42.11-.08.239-.12.369-.12.12 0 .239.04.339.12.1.08.18.2.239.32L13.519 12l-2.374 4.58c-.06.12-.14.24-.239.32-.1.08-.219.12-.339.12-.13 0-.259-.04-.369-.12-.11-.08-.219-.22-.319-.42L7.505 12l2.374-4.48z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -77,3 +96,7 @@ export const KeyboardShortcutsHelp: React.FC<KeyboardShortcutsHelpProps> = ({ sh
     </>
   );
 };
+
+// Export types and default export for lazy loading
+export type { KeyboardShortcutsHelpProps };
+export default KeyboardShortcutsHelp;

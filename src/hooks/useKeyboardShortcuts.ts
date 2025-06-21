@@ -6,7 +6,7 @@ export interface KeyboardShortcut {
   altKey?: boolean;
   shiftKey?: boolean;
   metaKey?: boolean;
-  action: () => void;
+  action: (event?: KeyboardEvent) => void;
   description: string;
   preventDefault?: boolean;
 }
@@ -19,13 +19,27 @@ export const useKeyboardShortcuts = (shortcuts: KeyboardShortcut[]) => {
       return;
     }
 
+    // Debug log for all key presses (uncomment for debugging)
+    // console.log('Key pressed:', {
+    //   key: event.key,
+    //   code: event.code,
+    //   ctrlKey: event.ctrlKey,
+    //   altKey: event.altKey,
+    //   shiftKey: event.shiftKey,
+    //   metaKey: event.metaKey
+    // });
+
     const matchingShortcut = shortcuts.find(shortcut => {
       // Check key match
       let keyMatches = false;
-      if (shortcut.key.toLowerCase() === event.key.toLowerCase()) {
+      
+      // Handle special case for ? (which is Shift+/)
+      if (shortcut.key === '?' && event.key === '?' && event.shiftKey) {
         keyMatches = true;
       } else if (shortcut.key === '?' && event.key === '/' && event.shiftKey) {
-        // Special case for ? which is Shift+/
+        // Fallback for browsers that might report '/' instead of '?'
+        keyMatches = true;
+      } else if (shortcut.key.toLowerCase() === event.key.toLowerCase()) {
         keyMatches = true;
       }
 
@@ -39,12 +53,12 @@ export const useKeyboardShortcuts = (shortcuts: KeyboardShortcut[]) => {
     });
 
     if (matchingShortcut) {
-      console.log('Keyboard shortcut triggered:', matchingShortcut.description); // Debug log
+      // console.log('Keyboard shortcut triggered:', matchingShortcut.description); // Debug log
       if (matchingShortcut.preventDefault !== false) {
         event.preventDefault();
         event.stopPropagation();
       }
-      matchingShortcut.action();
+      matchingShortcut.action(event);
     }
   }, [shortcuts]);
 

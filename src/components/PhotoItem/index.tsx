@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './PhotoItem.scss';
+import { LazyImage } from '../LazyImage';
 
 type Props = {
     url: string;
@@ -9,16 +10,7 @@ type Props = {
 }
 
 export const PhotoItem = ({ url, name, onClick, onDelete }: Props) => {
-    const [imageLoaded, setImageLoaded] = useState(false);
-    const [imageError, setImageError] = useState(false);
-
-    const handleImageLoad = () => {
-        setImageLoaded(true);
-    };
-
-    const handleImageError = () => {
-        setImageError(true);
-    };
+    const [isHovered, setIsHovered] = useState(false);
 
     const handleDelete = (e: React.MouseEvent) => {
         e.stopPropagation();
@@ -28,32 +20,20 @@ export const PhotoItem = ({ url, name, onClick, onDelete }: Props) => {
     };
 
     return (
-        <div className="photo-item-container" onClick={onClick}>
+        <div 
+            className="photo-item-container" 
+            onClick={onClick}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
             <div className="photo-image-wrapper">
-                {!imageLoaded && !imageError && (
-                    <div className="photo-skeleton">
-                        <div className="skeleton-shimmer"></div>
-                    </div>
-                )}
+                <LazyImage
+                    src={url}
+                    alt={name}
+                    className="photo-image"
+                />
                 
-                {imageError ? (
-                    <div className="photo-error">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
-                        </svg>
-                        <span>Failed to load</span>
-                    </div>
-                ) : (
-                    <img 
-                        src={url} 
-                        alt={name}
-                        onLoad={handleImageLoad}
-                        onError={handleImageError}
-                        style={{ display: imageLoaded ? 'block' : 'none' }}
-                    />
-                )}
-                
-                <div className="photo-overlay">
+                <div className={`photo-overlay ${isHovered ? 'visible' : ''}`}>
                     <div className="photo-actions">
                         <button 
                             className="action-btn view-btn"

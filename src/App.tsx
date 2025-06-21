@@ -8,11 +8,10 @@ import { PhotoItem } from './components/PhotoItem';
 import { LogoWithText } from './components/LogoWithText';
 import { LoadingLogo } from './components/LoadingLogo';
 import { UploadZone } from './components/UploadZone';
-import { PhotoModal } from './components/PhotoModal';
 import { ThemeToggle } from './components/ThemeToggle';
 import { NotificationContainer } from './components/NotificationContainer';
 import { useNotificationHelpers } from './contexts/NotificationContext';
-import { KeyboardShortcutsHelp } from './components/KeyboardShortcutsHelp';
+import { PhotoModal, KeyboardShortcutsHelp } from './components/LazyComponents';
 import { useKeyboardShortcuts, KeyboardShortcut } from './hooks/useKeyboardShortcuts';
 import { useTheme } from './contexts/ThemeContext';
 
@@ -22,8 +21,18 @@ function App() {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { showSuccess, showError, showInfo } = useNotificationHelpers();
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
+  const { showSuccess, showError } = useNotificationHelpers();
   const { toggleTheme } = useTheme();
+
+  // Help modal functions
+  const toggleHelp = () => {
+    setIsHelpOpen(!isHelpOpen);
+  };
+
+  const closeHelp = () => {
+    setIsHelpOpen(false);
+  };
 
   // Keyboard shortcuts
   const shortcuts: KeyboardShortcut[] = [
@@ -32,6 +41,8 @@ function App() {
       action: () => {
         if (isModalOpen) {
           handleCloseModal();
+        } else if (isHelpOpen) {
+          closeHelp();
         }
       },
       description: 'Close modal or dialog',
@@ -39,8 +50,8 @@ function App() {
     {
       key: 'd',
       ctrlKey: true,
-      action: (e) => {
-        e?.preventDefault();
+      action: (event) => {
+        event?.preventDefault();
         toggleTheme();
       },
       description: 'Toggle theme (Dark/Light)',
@@ -73,21 +84,12 @@ function App() {
     },
     {
       key: 'h',
+      ctrlKey: true,
       action: () => {
-        // This will be handled by the KeyboardShortcutsHelp component
-        // For now, let's trigger a notification
-        showInfo('Keyboard Shortcuts', 'Press Ctrl+H to toggle help, or click the help button in the header');
+        toggleHelp();
       },
       description: 'Show keyboard shortcuts help',
-    },
-    {
-      key: '/',
-      shiftKey: true,
-      action: () => {
-        // This will be handled by the KeyboardShortcutsHelp component
-        showInfo('Keyboard Shortcuts', 'Press ? (Shift+/) to toggle help, or click the help button in the header');
-      },
-      description: 'Show keyboard shortcuts help',
+      preventDefault: true,
     },
   ];
 
@@ -147,7 +149,12 @@ function App() {
         <div className="header">
           <LogoWithText size={70} showSubtext={true} />
           <div className="header-controls">
-            <KeyboardShortcutsHelp shortcuts={shortcuts} />
+            <KeyboardShortcutsHelp 
+              shortcuts={shortcuts} 
+              isOpen={isHelpOpen}
+              onToggle={toggleHelp}
+              onClose={closeHelp}
+            />
             <ThemeToggle />
           </div>
         </div>
