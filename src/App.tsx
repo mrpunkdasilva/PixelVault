@@ -50,7 +50,7 @@ function App() {
     {
       key: 'd',
       ctrlKey: true,
-      action: (event) => {
+      action: event => {
         event?.preventDefault();
         toggleTheme();
       },
@@ -63,7 +63,7 @@ function App() {
         const input = document.createElement('input');
         input.type = 'file';
         input.accept = 'image/*';
-        input.onchange = (e) => {
+        input.onchange = e => {
           const file = (e.target as HTMLInputElement).files?.[0];
           if (file) {
             handleFileSelect(file);
@@ -100,10 +100,10 @@ function App() {
       setLoading(true);
       setPhotos(await Photos.getAll());
       setLoading(false);
-    }
+    };
 
     getPhotos();
-  }, [])
+  }, []);
 
   const handleFileSelect = async (file: File) => {
     setUploading(true);
@@ -118,7 +118,7 @@ function App() {
       setPhotos(newPhotoList);
       showSuccess('Photo Uploaded', 'Your photo has been successfully uploaded!');
     }
-  }
+  };
 
   const handleMultipleFilesSelect = async (files: File[]) => {
     setUploading(true);
@@ -146,31 +146,30 @@ function App() {
     // Show appropriate notification
     if (successCount > 0 && errorCount === 0) {
       showSuccess(
-        'Photos Uploaded', 
-        `${successCount} photo${successCount > 1 ? 's' : ''} uploaded successfully!`
+        'Photos Uploaded',
+        `${successCount} photo${successCount > 1 ? 's' : ''} uploaded successfully!`,
       );
     } else if (successCount > 0 && errorCount > 0) {
-      showError(
-        'Partial Upload', 
-        `${successCount} photos uploaded, ${errorCount} failed`
-      );
+      showError('Partial Upload', `${successCount} photos uploaded, ${errorCount} failed`);
     } else {
       showError('Upload Failed', 'All uploads failed');
     }
-  }
+  };
 
   const handlePhotoClick = (photo: Photo) => {
     setSelectedPhoto(photo);
     setIsModalOpen(true);
-  }
+  };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedPhoto(null);
-  }
+  };
 
   const handleDeletePhoto = async (photoToDelete: Photo) => {
-    const confirmDelete = window.confirm(`Are you sure you want to delete "${photoToDelete.name}"?`);
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete "${photoToDelete.name}"?`,
+    );
     if (confirmDelete) {
       // Here you would typically call a delete API
       // For now, we'll just remove it from the local state
@@ -180,16 +179,16 @@ function App() {
       }
       showSuccess('Photo Deleted', `"${photoToDelete.name}" has been deleted successfully.`);
     }
-  }
+  };
 
   return (
-    <div className="container">
-      <div className="area">
-        <div className="header">
+    <div className='container'>
+      <div className='area'>
+        <div className='header'>
           <LogoWithText size={70} showSubtext={true} />
-          <div className="header-controls">
-            <KeyboardShortcutsHelp 
-              shortcuts={shortcuts} 
+          <div className='header-controls'>
+            <KeyboardShortcutsHelp
+              shortcuts={shortcuts}
               isOpen={isHelpOpen}
               onToggle={toggleHelp}
               onClose={closeHelp}
@@ -198,49 +197,53 @@ function App() {
           </div>
         </div>
 
-        <UploadZone 
+        <UploadZone
           onFileSelect={handleFileSelect}
           onMultipleFilesSelect={handleMultipleFilesSelect}
           uploading={uploading}
           enableCompression={true}
         />
 
-        {loading &&
-          <div className="screen-warning">
+        {loading && (
+          <div className='screen-warning'>
             <LoadingLogo size={80} />
-            <div className="loading-text">Loading your photos...</div>
+            <div className='loading-text'>Loading your photos...</div>
           </div>
-        }
+        )}
 
-        {!loading && photos.length > 0 &&
-          <div className="photo-list">
+        {!loading && photos.length > 0 && (
+          <div className='photo-list'>
             {photos.map((item, index) => (
-              <PhotoItem 
-                key={index} 
-                url={item.url} 
+              <PhotoItem
+                key={index}
+                url={item.url}
                 name={item.name}
                 onClick={() => handlePhotoClick(item)}
                 onDelete={() => handleDeletePhoto(item)}
               />
             ))}
           </div>
-        }
+        )}
 
-        {!loading && photos.length === 0 &&
-          <div className="screen-warning">
-            <div className="empty-state">
-              <div className="empty-icon">
-                <svg width="80" height="80" viewBox="0 0 24 24" fill="none">
-                  <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="currentColor" opacity="0.6"/>
+        {!loading && photos.length === 0 && (
+          <div className='screen-warning'>
+            <div className='empty-state'>
+              <div className='empty-icon'>
+                <svg width='80' height='80' viewBox='0 0 24 24' fill='none'>
+                  <path
+                    d='M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z'
+                    fill='currentColor'
+                    opacity='0.6'
+                  />
                 </svg>
               </div>
               <h3>No photos yet</h3>
               <p>Upload your first photo to get started!</p>
             </div>
           </div>
-        }
+        )}
 
-        <PhotoModal 
+        <PhotoModal
           isOpen={isModalOpen}
           imageUrl={selectedPhoto?.url || ''}
           imageName={selectedPhoto?.name || ''}
@@ -248,7 +251,7 @@ function App() {
           onDelete={selectedPhoto ? () => handleDeletePhoto(selectedPhoto) : undefined}
         />
       </div>
-      
+
       <NotificationContainer />
     </div>
   );

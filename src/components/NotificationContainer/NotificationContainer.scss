@@ -47,7 +47,7 @@
   // Type-specific styles
   &--success {
     border-left: 4px solid var(--color-success);
-    
+
     .notification-item__icon {
       color: var(--color-success);
     }
@@ -55,7 +55,7 @@
 
   &--error {
     border-left: 4px solid var(--color-danger);
-    
+
     .notification-item__icon {
       color: var(--color-danger);
     }
@@ -63,7 +63,7 @@
 
   &--warning {
     border-left: 4px solid var(--color-warning);
-    
+
     .notification-item__icon {
       color: var(--color-warning);
     }
@@ -71,7 +71,7 @@
 
   &--info {
     border-left: 4px solid var(--color-accent-primary);
-    
+
     .notification-item__icon {
       color: var(--color-accent-primary);
     }
@@ -167,15 +167,15 @@
 }
 
 // Animation for stacked notifications
-.notification-item:nth-child(n+2) {
+.notification-item:nth-child(n + 2) {
   animation-delay: 0.1s;
 }
 
-.notification-item:nth-child(n+3) {
+.notification-item:nth-child(n + 3) {
   animation-delay: 0.2s;
 }
 
-.notification-item:nth-child(n+4) {
+.notification-item:nth-child(n + 4) {
   animation-delay: 0.3s;
 }
 
@@ -191,7 +191,7 @@
 
 // Progress bar for timed notifications
 .notification-item::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -215,7 +215,7 @@
 @media (max-width: 640px) {
   .notification-item {
     padding: var(--spacing-sm);
-    
+
     &__title {
       font-size: 13px;
     }
@@ -232,7 +232,7 @@
     &__close-button {
       width: 24px;
       height: 24px;
-      
+
       svg {
         width: 14px;
         height: 14px;

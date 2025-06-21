@@ -1,70 +1,70 @@
-@use '../styles/variables' as *;
+@use "../styles/variables" as *;
 
 .animated-svg {
   .lock-mechanism-outer {
     animation: rotate 6s linear infinite;
     transform-origin: 50px 50px;
   }
-  
+
   .lock-mechanism-middle {
     animation: rotate-reverse 4s linear infinite;
     transform-origin: 50px 50px;
   }
-  
+
   .lock-center {
     animation: pulse 2s ease-in-out infinite;
     transform-origin: 50px 50px;
   }
-  
+
   .lock-handle {
     animation: handle-move 8s ease-in-out infinite;
     transform-origin: 50px 65px;
   }
-  
+
   .vault-body {
     animation: vault-glow 3s ease-in-out infinite alternate;
   }
-  
+
   .vault-door {
     animation: door-shimmer 4s ease-in-out infinite;
   }
-  
+
   .pixel-float-1 {
     animation: pixel-float-1 4s ease-in-out infinite;
   }
-  
+
   .pixel-float-2 {
     animation: pixel-float-2 3.5s ease-in-out infinite;
   }
-  
+
   .pixel-float-3 {
     animation: pixel-float-3 4.5s ease-in-out infinite;
   }
-  
+
   .pixel-float-4 {
     animation: pixel-float-4 3.8s ease-in-out infinite;
   }
-  
+
   .pixel-small-1 {
     animation: pixel-twinkle 2s ease-in-out infinite;
     animation-delay: 0s;
   }
-  
+
   .pixel-small-2 {
     animation: pixel-twinkle 2.5s ease-in-out infinite;
     animation-delay: -0.5s;
   }
-  
+
   .pixel-small-3 {
     animation: pixel-twinkle 2.2s ease-in-out infinite;
     animation-delay: -1s;
   }
-  
+
   .pixel-small-4 {
     animation: pixel-twinkle 2.8s ease-in-out infinite;
     animation-delay: -1.5s;
   }
-  
+
   /* Hover effects */
   &:hover {
     .lock-mechanism-outer {
@@ -76,135 +76,172 @@
     .vault-body {
       animation: vault-unlock 0.8s ease-out;
     }
-    .pixel-float-1, .pixel-float-2, .pixel-float-3, .pixel-float-4 {
+    .pixel-float-1,
+    .pixel-float-2,
+    .pixel-float-3,
+    .pixel-float-4 {
       animation-duration: 1s;
     }
   }
-  
+
   @keyframes rotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
-  
+
   @keyframes rotate-reverse {
-    0% { transform: rotate(360deg); }
-    100% { transform: rotate(0deg); }
+    0% {
+      transform: rotate(360deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
   }
-  
+
   @keyframes pulse {
-    0%, 100% { 
-      transform: scale(1); 
+    0%,
+    100% {
+      transform: scale(1);
       filter: brightness(1);
     }
-    50% { 
-      transform: scale(1.1); 
+    50% {
+      transform: scale(1.1);
       filter: brightness(1.3);
     }
   }
-  
+
   @keyframes handle-move {
-    0%, 85%, 100% { transform: translateX(0px); }
-    90%, 95% { transform: translateX(2px); }
+    0%,
+    85%,
+    100% {
+      transform: translateX(0px);
+    }
+    90%,
+    95% {
+      transform: translateX(2px);
+    }
   }
-  
+
   @keyframes vault-glow {
-    0% { 
+    0% {
       filter: drop-shadow(0 0 3px $bg-accent);
       stroke: $bg-accent;
     }
-    100% { 
+    100% {
       filter: drop-shadow(0 0 12px $bg-accent) drop-shadow(0 0 20px rgba(117, 109, 244, 0.3));
       stroke: #9c88ff;
     }
   }
-  
+
   @keyframes vault-unlock {
-    0% { transform: scale(1); }
-    30% { transform: scale(1.05); filter: drop-shadow(0 0 20px $bg-accent); }
-    100% { transform: scale(1); }
+    0% {
+      transform: scale(1);
+    }
+    30% {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 20px $bg-accent);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
-  
+
   @keyframes door-shimmer {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.9; filter: brightness(1.1); }
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.9;
+      filter: brightness(1.1);
+    }
   }
-  
+
   @keyframes pixel-float-1 {
-    0%, 100% { 
-      transform: translate(0px, 0px) rotate(0deg) scale(1); 
-      opacity: 0.7; 
+    0%,
+    100% {
+      transform: translate(0px, 0px) rotate(0deg) scale(1);
+      opacity: 0.7;
     }
-    25% { 
-      transform: translate(-2px, -3px) rotate(90deg) scale(1.1); 
-      opacity: 1; 
+    25% {
+      transform: translate(-2px, -3px) rotate(90deg) scale(1.1);
+      opacity: 1;
     }
-    50% { 
-      transform: translate(1px, -5px) rotate(180deg) scale(0.9); 
-      opacity: 0.8; 
+    50% {
+      transform: translate(1px, -5px) rotate(180deg) scale(0.9);
+      opacity: 0.8;
     }
-    75% { 
-      transform: translate(3px, -2px) rotate(270deg) scale(1.05); 
-      opacity: 0.9; 
+    75% {
+      transform: translate(3px, -2px) rotate(270deg) scale(1.05);
+      opacity: 0.9;
     }
   }
-  
+
   @keyframes pixel-float-2 {
-    0%, 100% { 
-      transform: translate(0px, 0px) rotate(0deg) scale(1); 
-      opacity: 0.8; 
+    0%,
+    100% {
+      transform: translate(0px, 0px) rotate(0deg) scale(1);
+      opacity: 0.8;
     }
-    33% { 
-      transform: translate(2px, -4px) rotate(-120deg) scale(1.2); 
-      opacity: 1; 
+    33% {
+      transform: translate(2px, -4px) rotate(-120deg) scale(1.2);
+      opacity: 1;
     }
-    66% { 
-      transform: translate(-1px, -6px) rotate(-240deg) scale(0.8); 
-      opacity: 0.6; 
+    66% {
+      transform: translate(-1px, -6px) rotate(-240deg) scale(0.8);
+      opacity: 0.6;
     }
   }
-  
+
   @keyframes pixel-float-3 {
-    0%, 100% { 
-      transform: translate(0px, 0px) rotate(0deg) scale(1); 
-      opacity: 0.6; 
+    0%,
+    100% {
+      transform: translate(0px, 0px) rotate(0deg) scale(1);
+      opacity: 0.6;
     }
-    40% { 
-      transform: translate(-3px, -2px) rotate(144deg) scale(1.15); 
-      opacity: 0.9; 
+    40% {
+      transform: translate(-3px, -2px) rotate(144deg) scale(1.15);
+      opacity: 0.9;
     }
-    80% { 
-      transform: translate(2px, -4px) rotate(288deg) scale(0.95); 
-      opacity: 1; 
+    80% {
+      transform: translate(2px, -4px) rotate(288deg) scale(0.95);
+      opacity: 1;
     }
   }
-  
+
   @keyframes pixel-float-4 {
-    0%, 100% { 
-      transform: translate(0px, 0px) rotate(0deg) scale(1); 
-      opacity: 0.9; 
+    0%,
+    100% {
+      transform: translate(0px, 0px) rotate(0deg) scale(1);
+      opacity: 0.9;
     }
-    30% { 
-      transform: translate(1px, -3px) rotate(-90deg) scale(0.9); 
-      opacity: 0.7; 
+    30% {
+      transform: translate(1px, -3px) rotate(-90deg) scale(0.9);
+      opacity: 0.7;
     }
-    60% { 
-      transform: translate(-2px, -5px) rotate(-180deg) scale(1.1); 
-      opacity: 1; 
+    60% {
+      transform: translate(-2px, -5px) rotate(-180deg) scale(1.1);
+      opacity: 1;
     }
-    90% { 
-      transform: translate(2px, -1px) rotate(-270deg) scale(1.05); 
-      opacity: 0.8; 
+    90% {
+      transform: translate(2px, -1px) rotate(-270deg) scale(1.05);
+      opacity: 0.8;
     }
   }
-  
+
   @keyframes pixel-twinkle {
-    0%, 100% { 
-      opacity: 0.3; 
-      transform: scale(0.8); 
+    0%,
+    100% {
+      opacity: 0.3;
+      transform: scale(0.8);
     }
-    50% { 
-      opacity: 1; 
-      transform: scale(1.2); 
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
       filter: brightness(1.5);
     }
   }

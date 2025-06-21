@@ -75,53 +75,61 @@ export const NotificationProvider: React.FC<NotificationProviderProps> = ({ chil
     clearAll,
   };
 
-  return (
-    <NotificationContext.Provider value={value}>
-      {children}
-    </NotificationContext.Provider>
-  );
+  return <NotificationContext.Provider value={value}>{children}</NotificationContext.Provider>;
 };
 
 // Utility hooks for different notification types
 export const useNotificationHelpers = () => {
   const { addNotification } = useNotifications();
 
-  const showSuccess = useCallback((title: string, message?: string, options?: Partial<Notification>) => {
-    return addNotification({
-      type: 'success',
-      title,
-      message,
-      ...options,
-    });
-  }, [addNotification]);
+  const showSuccess = useCallback(
+    (title: string, message?: string, options?: Partial<Notification>) => {
+      return addNotification({
+        type: 'success',
+        title,
+        message,
+        ...options,
+      });
+    },
+    [addNotification],
+  );
 
-  const showError = useCallback((title: string, message?: string, options?: Partial<Notification>) => {
-    return addNotification({
-      type: 'error',
-      title,
-      message,
-      duration: 8000, // Errors stay longer by default
-      ...options,
-    });
-  }, [addNotification]);
+  const showError = useCallback(
+    (title: string, message?: string, options?: Partial<Notification>) => {
+      return addNotification({
+        type: 'error',
+        title,
+        message,
+        duration: 8000, // Errors stay longer by default
+        ...options,
+      });
+    },
+    [addNotification],
+  );
 
-  const showWarning = useCallback((title: string, message?: string, options?: Partial<Notification>) => {
-    return addNotification({
-      type: 'warning',
-      title,
-      message,
-      ...options,
-    });
-  }, [addNotification]);
+  const showWarning = useCallback(
+    (title: string, message?: string, options?: Partial<Notification>) => {
+      return addNotification({
+        type: 'warning',
+        title,
+        message,
+        ...options,
+      });
+    },
+    [addNotification],
+  );
 
-  const showInfo = useCallback((title: string, message?: string, options?: Partial<Notification>) => {
-    return addNotification({
-      type: 'info',
-      title,
-      message,
-      ...options,
-    });
-  }, [addNotification]);
+  const showInfo = useCallback(
+    (title: string, message?: string, options?: Partial<Notification>) => {
+      return addNotification({
+        type: 'info',
+        title,
+        message,
+        ...options,
+      });
+    },
+    [addNotification],
+  );
 
   return {
     showSuccess,

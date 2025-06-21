@@ -1,4 +1,4 @@
-@use '../../styles/variables' as *;
+@use "../../styles/variables" as *;
 
 .compression-progress-overlay {
   position: fixed;
@@ -26,17 +26,18 @@
   box-shadow: var(--shadow-xl);
   animation: slideIn 0.3s ease-out;
   position: relative;
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -2px;
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(45deg, 
-      var(--color-accent-primary), 
-      transparent, 
+    background: linear-gradient(
+      45deg,
+      var(--color-accent-primary),
+      transparent,
       var(--color-accent-primary)
     );
     border-radius: $border-radius;
@@ -48,7 +49,7 @@
 .compression-progress-header {
   text-align: center;
   margin-bottom: $spacing-lg;
-  
+
   h3 {
     @include pixel-style;
     color: var(--color-text-primary);
@@ -56,7 +57,7 @@
     font-size: 1.5rem;
     text-shadow: var(--pixel-glow);
   }
-  
+
   .compression-progress-stats {
     color: var(--color-text-secondary);
     font-size: 0.875rem;
@@ -77,27 +78,20 @@
 
 .compression-progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, 
-    var(--color-accent-primary),
-    var(--color-accent-hover)
-  );
+  background: linear-gradient(90deg, var(--color-accent-primary), var(--color-accent-hover));
   border-radius: $border-radius-small;
   transition: width 0.3s ease-out;
   position: relative;
   overflow: hidden;
-  
+
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(90deg,
-      transparent,
-      rgba(255, 255, 255, 0.3),
-      transparent
-    );
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     animation: progressShine 1.5s ease-in-out infinite;
   }
 }
@@ -108,11 +102,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
   animation: shimmerMove 2s ease-in-out infinite;
 }
 
@@ -143,13 +133,13 @@
   color: var(--color-text-secondary);
   font-size: 0.875rem;
   font-family: var(--font-pixel);
-  
+
   svg {
     color: var(--color-accent-primary);
     opacity: 0.8;
     animation: pulse 2s ease-in-out infinite;
   }
-  
+
   span {
     letter-spacing: 0.3px;
   }
@@ -167,13 +157,13 @@
   border: 2px solid var(--color-text-muted);
   color: var(--color-text-muted);
   padding: $spacing-sm $spacing-lg;
-  
+
   &:hover:not(:disabled) {
     border-color: var(--color-danger);
     color: var(--color-danger);
     box-shadow: 0 0 12px rgba(255, 107, 107, 0.3);
   }
-  
+
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -182,50 +172,72 @@
 
 // Animations
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideIn {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(-20px) scale(0.95);
   }
-  to { 
+  to {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
 
 @keyframes borderGlow {
-  from { opacity: 0.6; }
-  to { opacity: 1; }
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes progressShine {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(200%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
 }
 
 @keyframes shimmerMove {
-  0% { left: -100%; }
-  100% { left: 100%; }
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 // Dark theme adjustments
 [data-theme="dark"] {
   .compression-progress-modal {
     background: var(--color-surface-secondary);
-    
+
     &::before {
-      background: linear-gradient(45deg, 
-        rgba(102, 217, 255, 0.6), 
-        transparent, 
+      background: linear-gradient(
+        45deg,
+        rgba(102, 217, 255, 0.6),
+        transparent,
         rgba(102, 217, 255, 0.6)
       );
     }
@@ -239,11 +251,11 @@
     padding: $spacing-lg;
     width: calc(100% - #{$spacing-md * 2});
   }
-  
+
   .compression-progress-header h3 {
     font-size: 1.25rem;
   }
-  
+
   .compression-detail-item {
     font-size: 0.8rem;
   }

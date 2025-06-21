@@ -14,7 +14,7 @@ export const usePerformanceMonitor = (componentName: string) => {
   useEffect(() => {
     // Component mounted
     const loadTime = Date.now() - startTime.current;
-    
+
     // Log performance metrics in development
     if (process.env.NODE_ENV === 'development') {
       console.log(`🚀 ${componentName} Performance:`, {
@@ -25,8 +25,8 @@ export const usePerformanceMonitor = (componentName: string) => {
 
     // Performance API measurements
     if ('performance' in window) {
-      const observer = new PerformanceObserver((list) => {
-        list.getEntries().forEach((entry) => {
+      const observer = new PerformanceObserver(list => {
+        list.getEntries().forEach(entry => {
           if (entry.name.includes(componentName.toLowerCase())) {
             console.log(`📊 ${componentName} Performance Entry:`, entry);
           }
@@ -50,9 +50,9 @@ export const usePerformanceMonitor = (componentName: string) => {
     if ('memory' in performance) {
       const memory = (performance as any).memory;
       return {
-        used: Math.round(memory.usedJSHeapSize / 1048576 * 100) / 100,
-        total: Math.round(memory.totalJSHeapSize / 1048576 * 100) / 100,
-        limit: Math.round(memory.jsHeapSizeLimit / 1048576 * 100) / 100,
+        used: Math.round((memory.usedJSHeapSize / 1048576) * 100) / 100,
+        total: Math.round((memory.totalJSHeapSize / 1048576) * 100) / 100,
+        limit: Math.round((memory.jsHeapSizeLimit / 1048576) * 100) / 100,
       };
     }
     return null;

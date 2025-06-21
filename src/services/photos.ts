@@ -6,21 +6,21 @@ import { v4 as createId } from 'uuid';
 const SUPPORTED_FILES = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp'];
 
 export const getAll = async () => {
-    let list: Photo[] = [];
+  let list: Photo[] = [];
 
-    const imagesFolder = ref(storage, 'images');
-    const photoList = await listAll(imagesFolder);
+  const imagesFolder = ref(storage, 'images');
+  const photoList = await listAll(imagesFolder);
 
-    for (let i in photoList.items) {
-        let photoUrl = await getDownloadURL(photoList.items[i]);
+  for (let i in photoList.items) {
+    let photoUrl = await getDownloadURL(photoList.items[i]);
 
-        list.push({
-            name: photoList.items[i].name,
-            url: photoUrl
-        });
-    }
+    list.push({
+      name: photoList.items[i].name,
+      url: photoUrl,
+    });
+  }
 
-    return list;
+  return list;
 };
 
 export const insert = async (file: File) => {
@@ -35,5 +35,4 @@ export const insert = async (file: File) => {
   } else {
     return new Error('Tipo de arquivo não permitido!');
   }
-
-}
+};
