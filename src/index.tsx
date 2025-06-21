@@ -4,7 +4,7 @@ import App from './App';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { NotificationProvider } from './contexts/NotificationContext';
 
-import './index.css';
+import './index.scss';
 import './styles/themes.scss';
 
 const root = ReactDOM.createRoot(

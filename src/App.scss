@@ -45,7 +45,8 @@
         background-size: 100% 4px;
         pointer-events: none;
         z-index: 1;
-        animation: scanlines 0.1s linear infinite;
+        animation: scanlines 0.2s linear infinite;
+        opacity: 0.4;
     }
 }
 
@@ -98,7 +99,8 @@
         
         &::after {
             content: '...';
-            animation: pixelDots 1.5s infinite;
+            animation: pixelDots 2s infinite;
+            opacity: 0.8;
         }
     }
 
@@ -131,8 +133,8 @@
         .empty-icon {
             margin-bottom: var(--spacing-xl);
             color: var(--color-accent-primary);
-            filter: drop-shadow(0 0 8px var(--color-accent-primary));
-            animation: pixelGlow 2s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 6px var(--color-accent-primary));
+            animation: pixelGlow 3s ease-in-out infinite alternate;
         }
 
         h3 {
@@ -143,7 +145,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            text-shadow: 0 0 8px var(--color-accent-primary);
+            text-shadow: 0 0 6px var(--color-accent-primary);
         }
 
         p {
@@ -212,18 +214,25 @@
 @keyframes scanlines {
     0% {
         transform: translateY(0);
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.4;
     }
     100% {
         transform: translateY(4px);
+        opacity: 0.2;
     }
 }
 
 @keyframes pixelGlow {
     0% {
-        filter: drop-shadow(0 0 8px var(--color-accent-primary));
+        filter: drop-shadow(0 0 4px var(--color-accent-primary));
+        opacity: 0.8;
     }
     100% {
-        filter: drop-shadow(0 0 16px var(--color-accent-primary));
+        filter: drop-shadow(0 0 8px var(--color-accent-primary));
+        opacity: 1;
     }
 }
 
@@ -239,18 +248,23 @@
 @keyframes pixelDots {
     0% {
         content: '';
+        opacity: 0.6;
     }
     25% {
         content: '.';
+        opacity: 0.7;
     }
     50% {
         content: '..';
+        opacity: 0.8;
     }
     75% {
         content: '...';
+        opacity: 0.9;
     }
     100% {
         content: '';
+        opacity: 0.6;
     }
 }
 

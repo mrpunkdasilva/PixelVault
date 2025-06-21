@@ -22,7 +22,7 @@ function App() {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { showSuccess, showError } = useNotificationHelpers();
+  const { showSuccess, showError, showInfo } = useNotificationHelpers();
   const { toggleTheme } = useTheme();
 
   // Keyboard shortcuts
