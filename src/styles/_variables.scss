@@ -1,0 +1,115 @@
+// Color Variables - 8bit Pixel Theme
+$bg-primary: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0f1419 100%) !default;
+$bg-secondary: rgba(102, 217, 255, 0.08) !default;
+$bg-glass: rgba(102, 217, 255, 0.12) !default;
+$bg-glass-hover: rgba(102, 217, 255, 0.18) !default;
+$bg-accent: #66D9FF !default;
+$bg-accent-hover: #99E6FF !default;
+$bg-danger: #FF6B6B !default;
+$bg-success: #51CF66 !default;
+$text-primary: #66D9FF !default;
+$text-secondary: #4DA6D9 !default;
+$text-muted: rgba(102, 217, 255, 0.6) !default;
+$border-glass: rgba(102, 217, 255, 0.3) !default;
+$shadow-glass: 0 4px 8px rgba(0, 0, 0, 0.5), 0 0 16px rgba(102, 217, 255, 0.2) !default;
+$shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.6), 0 0 24px rgba(102, 217, 255, 0.3) !default;
+
+// 8bit Pixel Colors
+$pixel-blue: #66D9FF !default;
+$pixel-blue-dark: #4DA6D9 !default;
+$pixel-cyan: #66FFD9 !default;
+$pixel-purple: #9966FF !default;
+$pixel-pink: #FF66D9 !default;
+$pixel-green: #66FF99 !default;
+$pixel-yellow: #FFD966 !default;
+$pixel-orange: #FF9966 !default;
+
+// Layout Variables - 8bit Style
+$border-radius: 4px !default; // Bordas mais quadradas para estilo pixel
+$border-radius-large: 8px !default;
+$border-radius-small: 2px !default;
+$max-width: 1200px !default;
+$container-padding: 24px !default;
+
+// 8bit Fonts
+$font-pixel: 'Monaco', 'Consolas', 'Courier New', monospace !default;
+$font-primary: $font-pixel !default;
+
+// Spacing Variables
+$spacing-xs: 4px !default;
+$spacing-sm: 8px !default;
+$spacing-md: 16px !default;
+$spacing-lg: 24px !default;
+$spacing-xl: 32px !default;
+$spacing-2xl: 48px !default;
+$spacing-3xl: 64px !default;
+
+// Animation Variables
+$transition-fast: 0.2s ease-in-out !default;
+$transition-normal: 0.3s ease-in-out !default;
+$transition-slow: 0.5s ease-in-out !default;
+
+// Breakpoints
+$breakpoint-sm: 640px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 1024px !default;
+$breakpoint-xl: 1280px !default;
+
+// Blur Effects
+$blur-sm: blur(8px) !default;
+$blur-md: blur(16px) !default;
+$blur-lg: blur(24px) !default;
+
+// 8bit Pixel Effects
+$pixel-border: 2px solid $pixel-blue !default;
+$pixel-border-thick: 3px solid $pixel-blue !default;
+$pixel-glow: 0 0 10px $pixel-blue, 0 0 20px rgba(102, 217, 255, 0.5) !default;
+$pixel-glow-strong: 0 0 15px $pixel-blue, 0 0 30px rgba(102, 217, 255, 0.7), 0 0 45px rgba(102, 217, 255, 0.4) !default;
+
+// 8bit Mixins
+@mixin pixel-style {
+  font-family: $font-pixel;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+@mixin pixel-button {
+  @include pixel-style;
+  background: $bg-glass;
+  border: $pixel-border;
+  border-radius: $border-radius-small;
+  color: $text-primary;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  
+  &:hover {
+    background: $bg-glass-hover;
+    box-shadow: $pixel-glow;
+    transform: translateY(-1px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin pixel-card {
+  @include pixel-style;
+  background: $bg-glass;
+  border: 1px solid $border-glass;
+  border-radius: $border-radius;
+  backdrop-filter: $blur-sm;
+  -webkit-backdrop-filter: $blur-sm;
+  box-shadow: $shadow-glass;
+  
+  &:hover {
+    background: $bg-glass-hover;
+    box-shadow: $shadow-hover;
+    transform: translateY(-2px);
+  }
+}

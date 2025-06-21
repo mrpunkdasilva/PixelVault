@@ -1,0 +1,126 @@
+@use './variables' as *;
+
+// Global 8bit Pixel Styles
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-pixel;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  text-rendering: optimizeSpeed;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+// Disable text selection highlighting for UI elements
+.logo-container,
+.action-btn,
+.photo-item-container {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// Custom scrollbar with pixel style
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $pixel-blue;
+  border-radius: $border-radius-small;
+  
+  &:hover {
+    background: $pixel-blue-dark;
+  }
+}
+
+// Focus styles for accessibility
+button:focus-visible,
+.action-btn:focus-visible {
+  outline: 2px solid $pixel-blue;
+  outline-offset: 2px;
+}
+
+// Selection styles
+::selection {
+  background: rgba(102, 217, 255, 0.2);
+  color: $text-primary;
+}
+
+::-moz-selection {
+  background: rgba(102, 217, 255, 0.2);
+  color: $text-primary;
+}
+
+// Pixel loading animation for images
+img {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  
+  &[src=""] {
+    background: linear-gradient(90deg, 
+      rgba(102, 217, 255, 0.1) 25%, 
+      rgba(102, 217, 255, 0.2) 50%, 
+      rgba(102, 217, 255, 0.1) 75%
+    );
+    background-size: 200% 100%;
+    animation: pixelShimmer 2s infinite;
+  }
+}
+
+@keyframes pixelShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+// Global typography
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-pixel;
+  margin: 0;
+  line-height: 1.2;
+  text-rendering: optimizeSpeed;
+}
+
+p, span, div {
+  font-family: $font-pixel;
+  line-height: 1.4;
+}
+
+// Disable smooth scrolling for pixel-perfect movement
+html {
+  scroll-behavior: auto;
+}
+
+// Custom cursor for interactive elements
+.photo-item-container,
+.action-btn,
+.logo-container {
+  cursor: pointer;
+  
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+// Console/terminal style for development
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}

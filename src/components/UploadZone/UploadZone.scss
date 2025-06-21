@@ -1,0 +1,218 @@
+@use '../../styles/variables' as *;
+
+.upload-zone {
+    background: $bg-glass;
+    backdrop-filter: $blur-md;
+    -webkit-backdrop-filter: $blur-md;
+    border: 2px dashed $border-glass;
+    border-radius: $border-radius-large;
+    padding: $spacing-3xl;
+    text-align: center;
+    cursor: pointer;
+    transition: all $transition-normal;
+    box-shadow: $shadow-glass;
+    margin-bottom: $spacing-2xl;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.03) 50%, transparent 70%);
+        opacity: 0;
+        transition: opacity $transition-normal;
+    }
+
+    &:hover {
+        border-color: rgba(255, 255, 255, 0.4);
+        background: $bg-glass-hover;
+        transform: translateY(-2px);
+        box-shadow: $shadow-hover;
+
+        &::before {
+            opacity: 1;
+        }
+
+        .upload-icon svg {
+            transform: scale(1.1);
+        }
+    }
+
+    &.drag-over {
+        border-color: #667eea;
+        background: rgba(102, 126, 234, 0.1);
+        transform: scale(1.02);
+
+        .upload-icon svg {
+            color: #667eea;
+            transform: scale(1.2);
+        }
+    }
+
+    &.uploading {
+        pointer-events: none;
+        border-color: #51cf66;
+        background: rgba(81, 207, 102, 0.1);
+
+        .upload-spinner {
+            animation: spin 1s linear infinite;
+        }
+    }
+
+    &.has-file {
+        border-color: #667eea;
+        border-style: solid;
+
+        .file-preview {
+            display: flex;
+            align-items: center;
+            gap: $spacing-md;
+            padding: $spacing-lg;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: $border-radius;
+            margin-bottom: $spacing-md;
+
+            .file-icon {
+                font-size: 32px;
+                width: 48px;
+                height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(102, 126, 234, 0.2);
+                border-radius: $border-radius-small;
+            }
+
+            .file-info {
+                flex: 1;
+                text-align: left;
+
+                h4 {
+                    margin: 0 0 $spacing-xs 0;
+                    color: $text-primary;
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+
+                p {
+                    margin: 0;
+                    color: $text-secondary;
+                    font-size: 14px;
+                }
+            }
+
+            .remove-file {
+                background: rgba(255, 107, 107, 0.2);
+                border: none;
+                border-radius: 50%;
+                width: 32px;
+                height: 32px;
+                color: #ff6b6b;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all $transition-fast;
+
+                &:hover {
+                    background: rgba(255, 107, 107, 0.3);
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+        .upload-hint {
+            color: $text-muted;
+            font-size: 14px;
+            margin: 0;
+        }
+    }
+
+    .upload-content {
+        position: relative;
+        z-index: 1;
+
+        .upload-icon {
+            margin-bottom: $spacing-lg;
+
+            svg {
+                color: $text-secondary;
+                transition: all $transition-normal;
+            }
+        }
+
+        .upload-spinner {
+            width: 48px;
+            height: 48px;
+            border: 4px solid rgba(81, 207, 102, 0.2);
+            border-top: 4px solid #51cf66;
+            border-radius: 50%;
+            margin: 0 auto $spacing-lg auto;
+        }
+
+        h3 {
+            margin: 0 0 $spacing-sm 0;
+            color: $text-primary;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        p {
+            margin: 0 0 $spacing-md 0;
+            color: $text-secondary;
+            font-size: 16px;
+
+            .upload-link {
+                color: #667eea;
+                text-decoration: underline;
+                font-weight: 500;
+            }
+        }
+
+        small {
+            color: $text-muted;
+            font-size: 14px;
+        }
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    // Mobile responsiveness
+    @media (max-width: $breakpoint-md) {
+        padding: $spacing-xl;
+
+        .upload-content {
+            h3 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            .upload-icon svg {
+                width: 48px;
+                height: 48px;
+            }
+        }
+
+        &.has-file {
+            .file-preview {
+                flex-direction: column;
+                text-align: center;
+                gap: $spacing-sm;
+
+                .file-info {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

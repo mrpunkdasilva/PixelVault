@@ -1,0 +1,306 @@
+@use './styles/variables' as *;
+
+.container {
+    @include pixel-style;
+    background: $bg-primary;
+    color: $text-primary;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+
+    // Pixel grid background
+    &::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 20% 80%, rgba(102, 217, 255, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(102, 217, 255, 0.06) 0%, transparent 50%),
+            linear-gradient(0deg, transparent 24%, rgba(102, 217, 255, 0.02) 25%, rgba(102, 217, 255, 0.02) 26%, transparent 27%, transparent 74%, rgba(102, 217, 255, 0.02) 75%, rgba(102, 217, 255, 0.02) 76%, transparent 77%),
+            linear-gradient(90deg, transparent 24%, rgba(102, 217, 255, 0.02) 25%, rgba(102, 217, 255, 0.02) 26%, transparent 27%, transparent 74%, rgba(102, 217, 255, 0.02) 75%, rgba(102, 217, 255, 0.02) 76%, transparent 77%);
+        background-size: 
+            800px 800px,
+            600px 600px,
+            20px 20px,
+            20px 20px;
+        pointer-events: none;
+        z-index: 0;
+        animation: pixelFloat 20s ease-in-out infinite;
+    }
+
+    // Scanline effect
+    &::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            transparent 50%,
+            rgba(102, 217, 255, 0.01) 50%
+        );
+        background-size: 100% 4px;
+        pointer-events: none;
+        z-index: 1;
+        animation: scanlines 0.1s linear infinite;
+    }
+}
+
+.area {
+    margin: auto;
+    max-width: $max-width;
+    padding: $container-padding;
+    position: relative;
+    z-index: 2;
+    @include pixel-style;
+}
+
+.header {
+    margin: 0;
+    padding: $spacing-2xl 0;
+    text-align: center;
+    margin-bottom: $spacing-3xl;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen-warning {
+    text-align: center;
+    padding: $spacing-3xl 0;
+
+    .loading-text {
+        @include pixel-style;
+        margin-top: $spacing-lg;
+        color: $text-secondary;
+        font-size: 18px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        
+        &::after {
+            content: '...';
+            animation: pixelDots 1.5s infinite;
+        }
+    }
+
+    .empty-state {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: $spacing-3xl;
+        @include pixel-card;
+        position: relative;
+        
+        // Pixel border effect
+        &::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, $pixel-blue, $pixel-cyan, $pixel-blue);
+            border-radius: $border-radius;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .empty-icon {
+            margin-bottom: $spacing-xl;
+            color: $pixel-blue;
+            filter: drop-shadow(0 0 8px rgba(102, 217, 255, 0.5));
+            animation: pixelGlow 2s ease-in-out infinite alternate;
+        }
+
+        h3 {
+            @include pixel-style;
+            margin: 0 0 $spacing-md 0;
+            color: $text-primary;
+            font-size: 24px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px rgba(102, 217, 255, 0.4);
+        }
+
+        p {
+            @include pixel-style;
+            margin: 0;
+            color: $text-secondary;
+            font-size: 16px;
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+        }
+    }
+}
+
+.photo-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: $spacing-lg;
+    animation: fadeIn 0.6s ease-in-out;
+
+    @media (max-width: $breakpoint-xl) {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    @media (max-width: $breakpoint-lg) {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: $spacing-md;
+    }
+
+    @media (max-width: $breakpoint-md) {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    @media (max-width: $breakpoint-sm) {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: $spacing-sm;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// 8bit Pixel Animations
+@keyframes pixelFloat {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+    }
+    25% {
+        transform: translateY(-10px) translateX(5px);
+    }
+    50% {
+        transform: translateY(-5px) translateX(-5px);
+    }
+    75% {
+        transform: translateY(-15px) translateX(3px);
+    }
+}
+
+@keyframes scanlines {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(4px);
+    }
+}
+
+@keyframes pixelGlow {
+    0% {
+        filter: drop-shadow(0 0 8px rgba(102, 217, 255, 0.5));
+    }
+    100% {
+        filter: drop-shadow(0 0 16px rgba(102, 217, 255, 0.8));
+    }
+}
+
+@keyframes pixelPulse {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(102, 217, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(102, 217, 255, 0.6), 0 0 30px rgba(102, 217, 255, 0.3);
+    }
+}
+
+@keyframes pixelDots {
+    0% {
+        content: '';
+    }
+    25% {
+        content: '.';
+    }
+    50% {
+        content: '..';
+    }
+    75% {
+        content: '...';
+    }
+    100% {
+        content: '';
+    }
+}
+
+// Mobile responsiveness
+@media (max-width: $breakpoint-lg) {
+    .area {
+        padding: $spacing-lg;
+    }
+
+    .header {
+        padding: $spacing-xl 0;
+        margin-bottom: $spacing-2xl;
+    }
+}
+
+@media (max-width: $breakpoint-md) {
+    .area {
+        padding: $spacing-md;
+    }
+
+    .header {
+        padding: $spacing-lg 0;
+        margin-bottom: $spacing-xl;
+    }
+
+    .screen-warning {
+        padding: $spacing-2xl 0;
+
+        .empty-state {
+            padding: $spacing-2xl;
+
+            h3 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+
+        .loading-text {
+            font-size: 16px;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-sm) {
+    .area {
+        padding: $spacing-sm;
+    }
+
+    .screen-warning {
+        .empty-state {
+            padding: $spacing-xl;
+
+            .empty-icon svg {
+                width: 60px;
+                height: 60px;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            p {
+                font-size: 13px;
+            }
+        }
+    }
+}

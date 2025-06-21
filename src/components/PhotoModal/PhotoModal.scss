@@ -1,0 +1,406 @@
+@use '../../styles/variables' as *;
+
+.photo-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: $blur-lg;
+    -webkit-backdrop-filter: $blur-lg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: $spacing-lg;
+    animation: pixelFadeIn 0.3s ease-in-out;
+    
+    // Pixel scanlines effect
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            transparent 50%,
+            rgba(102, 217, 255, 0.008) 50%
+        );
+        background-size: 100% 4px;
+        pointer-events: none;
+        animation: scanlines 0.1s linear infinite;
+    }
+}
+
+.photo-modal {
+    @include pixel-card;
+    max-width: 95vw;
+    max-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    animation: pixelSlideIn 0.3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+    
+    // Pixel border glow
+    &::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, $pixel-blue, transparent, $pixel-cyan, transparent, $pixel-blue);
+        border-radius: $border-radius;
+        z-index: -1;
+        opacity: 0.4;
+        animation: pixelBorderGlow 3s ease-in-out infinite;
+    }
+}
+
+.photo-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-lg $spacing-xl;
+    border-bottom: 2px solid $border-glass;
+    background: rgba(102, 217, 255, 0.05);
+    position: relative;
+
+    .photo-modal-title {
+        @include pixel-style;
+        margin: 0;
+        color: $text-primary;
+        font-size: 18px;
+        font-weight: 600;
+        flex: 1;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-right: $spacing-lg;
+        text-shadow: 0 0 8px rgba(102, 217, 255, 0.3);
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+    }
+
+    .zoom-info {
+        display: flex;
+        align-items: center;
+        margin: 0 $spacing-md;
+        
+        .zoom-level {
+            @include pixel-style;
+            color: $pixel-blue;
+            font-size: 14px;
+            font-weight: 600;
+            background: rgba(102, 217, 255, 0.1);
+            padding: 4px 8px;
+            border-radius: $border-radius-small;
+            border: 1px solid rgba(102, 217, 255, 0.3);
+            min-width: 50px;
+            text-align: center;
+            text-shadow: 0 0 4px rgba(102, 217, 255, 0.4);
+        }
+    }
+
+    .photo-modal-actions {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+    }
+}
+
+.action-btn {
+    @include pixel-button;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: $spacing-sm;
+
+    &:hover {
+        background: $bg-glass-hover;
+        transform: scale(1.05) translateY(-1px);
+    }
+
+    &.download-btn:hover {
+        background: rgba(102, 255, 153, 0.2);
+        border-color: $pixel-green;
+        color: $pixel-green;
+        box-shadow: 0 0 12px rgba(102, 255, 153, 0.4);
+    }
+
+    &.delete-btn:hover {
+        background: rgba(255, 107, 107, 0.2);
+        border-color: $bg-danger;
+        color: $bg-danger;
+        box-shadow: 0 0 12px rgba(255, 107, 107, 0.4);
+    }
+
+    &.close-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: $text-primary;
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+    }
+}
+
+.photo-modal-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-lg;
+    overflow: hidden;
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid $border-glass;
+    border-bottom: 1px solid $border-glass;
+}
+
+.photo-modal-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: $border-radius-small;
+    box-shadow: 
+        0 4px 24px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(102, 217, 255, 0.1);
+    transition: transform 0.1s ease-out;
+    transform-origin: center;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    
+    // Pixel rendering
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+
+    &.dragging {
+        transition: none;
+    }
+}
+
+.photo-modal-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $spacing-md $spacing-xl;
+    background: rgba(102, 217, 255, 0.05);
+    border-top: 2px solid $border-glass;
+    gap: $spacing-sm;
+}
+
+.zoom-controls {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+}
+
+.control-btn {
+    @include pixel-button;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: $spacing-xs;
+    font-size: 12px;
+    
+    &:hover {
+        background: $bg-glass-hover;
+        transform: scale(1.1) translateY(-1px);
+    }
+    
+    &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        
+        &:hover {
+            transform: none;
+            background: $bg-glass;
+            box-shadow: none;
+        }
+    }
+    
+    &.zoom-in-btn:hover:not(:disabled) {
+        background: rgba(102, 217, 255, 0.2);
+        border-color: $pixel-blue;
+        color: $pixel-blue;
+        box-shadow: 0 0 12px rgba(102, 217, 255, 0.4);
+    }
+    
+    &.zoom-out-btn:hover:not(:disabled) {
+        background: rgba(102, 217, 255, 0.2);
+        border-color: $pixel-blue;
+        color: $pixel-blue;
+        box-shadow: 0 0 12px rgba(102, 217, 255, 0.4);
+    }
+    
+    &.fit-btn:hover {
+        background: rgba(102, 255, 217, 0.2);
+        border-color: $pixel-cyan;
+        color: $pixel-cyan;
+        box-shadow: 0 0 12px rgba(102, 255, 217, 0.4);
+    }
+    
+    &.reset-btn:hover {
+        background: rgba(255, 217, 102, 0.2);
+        border-color: $pixel-yellow;
+        color: $pixel-yellow;
+        box-shadow: 0 0 12px rgba(255, 217, 102, 0.4);
+    }
+}
+
+.help-text {
+    @include pixel-style;
+    color: $text-muted;
+    font-size: 11px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    
+    span {
+        opacity: 0.8;
+        text-shadow: 0 0 4px rgba(102, 217, 255, 0.2);
+    }
+}
+
+// 8bit Pixel Animations
+@keyframes pixelFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pixelSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes pixelBorderGlow {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes scanlines {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(4px);
+    }
+}
+
+// Mobile responsiveness
+@media (max-width: $breakpoint-md) {
+    .photo-modal-overlay {
+        padding: $spacing-md;
+    }
+
+    .photo-modal {
+        max-width: 98vw;
+        max-height: 98vh;
+    }
+
+    .photo-modal-header {
+        padding: $spacing-md;
+        flex-wrap: wrap;
+        gap: $spacing-sm;
+
+        .photo-modal-title {
+            font-size: 16px;
+        }
+
+        .zoom-info {
+            margin: 0;
+            order: 3;
+            flex-basis: 100%;
+            justify-content: center;
+            
+            .zoom-level {
+                font-size: 12px;
+                padding: 3px 6px;
+            }
+        }
+
+        .photo-modal-actions {
+            gap: $spacing-xs;
+        }
+    }
+
+    .action-btn {
+        width: 36px;
+        height: 36px;
+        padding: $spacing-xs;
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    .photo-modal-content {
+        padding: $spacing-md;
+    }
+
+    .photo-modal-controls {
+        padding: $spacing-sm $spacing-md;
+        
+        .zoom-controls {
+            gap: $spacing-xs;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .control-btn {
+            width: 32px;
+            height: 32px;
+            
+            svg {
+                width: 14px;
+                height: 14px;
+            }
+        }
+        
+        .help-text {
+            font-size: 10px;
+            text-align: center;
+            
+            span {
+                display: block;
+                line-height: 1.2;
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-sm) {
+    .photo-modal-header {
+        .photo-modal-title {
+            font-size: 14px;
+        }
+    }
+    
+    .photo-modal-controls {
+        .help-text {
+            display: none; // Hide help text on very small screens
+        }
+    }
+}
