@@ -2,29 +2,84 @@ import React from 'react';
 import styled from 'styled-components';
 
 const AnimatedSvg = styled.svg`
-  .lock-mechanism {
-    animation: rotate 4s linear infinite;
+  .lock-mechanism-outer {
+    animation: rotate 6s linear infinite;
     transform-origin: 50px 50px;
   }
   
-  .pixel-float {
-    animation: float 3s ease-in-out infinite;
+  .lock-mechanism-middle {
+    animation: rotate-reverse 4s linear infinite;
+    transform-origin: 50px 50px;
   }
   
-  .pixel-float:nth-child(2) {
+  .lock-center {
+    animation: pulse 2s ease-in-out infinite;
+    transform-origin: 50px 50px;
+  }
+  
+  .lock-handle {
+    animation: handle-move 8s ease-in-out infinite;
+    transform-origin: 50px 65px;
+  }
+  
+  .vault-body {
+    animation: vault-glow 3s ease-in-out infinite alternate;
+  }
+  
+  .vault-door {
+    animation: door-shimmer 4s ease-in-out infinite;
+  }
+  
+  .pixel-float-1 {
+    animation: pixel-float-1 4s ease-in-out infinite;
+  }
+  
+  .pixel-float-2 {
+    animation: pixel-float-2 3.5s ease-in-out infinite;
+  }
+  
+  .pixel-float-3 {
+    animation: pixel-float-3 4.5s ease-in-out infinite;
+  }
+  
+  .pixel-float-4 {
+    animation: pixel-float-4 3.8s ease-in-out infinite;
+  }
+  
+  .pixel-small-1 {
+    animation: pixel-twinkle 2s ease-in-out infinite;
+    animation-delay: 0s;
+  }
+  
+  .pixel-small-2 {
+    animation: pixel-twinkle 2.5s ease-in-out infinite;
     animation-delay: -0.5s;
   }
   
-  .pixel-float:nth-child(3) {
+  .pixel-small-3 {
+    animation: pixel-twinkle 2.2s ease-in-out infinite;
     animation-delay: -1s;
   }
   
-  .pixel-float:nth-child(4) {
+  .pixel-small-4 {
+    animation: pixel-twinkle 2.8s ease-in-out infinite;
     animation-delay: -1.5s;
   }
   
-  .vault-glow {
-    animation: glow 2s ease-in-out infinite alternate;
+  /* Hover effects */
+  &:hover {
+    .lock-mechanism-outer {
+      animation-duration: 2s;
+    }
+    .lock-mechanism-middle {
+      animation-duration: 1.5s;
+    }
+    .vault-body {
+      animation: vault-unlock 0.8s ease-out;
+    }
+    .pixel-float-1, .pixel-float-2, .pixel-float-3, .pixel-float-4 {
+      animation-duration: 1s;
+    }
   }
   
   @keyframes rotate {
@@ -32,14 +87,127 @@ const AnimatedSvg = styled.svg`
     100% { transform: rotate(360deg); }
   }
   
-  @keyframes float {
-    0%, 100% { transform: translateY(0px) scale(1); opacity: 0.6; }
-    50% { transform: translateY(-3px) scale(1.1); opacity: 1; }
+  @keyframes rotate-reverse {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
   }
   
-  @keyframes glow {
-    0% { filter: drop-shadow(0 0 2px #756df4); }
-    100% { filter: drop-shadow(0 0 8px #756df4); }
+  @keyframes pulse {
+    0%, 100% { 
+      transform: scale(1); 
+      filter: brightness(1);
+    }
+    50% { 
+      transform: scale(1.1); 
+      filter: brightness(1.3);
+    }
+  }
+  
+  @keyframes handle-move {
+    0%, 85%, 100% { transform: translateX(0px); }
+    90%, 95% { transform: translateX(2px); }
+  }
+  
+  @keyframes vault-glow {
+    0% { 
+      filter: drop-shadow(0 0 3px #756df4);
+      stroke: #756df4;
+    }
+    100% { 
+      filter: drop-shadow(0 0 12px #756df4) drop-shadow(0 0 20px rgba(117, 109, 244, 0.3));
+      stroke: #9c88ff;
+    }
+  }
+  
+  @keyframes vault-unlock {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.05); filter: drop-shadow(0 0 20px #756df4); }
+    100% { transform: scale(1); }
+  }
+  
+  @keyframes door-shimmer {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.9; filter: brightness(1.1); }
+  }
+  
+  @keyframes pixel-float-1 {
+    0%, 100% { 
+      transform: translate(0px, 0px) rotate(0deg) scale(1); 
+      opacity: 0.7; 
+    }
+    25% { 
+      transform: translate(-2px, -3px) rotate(90deg) scale(1.1); 
+      opacity: 1; 
+    }
+    50% { 
+      transform: translate(1px, -5px) rotate(180deg) scale(0.9); 
+      opacity: 0.8; 
+    }
+    75% { 
+      transform: translate(3px, -2px) rotate(270deg) scale(1.05); 
+      opacity: 0.9; 
+    }
+  }
+  
+  @keyframes pixel-float-2 {
+    0%, 100% { 
+      transform: translate(0px, 0px) rotate(0deg) scale(1); 
+      opacity: 0.8; 
+    }
+    33% { 
+      transform: translate(2px, -4px) rotate(-120deg) scale(1.2); 
+      opacity: 1; 
+    }
+    66% { 
+      transform: translate(-1px, -6px) rotate(-240deg) scale(0.8); 
+      opacity: 0.6; 
+    }
+  }
+  
+  @keyframes pixel-float-3 {
+    0%, 100% { 
+      transform: translate(0px, 0px) rotate(0deg) scale(1); 
+      opacity: 0.6; 
+    }
+    40% { 
+      transform: translate(-3px, -2px) rotate(144deg) scale(1.15); 
+      opacity: 0.9; 
+    }
+    80% { 
+      transform: translate(2px, -4px) rotate(288deg) scale(0.95); 
+      opacity: 1; 
+    }
+  }
+  
+  @keyframes pixel-float-4 {
+    0%, 100% { 
+      transform: translate(0px, 0px) rotate(0deg) scale(1); 
+      opacity: 0.9; 
+    }
+    30% { 
+      transform: translate(1px, -3px) rotate(-90deg) scale(0.9); 
+      opacity: 0.7; 
+    }
+    60% { 
+      transform: translate(-2px, -5px) rotate(-180deg) scale(1.1); 
+      opacity: 1; 
+    }
+    90% { 
+      transform: translate(2px, -1px) rotate(-270deg) scale(1.05); 
+      opacity: 0.8; 
+    }
+  }
+  
+  @keyframes pixel-twinkle {
+    0%, 100% { 
+      opacity: 0.3; 
+      transform: scale(0.8); 
+    }
+    50% { 
+      opacity: 1; 
+      transform: scale(1.2); 
+      filter: brightness(1.5);
+    }
   }
 `;
 
@@ -79,7 +247,7 @@ export const Logo: React.FC<LogoProps> = ({ size = 60, className }) => {
         fill="url(#vaultGradient)" 
         stroke="#756df4" 
         strokeWidth="2"
-        className="vault-glow"
+        className="vault-body"
       />
       
       {/* Vault door - maior */}
@@ -92,6 +260,7 @@ export const Logo: React.FC<LogoProps> = ({ size = 60, className }) => {
         fill="url(#doorGradient)" 
         stroke="#756df4" 
         strokeWidth="1.5"
+        className="vault-door"
       />
       
       {/* Lock mechanism - outer ring */}
@@ -102,7 +271,7 @@ export const Logo: React.FC<LogoProps> = ({ size = 60, className }) => {
         fill="none" 
         stroke="#756df4" 
         strokeWidth="2.5"
-        className="lock-mechanism"
+        className="lock-mechanism-outer"
       />
       
       {/* Lock mechanism - middle ring */}
@@ -114,15 +283,28 @@ export const Logo: React.FC<LogoProps> = ({ size = 60, className }) => {
         stroke="#756df4" 
         strokeWidth="1.5" 
         opacity="0.7"
-        className="lock-mechanism"
-        style={{ animationDirection: 'reverse', animationDuration: '6s' }}
+        className="lock-mechanism-middle"
       />
       
       {/* Lock mechanism - inner circle */}
-      <circle cx="50" cy="50" r="5" fill="#756df4"/>
+      <circle 
+        cx="50" 
+        cy="50" 
+        r="5" 
+        fill="#756df4"
+        className="lock-center"
+      />
       
       {/* Lock handle */}
-      <rect x="47.5" y="62" width="5" height="8" rx="2" fill="#756df4"/>
+      <rect 
+        x="47.5" 
+        y="62" 
+        width="5" 
+        height="8" 
+        rx="2" 
+        fill="#756df4"
+        className="lock-handle"
+      />
       
       {/* Animated pixel effects - scattered around */}
       <rect 
@@ -131,7 +313,7 @@ export const Logo: React.FC<LogoProps> = ({ size = 60, className }) => {
         width="4" 
         height="4" 
         fill="#756df4" 
-        className="pixel-float"
+        className="pixel-float-1"
       />
       <rect 
         x="88" 
@@ -139,7 +321,7 @@ export const Logo: React.FC<LogoProps> = ({ size = 60, className }) => {
         width="4" 
         height="4" 
         fill="#756df4" 
-        className="pixel-float"
+        className="pixel-float-2"
       />
       <rect 
         x="12" 
@@ -147,7 +329,7 @@ export const Logo: React.FC<LogoProps> = ({ size = 60, className }) => {
         width="4" 
         height="4" 
         fill="#756df4" 
-        className="pixel-float"
+        className="pixel-float-3"
       />
       <rect 
         x="84" 
@@ -155,10 +337,10 @@ export const Logo: React.FC<LogoProps> = ({ size = 60, className }) => {
         width="4" 
         height="4" 
         fill="#756df4" 
-        className="pixel-float"
+        className="pixel-float-4"
       />
       
-      {/* Additional smaller pixels */}
+      {/* Additional smaller pixels with twinkle effect */}
       <rect 
         x="92" 
         y="50" 
@@ -166,7 +348,7 @@ export const Logo: React.FC<LogoProps> = ({ size = 60, className }) => {
         height="3" 
         fill="#756df4" 
         opacity="0.8"
-        className="pixel-float"
+        className="pixel-small-1"
       />
       <rect 
         x="5" 
@@ -175,7 +357,7 @@ export const Logo: React.FC<LogoProps> = ({ size = 60, className }) => {
         height="3" 
         fill="#756df4" 
         opacity="0.8"
-        className="pixel-float"
+        className="pixel-small-2"
       />
       <rect 
         x="25" 
@@ -184,7 +366,7 @@ export const Logo: React.FC<LogoProps> = ({ size = 60, className }) => {
         height="3" 
         fill="#756df4" 
         opacity="0.6"
-        className="pixel-float"
+        className="pixel-small-3"
       />
       <rect 
         x="70" 
@@ -193,7 +375,7 @@ export const Logo: React.FC<LogoProps> = ({ size = 60, className }) => {
         height="3" 
         fill="#756df4" 
         opacity="0.6"
-        className="pixel-float"
+        className="pixel-small-4"
       />
     </AnimatedSvg>
   );

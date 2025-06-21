@@ -16,9 +16,9 @@ export const Area = styled.div`
 
 export const Header = styled.div`
     margin: 0;
-    padding: 0;
+    padding: 20px 0;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     display: flex;
     justify-content: center;
     align-items: center;

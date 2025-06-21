@@ -6,6 +6,7 @@ import * as C from './App.styles';
 import * as Photos from './services/photos';
 import { PhotoItem } from './components/PhotoItem';
 import { LogoWithText } from './components/LogoWithText';
+import { LoadingLogo } from './components/LoadingLogo';
 
 function App() {
   const [uploading, setUploading] = useState(false);
@@ -49,7 +50,7 @@ function App() {
     <C.Container>
       <C.Area>
         <C.Header>
-          <LogoWithText size={40} showSubtext={true} />
+          <LogoWithText size={70} showSubtext={true} />
         </C.Header>
 
         <C.UploadForm
@@ -63,8 +64,8 @@ function App() {
 
         {loading &&
           <C.ScreenWarning>
-            <div className="emoji">✋</div> 
-            <div>Loading...</div>
+            <LoadingLogo size={80} />
+            <div style={{ marginTop: '20px' }}>Loading your photos...</div>
           </C.ScreenWarning>
         }
 
