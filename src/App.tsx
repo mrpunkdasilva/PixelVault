@@ -5,6 +5,7 @@ import * as C from './App.styles';
 
 import * as Photos from './services/photos';
 import { PhotoItem } from './components/PhotoItem';
+import { LogoWithText } from './components/LogoWithText';
 
 function App() {
   const [uploading, setUploading] = useState(false);
@@ -47,7 +48,9 @@ function App() {
   return (
     <C.Container>
       <C.Area>
-        <C.Header>PixelVault</C.Header>
+        <C.Header>
+          <LogoWithText size={40} showSubtext={true} />
+        </C.Header>
 
         <C.UploadForm
           method="POST"

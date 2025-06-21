@@ -14,11 +14,14 @@ export const Area = styled.div`
     padding: 30px 0;
 `;
 
-export const Header = styled.h1`
+export const Header = styled.div`
     margin: 0;
     padding: 0;
     text-align: center;
     margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const ScreenWarning = styled.div`
