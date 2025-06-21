@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { KeyboardShortcut, formatShortcut } from '../../hooks/useKeyboardShortcuts';
-import './KeyboardShortcutsHelp.scss';
+import './styles.scss';
 
 interface KeyboardShortcutsHelpProps {
   shortcuts: KeyboardShortcut[];

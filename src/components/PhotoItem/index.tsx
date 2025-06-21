@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './PhotoItem.scss';
+import './styles.scss';
 import { LazyImage } from '../LazyImage';
 
 type Props = {

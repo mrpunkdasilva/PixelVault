@@ -1,6 +1,6 @@
 import React from 'react';
-import './LogoWithText.scss';
-import { Logo } from './Logo';
+import './styles.scss';
+import { Logo } from '../Logo';
 
 interface LogoWithTextProps {
   size?: number;

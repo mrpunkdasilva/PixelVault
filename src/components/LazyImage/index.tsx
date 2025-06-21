@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useLazyLoading } from '../../hooks/useLazyLoading';
 import { useImageLoadMetrics } from '../../hooks/useImageLoadMetrics';
-import './LazyImage.scss';
+import './styles.scss';
 
 interface LazyImageProps {
   src: string;

@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from 'react';
-import './PhotoModal.scss';
+import './styles.scss';
 
 type Props = {
   isOpen: boolean;
