@@ -1,7 +1,7 @@
 import { useState, useRef, DragEvent, ChangeEvent } from 'react';
 import { useImageCompression } from '../../hooks/useImageCompression';
 import { CompressionProgress } from '../CompressionProgress';
-import './UploadZone.scss';
+import './styles.scss';
 
 type Props = {
   onFileSelect: (file: File) => void;

@@ -11,7 +11,7 @@ import { UploadZone } from './components/UploadZone';
 import { ThemeToggle } from './components/ThemeToggle';
 import { NotificationContainer } from './components/NotificationContainer';
 import { useNotificationHelpers } from './contexts/NotificationContext';
-import { PhotoModal, KeyboardShortcutsHelp } from './components/LazyComponents';
+import { PhotoModal, KeyboardShortcutsHelp } from './components/LazyComponent';
 import { useKeyboardShortcuts, KeyboardShortcut } from './hooks/useKeyboardShortcuts';
 import { useTheme } from './contexts/ThemeContext';
 

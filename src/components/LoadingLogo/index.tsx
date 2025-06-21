@@ -1,5 +1,5 @@
 import React from 'react';
-import './LoadingLogo.scss';
+import './styles.scss';
 
 interface LoadingLogoProps {
   size?: number;

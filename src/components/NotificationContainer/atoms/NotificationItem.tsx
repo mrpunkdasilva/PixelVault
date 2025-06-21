@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Notification, useNotifications } from '../../contexts/NotificationContext';
+import { Notification, useNotifications } from '../../../contexts/NotificationContext.tsx';
 
 interface NotificationItemProps {
   notification: Notification;

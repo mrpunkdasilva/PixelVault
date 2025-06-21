@@ -1,5 +1,5 @@
 import React from 'react';
-import './Logo.scss';
+import './styles.scss';
 
 interface LogoProps {
   size?: number;

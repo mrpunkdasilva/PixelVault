@@ -1,4 +1,4 @@
-import './CompressionProgress.scss';
+import './styles.scss';
 
 interface CompressionProgressProps {
   isVisible: boolean;

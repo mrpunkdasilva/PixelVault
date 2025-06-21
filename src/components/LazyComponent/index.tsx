@@ -1,9 +1,9 @@
 import { lazy, Suspense } from 'react';
-import { LoadingLogo } from './LoadingLogo';
+import { LoadingLogo } from '../LoadingLogo';
 
 // Lazy load heavy components
-const PhotoModalLazy = lazy(() => import('./PhotoModal'));
-const KeyboardShortcutsHelpLazy = lazy(() => import('./KeyboardShortcutsHelp'));
+const PhotoModalLazy = lazy(() => import('../PhotoModal'));
+const KeyboardShortcutsHelpLazy = lazy(() => import('../KeyboardShortcutsHelp'));
 
 // Loading component for suspense fallback
 const ComponentLoader = ({ size = 40 }: { size?: number }) => (
@@ -34,5 +34,5 @@ export const KeyboardShortcutsHelp = (props: any) => (
 );
 
 // Export types for proper typing
-export type { PhotoModalProps } from './PhotoModal';
-export type { KeyboardShortcutsHelpProps } from './KeyboardShortcutsHelp';
+export type { PhotoModalProps } from '../PhotoModal';
+export type { KeyboardShortcutsHelpProps } from '../KeyboardShortcutsHelp';
