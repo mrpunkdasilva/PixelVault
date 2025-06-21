@@ -1,0 +1,250 @@
+@use '../../styles/variables' as *;
+
+.compression-progress-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: $blur-md;
+  -webkit-backdrop-filter: $blur-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.compression-progress-modal {
+  background: var(--color-surface-primary);
+  border: 2px solid var(--color-accent-primary);
+  border-radius: $border-radius;
+  padding: $spacing-xl;
+  width: 90%;
+  max-width: 480px;
+  box-shadow: var(--shadow-xl);
+  animation: slideIn 0.3s ease-out;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+      var(--color-accent-primary), 
+      transparent, 
+      var(--color-accent-primary)
+    );
+    border-radius: $border-radius;
+    z-index: -1;
+    animation: borderGlow 2s ease-in-out infinite alternate;
+  }
+}
+
+.compression-progress-header {
+  text-align: center;
+  margin-bottom: $spacing-lg;
+  
+  h3 {
+    @include pixel-style;
+    color: var(--color-text-primary);
+    margin: 0 0 $spacing-sm 0;
+    font-size: 1.5rem;
+    text-shadow: var(--pixel-glow);
+  }
+  
+  .compression-progress-stats {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    font-family: var(--font-pixel);
+    letter-spacing: 0.5px;
+  }
+}
+
+.compression-progress-bar-container {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: $border-radius-small;
+  height: 24px;
+  margin-bottom: $spacing-lg;
+  overflow: hidden;
+  border: 1px solid var(--color-border-secondary);
+}
+
+.compression-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, 
+    var(--color-accent-primary),
+    var(--color-accent-hover)
+  );
+  border-radius: $border-radius-small;
+  transition: width 0.3s ease-out;
+  position: relative;
+  overflow: hidden;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    animation: progressShine 1.5s ease-in-out infinite;
+  }
+}
+
+.compression-progress-shimmer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmerMove 2s ease-in-out infinite;
+}
+
+.compression-progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-text-primary);
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+  z-index: 1;
+}
+
+.compression-progress-details {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-lg;
+}
+
+.compression-detail-item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  font-family: var(--font-pixel);
+  
+  svg {
+    color: var(--color-accent-primary);
+    opacity: 0.8;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  span {
+    letter-spacing: 0.3px;
+  }
+}
+
+.compression-progress-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: $spacing-lg;
+}
+
+.compression-cancel-btn {
+  @include pixel-button;
+  background: transparent;
+  border: 2px solid var(--color-text-muted);
+  color: var(--color-text-muted);
+  padding: $spacing-sm $spacing-lg;
+  
+  &:hover:not(:disabled) {
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+    box-shadow: 0 0 12px rgba(255, 107, 107, 0.3);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes borderGlow {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
+
+@keyframes progressShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes shimmerMove {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+// Dark theme adjustments
+[data-theme="dark"] {
+  .compression-progress-modal {
+    background: var(--color-surface-secondary);
+    
+    &::before {
+      background: linear-gradient(45deg, 
+        rgba(102, 217, 255, 0.6), 
+        transparent, 
+        rgba(102, 217, 255, 0.6)
+      );
+    }
+  }
+}
+
+// Mobile responsiveness
+@media (max-width: $breakpoint-md) {
+  .compression-progress-modal {
+    margin: $spacing-md;
+    padding: $spacing-lg;
+    width: calc(100% - #{$spacing-md * 2});
+  }
+  
+  .compression-progress-header h3 {
+    font-size: 1.25rem;
+  }
+  
+  .compression-detail-item {
+    font-size: 0.8rem;
+  }
+}
