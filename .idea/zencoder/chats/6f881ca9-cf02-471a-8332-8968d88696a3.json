@@ -1,0 +1,1361 @@
+{
+    "checksum": "8a1350f01e409582ec77da22296c3e13d946abf507974244c62f6d848a0ee8a8",
+    "data": {
+    "id": "6f881ca9-cf02-471a-8332-8968d88696a3",
+    "createdAt": 1750481846445,
+    "updatedAt": 1750484012679,
+    "title": "Firebase .env Configuration Guide",
+    "messages": [
+        {
+            "id": "a560baba-0abe-4266-927a-5a698ec75e35",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "create a .env from .env.example with this variables:"
+                },
+                {
+                    "type": "text",
+                    "text": "  apiKey: \"AIzaSyBvynYB62XxYvOvZhQUdBH5Hv5ySM7nCA8\",  authDomain: \"d5reactgallery-8fab5.firebaseapp.com\",  projectId: \"d5reactgallery-8fab5\",  storageBucket: \"d5reactgallery-8fab5.appspot.com\",  messagingSenderId: \"474093371016\",  appId: \"1:474093371016:web:cf94cdd5f8dea23e50293d\",  measurementId: \"G-EH82N2EQK8\""
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": ".env.example",
+                    "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/.env.example",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "REACT_APP_FIREBASE_APIKEY=\nREACT_APP_FIREBASE_AUTHDOMAIN=\nREACT_APP_FIREBASE_PROJECTID=\nREACT_APP_FIREBASE_STORAGEBUCKET=\nREACT_APP_FIREBASE_MESSEAGINGSENDERID=\nREACT_APP_FIREBASE_APPID=\nREACT_APP_FIREBASE_MEASUREMENTID=",
+                    "language": "dotenv"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1750481846446,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "create a .env from .env.example with this variables:"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph"
+                    },
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "  apiKey: \"AIzaSyBvynYB62XxYvOvZhQUdBH5Hv5ySM7nCA8\",  authDomain: \"d5reactgallery-8fab5.firebaseapp.com\",  projectId: \"d5reactgallery-8fab5\",  storageBucket: \"d5reactgallery-8fab5.appspot.com\",  messagingSenderId: \"474093371016\",  appId: \"1:474093371016:web:cf94cdd5f8dea23e50293d\",  measurementId: \"G-EH82N2EQK8\""
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "528b73d5-111d-4cac-ba77-2cfdb30a7ff4",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "I'll create a .env file from the .env.example template with your Firebase configuration values."
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01Vm1ZcAqYgxYc8VDdN287Qu",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": ".env",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/.env"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- .env\n+++ .env\n@@ -0,0 +1,7 @@\n+REACT_APP_FIREBASE_APIKEY=AIzaSyBvynYB62XxYvOvZhQUdBH5Hv5ySM7nCA8\n+REACT_APP_FIREBASE_AUTHDOMAIN=d5reactgallery-8fab5.firebaseapp.com\n+REACT_APP_FIREBASE_PROJECTID=d5reactgallery-8fab5\n+REACT_APP_FIREBASE_STORAGEBUCKET=d5reactgallery-8fab5.appspot.com\n+REACT_APP_FIREBASE_MESSEAGINGSENDERID=474093371016\n+REACT_APP_FIREBASE_APPID=1:474093371016:web:cf94cdd5f8dea23e50293d\n+REACT_APP_FIREBASE_MEASUREMENTID=G-EH82N2EQK8",
+                    "refToolCallId": "toolu_01Vm1ZcAqYgxYc8VDdN287Qu"
+                },
+                {
+                    "type": "text",
+                    "text": "Perfect! I've created the `.env` file with your Firebase configuration values. The file now contains all the necessary environment variables for your React app to connect to Firebase:\n\n- **API Key**: AIzaSyBvynYB62XxYvOvZhQUdBH5Hv5ySM7nCA8\n- **Auth Domain**: d5reactgallery-8fab5.firebaseapp.com\n- **Project ID**: d5reactgallery-8fab5\n- **Storage Bucket**: d5reactgallery-8fab5.appspot.com\n- **Messaging Sender ID**: 474093371016\n- **App ID**: 1:474093371016:web:cf94cdd5f8dea23e50293d\n- **Measurement ID**: G-EH82N2EQK8\n\n**Important security note**: Make sure the `.env` file is included in your `.gitignore` to prevent accidentally committing sensitive Firebase credentials to version control."
+                },
+                {
+                    "type": "codePatch",
+                    "diffs": [
+                        {
+                            "path": ".env",
+                            "patch": "@@ -0,0 +1,412 @@\n+REACT_APP_FIREBASE_APIKEY=AIzaSyBvynYB62XxYvOvZhQUdBH5Hv5ySM7nCA8%0AREACT_APP_FIREBASE_AUTHDOMAIN=d5reactgallery-8fab5.firebaseapp.com%0AREACT_APP_FIREBASE_PROJECTID=d5reactgallery-8fab5%0AREACT_APP_FIREBASE_STORAGEBUCKET=d5reactgallery-8fab5.appspot.com%0AREACT_APP_FIREBASE_MESSEAGINGSENDERID=474093371016%0AREACT_APP_FIREBASE_APPID=1:474093371016:web:cf94cdd5f8dea23e50293d%0AREACT_APP_FIREBASE_MEASUREMENTID=G-EH82N2EQK8\n",
+                            "isNew": true,
+                            "isApplied": true
+                        }
+                    ]
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "3a198753-e7a1-4440-a051-5b017e8a4e69"
+            },
+            "createdAt": 1750481848906,
+            "isInternal": false
+        },
+        {
+            "id": "3d2f03ff-960b-40e1-8f89-70dd02d23e65",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "atualiza o gitignore"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": ".gitignore",
+                    "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/.gitignore",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.\n\n# dependencies\n/node_modules\n/.pnp\n.pnp.js\n\n# testing\n/coverage\n\n# production\n/build\n\n# misc\n.DS_Store\n.env.local\n.env.development.local\n.env.test.local\n.env.production.local\n\nnpm-debug.log*\nyarn-debug.log*\nyarn-error.log*\n",
+                    "language": ".gitignore (gitignore)"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1750481908708,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "atualiza o gitignore"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "412545be-47e6-48ae-bafa-96ba507b219c",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01VRjnBT1uJBM5mrnmayVWKE",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": ".gitignore",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/.gitignore"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- .gitignore\n+++ .gitignore\n@@ -13,6 +13,7 @@\n \n # misc\n .DS_Store\n+.env\n .env.local\n .env.development.local\n .env.test.local",
+                    "refToolCallId": "toolu_01VRjnBT1uJBM5mrnmayVWKE"
+                },
+                {
+                    "type": "text",
+                    "text": "Perfeito! Atualizei o `.gitignore` para incluir o arquivo `.env` na lista de arquivos ignorados. Isso garante que suas credenciais do Firebase não sejam acidentalmente commitadas no repositório Git.\n\nA mudança foi:\n- Adicionei `.env` na seção \"misc\" junto com os outros arquivos de ambiente\n\nAgora o arquivo `.env` com suas credenciais sensíveis do Firebase estará protegido e não será incluído no controle de versão."
+                },
+                {
+                    "type": "codePatch",
+                    "diffs": [
+                        {
+                            "path": ".gitignore",
+                            "patch": "@@ -183,16 +183,21 @@\n S_Store%0A\n+.env%0A\n .env.loc\n",
+                            "isNew": false,
+                            "isApplied": true
+                        }
+                    ]
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "0ca9b6e3-11f9-436f-8d65-4a673f032117"
+            },
+            "createdAt": 1750481911006,
+            "isInternal": false
+        },
+        {
+            "id": "53f25e14-f4ee-4785-86d3-41651448f1a2",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "vamos atualizar o projeto para usar vite"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "package.json",
+                    "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/package.json",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "{\n  \"name\": \"pixelvault\",\n  \"version\": \"1.0.0\",\n  \"private\": true,\n  \"dependencies\": {\n    \"@testing-library/jest-dom\": \"^5.16.4\",\n    \"@testing-library/react\": \"^13.2.0\",\n    \"@testing-library/user-event\": \"^13.5.0\",\n    \"@types/jest\": \"^27.5.1\",\n    \"@types/node\": \"^16.11.36\",\n    \"@types/react\": \"^18.0.9\",\n    \"@types/react-dom\": \"^18.0.4\",\n    \"firebase\": \"^9.8.1\",\n    \"react\": \"^18.1.0\",\n    \"react-dom\": \"^18.1.0\",\n    \"react-scripts\": \"5.0.1\",\n    \"styled-components\": \"^5.3.5\",\n    \"typescript\": \"^4.6.4\",\n    \"uuid\": \"^8.3.2\",\n    \"web-vitals\": \"^2.1.4\"\n  },\n  \"scripts\": {\n    \"start\": \"react-scripts start\",\n    \"build\": \"react-scripts build\",\n    \"test\": \"react-scripts test\",\n    \"eject\": \"react-scripts eject\"\n  },\n  \"eslintConfig\": {\n    \"extends\": [\n      \"react-app\",\n      \"react-app/jest\"\n    ]\n  },\n  \"browserslist\": {\n    \"production\": [\n      \">0.2%\",\n      \"not dead\",\n      \"not op_mini all\"\n    ],\n    \"development\": [\n      \"last 1 chrome version\",\n      \"last 1 firefox version\",\n      \"last 1 safari version\"\n    ]\n  },\n  \"devDependencies\": {\n    \"@types/styled-components\": \"^5.1.25\",\n    \"@types/uuid\": \"^8.3.4\"\n  }\n}\n",
+                    "language": "json"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1750481979619,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "vamos atualizar o projeto para usar vite"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "2ac28676-63ce-44dd-bf7f-9e800d390795",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Vou ajudá-lo a migrar o projeto do Create React App para Vite. Primeiro, vou verificar a estrutura atual do projeto e depois fazer as mudanças necessárias."
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01UeVTJS8WpXsYa6dyxiv88o",
+                    "statusText": "Viewed folder",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": ".",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/."
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01LUimd4RrrmJGSgZ2tQAQyJ",
+                    "statusText": "Viewed folder",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "public",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/public"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_014A14QZku3M3SS1hMGnB2Kc",
+                    "title": "File search",
+                    "statusText": "Done",
+                    "status": "SUCCESS",
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Vou verificar se existe um index.html na pasta public:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01N3aAWaasMFi91AKnTJMfmD",
+                    "status": "IN_PROGRESS",
+                    "isHidden": true,
+                    "localResult": "{\"status\":\"SUCCESS\",\"exitCode\":0,\"output\":\"\"}"
+                },
+                {
+                    "type": "shellCommand",
+                    "command": "find /home/mrpunkdasilva/WebstormProjects/PixelVault -name \"index.html\" -type f",
+                    "id": "83f049a2-82e5-49f7-9ba2-747ded8d7eb4",
+                    "status": "SUCCESS",
+                    "toolCallId": "toolu_01N3aAWaasMFi91AKnTJMfmD",
+                    "commandsRequiringConfirmation": [],
+                    "exitCode": 0,
+                    "output": ""
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "d2bad2f5-cfcf-4cc6-adc9-efad10c8a123"
+            },
+            "createdAt": 1750481982041,
+            "isInternal": false
+        },
+        {
+            "id": "db1e9c9c-7d9b-41da-bd58-0a112cc63596",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Parece que não há um index.html ainda. Vou começar a migração para Vite:\n\n## 1. Primeiro, vou atualizar o package.json"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01PykUhmAVGhR323AvMiUYqw",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "package.json",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/package.json"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- package.json\n+++ package.json\n@@ -3,21 +3,11 @@\n   \"version\": \"1.0.0\",\n   \"private\": true,\n   \"dependencies\": {\n-    \"@testing-library/jest-dom\": \"^5.16.4\",\n-    \"@testing-library/react\": \"^13.2.0\",\n-    \"@testing-library/user-event\": \"^13.5.0\",\n-    \"@types/jest\": \"^27.5.1\",\n-    \"@types/node\": \"^16.11.36\",\n-    \"@types/react\": \"^18.0.9\",\n-    \"@types/react-dom\": \"^18.0.4\",\n     \"firebase\": \"^9.8.1\",\n     \"react\": \"^18.1.0\",\n     \"react-dom\": \"^18.1.0\",\n-    \"react-scripts\": \"5.0.1\",\n     \"styled-components\": \"^5.3.5\",\n-    \"typescript\": \"^4.6.4\",\n-    \"uuid\": \"^8.3.2\",\n-    \"web-vitals\": \"^2.1.4\"\n+    \"uuid\": \"^8.3.2\"\n   },\n   \"scripts\": {\n     \"start\": \"react-scripts start\",",
+                    "refToolCallId": "toolu_01PykUhmAVGhR323AvMiUYqw"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01AG25RaEBMmpoKWSUPtCMh4",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "package.json",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/package.json"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- package.json\n+++ package.json\n@@ -10,10 +10,9 @@\n     \"uuid\": \"^8.3.2\"\n   },\n   \"scripts\": {\n-    \"start\": \"react-scripts start\",\n-    \"build\": \"react-scripts build\",\n-    \"test\": \"react-scripts test\",\n-    \"eject\": \"react-scripts eject\"\n+    \"dev\": \"vite\",\n+    \"build\": \"tsc && vite build\",\n+    \"preview\": \"vite preview\"\n   },\n   \"eslintConfig\": {\n     \"extends\": [",
+                    "refToolCallId": "toolu_01AG25RaEBMmpoKWSUPtCMh4"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01PH8BqQg4suq4mVM94asGDu",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "package.json",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/package.json"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- package.json\n+++ package.json\n@@ -33,7 +33,13 @@\n     ]\n   },\n   \"devDependencies\": {\n+    \"@types/node\": \"^18.0.0\",\n+    \"@types/react\": \"^18.0.9\",\n+    \"@types/react-dom\": \"^18.0.4\",\n     \"@types/styled-components\": \"^5.1.25\",\n-    \"@types/uuid\": \"^8.3.4\"\n+    \"@types/uuid\": \"^8.3.4\",\n+    \"@vitejs/plugin-react\": \"^4.0.0\",\n+    \"typescript\": \"^5.0.0\",\n+    \"vite\": \"^5.0.0\"\n   }\n }",
+                    "refToolCallId": "toolu_01PH8BqQg4suq4mVM94asGDu"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01SJHY4LGmwQxT11WNEH5G3b",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "package.json",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/package.json"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- package.json\n+++ package.json\n@@ -14,24 +14,7 @@\n     \"build\": \"tsc && vite build\",\n     \"preview\": \"vite preview\"\n   },\n-  \"eslintConfig\": {\n-    \"extends\": [\n-      \"react-app\",\n-      \"react-app/jest\"\n-    ]\n-  },\n-  \"browserslist\": {\n-    \"production\": [\n-      \">0.2%\",\n-      \"not dead\",\n-      \"not op_mini all\"\n-    ],\n-    \"development\": [\n-      \"last 1 chrome version\",\n-      \"last 1 firefox version\",\n-      \"last 1 safari version\"\n-    ]\n-  },\n+\n   \"devDependencies\": {\n     \"@types/node\": \"^18.0.0\",\n     \"@types/react\": \"^18.0.9\",",
+                    "refToolCallId": "toolu_01SJHY4LGmwQxT11WNEH5G3b"
+                },
+                {
+                    "type": "text",
+                    "text": "## 2. Agora vou criar o arquivo de configuração do Vite"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_012ZEeEkNAoths2fEqSzdYMt",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "vite.config.ts",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/vite.config.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- vite.config.ts\n+++ vite.config.ts\n@@ -0,0 +1,11 @@\n+import { defineConfig } from 'vite'\n+import react from '@vitejs/plugin-react'\n+\n+// https://vitejs.dev/config/\n+export default defineConfig({\n+  plugins: [react()],\n+  server: {\n+    port: 3000,\n+    open: true\n+  }\n+})",
+                    "refToolCallId": "toolu_012ZEeEkNAoths2fEqSzdYMt"
+                },
+                {
+                    "type": "text",
+                    "text": "## 3. Vou criar o index.html na raiz do projeto"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01889ACgSvHPqNQYNYXD87uK",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "index.html",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/index.html"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- index.html\n+++ index.html\n@@ -0,0 +1,13 @@\n+<!DOCTYPE html>\n+<html lang=\"en\">\n+  <head>\n+    <meta charset=\"UTF-8\" />\n+    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/vite.svg\" />\n+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n+    <title>PixelVault</title>\n+  </head>\n+  <body>\n+    <div id=\"root\"></div>\n+    <script type=\"module\" src=\"/src/index.tsx\"></script>\n+  </body>\n+</html>",
+                    "refToolCallId": "toolu_01889ACgSvHPqNQYNYXD87uK"
+                },
+                {
+                    "type": "text",
+                    "text": "## 4. Vou verificar o arquivo index.tsx para garantir compatibilidade"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01QgrrMg7p4XEchn19DQbZZD",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/index.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/index.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01KhEbXBedRXyG8YD3B2iREm",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/index.tsx",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/index.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/index.tsx\n+++ src/index.tsx\n@@ -1,7 +1,6 @@\n import React from 'react';\n import ReactDOM from 'react-dom/client';\n import App from './App';\n-import reportWebVitals from './reportWebVitals';\n \n import './index.css';\n \n@@ -13,8 +12,3 @@\n     <App />\n   </React.StrictMode>\n );\n-\n-// If you want to start measuring performance in your app, pass a function\n-// to log results (for example: reportWebVitals(console.log))\n-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals\n-reportWebVitals();",
+                    "refToolCallId": "toolu_01KhEbXBedRXyG8YD3B2iREm"
+                },
+                {
+                    "type": "text",
+                    "text": "## 5. Vou remover os arquivos desnecessários do CRA"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_018Rne8Mda66knd2j8GzPk4n",
+                    "status": "IN_PROGRESS",
+                    "isHidden": true,
+                    "localResult": "{\"status\":\"SUCCESS\",\"exitCode\":0,\"output\":\"\"}"
+                },
+                {
+                    "type": "codePatch",
+                    "diffs": [
+                        {
+                            "path": "index.html",
+                            "patch": "@@ -0,0 +1,359 @@\n+%3C!DOCTYPE html%3E%0A%3Chtml lang=%22en%22%3E%0A  %3Chead%3E%0A    %3Cmeta charset=%22UTF-8%22 /%3E%0A    %3Clink rel=%22icon%22 type=%22image/svg+xml%22 href=%22/vite.svg%22 /%3E%0A    %3Cmeta name=%22viewport%22 content=%22width=device-width, initial-scale=1.0%22 /%3E%0A    %3Ctitle%3EPixelVault%3C/title%3E%0A  %3C/head%3E%0A  %3Cbody%3E%0A    %3Cdiv id=%22root%22%3E%3C/div%3E%0A    %3Cscript type=%22module%22 src=%22/src/index.tsx%22%3E%3C/script%3E%0A  %3C/body%3E%0A%3C/html%3E\n",
+                            "isNew": true,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "package.json",
+                            "patch": "@@ -84,267 +84,8 @@\n : %7B%0A\n-    %22@testing-library/jest-dom%22: %22%5E5.16.4%22,%0A    %22@testing-library/react%22: %22%5E13.2.0%22,%0A    %22@testing-library/user-event%22: %22%5E13.5.0%22,%0A    %22@types/jest%22: %22%5E27.5.1%22,%0A    %22@types/node%22: %22%5E16.11.36%22,%0A    %22@types/react%22: %22%5E18.0.9%22,%0A    %22@types/react-dom%22: %22%5E18.0.4%22,%0A\n     \n@@ -162,38 +162,8 @@\n 0%22,%0A\n-    %22react-scripts%22: %225.0.1%22,%0A\n     \n@@ -202,133 +202,60 @@\n    %22\n-typescript%22: %22%5E4.6.4%22,%0A    %22uuid%22: %22%5E8.3.2%22,%0A    %22web-vitals%22: %22%5E2.1.4%22%0A  %7D,%0A  %22scripts%22: %7B%0A    %22start%22: %22react-scripts start\n+uuid%22: %22%5E8.3.2%22%0A  %7D,%0A  %22scripts%22: %7B%0A    %22dev%22: %22vite\n %22,%0A \n@@ -267,29 +267,27 @@\n uild%22: %22\n-react-scripts\n+tsc && vite\n  build%22,\n@@ -296,396 +296,39 @@\n    %22\n-test%22: %22react-scripts test%22,%0A    %22eject%22: %22react-scripts eject%22%0A  %7D,%0A  %22eslintConfig%22: %7B%0A    %22extends%22: %5B%0A      %22react-app%22,%0A      %22react-app/jest%22%0A    %5D%0A  %7D,%0A  %22browserslist%22: %7B%0A    %22production%22: %5B%0A      %22%3E0.2%25%22,%0A      %22not dead%22,%0A      %22not op_mini all%22%0A    %5D,%0A    %22development%22: %5B%0A      %22last 1 chrome version%22,%0A      %22last 1 firefox version%22,%0A      %22last 1 safari version%22%0A    %5D\n+preview%22: %22vite preview%22\n %0A  %7D,%0A\n+%0A\n   %22d\n@@ -362,65 +362,249 @@\n pes/\n-styled-components%22: %22%5E5.1.25%22,%0A    %22@types/uuid%22: %22%5E8.3.4\n+node%22: %22%5E18.0.0%22,%0A    %22@types/react%22: %22%5E18.0.9%22,%0A    %22@types/react-dom%22: %22%5E18.0.4%22,%0A    %22@types/styled-components%22: %22%5E5.1.25%22,%0A    %22@types/uuid%22: %22%5E8.3.4%22,%0A    %22@vitejs/plugin-react%22: %22%5E4.0.0%22,%0A    %22typescript%22: %22%5E5.0.0%22,%0A    %22vite%22: %22%5E5.0.0\n %22%0A  \n",
+                            "isNew": false,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/index.tsx",
+                            "patch": "@@ -89,57 +89,8 @@\n pp';\n-%0Aimport reportWebVitals from './reportWebVitals';\n %0A%0Aim\n@@ -271,236 +271,4 @@\n %0A);%0A\n-%0A// If you want to start measuring performance in your app, pass a function%0A// to log results (for example: reportWebVitals(console.log))%0A// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals%0AreportWebVitals();%0A\n",
+                            "isNew": false,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "vite.config.ts",
+                            "patch": "@@ -0,0 +1,209 @@\n+import %7B defineConfig %7D from 'vite'%0Aimport react from '@vitejs/plugin-react'%0A%0A// https://vitejs.dev/config/%0Aexport default defineConfig(%7B%0A  plugins: %5Breact()%5D,%0A  server: %7B%0A    port: 3000,%0A    open: true%0A  %7D%0A%7D)\n",
+                            "isNew": true,
+                            "isApplied": true
+                        }
+                    ]
+                },
+                {
+                    "type": "shellCommand",
+                    "command": "rm -f /home/mrpunkdasilva/WebstormProjects/PixelVault/src/react-app-env.d.ts",
+                    "id": "fb06ffec-aaf2-44bf-ade1-7a986a16247d",
+                    "status": "SUCCESS",
+                    "toolCallId": "toolu_018Rne8Mda66knd2j8GzPk4n",
+                    "commandsRequiringConfirmation": [
+                        {
+                            "name": "rm",
+                            "arguments": [
+                                "-f",
+                                "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/react-app-env.d.ts"
+                            ]
+                        }
+                    ],
+                    "exitCode": 0,
+                    "output": ""
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "e07bb3b7-5c82-45a9-a7af-a6f4664cce71"
+            },
+            "createdAt": 1750482005663,
+            "isInternal": false
+        },
+        {
+            "id": "c07a01d7-0853-4919-bf33-e570f81cf078",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01U5ZgtTVpzDC9bbta4v5daN",
+                    "status": "IN_PROGRESS",
+                    "isHidden": true,
+                    "localResult": "{\"status\":\"SUCCESS\",\"exitCode\":0,\"output\":\"\"}"
+                },
+                {
+                    "type": "shellCommand",
+                    "command": "rm -f /home/mrpunkdasilva/WebstormProjects/PixelVault/src/reportWebVitals.ts",
+                    "id": "52863c43-0ba6-4cda-b17d-d1503ee8dc10",
+                    "status": "SUCCESS",
+                    "toolCallId": "toolu_01U5ZgtTVpzDC9bbta4v5daN",
+                    "commandsRequiringConfirmation": [
+                        {
+                            "name": "rm",
+                            "arguments": [
+                                "-f",
+                                "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/reportWebVitals.ts"
+                            ]
+                        }
+                    ],
+                    "exitCode": 0,
+                    "output": ""
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "c8fd3423-530b-4db6-ae3c-7205558be72e"
+            },
+            "createdAt": 1750482132702,
+            "isInternal": false
+        },
+        {
+            "id": "5c6d5585-ff66-40a3-ba3f-9f5681614770",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01RCw3xDNTcBHvXb7u4Ak2Go",
+                    "status": "IN_PROGRESS",
+                    "isHidden": true,
+                    "localResult": "{\"status\":\"SUCCESS\",\"exitCode\":0,\"output\":\"\"}"
+                },
+                {
+                    "type": "shellCommand",
+                    "command": "rm -f /home/mrpunkdasilva/WebstormProjects/PixelVault/src/setupTests.ts",
+                    "id": "b75dc61a-fcb9-40bb-8394-17d462a17361",
+                    "status": "SUCCESS",
+                    "toolCallId": "toolu_01RCw3xDNTcBHvXb7u4Ak2Go",
+                    "commandsRequiringConfirmation": [
+                        {
+                            "name": "rm",
+                            "arguments": [
+                                "-f",
+                                "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/setupTests.ts"
+                            ]
+                        }
+                    ],
+                    "exitCode": 0,
+                    "output": ""
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "59666c3e-c088-43ee-ae6e-29014af83b43"
+            },
+            "createdAt": 1750482146019,
+            "isInternal": false
+        },
+        {
+            "id": "44ab815c-285b-4a2c-aa7f-0ca6b25fb78d",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01VherTDFzDQGXkecyqzBN8K",
+                    "status": "IN_PROGRESS",
+                    "isHidden": true,
+                    "localResult": "{\"status\":\"SUCCESS\",\"exitCode\":0,\"output\":\"\"}"
+                },
+                {
+                    "type": "shellCommand",
+                    "command": "rm -f /home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.test.tsx",
+                    "id": "f9265379-d33e-467c-905e-03dc1e4ad10c",
+                    "status": "SUCCESS",
+                    "toolCallId": "toolu_01VherTDFzDQGXkecyqzBN8K",
+                    "commandsRequiringConfirmation": [
+                        {
+                            "name": "rm",
+                            "arguments": [
+                                "-f",
+                                "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/App.test.tsx"
+                            ]
+                        }
+                    ],
+                    "exitCode": 0,
+                    "output": ""
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "9158f888-4d60-46c4-bf29-203a6c4b6684"
+            },
+            "createdAt": 1750482507653,
+            "isInternal": false
+        },
+        {
+            "id": "750414dd-c928-4568-8507-5ae3d7f2cbf3",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "## 6. Vou criar um arquivo vite.svg na pasta public"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01HhDTmkaMwMpGcpx1bNFUvu",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "public/vite.svg",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/public/vite.svg"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- public/vite.svg\n+++ public/vite.svg\n@@ -0,0 +1 @@\n+<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" aria-hidden=\"true\" role=\"img\" class=\"iconify iconify--logos\" width=\"31.88\" height=\"32\" preserveAspectRatio=\"xMidYMid meet\" viewBox=\"0 0 256 257\"><defs><linearGradient id=\"IconifyId1813088fe1fbc01fb466\" x1=\"-.828%\" x2=\"57.636%\" y1=\"7.652%\" y2=\"78.411%\"><stop offset=\"0%\" stop-color=\"#41D1FF\"></stop><stop offset=\"100%\" stop-color=\"#BD34FE\"></stop></linearGradient><linearGradient id=\"IconifyId1813088fe1fbc01fb467\" x1=\"43.376%\" x2=\"50.316%\" y1=\"2.242%\" y2=\"89.03%\"><stop offset=\"0%\" stop-color=\"#FFEA83\"></stop><stop offset=\"8.333%\" stop-color=\"#FFDD35\"></stop><stop offset=\"100%\" stop-color=\"#FFA800\"></stop></linearGradient></defs><path fill=\"url(#IconifyId1813088fe1fbc01fb466)\" d=\"M255.153 37.938L134.897 252.976c-2.483 4.44-8.862 4.466-11.382.048L.875 37.958c-2.746-4.814 1.371-10.646 6.827-9.67l120.385 21.517a6.537 6.537 0 0 0 2.322-.004l117.867-21.483c5.438-.991 9.574 4.796 6.877 9.62Z\"></path><path fill=\"url(#IconifyId1813088fe1fbc01fb467)\" d=\"M185.432.063L96.44 17.501a3.268 3.268 0 0 0-2.634 3.014l-5.474 92.456a3.268 3.268 0 0 0 3.997 3.378l24.777-5.718c2.318-.535 4.413 1.507 3.936 3.838l-7.361 36.047c-.495 2.426 1.782 4.5 4.151 3.78l15.304-4.649c2.372-.72 4.652 1.36 4.15 3.788l-11.698 56.621c-.732 3.542 3.979 5.473 5.943 2.437l1.313-2.028l72.516-144.72c1.215-2.423-.88-5.186-3.54-4.672l-25.505 4.922c-2.396.462-4.435-1.77-3.759-4.114l16.646-57.705c.677-2.35-1.37-4.583-3.769-4.113Z\"></path></svg>",
+                    "refToolCallId": "toolu_01HhDTmkaMwMpGcpx1bNFUvu"
+                },
+                {
+                    "type": "text",
+                    "text": "## 7. Vou atualizar o tsconfig.json para melhor compatibilidade com Vite"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_016mPMfWAzGCWxai3Ccn2uqL",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "tsconfig.json",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/tsconfig.json"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01TPHRVgFy6Mvnos1rGg1iYc",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "tsconfig.json",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/tsconfig.json"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- tsconfig.json\n+++ tsconfig.json\n@@ -1,26 +1,33 @@\n {\n   \"compilerOptions\": {\n-    \"target\": \"es5\",\n-    \"lib\": [\n-      \"dom\",\n-      \"dom.iterable\",\n-      \"esnext\"\n-    ],\n-    \"allowJs\": true,\n+    \"target\": \"ES2020\",\n+    \"useDefineForClassFields\": true,\n+    \"lib\": [\"ES2020\", \"DOM\", \"DOM.Iterable\"],\n+    \"module\": \"ESNext\",\n     \"skipLibCheck\": true,\n-    \"esModuleInterop\": true,\n-    \"allowSyntheticDefaultImports\": true,\n-    \"strict\": true,\n-    \"forceConsistentCasingInFileNames\": true,\n-    \"noFallthroughCasesInSwitch\": true,\n-    \"module\": \"esnext\",\n-    \"moduleResolution\": \"node\",\n+\n+    /* Bundler mode */\n+    \"moduleResolution\": \"bundler\",\n+    \"allowImportingTsExtensions\": true,\n     \"resolveJsonModule\": true,\n     \"isolatedModules\": true,\n     \"noEmit\": true,\n-    \"jsx\": \"react-jsx\"\n+    \"jsx\": \"react-jsx\",\n+\n+    /* Linting */\n+    \"strict\": true,\n+    \"noUnusedLocals\": true,\n+    \"noUnusedParameters\": true,\n+    \"noFallthroughCasesInSwitch\": true,\n+    \n+    /* Additional */\n+    \"allowJs\": true,\n+    \"esModuleInterop\": true,\n+    \"allowSyntheticDefaultImports\": true,\n+    \"forceConsistentCasingInFileNames\": true\n   },\n   \"include\": [\n     \"src\"\n-  ]\n+  ],\n+  \"references\": [{ \"path\": \"./tsconfig.node.json\" }]\n }",
+                    "refToolCallId": "toolu_01TPHRVgFy6Mvnos1rGg1iYc"
+                },
+                {
+                    "type": "text",
+                    "text": "## 8. Vou criar o tsconfig.node.json"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01JFfcTih2BGsGkxxqUjr7Ky",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "tsconfig.node.json",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/tsconfig.node.json"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- tsconfig.node.json\n+++ tsconfig.node.json\n@@ -0,0 +1,10 @@\n+{\n+  \"compilerOptions\": {\n+    \"composite\": true,\n+    \"skipLibCheck\": true,\n+    \"module\": \"ESNext\",\n+    \"moduleResolution\": \"bundler\",\n+    \"allowSyntheticDefaultImports\": true\n+  },\n+  \"include\": [\"vite.config.ts\"]\n+}",
+                    "refToolCallId": "toolu_01JFfcTih2BGsGkxxqUjr7Ky"
+                },
+                {
+                    "type": "text",
+                    "text": "## 9. Agora vou atualizar o .env para usar as variáveis corretas do Vite"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01RChobve52h6NDMeaV7NKGm",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": ".env",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/.env"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01E1kzpFz7MMuBfmcgpJSz7h",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": ".env",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/.env"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- .env\n+++ .env\n@@ -1,7 +1,7 @@\n-REACT_APP_FIREBASE_APIKEY=AIzaSyBvynYB62XxYvOvZhQUdBH5Hv5ySM7nCA8\n-REACT_APP_FIREBASE_AUTHDOMAIN=d5reactgallery-8fab5.firebaseapp.com\n-REACT_APP_FIREBASE_PROJECTID=d5reactgallery-8fab5\n-REACT_APP_FIREBASE_STORAGEBUCKET=d5reactgallery-8fab5.appspot.com\n-REACT_APP_FIREBASE_MESSEAGINGSENDERID=474093371016\n-REACT_APP_FIREBASE_APPID=1:474093371016:web:cf94cdd5f8dea23e50293d\n-REACT_APP_FIREBASE_MEASUREMENTID=G-EH82N2EQK8\n+VITE_FIREBASE_APIKEY=AIzaSyBvynYB62XxYvOvZhQUdBH5Hv5ySM7nCA8\n+VITE_FIREBASE_AUTHDOMAIN=d5reactgallery-8fab5.firebaseapp.com\n+VITE_FIREBASE_PROJECTID=d5reactgallery-8fab5\n+VITE_FIREBASE_STORAGEBUCKET=d5reactgallery-8fab5.appspot.com\n+VITE_FIREBASE_MESSEAGINGSENDERID=474093371016\n+VITE_FIREBASE_APPID=1:474093371016:web:cf94cdd5f8dea23e50293d\n+VITE_FIREBASE_MEASUREMENTID=G-EH82N2EQK8",
+                    "refToolCallId": "toolu_01E1kzpFz7MMuBfmcgpJSz7h"
+                },
+                {
+                    "type": "text",
+                    "text": "## 10. Vamos verificar se há algum código que precisa ser atualizado para usar as novas variáveis de ambiente"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01RiWxTcEy9f8UaHYzYCAa59",
+                    "title": "Fulltext search",
+                    "statusText": "Done",
+                    "status": "SUCCESS",
+                    "isHidden": false
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01CxLsyLNu6iinE1DuFfVJe7",
+                    "title": "Fulltext search",
+                    "statusText": "Done",
+                    "status": "SUCCESS",
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Vou verificar se há configurações do Firebase no código:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_012k1N27oGF7jdCiW8eymqty",
+                    "title": "Fulltext search",
+                    "statusText": "Done",
+                    "status": "SUCCESS",
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "## 11. Agora vou instalar as novas dependências"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01E7mFGit4fT3aX1SNbLs8ub",
+                    "status": "IN_PROGRESS",
+                    "isHidden": true,
+                    "localResult": "{\"status\":\"SUCCESS\",\"exitCode\":0,\"output\":\"\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m \\u001b[94mold lockfile\\u001b[39m\\r\\n\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m \\u001b[94mold lockfile\\u001b[39m The package-lock.json file was created with an old version of npm,\\r\\n\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m \\u001b[94mold lockfile\\u001b[39m so supplemental metadata must be fetched from the registry.\\r\\n\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m \\u001b[94mold lockfile\\u001b[39m\\r\\n\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m \\u001b[94mold lockfile\\u001b[39m This is a one-time fix-up, please be patient...\\r\\n\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m \\u001b[94mold lockfile\\u001b[39m\\r\\n\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m \\u001b[94mERESOLVE\\u001b[39m overriding peer dependency\\r\\n\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m While resolving: react-scripts@5.0.1\\r\\n\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m Found: typescript@5.8.3\\u001b[2m\\u001b[22m\\r\\n\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m \\u001b[2mnode_modules/typescript\\u001b[22m\\r\\n\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m   \\u001b[34mdev\\u001b[39m typescript@\\\"^5.0.0\\\" from the root project\\r\\n\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m   2 more (fork-ts-checker-webpack-plugin, tsutils)\\r\\n\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m\\r\\n\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m Could not resolve dependency:\\r\\n\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m peerOptional typescript@\\\"^3.2.1 || ^4\\\" from react-scripts@5.0.1\\u001b[2m\\u001b[22m\\r\\n\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m \\u001b[2mnode_modules/react-scripts\\u001b[22m\\r\\n\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m\\r\\n\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m Conflicting peer dependency: typescript@4.9.5\\u001b[2m\\u001b[22m\\r\\n\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m \\u001b[2mnode_modules/typescript\\u001b[22m\\r\\n\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m   peerOptional typescript@\\\"^3.2.1 || ^4\\\" from react-scripts@5.0.1\\u001b[2m\\u001b[22m\\r\\n\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m   \\u001b[2mnode_modules/react-scripts\\u001b[22m\\r\\n\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m \\u001b[94mdeprecated\\u001b[39m rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported\\r\\n\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m \\u001b[94mdeprecated\\u001b[39m glob@7.2.3: Glob versions prior to v9 are no longer supported\\r\\n\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m \\u001b[94mdeprecated\\u001b[39m inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.\\r\\n\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K\\u001b[1mnpm\\u001b[22m \\u001b[33mwarn\\u001b[39m \\u001b[94mdeprecated\\u001b[39m core-js@3.6.5: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.\\r\\n\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K\\r\\nadded 247 packages, and audited 248 packages in 43s\\r\\n\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K\\r\\n\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K14 packages are looking for funding\\r\\n\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K  run `npm fund` for details\\r\\n\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K\\r\\n\\u001b[31m\\u001b[1m8\\u001b[22m\\u001b[39m vulnerabilities (1 \\u001b[1mlow\\u001b[22m, 4 \\u001b[33m\\u001b[1mmoderate\\u001b[22m\\u001b[39m, 2 \\u001b[31m\\u001b[1mhigh\\u001b[22m\\u001b[39m, 1 \\u001b[35m\\u001b[1mcritical\\u001b[22m\\u001b[39m)\\r\\n\\r\\nTo address issues that do not require attention, run:\\r\\n  npm audit fix\\r\\n\\r\\nTo address all issues (including breaking changes), run:\\r\\n  npm audit fix --force\\r\\n\\r\\nRun `npm audit` for details.\\r\\n\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K\"}"
+                },
+                {
+                    "type": "codePatch",
+                    "diffs": [
+                        {
+                            "path": "public/vite.svg",
+                            "patch": "@@ -0,0 +1,1497 @@\n+%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 xmlns:xlink=%22http://www.w3.org/1999/xlink%22 aria-hidden=%22true%22 role=%22img%22 class=%22iconify iconify--logos%22 width=%2231.88%22 height=%2232%22 preserveAspectRatio=%22xMidYMid meet%22 viewBox=%220 0 256 257%22%3E%3Cdefs%3E%3ClinearGradient id=%22IconifyId1813088fe1fbc01fb466%22 x1=%22-.828%25%22 x2=%2257.636%25%22 y1=%227.652%25%22 y2=%2278.411%25%22%3E%3Cstop offset=%220%25%22 stop-color=%22#41D1FF%22%3E%3C/stop%3E%3Cstop offset=%22100%25%22 stop-color=%22#BD34FE%22%3E%3C/stop%3E%3C/linearGradient%3E%3ClinearGradient id=%22IconifyId1813088fe1fbc01fb467%22 x1=%2243.376%25%22 x2=%2250.316%25%22 y1=%222.242%25%22 y2=%2289.03%25%22%3E%3Cstop offset=%220%25%22 stop-color=%22#FFEA83%22%3E%3C/stop%3E%3Cstop offset=%228.333%25%22 stop-color=%22#FFDD35%22%3E%3C/stop%3E%3Cstop offset=%22100%25%22 stop-color=%22#FFA800%22%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill=%22url(#IconifyId1813088fe1fbc01fb466)%22 d=%22M255.153 37.938L134.897 252.976c-2.483 4.44-8.862 4.466-11.382.048L.875 37.958c-2.746-4.814 1.371-10.646 6.827-9.67l120.385 21.517a6.537 6.537 0 0 0 2.322-.004l117.867-21.483c5.438-.991 9.574 4.796 6.877 9.62Z%22%3E%3C/path%3E%3Cpath fill=%22url(#IconifyId1813088fe1fbc01fb467)%22 d=%22M185.432.063L96.44 17.501a3.268 3.268 0 0 0-2.634 3.014l-5.474 92.456a3.268 3.268 0 0 0 3.997 3.378l24.777-5.718c2.318-.535 4.413 1.507 3.936 3.838l-7.361 36.047c-.495 2.426 1.782 4.5 4.151 3.78l15.304-4.649c2.372-.72 4.652 1.36 4.15 3.788l-11.698 56.621c-.732 3.542 3.979 5.473 5.943 2.437l1.313-2.028l72.516-144.72c1.215-2.423-.88-5.186-3.54-4.672l-25.505 4.922c-2.396.462-4.435-1.77-3.759-4.114l16.646-57.705c.677-2.35-1.37-4.583-3.769-4.113Z%22%3E%3C/path%3E%3C/svg%3E\n",
+                            "isNew": true,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "tsconfig.json",
+                            "patch": "@@ -37,19 +37,22 @@\n %22: %22\n-es5\n+ES2020\n %22,%0A    %22\n lib%22\n@@ -51,49 +51,83 @@\n    %22\n-lib%22: %5B%0A      %22dom%22,%0A      %22dom.i\n+useDefineForClassFields%22: true,%0A    %22lib%22: %5B%22ES2020%22, %22DOM%22, %22DOM.I\n terable%22\n ,%0A  \n@@ -126,70 +126,151 @@\n ble%22\n+%5D\n ,%0A    \n-  %22esn\n+%22module%22: %22ESN\n ext%22\n+,\n %0A    \n-%5D,%0A    %22allowJs%22: true,%0A    %22skipLibCheck\n+%22skipLibCheck%22: true,%0A%0A    /* Bundler mode */%0A    %22moduleResolution%22: %22bundler%22,%0A    %22allowImportingTsExtensions\n %22: t\n@@ -283,371 +283,495 @@\n    %22\n+r\n es\n-ModuleInterop%22: true,%0A    %22allowSyntheticDefaultImports%22: true,%0A    %22strict%22: true,%0A    %22forceConsistentCasingInFileNames%22: true,%0A    %22noFallthroughCasesInSwitch%22: true,%0A    %22module%22: %22esnext%22,%0A    %22moduleResolution%22: %22node%22,%0A    %22resolveJsonModule%22: true,%0A    %22isolatedModules%22: true,%0A    %22noEmit%22: true,%0A    %22jsx%22: %22react-jsx%22%0A  %7D,%0A  %22include%22: %5B%0A    %22src%22%0A  \n+olveJsonModule%22: true,%0A    %22isolatedModules%22: true,%0A    %22noEmit%22: true,%0A    %22jsx%22: %22react-jsx%22,%0A%0A    /* Linting */%0A    %22strict%22: true,%0A    %22noUnusedLocals%22: true,%0A    %22noUnusedParameters%22: true,%0A    %22noFallthroughCasesInSwitch%22: true,%0A    %0A    /* Additional */%0A    %22allowJs%22: true,%0A    %22esModuleInterop%22: true,%0A    %22allowSyntheticDefaultImports%22: true,%0A    %22forceConsistentCasingInFileNames%22: true%0A  %7D,%0A  %22include%22: %5B%0A    %22src%22%0A  %5D,%0A  %22references%22: %5B%7B %22path%22: %22./tsconfig.node.json%22 %7D\n %5D%0A%7D%0A\n",
+                            "isNew": false,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "tsconfig.node.json",
+                            "patch": "@@ -0,0 +1,212 @@\n+%7B%0A  %22compilerOptions%22: %7B%0A    %22composite%22: true,%0A    %22skipLibCheck%22: true,%0A    %22module%22: %22ESNext%22,%0A    %22moduleResolution%22: %22bundler%22,%0A    %22allowSyntheticDefaultImports%22: true%0A  %7D,%0A  %22include%22: %5B%22vite.config.ts%22%5D%0A%7D\n",
+                            "isNew": true,
+                            "isApplied": true
+                        },
+                        {
+                            "path": ".env",
+                            "patch": "@@ -1,29 +1,24 @@\n-REACT_APP\n+VITE\n _FIREBASE_APIKEY=AIz\n@@ -54,25 +54,20 @@\n SM7nCA8%0A\n-REACT_APP\n+VITE\n _FIREBAS\n@@ -112,33 +112,28 @@\n baseapp.com%0A\n-REACT_APP\n+VITE\n _FIREBASE_PR\n@@ -161,25 +161,20 @@\n y-8fab5%0A\n-REACT_APP\n+VITE\n _FIREBAS\n@@ -222,25 +222,20 @@\n pot.com%0A\n-REACT_APP\n+VITE\n _FIREBAS\n@@ -268,25 +268,20 @@\n 3371016%0A\n-REACT_APP\n+VITE\n _FIREBAS\n@@ -334,17 +334,12 @@\n 93d%0A\n-REACT_APP\n+VITE\n _FIR\n",
+                            "isNew": false,
+                            "isApplied": true
+                        }
+                    ]
+                },
+                {
+                    "type": "shellCommand",
+                    "command": "cd /home/mrpunkdasilva/WebstormProjects/PixelVault && npm install",
+                    "id": "508e695d-a29a-49a3-957f-9d0d20fc8a74",
+                    "status": "SUCCESS",
+                    "toolCallId": "toolu_01E7mFGit4fT3aX1SNbLs8ub",
+                    "commandsRequiringConfirmation": [
+                        {
+                            "name": "npm",
+                            "arguments": [
+                                "install"
+                            ]
+                        }
+                    ],
+                    "exitCode": 0,
+                    "output": "\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m \u001b[94mold lockfile\u001b[39m\r\n\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m \u001b[94mold lockfile\u001b[39m The package-lock.json file was created with an old version of npm,\r\n\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m \u001b[94mold lockfile\u001b[39m so supplemental metadata must be fetched from the registry.\r\n\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m \u001b[94mold lockfile\u001b[39m\r\n\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m \u001b[94mold lockfile\u001b[39m This is a one-time fix-up, please be patient...\r\n\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m \u001b[94mold lockfile\u001b[39m\r\n\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m \u001b[94mERESOLVE\u001b[39m overriding peer dependency\r\n\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m While resolving: react-scripts@5.0.1\r\n\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m Found: typescript@5.8.3\u001b[2m\u001b[22m\r\n\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m \u001b[2mnode_modules/typescript\u001b[22m\r\n\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m   \u001b[34mdev\u001b[39m typescript@\"^5.0.0\" from the root project\r\n\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m   2 more (fork-ts-checker-webpack-plugin, tsutils)\r\n\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m\r\n\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m Could not resolve dependency:\r\n\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m peerOptional typescript@\"^3.2.1 || ^4\" from react-scripts@5.0.1\u001b[2m\u001b[22m\r\n\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m \u001b[2mnode_modules/react-scripts\u001b[22m\r\n\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m\r\n\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m Conflicting peer dependency: typescript@4.9.5\u001b[2m\u001b[22m\r\n\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m \u001b[2mnode_modules/typescript\u001b[22m\r\n\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m   peerOptional typescript@\"^3.2.1 || ^4\" from react-scripts@5.0.1\u001b[2m\u001b[22m\r\n\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m   \u001b[2mnode_modules/react-scripts\u001b[22m\r\n\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m \u001b[94mdeprecated\u001b[39m rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported\r\n\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m \u001b[94mdeprecated\u001b[39m glob@7.2.3: Glob versions prior to v9 are no longer supported\r\n\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m \u001b[94mdeprecated\u001b[39m inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.\r\n\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K\u001b[1mnpm\u001b[22m \u001b[33mwarn\u001b[39m \u001b[94mdeprecated\u001b[39m core-js@3.6.5: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.\r\n\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K\r\nadded 247 packages, and audited 248 packages in 43s\r\n\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K\r\n\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K14 packages are looking for funding\r\n\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K  run `npm fund` for details\r\n\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K\r\n\u001b[31m\u001b[1m8\u001b[22m\u001b[39m vulnerabilities (1 \u001b[1mlow\u001b[22m, 4 \u001b[33m\u001b[1mmoderate\u001b[22m\u001b[39m, 2 \u001b[31m\u001b[1mhigh\u001b[22m\u001b[39m, 1 \u001b[35m\u001b[1mcritical\u001b[22m\u001b[39m)\r\n\r\nTo address issues that do not require attention, run:\r\n  npm audit fix\r\n\r\nTo address all issues (including breaking changes), run:\r\n  npm audit fix --force\r\n\r\nRun `npm audit` for details.\r\n\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K"
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "90f9e4a9-43aa-4565-b708-e836366c328c"
+            },
+            "createdAt": 1750482516796,
+            "isInternal": false
+        },
+        {
+            "id": "08aa479d-c48a-4f17-a444-8e0ce2a89974",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "vamoscontinuar esse migração do vite"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "src/index.tsx",
+                    "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/index.tsx",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "import React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport App from './App';\n\nimport './index.css';\n\nconst root = ReactDOM.createRoot(\n  document.getElementById('root') as HTMLElement\n);\nroot.render(\n  <React.StrictMode>\n    <App />\n  </React.StrictMode>\n);\n",
+                    "language": "typescript jsx"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1750483393550,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "vamoscontinuar esse migração do vite"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "d3463794-2c99-437a-adc1-42ddb2d41011",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Vou continuar a migração para Vite. Vejo que ainda há referências ao react-scripts no package.json que precisam ser removidas completamente.\n\n## 1. Primeiro, vou limpar completamente o package.json das dependências do CRA"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01UzwRU41kykUCiKMNXz1zrf",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "package.json",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/package.json"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "O package.json está correto agora. Vou limpar completamente os node_modules e reinstalar:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01U1TR3KNxr7V78byqjNZvaa",
+                    "status": "IN_PROGRESS",
+                    "isHidden": true,
+                    "localResult": "{\"status\":\"SUCCESS\",\"exitCode\":0,\"output\":\"\"}"
+                },
+                {
+                    "type": "shellCommand",
+                    "command": "cd /home/mrpunkdasilva/WebstormProjects/PixelVault && rm -rf node_modules package-lock.json",
+                    "id": "5185d073-ee55-4279-bf34-9d9ecbbf946d",
+                    "status": "SUCCESS",
+                    "toolCallId": "toolu_01U1TR3KNxr7V78byqjNZvaa",
+                    "commandsRequiringConfirmation": [
+                        {
+                            "name": "rm",
+                            "arguments": [
+                                "-rf",
+                                "node_modules",
+                                "package-lock.json"
+                            ]
+                        }
+                    ],
+                    "exitCode": 0,
+                    "output": ""
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "8cd259ee-f6dc-4bfa-818e-a532c771397e"
+            },
+            "createdAt": 1750483395729,
+            "isInternal": false
+        },
+        {
+            "id": "9aedd9b8-c477-438d-b7ff-a523194fb45d",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_0111xKFpthTnSaewotmyoBkH",
+                    "status": "IN_PROGRESS",
+                    "isHidden": true,
+                    "localResult": "{\"status\":\"SUCCESS\",\"exitCode\":0,\"output\":\"\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K⠏\\u001b[1G\\u001b[0K⠋\\u001b[1G\\u001b[0K⠙\\u001b[1G\\u001b[0K⠹\\u001b[1G\\u001b[0K⠸\\u001b[1G\\u001b[0K⠼\\u001b[1G\\u001b[0K⠴\\u001b[1G\\u001b[0K⠦\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K\\r\\nadded 186 packages, and audited 187 packages in 56s\\r\\n\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K\\r\\n\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K13 packages are looking for funding\\r\\n\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K  run `npm fund` for details\\r\\n\\u001b[1G\\u001b[0K⠧\\u001b[1G\\u001b[0K\\r\\n6 \\u001b[33m\\u001b[1mmoderate\\u001b[22m\\u001b[39m severity vulnerabilities\\r\\n\\r\\nTo address all issues (including breaking changes), run:\\r\\n  npm audit fix --force\\r\\n\\r\\nRun `npm audit` for details.\\r\\n\\u001b[1G\\u001b[0K⠇\\u001b[1G\\u001b[0K\"}"
+                },
+                {
+                    "type": "shellCommand",
+                    "command": "cd /home/mrpunkdasilva/WebstormProjects/PixelVault && npm install",
+                    "id": "cdd9a8e8-6aa7-4835-a903-060c6ab5ba27",
+                    "status": "SUCCESS",
+                    "toolCallId": "toolu_0111xKFpthTnSaewotmyoBkH",
+                    "commandsRequiringConfirmation": [
+                        {
+                            "name": "npm",
+                            "arguments": [
+                                "install"
+                            ]
+                        }
+                    ],
+                    "exitCode": 0,
+                    "output": "\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K⠏\u001b[1G\u001b[0K⠋\u001b[1G\u001b[0K⠙\u001b[1G\u001b[0K⠹\u001b[1G\u001b[0K⠸\u001b[1G\u001b[0K⠼\u001b[1G\u001b[0K⠴\u001b[1G\u001b[0K⠦\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K\r\nadded 186 packages, and audited 187 packages in 56s\r\n\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K\r\n\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K13 packages are looking for funding\r\n\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K  run `npm fund` for details\r\n\u001b[1G\u001b[0K⠧\u001b[1G\u001b[0K\r\n6 \u001b[33m\u001b[1mmoderate\u001b[22m\u001b[39m severity vulnerabilities\r\n\r\nTo address all issues (including breaking changes), run:\r\n  npm audit fix --force\r\n\r\nRun `npm audit` for details.\r\n\u001b[1G\u001b[0K⠇\u001b[1G\u001b[0K"
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "b12a834e-62bf-49cd-8622-733591534fde"
+            },
+            "createdAt": 1750483485394,
+            "isInternal": false
+        },
+        {
+            "id": "7f0e7def-adc5-4f03-9644-1783f944df52",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Perfeito! Agora as dependências estão instaladas corretamente. Vou verificar se precisamos ajustar algum código que use as variáveis de ambiente:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01G6yQSv3Dovd4Aw6keborXw",
+                    "title": "Fulltext search",
+                    "statusText": "Done",
+                    "status": "SUCCESS",
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Vamos verificar se há algum arquivo de configuração do Firebase:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01CSsEgQMHaVCxs1Yk9qRdU4",
+                    "title": "File search",
+                    "statusText": "Done",
+                    "status": "SUCCESS",
+                    "isHidden": false
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01JbN8EqVgRRrAd1tDQpyi7P",
+                    "title": "File search",
+                    "statusText": "Done",
+                    "status": "SUCCESS",
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Vamos verificar se há algum arquivo que faz referência ao Firebase na pasta services:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01B9UdFJZdmgp13UrGULuxbt",
+                    "statusText": "Viewed folder",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/services",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/services"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01Rba9uhByBGKZuozZJrVkU3",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/services/photos.ts",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/services/photos.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Agora vou ver o arquivo de configuração do Firebase:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01GdVbBXyMmR5pxwr8M2okRB",
+                    "statusText": "Viewed folder",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/libs",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/libs"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01SjmvpLZbDnLSTgmND1rwLi",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/libs/firebase.ts",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/libs/firebase.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Perfeito! Encontrei o arquivo de configuração do Firebase. Agora preciso atualizá-lo para usar as variáveis de ambiente do Vite:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01E19Dnv3pd1baJaf8wcR8GZ",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/libs/firebase.ts",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/libs/firebase.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/libs/firebase.ts\n+++ src/libs/firebase.ts\n@@ -2,13 +2,13 @@\n import { getStorage } from 'firebase/storage';\n \n const firebaseConfig = {\n-    apiKey: process.env.REACT_APP_FIREBASE_APIKEY,\n-    authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,\n-    projectId: process.env.REACT_APP_FIREBASE_PROJECTID,\n-    storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,\n-    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSEAGINGSENDERID,\n-    appId: process.env.REACT_APP_FIREBASE_APPID,\n-    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENTID\n+    apiKey: import.meta.env.VITE_FIREBASE_APIKEY,\n+    authDomain: import.meta.env.VITE_FIREBASE_AUTHDOMAIN,\n+    projectId: import.meta.env.VITE_FIREBASE_PROJECTID,\n+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGEBUCKET,\n+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSEAGINGSENDERID,\n+    appId: import.meta.env.VITE_FIREBASE_APPID,\n+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENTID\n };\n \n const firebaseApp = initializeApp(firebaseConfig);",
+                    "refToolCallId": "toolu_01E19Dnv3pd1baJaf8wcR8GZ"
+                },
+                {
+                    "type": "text",
+                    "text": "## 2. Agora vou criar um arquivo de tipos para as variáveis de ambiente do Vite:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01X4iFNvTFWavozu8aiLAP8F",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "src/vite-env.d.ts",
+                                "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/vite-env.d.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- src/vite-env.d.ts\n+++ src/vite-env.d.ts\n@@ -0,0 +1,15 @@\n+/// <reference types=\"vite/client\" />\n+\n+interface ImportMetaEnv {\n+  readonly VITE_FIREBASE_APIKEY: string\n+  readonly VITE_FIREBASE_AUTHDOMAIN: string\n+  readonly VITE_FIREBASE_PROJECTID: string\n+  readonly VITE_FIREBASE_STORAGEBUCKET: string\n+  readonly VITE_FIREBASE_MESSEAGINGSENDERID: string\n+  readonly VITE_FIREBASE_APPID: string\n+  readonly VITE_FIREBASE_MEASUREMENTID: string\n+}\n+\n+interface ImportMeta {\n+  readonly env: ImportMetaEnv\n+}",
+                    "refToolCallId": "toolu_01X4iFNvTFWavozu8aiLAP8F"
+                },
+                {
+                    "type": "text",
+                    "text": "## 3. Agora vamos testar se o projeto funciona com Vite:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01J3YSnc5ciZvmZiE6FChZYf",
+                    "status": "IN_PROGRESS",
+                    "isHidden": true,
+                    "localResult": "{\"status\":\"ERROR\",\"exitCode\":124,\"output\":\"\"}"
+                },
+                {
+                    "type": "codePatch",
+                    "diffs": [
+                        {
+                            "path": "src/vite-env.d.ts",
+                            "patch": "@@ -0,0 +1,434 @@\n+/// %3Creference types=%22vite/client%22 /%3E%0A%0Ainterface ImportMetaEnv %7B%0A  readonly VITE_FIREBASE_APIKEY: string%0A  readonly VITE_FIREBASE_AUTHDOMAIN: string%0A  readonly VITE_FIREBASE_PROJECTID: string%0A  readonly VITE_FIREBASE_STORAGEBUCKET: string%0A  readonly VITE_FIREBASE_MESSEAGINGSENDERID: string%0A  readonly VITE_FIREBASE_APPID: string%0A  readonly VITE_FIREBASE_MEASUREMENTID: string%0A%7D%0A%0Ainterface ImportMeta %7B%0A  readonly env: ImportMetaEnv%0A%7D\n",
+                            "isNew": true,
+                            "isApplied": true
+                        },
+                        {
+                            "path": "src/libs/firebase.ts",
+                            "patch": "@@ -124,37 +124,36 @@\n apiKey: \n-process.env.REACT_APP\n+import.meta.env.VITE\n _FIREBAS\n@@ -178,37 +178,36 @@\n Domain: \n-process.env.REACT_APP\n+import.meta.env.VITE\n _FIREBAS\n@@ -235,37 +235,36 @@\n jectId: \n-process.env.REACT_APP\n+import.meta.env.VITE\n _FIREBAS\n@@ -295,37 +295,36 @@\n Bucket: \n-process.env.REACT_APP\n+import.meta.env.VITE\n _FIREBAS\n@@ -363,37 +363,36 @@\n nderId: \n-process.env.REACT_APP\n+import.meta.env.VITE\n _FIREBAS\n@@ -424,37 +424,36 @@\n  appId: \n-process.env.REACT_APP\n+import.meta.env.VITE\n _FIREBAS\n@@ -484,29 +484,28 @@\n Id: \n-process.env.REACT_APP\n+import.meta.env.VITE\n _FIR\n",
+                            "isNew": false,
+                            "isApplied": true
+                        }
+                    ]
+                },
+                {
+                    "type": "shellCommand",
+                    "command": "cd /home/mrpunkdasilva/WebstormProjects/PixelVault && npm run dev",
+                    "id": "94fb81a5-26f9-4253-9317-e6eb6a8bfc3f",
+                    "status": "ERROR",
+                    "toolCallId": "toolu_01J3YSnc5ciZvmZiE6FChZYf",
+                    "commandsRequiringConfirmation": [
+                        {
+                            "name": "npm",
+                            "arguments": [
+                                "run",
+                                "dev"
+                            ]
+                        }
+                    ],
+                    "exitCode": 124,
+                    "output": ""
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "539fe63a-4c9a-4322-a59c-cc1ae13a517e"
+            },
+            "createdAt": 1750483554931,
+            "isInternal": false
+        },
+        {
+            "id": "1e8432fc-4d44-4197-987d-4f1a050d002d",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Parece que há uma demora na inicialização. Vamos tentar novamente e verificar se há algum erro:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01MbEoSsP4jUoV2RLtSiaZjU",
+                    "status": "IN_PROGRESS",
+                    "isHidden": true,
+                    "localResult": "{\"status\":\"ERROR\",\"exitCode\":124,\"output\":\"\\r\\n> pixelvault@1.0.0 dev\\r\\n> vite\\r\\n\\r\\n\\u001b[1G\\u001b[0K\\u001b[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.\\u001b[39m\\r\\n\\r\\n  \\u001b[32m\\u001b[1mVITE\\u001b[22m v5.4.19\\u001b[39m  \\u001b[2mready in \\u001b[0m\\u001b[1m215\\u001b[22m\\u001b[2m\\u001b[0m ms\\u001b[22m\\r\\n\\r\\n  \\u001b[32m➜\\u001b[39m  \\u001b[1mLocal\\u001b[22m:   \\u001b[36mhttp://localhost:\\u001b[1m3000\\u001b[22m/\\u001b[39m\\r\\n\\u001b[2m  \\u001b[32m➜\\u001b[39m  \\u001b[1mNetwork\\u001b[22m\\u001b[2m: use \\u001b[22m\\u001b[1m--host\\u001b[22m\\u001b[2m to expose\\u001b[22m\\r\\n\\u001b[2m\\u001b[32m  ➜\\u001b[39m\\u001b[22m\\u001b[2m  press \\u001b[22m\\u001b[1mh + enter\\u001b[22m\\u001b[2m to show help\\u001b[22m\\r\\n\"}"
+                },
+                {
+                    "type": "shellCommand",
+                    "command": "cd /home/mrpunkdasilva/WebstormProjects/PixelVault && timeout 10 npm run dev",
+                    "id": "42d6e7ae-bd33-4602-b9e0-0e0eef02d05a",
+                    "status": "ERROR",
+                    "toolCallId": "toolu_01MbEoSsP4jUoV2RLtSiaZjU",
+                    "commandsRequiringConfirmation": [
+                        {
+                            "name": "timeout",
+                            "arguments": [
+                                "npm",
+                                "run",
+                                "dev"
+                            ]
+                        }
+                    ],
+                    "exitCode": 124,
+                    "output": "\r\n> pixelvault@1.0.0 dev\r\n> vite\r\n\r\n\u001b[1G\u001b[0K\u001b[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.\u001b[39m\r\n\r\n  \u001b[32m\u001b[1mVITE\u001b[22m v5.4.19\u001b[39m  \u001b[2mready in \u001b[0m\u001b[1m215\u001b[22m\u001b[2m\u001b[0m ms\u001b[22m\r\n\r\n  \u001b[32m➜\u001b[39m  \u001b[1mLocal\u001b[22m:   \u001b[36mhttp://localhost:\u001b[1m3000\u001b[22m/\u001b[39m\r\n\u001b[2m  \u001b[32m➜\u001b[39m  \u001b[1mNetwork\u001b[22m\u001b[2m: use \u001b[22m\u001b[1m--host\u001b[22m\u001b[2m to expose\u001b[22m\r\n\u001b[2m\u001b[32m  ➜\u001b[39m\u001b[22m\u001b[2m  press \u001b[22m\u001b[1mh + enter\u001b[22m\u001b[2m to show help\u001b[22m\r\n",
+                    "outputPath": ".zencoder/Zencoder-978b5f20-8b7f-420f-8494-c463c8b00298.log"
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "a274db75-5cd6-47cf-87a8-a1a4ecee009c"
+            },
+            "createdAt": 1750483921093,
+            "isInternal": false
+        },
+        {
+            "id": "cad39138-d52a-477a-a2ba-6e02e4b1e12b",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Excelente! O Vite está funcionando perfeitamente! Ele iniciou em apenas 215ms na porta 3000. \n\nVou verificar se o build também funciona:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_014DkXVL7hAkCPs6ok9oUnGQ",
+                    "status": "IN_PROGRESS",
+                    "isHidden": true,
+                    "localResult": "{\"status\":\"CANCELLED\",\"exitCode\":null,\"output\":\"Cancelled by user\"}"
+                },
+                {
+                    "type": "shellCommand",
+                    "command": "cd /home/mrpunkdasilva/WebstormProjects/PixelVault && npm run build",
+                    "id": "3d5ec413-6b93-4ef4-888d-3b7d258aae1a",
+                    "status": "CANCELLED",
+                    "toolCallId": "toolu_014DkXVL7hAkCPs6ok9oUnGQ",
+                    "commandsRequiringConfirmation": [
+                        {
+                            "name": "npm",
+                            "arguments": [
+                                "run",
+                                "build"
+                            ]
+                        }
+                    ],
+                    "output": "Cancelled by user"
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "4026b8fb-25e2-4de3-9a49-2c07a0a66d0e"
+            },
+            "createdAt": 1750483992884,
+            "isInternal": false
+        },
+        {
+            "id": "4d089879-edec-413d-94d0-a24c8cb49a48",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Let's not run this command."
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "src/index.tsx",
+                    "fsPath": "/home/mrpunkdasilva/WebstormProjects/PixelVault/src/index.tsx",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "import React from 'react';\nimport ReactDOM from 'react-dom/client';\nimport App from './App';\n\nimport './index.css';\n\nconst root = ReactDOM.createRoot(\n  document.getElementById('root') as HTMLElement\n);\nroot.render(\n  <React.StrictMode>\n    <App />\n  </React.StrictMode>\n);\n",
+                    "language": "typescript jsx"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1750484010195,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "Let's not run this command."
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "isAgent": true,
+    "isNameGenerated": true,
+    "isCustomAgent": false,
+    "isUnitTestsAgent": false,
+    "isE2EAgent": false,
+    "autoApply": false
+}
+}

@@ -1,0 +1,18 @@
+<svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="vaultGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3d3f43" />
+      <stop offset="100%" stop-color="#28272f" />
+    </linearGradient>
+    <linearGradient id="doorGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a2a2f" />
+      <stop offset="100%" stop-color="#1a1a1f" />
+    </linearGradient>
+  </defs>
+  
+  <rect x="15" y="15" width="70" height="70" rx="6" fill="url(#vaultGradient)" stroke="#756df4" stroke-width="2"/>
+  <rect x="22" y="22" width="56" height="56" rx="4" fill="url(#doorGradient)" stroke="#756df4" stroke-width="1.5"/>
+  <circle cx="50" cy="50" r="12" fill="none" stroke="#756df4" stroke-width="2.5"/>
+  <circle cx="50" cy="50" r="5" fill="#756df4"/>
+  <rect x="47.5" y="62" width="5" height="8" rx="2" fill="#756df4"/>
+</svg>
