@@ -4,24 +4,24 @@
  */
 
 // Domain Models
-export type { 
-  Photo, 
-  PhotoId, 
-  PhotoMetadata, 
-  ExifData, 
-  PhotoUploadRequest, 
+export type {
+  Photo,
+  PhotoId,
+  PhotoMetadata,
+  ExifData,
+  PhotoUploadRequest,
   PhotoUploadProgress,
-  LegacyPhoto 
+  LegacyPhoto,
 } from './Photo';
 
-export type { 
-  Album, 
-  AlbumId, 
-  CreateAlbumRequest, 
-  UpdateAlbumRequest, 
-  AlbumWithPhotos, 
-  AlbumUIState, 
-  PhotoMoveOperation 
+export type {
+  Album,
+  AlbumId,
+  CreateAlbumRequest,
+  UpdateAlbumRequest,
+  AlbumWithPhotos,
+  AlbumUIState,
+  PhotoMoveOperation,
 } from './Album';
 
 // Re-export para compatibilidade com código existente

@@ -20,9 +20,9 @@ export const usePhotos = () => {
     setError(null);
     try {
       const legacyPhotos = await Photos.getAll();
-      
+
       // Convert legacy photos to new Photo type
-      const convertedPhotos: Photo[] = legacyPhotos.map((photo) => ({
+      const convertedPhotos: Photo[] = legacyPhotos.map(photo => ({
         id: photo.name, // Use Firebase storage name as consistent ID
         url: photo.url,
         name: photo.name,
@@ -30,9 +30,9 @@ export const usePhotos = () => {
         mimeType: 'image/jpeg', // Placeholder type (could be enhanced to detect type)
         albumIds: [], // Will be populated with album associations
         uploadedAt: new Date(),
-        tags: []
+        tags: [],
       }));
-      
+
       setPhotos(convertedPhotos);
     } catch (error) {
       setError('Failed to load photos');
@@ -51,13 +51,15 @@ export const usePhotos = () => {
     try {
       // Call album service to create association
       await albumService.addPhotoToAlbum(albumId, photoId);
-      
+
       // Update local state
-      setPhotos(prev => prev.map(photo => 
-        photo.id === photoId 
-          ? { ...photo, albumIds: [...new Set([...photo.albumIds, albumId])] }
-          : photo
-      ));
+      setPhotos(prev =>
+        prev.map(photo =>
+          photo.id === photoId
+            ? { ...photo, albumIds: [...new Set([...photo.albumIds, albumId])] }
+            : photo,
+        ),
+      );
     } catch (error) {
       console.error('Error adding photo to album:', error);
       throw error; // Re-throw for component error handling
@@ -68,13 +70,15 @@ export const usePhotos = () => {
     try {
       // Call album service to remove association
       await albumService.removePhotoFromAlbum(albumId, photoId);
-      
+
       // Update local state
-      setPhotos(prev => prev.map(photo => 
-        photo.id === photoId
-          ? { ...photo, albumIds: photo.albumIds.filter(id => id !== albumId) }
-          : photo
-      ));
+      setPhotos(prev =>
+        prev.map(photo =>
+          photo.id === photoId
+            ? { ...photo, albumIds: photo.albumIds.filter(id => id !== albumId) }
+            : photo,
+        ),
+      );
     } catch (error) {
       console.error('Error removing photo from album:', error);
       throw error; // Re-throw for component error handling
@@ -99,7 +103,7 @@ export const usePhotos = () => {
       const exists = prev.some(p => p.id === photo.id);
       if (exists) {
         // Update existing photo
-        return prev.map(p => p.id === photo.id ? photo : p);
+        return prev.map(p => (p.id === photo.id ? photo : p));
       } else {
         // Add new photo
         return [...prev, photo];
@@ -120,6 +124,6 @@ export const usePhotos = () => {
     removePhotoFromAlbum,
     deletePhoto,
     addPhoto,
-    refreshPhotos
+    refreshPhotos,
   };
 };

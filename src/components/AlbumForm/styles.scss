@@ -10,17 +10,15 @@
   border-radius: 16px;
   box-shadow: var(--shadow-xl);
   overflow: hidden;
-  
+
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2rem 2rem 1rem;
     border-bottom: 1px solid var(--color-border-primary);
-    background: linear-gradient(135deg, 
-      rgba(102, 217, 255, 0.05), 
-      rgba(102, 217, 255, 0.08));
-    
+    background: linear-gradient(135deg, rgba(102, 217, 255, 0.05), rgba(102, 217, 255, 0.08));
+
     h2 {
       margin: 0;
       font-size: 1.75rem;
@@ -31,7 +29,7 @@
       letter-spacing: 0.5px;
     }
   }
-  
+
   &__close {
     width: 40px;
     height: 40px;
@@ -44,30 +42,30 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     svg {
       width: 20px;
       height: 20px;
     }
-    
+
     &:hover {
       background: var(--color-danger);
       color: white;
       transform: scale(1.05);
     }
   }
-  
+
   &__form {
     padding: 2rem;
-    
+
     .form-group {
       margin-bottom: 1.5rem;
-      
+
       &:last-child {
         margin-bottom: 0;
       }
     }
-    
+
     .form-label {
       display: block;
       margin-bottom: 0.5rem;
@@ -75,7 +73,7 @@
       color: var(--color-text-primary);
       font-size: 0.95rem;
     }
-    
+
     .form-input,
     .form-textarea {
       width: 100%;
@@ -88,37 +86,37 @@
       font-family: inherit;
       transition: all 0.2s ease;
       resize: none;
-      
+
       &:focus {
         outline: none;
         border-color: var(--color-accent-primary);
         box-shadow: 0 0 0 3px rgba(102, 217, 255, 0.1);
       }
-      
+
       &::placeholder {
         color: var(--color-text-muted);
       }
-      
+
       &:disabled {
         opacity: 0.6;
         cursor: not-allowed;
         background: rgba(102, 217, 255, 0.05);
       }
-      
+
       &--error {
         border-color: var(--color-danger);
-        
+
         &:focus {
           box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
         }
       }
     }
-    
+
     .form-textarea {
       min-height: 80px;
       line-height: 1.5;
     }
-    
+
     .form-error {
       display: block;
       margin-top: 0.5rem;
@@ -126,23 +124,23 @@
       color: var(--color-danger);
       font-weight: 500;
     }
-    
+
     .form-hint {
       margin-top: 0.5rem;
       font-size: 0.8rem;
       color: var(--color-text-muted);
     }
   }
-  
+
   // Tags input
   .tags-input {
     display: flex;
     gap: 0.5rem;
-    
+
     .form-input {
       flex: 1;
     }
-    
+
     .add-tag-btn {
       padding: 0.75rem 1rem;
       background: var(--color-accent-primary);
@@ -152,12 +150,12 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
-      
+
       &:hover:not(:disabled) {
         background: var(--color-accent-hover);
         transform: translateY(-1px);
       }
-      
+
       &:disabled {
         opacity: 0.5;
         cursor: not-allowed;
@@ -165,13 +163,13 @@
       }
     }
   }
-  
+
   .tags-list {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: 0.75rem;
-    
+
     .tag {
       display: flex;
       align-items: center;
@@ -182,7 +180,7 @@
       border-radius: 20px;
       font-size: 0.85rem;
       font-weight: 500;
-      
+
       .tag-remove {
         background: none;
         border: none;
@@ -196,12 +194,12 @@
         justify-content: center;
         border-radius: 50%;
         transition: all 0.2s ease;
-        
+
         &:hover:not(:disabled) {
           background: rgba(255, 107, 107, 0.2);
           color: var(--color-danger);
         }
-        
+
         &:disabled {
           opacity: 0.5;
           cursor: not-allowed;
@@ -209,7 +207,7 @@
       }
     }
   }
-  
+
   &__actions {
     display: flex;
     justify-content: flex-end;
@@ -217,7 +215,7 @@
     margin-top: 2rem;
     padding-top: 2rem;
     border-top: 1px solid var(--color-border-primary);
-    
+
     .btn {
       display: flex;
       align-items: center;
@@ -231,33 +229,33 @@
       transition: all 0.2s ease;
       min-width: 120px;
       justify-content: center;
-      
+
       &--secondary {
         background: rgba(102, 217, 255, 0.1);
         color: var(--color-text-primary);
-        
+
         &:hover:not(:disabled) {
           background: rgba(102, 217, 255, 0.15);
           transform: translateY(-1px);
         }
       }
-      
+
       &--primary {
         background: var(--color-accent-primary);
         color: var(--color-text-inverse);
-        
+
         &:hover:not(:disabled) {
           background: var(--color-accent-hover);
           transform: translateY(-1px);
         }
       }
-      
+
       &:disabled {
         opacity: 0.6;
         cursor: not-allowed;
         transform: none;
       }
-      
+
       .btn-spinner {
         width: 16px;
         height: 16px;
@@ -265,16 +263,16 @@
       }
     }
   }
-  
+
   &__shortcuts {
     margin-top: 1rem;
     text-align: center;
-    
+
     small {
       color: var(--color-text-muted);
       font-size: 0.8rem;
     }
-    
+
     kbd {
       background: rgba(102, 217, 255, 0.1);
       color: var(--color-text-primary);
@@ -302,34 +300,34 @@
   .album-form {
     max-width: 95vw;
     margin: 1rem;
-    
+
     &__header {
       padding: 1.5rem 1.5rem 1rem;
-      
+
       h2 {
         font-size: 1.5rem;
       }
     }
-    
+
     &__form {
       padding: 1.5rem;
-      
+
       .form-group {
         margin-bottom: 1.25rem;
       }
     }
-    
+
     .tags-input {
       flex-direction: column;
-      
+
       .add-tag-btn {
         align-self: flex-start;
       }
     }
-    
+
     &__actions {
       flex-direction: column;
-      
+
       .btn {
         min-width: unset;
       }
@@ -345,12 +343,12 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    
+
     &__form {
       flex: 1;
       overflow-y: auto;
     }
-    
+
     &__header {
       h2 {
         font-size: 1.25rem;
@@ -363,11 +361,13 @@
 :root[data-theme="dark"] {
   .album-form {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    
+
     &__header {
-      background: linear-gradient(135deg, 
-        rgba(var(--primary-rgb), 0.1), 
-        rgba(var(--accent-rgb), 0.1));
+      background: linear-gradient(
+        135deg,
+        rgba(var(--primary-rgb), 0.1),
+        rgba(var(--accent-rgb), 0.1)
+      );
     }
   }
 }
@@ -379,7 +379,7 @@
     .form-textarea {
       border-width: 3px;
     }
-    
+
     .btn {
       border: 2px solid currentColor;
     }
@@ -395,7 +395,7 @@
     &__close {
       transition: none;
     }
-    
+
     .btn-spinner {
       animation: none;
     }

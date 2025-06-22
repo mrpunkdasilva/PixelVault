@@ -7,15 +7,15 @@
 import React, { createContext, useContext, useReducer, useCallback, useEffect } from 'react';
 import { albumService } from '../services/albums';
 import { useNotificationHelpers } from './NotificationContext';
-import type { 
-  Album, 
-  AlbumId, 
-  CreateAlbumRequest, 
-  UpdateAlbumRequest, 
+import type {
+  Album,
+  AlbumId,
+  CreateAlbumRequest,
+  UpdateAlbumRequest,
   AlbumWithPhotos,
   PhotoId,
   PhotoMoveOperation,
-  AlbumUIState 
+  AlbumUIState,
 } from '../types';
 
 // State interface
@@ -48,12 +48,12 @@ interface AlbumContextType extends AlbumState {
   createAlbum: (request: CreateAlbumRequest) => Promise<Album>;
   updateAlbum: (id: AlbumId, request: UpdateAlbumRequest) => Promise<void>;
   deleteAlbum: (id: AlbumId) => Promise<void>;
-  
+
   // Photo operations
   addPhotoToAlbum: (albumId: AlbumId, photoId: PhotoId) => Promise<void>;
   removePhotoFromAlbum: (albumId: AlbumId, photoId: PhotoId) => Promise<void>;
   movePhotoBetweenAlbums: (operation: PhotoMoveOperation) => Promise<void>;
-  
+
   // Utility
   clearError: () => void;
   getAlbumById: (id: AlbumId) => Album | undefined;
@@ -68,8 +68,8 @@ const initialState: AlbumState = {
     isCreating: false,
     isUpdating: false,
     isDeleting: false,
-    error: null
-  }
+    error: null,
+  },
 };
 
 // Reducer (State Machine Pattern)
@@ -78,69 +78,70 @@ function albumReducer(state: AlbumState, action: AlbumAction): AlbumState {
     case 'SET_LOADING':
       return {
         ...state,
-        ui: { ...state.ui, isLoading: action.payload }
+        ui: { ...state.ui, isLoading: action.payload },
       };
-    
+
     case 'SET_CREATING':
       return {
         ...state,
-        ui: { ...state.ui, isCreating: action.payload }
+        ui: { ...state.ui, isCreating: action.payload },
       };
-    
+
     case 'SET_UPDATING':
       return {
         ...state,
-        ui: { ...state.ui, isUpdating: action.payload }
+        ui: { ...state.ui, isUpdating: action.payload },
       };
-    
+
     case 'SET_DELETING':
       return {
         ...state,
-        ui: { ...state.ui, isDeleting: action.payload }
+        ui: { ...state.ui, isDeleting: action.payload },
       };
-    
+
     case 'SET_ERROR':
       return {
         ...state,
-        ui: { ...state.ui, error: action.payload }
+        ui: { ...state.ui, error: action.payload },
       };
-    
+
     case 'SET_ALBUMS':
       return {
         ...state,
-        albums: action.payload
+        albums: action.payload,
       };
-    
+
     case 'ADD_ALBUM':
       return {
         ...state,
-        albums: [action.payload, ...state.albums]
+        albums: [action.payload, ...state.albums],
       };
-    
+
     case 'UPDATE_ALBUM':
       return {
         ...state,
         albums: state.albums.map(album =>
-          album.id === action.payload.id ? action.payload : album
+          album.id === action.payload.id ? action.payload : album,
         ),
-        currentAlbum: state.currentAlbum?.id === action.payload.id
-          ? { ...state.currentAlbum, ...action.payload }
-          : state.currentAlbum
+        currentAlbum:
+          state.currentAlbum?.id === action.payload.id
+            ? { ...state.currentAlbum, ...action.payload }
+            : state.currentAlbum,
       };
-    
+
     case 'REMOVE_ALBUM':
       return {
         ...state,
         albums: state.albums.filter(album => album.id !== action.payload),
-        currentAlbum: state.currentAlbum?.id === action.payload ? null : state.currentAlbum
+        currentAlbum: state.currentAlbum?.id === action.payload ? null : state.currentAlbum,
       };
-    
+
     case 'SET_CURRENT_ALBUM':
       return {
         ...state,
-        currentAlbum: action.payload
+        currentAlbum: action.payload,
       };
-    
+
     case 'ADD_PHOTO_TO_CURRENT_ALBUM':
       if (!state.currentAlbum) return state;
       return {
@@ -148,10 +149,10 @@ function albumReducer(state: AlbumState, action: AlbumAction): AlbumState {
         currentAlbum: {
           ...state.currentAlbum,
           photos: [action.payload, ...state.currentAlbum.photos],
-          photoCount: state.currentAlbum.photoCount + 1
-        }
+          photoCount: state.currentAlbum.photoCount + 1,
+        },
       };
-    
+
     case 'REMOVE_PHOTO_FROM_CURRENT_ALBUM':
       if (!state.currentAlbum) return state;
       return {
@@ -159,10 +160,10 @@ function albumReducer(state: AlbumState, action: AlbumAction): AlbumState {
         currentAlbum: {
           ...state.currentAlbum,
           photos: state.currentAlbum.photos.filter(id => id !== action.payload),
-          photoCount: Math.max(0, state.currentAlbum.photoCount - 1)
-        }
+          photoCount: Math.max(0, state.currentAlbum.photoCount - 1),
+        },
       };
-    
+
     default:
       return state;
   }
@@ -182,10 +183,7 @@ export function AlbumProvider({ children }: AlbumProviderProps) {
 
   // Error handler (Higher-Order Function)
   const withErrorHandling = useCallback(
-    <T extends any[], R>(
-      fn: (...args: T) => Promise<R>,
-      successMessage?: string
-    ) => {
+    <T extends any[], R>(fn: (...args: T) => Promise<R>, successMessage?: string) => {
       return async (...args: T): Promise<R> => {
         try {
           dispatch({ type: 'SET_ERROR', payload: null });
@@ -202,7 +200,7 @@ export function AlbumProvider({ children }: AlbumProviderProps) {
         }
       };
     },
-    [showSuccess, showError]
+    [showSuccess, showError],
   );
 
   // Album operations
@@ -213,7 +211,7 @@ export function AlbumProvider({ children }: AlbumProviderProps) {
       dispatch({ type: 'SET_ALBUMS', payload: albums });
       dispatch({ type: 'SET_LOADING', payload: false });
     }),
-    [withErrorHandling]
+    [withErrorHandling],
   );
 
   const loadAlbum = useCallback(
@@ -223,7 +221,7 @@ export function AlbumProvider({ children }: AlbumProviderProps) {
       dispatch({ type: 'SET_CURRENT_ALBUM', payload: album });
       dispatch({ type: 'SET_LOADING', payload: false });
     }),
-    [withErrorHandling]
+    [withErrorHandling],
   );
 
   const createAlbum = useCallback(
@@ -234,7 +232,7 @@ export function AlbumProvider({ children }: AlbumProviderProps) {
       dispatch({ type: 'SET_CREATING', payload: false });
       return album;
     }, 'Album created successfully'),
-    [withErrorHandling]
+    [withErrorHandling],
   );
 
   const updateAlbum = useCallback(
@@ -244,7 +242,7 @@ export function AlbumProvider({ children }: AlbumProviderProps) {
       dispatch({ type: 'UPDATE_ALBUM', payload: album });
       dispatch({ type: 'SET_UPDATING', payload: false });
     }, 'Album updated successfully'),
-    [withErrorHandling]
+    [withErrorHandling],
   );
 
   const deleteAlbum = useCallback(
@@ -254,7 +252,7 @@ export function AlbumProvider({ children }: AlbumProviderProps) {
       dispatch({ type: 'REMOVE_ALBUM', payload: id });
       dispatch({ type: 'SET_DELETING', payload: false });
     }, 'Album deleted successfully'),
-    [withErrorHandling]
+    [withErrorHandling],
   );
 
   // Photo operations
@@ -267,13 +265,13 @@ export function AlbumProvider({ children }: AlbumProviderProps) {
       // Atualizar contador do álbum na lista
       const album = state.albums.find(a => a.id === albumId);
       if (album) {
-        dispatch({ 
-          type: 'UPDATE_ALBUM', 
-          payload: { ...album, photoCount: album.photoCount + 1 }
+        dispatch({
+          type: 'UPDATE_ALBUM',
+          payload: { ...album, photoCount: album.photoCount + 1 },
         });
       }
     }, 'Photo added to album'),
-    [withErrorHandling, state.currentAlbum, state.albums]
+    [withErrorHandling, state.currentAlbum, state.albums],
   );
 
   const removePhotoFromAlbum = useCallback(
@@ -285,19 +283,19 @@ export function AlbumProvider({ children }: AlbumProviderProps) {
       // Atualizar contador do álbum na lista
       const album = state.albums.find(a => a.id === albumId);
       if (album) {
-        dispatch({ 
-          type: 'UPDATE_ALBUM', 
-          payload: { ...album, photoCount: Math.max(0, album.photoCount - 1) }
+        dispatch({
+          type: 'UPDATE_ALBUM',
+          payload: { ...album, photoCount: Math.max(0, album.photoCount - 1) },
         });
       }
     }, 'Photo removed from album'),
-    [withErrorHandling, state.currentAlbum, state.albums]
+    [withErrorHandling, state.currentAlbum, state.albums],
   );
 
   const movePhotoBetweenAlbums = useCallback(
     withErrorHandling(async (operation: PhotoMoveOperation) => {
       await albumService.movePhotoBetweenAlbums(operation);
-      
+
       // Atualizar álbum atual se necessário
       if (state.currentAlbum?.id === operation.fromAlbumId) {
         dispatch({ type: 'REMOVE_PHOTO_FROM_CURRENT_ALBUM', payload: operation.photoId });
@@ -305,25 +303,25 @@ export function AlbumProvider({ children }: AlbumProviderProps) {
       if (state.currentAlbum?.id === operation.toAlbumId) {
         dispatch({ type: 'ADD_PHOTO_TO_CURRENT_ALBUM', payload: operation.photoId });
       }
-      
+
       // Atualizar contadores
       const fromAlbum = state.albums.find(a => a.id === operation.fromAlbumId);
       const toAlbum = state.albums.find(a => a.id === operation.toAlbumId);
-      
+
       if (fromAlbum) {
-        dispatch({ 
-          type: 'UPDATE_ALBUM', 
-          payload: { ...fromAlbum, photoCount: Math.max(0, fromAlbum.photoCount - 1) }
+        dispatch({
+          type: 'UPDATE_ALBUM',
+          payload: { ...fromAlbum, photoCount: Math.max(0, fromAlbum.photoCount - 1) },
         });
       }
       if (toAlbum) {
-        dispatch({ 
-          type: 'UPDATE_ALBUM', 
-          payload: { ...toAlbum, photoCount: toAlbum.photoCount + 1 }
+        dispatch({
+          type: 'UPDATE_ALBUM',
+          payload: { ...toAlbum, photoCount: toAlbum.photoCount + 1 },
         });
       }
     }, 'Photo moved successfully'),
-    [withErrorHandling, state.currentAlbum, state.albums]
+    [withErrorHandling, state.currentAlbum, state.albums],
   );
 
   // Utility functions
@@ -331,9 +329,12 @@ export function AlbumProvider({ children }: AlbumProviderProps) {
     dispatch({ type: 'SET_ERROR', payload: null });
   }, []);
 
-  const getAlbumById = useCallback((id: AlbumId): Album | undefined => {
-    return state.albums.find(album => album.id === id);
-  }, [state.albums]);
+  const getAlbumById = useCallback(
+    (id: AlbumId): Album | undefined => {
+      return state.albums.find(album => album.id === id);
+    },
+    [state.albums],
+  );
 
   // Load albums on mount
   useEffect(() => {
@@ -351,14 +352,10 @@ export function AlbumProvider({ children }: AlbumProviderProps) {
     removePhotoFromAlbum,
     movePhotoBetweenAlbums,
     clearError,
-    getAlbumById
+    getAlbumById,
   };
 
-  return (
-    <AlbumContext.Provider value={contextValue}>
-      {children}
-    </AlbumContext.Provider>
-  );
+  return <AlbumContext.Provider value={contextValue}>{children}</AlbumContext.Provider>;
 }
 
 // Custom hook (Hook Pattern)

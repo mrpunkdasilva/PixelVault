@@ -27,7 +27,7 @@ const INITIAL_STATE: NavigationState = {
   view: 'photos',
   albumId: undefined,
   previousView: undefined,
-  previousAlbumId: undefined
+  previousAlbumId: undefined,
 };
 
 export const useNavigation = () => {
@@ -39,7 +39,7 @@ export const useNavigation = () => {
       view: 'photos',
       albumId: undefined,
       previousView: prev.view,
-      previousAlbumId: prev.albumId
+      previousAlbumId: prev.albumId,
     }));
   }, []);
 
@@ -48,7 +48,7 @@ export const useNavigation = () => {
       view: 'albums',
       albumId: undefined,
       previousView: prev.view,
-      previousAlbumId: prev.albumId
+      previousAlbumId: prev.albumId,
     }));
   }, []);
 
@@ -57,7 +57,7 @@ export const useNavigation = () => {
       view: 'album-detail',
       albumId,
       previousView: prev.view,
-      previousAlbumId: prev.albumId
+      previousAlbumId: prev.albumId,
     }));
   }, []);
 
@@ -68,7 +68,7 @@ export const useNavigation = () => {
           view: prev.previousView,
           albumId: prev.previousAlbumId,
           previousView: undefined,
-          previousAlbumId: undefined
+          previousAlbumId: undefined,
         };
       }
       return prev;
@@ -85,13 +85,13 @@ export const useNavigation = () => {
         e.preventDefault();
         goBack();
       }
-      
+
       // Ctrl + 1 = Photos view
       if (e.ctrlKey && e.key === '1') {
         e.preventDefault();
         goToPhotos();
       }
-      
+
       // Ctrl + 2 = Albums view
       if (e.ctrlKey && e.key === '2') {
         e.preventDefault();
@@ -122,12 +122,12 @@ export const useNavigation = () => {
     goToAlbums,
     goToAlbum,
     goBack,
-    canGoBack
+    canGoBack,
   };
 
   return {
     navigationState,
-    ...actions
+    ...actions,
   };
 };
 
@@ -140,7 +140,7 @@ export const useBreadcrumbs = (navigationState: NavigationState, albums: any[] =
     label: 'Photos',
     view: 'photos' as NavigationView,
     albumId: undefined,
-    isActive: navigationState.view === 'photos'
+    isActive: navigationState.view === 'photos',
   });
 
   if (navigationState.view === 'albums') {
@@ -148,7 +148,7 @@ export const useBreadcrumbs = (navigationState: NavigationState, albums: any[] =
       label: 'Albums',
       view: 'albums' as NavigationView,
       albumId: undefined,
-      isActive: true
+      isActive: true,
     });
   }
 
@@ -158,7 +158,7 @@ export const useBreadcrumbs = (navigationState: NavigationState, albums: any[] =
       label: 'Albums',
       view: 'albums' as NavigationView,
       albumId: undefined,
-      isActive: false
+      isActive: false,
     });
 
     // Add specific album
@@ -168,7 +168,7 @@ export const useBreadcrumbs = (navigationState: NavigationState, albums: any[] =
         label: album.name,
         view: 'album-detail' as NavigationView,
         albumId: album.id,
-        isActive: true
+        isActive: true,
       });
     }
   }

@@ -67,7 +67,7 @@
   -webkit-backdrop-filter: var(--blur-sm);
   position: relative;
   z-index: 100;
-  
+
   .header-inner {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -76,14 +76,14 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    
+
     // Center the logo, controls on the right
     > :first-child {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
     }
-    
+
     .header-controls {
       margin-left: auto;
       z-index: 1;
@@ -92,12 +92,12 @@
     @media (max-width: 640px) {
       flex-direction: column;
       gap: var(--spacing-lg);
-      
+
       > :first-child {
         position: static;
         transform: none;
       }
-      
+
       .header-controls {
         margin-left: 0;
       }
@@ -614,7 +614,7 @@
   z-index: 1000;
   padding: 2rem;
   animation: modalFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  
+
   // Enhanced glassmorphism effect
   background: linear-gradient(
     135deg,
@@ -626,7 +626,7 @@
   @media (max-width: 768px) {
     padding: 1rem;
   }
-  
+
   @media (max-width: 480px) {
     padding: 0.5rem;
   }
@@ -639,7 +639,7 @@
   overflow-y: auto;
   animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 16px;
-  
+
   // Enhanced scrollbar
   &::-webkit-scrollbar {
     width: 8px;
@@ -659,7 +659,7 @@
       background: var(--primary-color-dark, #4338ca);
     }
   }
-  
+
   // Remove default focus outline and add custom
   &:focus {
     outline: none;
@@ -727,14 +727,15 @@
 
 // Enhanced pixel effects for album system
 @keyframes albumCardGlow {
-  0%, 100% {
-    box-shadow: 
+  0%,
+  100% {
+    box-shadow:
       0 0 5px var(--color-accent-primary),
       0 0 10px var(--color-accent-primary),
       inset 0 0 5px rgba(var(--color-accent-primary-rgb), 0.1);
   }
   50% {
-    box-shadow: 
+    box-shadow:
       0 0 10px var(--color-accent-primary),
       0 0 20px var(--color-accent-primary),
       inset 0 0 10px rgba(var(--color-accent-primary-rgb), 0.2);
@@ -765,7 +766,7 @@
 @media (max-width: 640px) {
   .albums-header h2 {
     font-size: 1.25rem;
-    
+
     &::before {
       content: "📁";
       margin-right: 0.25rem;
@@ -801,12 +802,12 @@
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
-  
+
   // Ensure content is properly centered within the area
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   // Content blocks should take full width within the max-width constraint
   > * {
     width: 100%;
@@ -898,7 +899,7 @@
   margin-bottom: 2rem;
   flex-wrap: wrap;
   width: 100%;
-  
+
   .albums-link-button {
     display: flex;
     align-items: center;
@@ -917,24 +918,24 @@
     font-family: var(--font-pixel);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    
+
     svg {
       width: 24px;
       height: 24px;
       filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
     }
-    
+
     &:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(var(--color-accent-primary-rgb), 0.4);
       background: linear-gradient(135deg, var(--color-accent-hover), var(--color-accent-primary));
-      
+
       svg {
         filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
         transform: scale(1.1);
       }
     }
-    
+
     &:active {
       transform: translateY(0);
     }
@@ -945,7 +946,7 @@
 @media (max-width: 768px) {
   .quick-actions {
     flex-direction: column;
-    
+
     .albums-link-button {
       width: 100%;
       justify-content: center;

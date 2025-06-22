@@ -36,7 +36,7 @@ interface DragDropHandlers {
 export function useAlbumDragDrop(): DragDropHandlers {
   const { movePhotoBetweenAlbums } = useAlbum();
   const { showSuccess, showError } = useNotificationHelpers();
-  
+
   const [isDragging, setIsDragging] = useState(false);
   const [dragOverTarget, setDragOverTarget] = useState<AlbumId | null>(null);
   const [dragData, setDragData] = useState<DragData | null>(null);
@@ -45,11 +45,11 @@ export function useAlbumDragDrop(): DragDropHandlers {
   const onDragStart = useCallback((e: React.DragEvent, data: DragData) => {
     setIsDragging(true);
     setDragData(data);
-    
+
     // Configurar dados do drag
     e.dataTransfer.setData('application/json', JSON.stringify(data));
     e.dataTransfer.effectAllowed = 'move';
-    
+
     // Visual feedback
     if (e.target instanceof HTMLElement) {
       e.target.style.opacity = '0.5';
@@ -65,7 +65,7 @@ export function useAlbumDragDrop(): DragDropHandlers {
   // Strategy: Handle drag enter
   const onDragEnter = useCallback((e: React.DragEvent) => {
     e.preventDefault();
-    
+
     // Identificar o target album
     const albumElement = e.currentTarget.closest('[data-album-id]');
     if (albumElement instanceof HTMLElement) {
@@ -85,62 +85,61 @@ export function useAlbumDragDrop(): DragDropHandlers {
   }, []);
 
   // Strategy: Handle drop
-  const onDrop = useCallback(async (
-    e: React.DragEvent, 
-    targetAlbumId: AlbumId
-  ): Promise<DropResult> => {
-    e.preventDefault();
-    setIsDragging(false);
-    setDragOverTarget(null);
-    
-    try {
-      // Recuperar dados do drag
-      const dataJson = e.dataTransfer.getData('application/json');
-      const data: DragData = dataJson ? JSON.parse(dataJson) : dragData;
-      
-      if (!data) {
-        return { success: false, error: 'No drag data available' };
-      }
+  const onDrop = useCallback(
+    async (e: React.DragEvent, targetAlbumId: AlbumId): Promise<DropResult> => {
+      e.preventDefault();
+      setIsDragging(false);
+      setDragOverTarget(null);
 
-      // Validações
-      if (data.type !== 'photo') {
-        return { success: false, error: 'Only photos can be moved between albums' };
-      }
+      try {
+        // Recuperar dados do drag
+        const dataJson = e.dataTransfer.getData('application/json');
+        const data: DragData = dataJson ? JSON.parse(dataJson) : dragData;
 
-      if (!data.source) {
-        return { success: false, error: 'Source album not specified' };
-      }
-
-      if (data.source === targetAlbumId) {
-        return { success: false, error: 'Photo is already in this album' };
-      }
-
-      // Executar operação de mover foto
-      const operation: PhotoMoveOperation = {
-        photoId: data.id as PhotoId,
-        fromAlbumId: data.source,
-        toAlbumId: targetAlbumId
-      };
-
-      await movePhotoBetweenAlbums(operation);
-      
-      return { success: true, operation };
-      
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to move photo';
-      showError('Error', errorMessage);
-      return { success: false, error: errorMessage };
-    } finally {
-      // Cleanup visual effects
-      setDragData(null);
-      const draggedElements = document.querySelectorAll('[style*="opacity: 0.5"]');
-      draggedElements.forEach(el => {
-        if (el instanceof HTMLElement) {
-          el.style.opacity = '';
+        if (!data) {
+          return { success: false, error: 'No drag data available' };
         }
-      });
-    }
-  }, [dragData, movePhotoBetweenAlbums, showError]);
+
+        // Validações
+        if (data.type !== 'photo') {
+          return { success: false, error: 'Only photos can be moved between albums' };
+        }
+
+        if (!data.source) {
+          return { success: false, error: 'Source album not specified' };
+        }
+
+        if (data.source === targetAlbumId) {
+          return { success: false, error: 'Photo is already in this album' };
+        }
+
+        // Executar operação de mover foto
+        const operation: PhotoMoveOperation = {
+          photoId: data.id as PhotoId,
+          fromAlbumId: data.source,
+          toAlbumId: targetAlbumId,
+        };
+
+        await movePhotoBetweenAlbums(operation);
+
+        return { success: true, operation };
+      } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : 'Failed to move photo';
+        showError('Error', errorMessage);
+        return { success: false, error: errorMessage };
+      } finally {
+        // Cleanup visual effects
+        setDragData(null);
+        const draggedElements = document.querySelectorAll('[style*="opacity: 0.5"]');
+        draggedElements.forEach(el => {
+          if (el instanceof HTMLElement) {
+            el.style.opacity = '';
+          }
+        });
+      }
+    },
+    [dragData, movePhotoBetweenAlbums, showError],
+  );
 
   return {
     onDragStart,
@@ -149,7 +148,7 @@ export function useAlbumDragDrop(): DragDropHandlers {
     onDragLeave,
     onDrop,
     isDragging,
-    dragOverTarget
+    dragOverTarget,
   };
 }
 
@@ -157,18 +156,21 @@ export function useAlbumDragDrop(): DragDropHandlers {
 export function usePhotoDragDrop(photoId: PhotoId, albumId?: AlbumId) {
   const dragDropHandlers = useAlbumDragDrop();
 
-  const handleDragStart = useCallback((e: React.DragEvent) => {
-    const dragData: DragData = {
-      type: 'photo',
-      id: photoId,
-      source: albumId
-    };
-    dragDropHandlers.onDragStart(e, dragData);
-  }, [dragDropHandlers, photoId, albumId]);
+  const handleDragStart = useCallback(
+    (e: React.DragEvent) => {
+      const dragData: DragData = {
+        type: 'photo',
+        id: photoId,
+        source: albumId,
+      };
+      dragDropHandlers.onDragStart(e, dragData);
+    },
+    [dragDropHandlers, photoId, albumId],
+  );
 
   return {
     ...dragDropHandlers,
-    onDragStart: handleDragStart
+    onDragStart: handleDragStart,
   };
 }
 
@@ -176,9 +178,12 @@ export function usePhotoDragDrop(photoId: PhotoId, albumId?: AlbumId) {
 export function useAlbumDropZone(albumId: AlbumId) {
   const dragDropHandlers = useAlbumDragDrop();
 
-  const handleDrop = useCallback((e: React.DragEvent) => {
-    return dragDropHandlers.onDrop(e, albumId);
-  }, [dragDropHandlers, albumId]);
+  const handleDrop = useCallback(
+    (e: React.DragEvent) => {
+      return dragDropHandlers.onDrop(e, albumId);
+    },
+    [dragDropHandlers, albumId],
+  );
 
   const isDropTarget = dragDropHandlers.dragOverTarget === albumId;
 
@@ -188,6 +193,6 @@ export function useAlbumDropZone(albumId: AlbumId) {
     onDragLeave: dragDropHandlers.onDragLeave,
     onDrop: handleDrop,
     isDropTarget,
-    isDragging: dragDropHandlers.isDragging
+    isDragging: dragDropHandlers.isDragging,
   };
 }

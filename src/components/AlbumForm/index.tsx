@@ -22,23 +22,23 @@ export const AlbumForm: React.FC<AlbumFormProps> = ({
   album,
   onSuccess,
   onCancel,
-  className = ''
+  className = '',
 }) => {
   const { showError } = useNotificationHelpers();
   const { createAlbum, updateAlbum, ui } = useAlbum();
   const nameInputRef = useRef<HTMLInputElement>(null);
-  
+
   // Form state
   const [formData, setFormData] = useState({
     name: album?.name || '',
     description: album?.description || '',
     tags: album?.tags || [],
-    isDefault: album?.isDefault || false
+    isDefault: album?.isDefault || false,
   });
-  
+
   const [currentTag, setCurrentTag] = useState('');
   const [errors, setErrors] = useState<Record<string, string>>({});
-  
+
   // Use context loading states
   const isSubmitting = mode === 'create' ? ui.isCreating : ui.isUpdating;
 
@@ -76,9 +76,9 @@ export const AlbumForm: React.FC<AlbumFormProps> = ({
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
-    
+
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => {
@@ -102,7 +102,7 @@ export const AlbumForm: React.FC<AlbumFormProps> = ({
     if (tag && !formData.tags.includes(tag) && formData.tags.length < 10) {
       setFormData(prev => ({
         ...prev,
-        tags: [...prev.tags, tag]
+        tags: [...prev.tags, tag],
       }));
       setCurrentTag('');
     }
@@ -111,14 +111,14 @@ export const AlbumForm: React.FC<AlbumFormProps> = ({
   const removeTag = (tagToRemove: string) => {
     setFormData(prev => ({
       ...prev,
-      tags: prev.tags.filter(tag => tag !== tagToRemove)
+      tags: prev.tags.filter(tag => tag !== tagToRemove),
     }));
   };
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
@@ -127,7 +127,7 @@ export const AlbumForm: React.FC<AlbumFormProps> = ({
       const albumData = {
         name: formData.name.trim(),
         description: formData.description.trim(),
-        tags: formData.tags
+        tags: formData.tags,
       };
 
       if (mode === 'create') {
@@ -143,7 +143,7 @@ export const AlbumForm: React.FC<AlbumFormProps> = ({
         const updatedAlbum: Album = {
           ...album,
           ...albumData,
-          updatedAt: new Date()
+          updatedAt: new Date(),
         };
         onSuccess(updatedAlbum);
       }
@@ -169,106 +169,98 @@ export const AlbumForm: React.FC<AlbumFormProps> = ({
 
   return (
     <div className={`album-form ${className}`}>
-      <div className="album-form__header">
+      <div className='album-form__header'>
         <h2>{mode === 'create' ? 'Create New Album' : 'Edit Album'}</h2>
-        <button 
-          className="album-form__close"
+        <button
+          className='album-form__close'
           onClick={onCancel}
-          type="button"
-          aria-label="Close form"
+          type='button'
+          aria-label='Close form'
         >
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          <svg viewBox='0 0 24 24' fill='currentColor'>
+            <path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z' />
           </svg>
         </button>
       </div>
 
-      <form onSubmit={handleSubmit} className="album-form__form">
+      <form onSubmit={handleSubmit} className='album-form__form'>
         {/* Album Name */}
-        <div className="form-group">
-          <label htmlFor="album-name" className="form-label">
+        <div className='form-group'>
+          <label htmlFor='album-name' className='form-label'>
             Album Name *
           </label>
           <input
             ref={nameInputRef}
-            id="album-name"
-            name="name"
-            type="text"
+            id='album-name'
+            name='name'
+            type='text'
             value={formData.name}
             onChange={handleInputChange}
             className={`form-input ${errors.name ? 'form-input--error' : ''}`}
-            placeholder="Enter album name..."
+            placeholder='Enter album name...'
             maxLength={50}
             disabled={isSubmitting}
           />
-          {errors.name && (
-            <span className="form-error">{errors.name}</span>
-          )}
-          <div className="form-hint">
-            {formData.name.length}/50 characters
-          </div>
+          {errors.name && <span className='form-error'>{errors.name}</span>}
+          <div className='form-hint'>{formData.name.length}/50 characters</div>
         </div>
 
         {/* Description */}
-        <div className="form-group">
-          <label htmlFor="album-description" className="form-label">
+        <div className='form-group'>
+          <label htmlFor='album-description' className='form-label'>
             Description
           </label>
           <textarea
-            id="album-description"
-            name="description"
+            id='album-description'
+            name='description'
             value={formData.description}
             onChange={handleInputChange}
             className={`form-textarea ${errors.description ? 'form-input--error' : ''}`}
-            placeholder="Describe this album... (optional)"
+            placeholder='Describe this album... (optional)'
             rows={3}
             maxLength={200}
             disabled={isSubmitting}
           />
-          {errors.description && (
-            <span className="form-error">{errors.description}</span>
-          )}
-          <div className="form-hint">
-            {formData.description.length}/200 characters
-          </div>
+          {errors.description && <span className='form-error'>{errors.description}</span>}
+          <div className='form-hint'>{formData.description.length}/200 characters</div>
         </div>
 
         {/* Tags */}
-        <div className="form-group">
-          <label htmlFor="album-tags" className="form-label">
+        <div className='form-group'>
+          <label htmlFor='album-tags' className='form-label'>
             Tags
           </label>
-          <div className="tags-input">
+          <div className='tags-input'>
             <input
-              id="album-tags"
-              type="text"
+              id='album-tags'
+              type='text'
               value={currentTag}
-              onChange={(e) => setCurrentTag(e.target.value)}
+              onChange={e => setCurrentTag(e.target.value)}
               onKeyPress={handleTagKeyPress}
               onBlur={addTag}
-              className="form-input"
-              placeholder="Add tags... (press Enter or comma to add)"
+              className='form-input'
+              placeholder='Add tags... (press Enter or comma to add)'
               disabled={isSubmitting || formData.tags.length >= 10}
             />
             <button
-              type="button"
+              type='button'
               onClick={addTag}
-              className="add-tag-btn"
+              className='add-tag-btn'
               disabled={!currentTag.trim() || formData.tags.length >= 10}
             >
               Add
             </button>
           </div>
-          
+
           {formData.tags.length > 0 && (
-            <div className="tags-list">
+            <div className='tags-list'>
               {formData.tags.map(tag => (
-                <span key={tag} className="tag">
+                <span key={tag} className='tag'>
                   {tag}
                   <button
-                    type="button"
+                    type='button'
                     onClick={() => removeTag(tag)}
-                    className="tag-remove"
+                    className='tag-remove'
                     disabled={isSubmitting}
                     aria-label={`Remove tag ${tag}`}
                   >
@@ -278,45 +270,43 @@ export const AlbumForm: React.FC<AlbumFormProps> = ({
               ))}
             </div>
           )}
-          
-          {errors.tags && (
-            <span className="form-error">{errors.tags}</span>
-          )}
-          <div className="form-hint">
-            {formData.tags.length}/10 tags
-          </div>
+
+          {errors.tags && <span className='form-error'>{errors.tags}</span>}
+          <div className='form-hint'>{formData.tags.length}/10 tags</div>
         </div>
 
         {/* Form Actions */}
-        <div className="album-form__actions">
+        <div className='album-form__actions'>
           <button
-            type="button"
+            type='button'
             onClick={onCancel}
-            className="btn btn--secondary"
+            className='btn btn--secondary'
             disabled={isSubmitting}
           >
             Cancel
           </button>
           <button
-            type="submit"
-            className="btn btn--primary"
+            type='submit'
+            className='btn btn--primary'
             disabled={isSubmitting || !formData.name.trim()}
           >
             {isSubmitting ? (
               <>
-                <svg className="btn-spinner" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 4V2A10 10 0 0 0 2 12h2a8 8 0 0 1 8-8z"/>
+                <svg className='btn-spinner' viewBox='0 0 24 24' fill='currentColor'>
+                  <path d='M12 4V2A10 10 0 0 0 2 12h2a8 8 0 0 1 8-8z' />
                 </svg>
                 {mode === 'create' ? 'Creating...' : 'Updating...'}
               </>
+            ) : mode === 'create' ? (
+              'Create Album'
             ) : (
-              mode === 'create' ? 'Create Album' : 'Update Album'
+              'Update Album'
             )}
           </button>
         </div>
 
         {/* Keyboard shortcuts hint */}
-        <div className="album-form__shortcuts">
+        <div className='album-form__shortcuts'>
           <small>
             Press <kbd>Escape</kbd> to cancel or <kbd>Ctrl+Enter</kbd> to save
           </small>

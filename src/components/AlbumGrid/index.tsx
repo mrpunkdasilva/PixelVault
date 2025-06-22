@@ -20,7 +20,7 @@ interface AlbumGridProps {
 export const AlbumGrid: React.FC<AlbumGridProps> = ({
   onAlbumClick,
   onCreateAlbum,
-  className = ''
+  className = '',
 }) => {
   const { albums, ui } = useAlbum();
 
@@ -28,7 +28,7 @@ export const AlbumGrid: React.FC<AlbumGridProps> = ({
   if (ui.isLoading) {
     return (
       <div className={`album-grid ${className}`}>
-        <LoadingSkeletons type="albums" count={6} />
+        <LoadingSkeletons type='albums' count={6} />
       </div>
     );
   }
@@ -37,10 +37,10 @@ export const AlbumGrid: React.FC<AlbumGridProps> = ({
   if (albums.length === 0) {
     return (
       <EmptyState
-        type="albums"
-        title="No albums yet"
-        description="Create your first album to organize your photos"
-        actionLabel="Create Album"
+        type='albums'
+        title='No albums yet'
+        description='Create your first album to organize your photos'
+        actionLabel='Create Album'
         onAction={onCreateAlbum}
         className={className}
       />
@@ -50,11 +50,7 @@ export const AlbumGrid: React.FC<AlbumGridProps> = ({
   return (
     <div className={`album-grid ${className}`}>
       {albums.map(album => (
-        <AlbumCard
-          key={album.id}
-          album={album}
-          onClick={onAlbumClick}
-        />
+        <AlbumCard key={album.id} album={album} onClick={onAlbumClick} />
       ))}
     </div>
   );

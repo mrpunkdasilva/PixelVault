@@ -9,7 +9,7 @@ const requiredEnvVars = [
   'VITE_FIREBASE_PROJECTID',
   'VITE_FIREBASE_STORAGEBUCKET',
   'VITE_FIREBASE_MESSAGINGSENDERID',
-  'VITE_FIREBASE_APPID'
+  'VITE_FIREBASE_APPID',
 ];
 
 const missingVars = requiredEnvVars.filter(envVar => !import.meta.env[envVar]);

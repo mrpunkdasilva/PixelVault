@@ -136,7 +136,7 @@
 
   &--secondary {
     background: var(--background-secondary);
-    
+
     &:hover {
       background: var(--background-tertiary);
     }
@@ -267,7 +267,7 @@
 
   &--selected {
     transform: scale(0.95);
-    
+
     &::after {
       content: "";
       position: absolute;
@@ -288,7 +288,7 @@
   top: 0.5rem;
   left: 0.5rem;
   z-index: 10;
-  
+
   input[type="checkbox"] {
     width: 20px;
     height: 20px;

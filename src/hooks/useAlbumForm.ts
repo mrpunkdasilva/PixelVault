@@ -57,7 +57,7 @@ interface AlbumFormHandlers {
 // Validation strategy
 const validateFormData = (data: AlbumFormData): FormValidation => {
   const errors: FormValidation['errors'] = {};
-  
+
   // Name validation
   if (!data.name.trim()) {
     errors.name = 'Album name is required';
@@ -66,22 +66,22 @@ const validateFormData = (data: AlbumFormData): FormValidation => {
   } else if (data.name.length < 2) {
     errors.name = 'Album name is too short (min 2 characters)';
   }
-  
+
   // Description validation
   if (data.description && data.description.length > 500) {
     errors.description = 'Description is too long (max 500 characters)';
   }
-  
+
   // Tags validation
   if (data.tags.length > 20) {
     errors.tags = 'Too many tags (max 20)';
   }
-  
+
   const hasErrors = Object.keys(errors).length > 0;
-  
+
   return {
     isValid: !hasErrors,
-    errors
+    errors,
   };
 };
 
@@ -90,13 +90,13 @@ const getInitialFormData = (album?: Album): AlbumFormData => ({
   name: album?.name || '',
   description: album?.description || '',
   tags: album?.tags || [],
-  coverPhotoId: album?.coverPhotoId
+  coverPhotoId: album?.coverPhotoId,
 });
 
 export function useAlbumForm(options: UseAlbumFormOptions): AlbumFormHandlers {
   const { createAlbum, updateAlbum } = useAlbum();
   const { mode, initialAlbum, onSuccess, onCancel } = options;
-  
+
   // Form state
   const [formState, setFormState] = useState<FormState>(() => {
     const initialData = getInitialFormData(initialAlbum);
@@ -104,7 +104,7 @@ export function useAlbumForm(options: UseAlbumFormOptions): AlbumFormHandlers {
       data: initialData,
       validation: validateFormData(initialData),
       isSubmitting: false,
-      isDirty: false
+      isDirty: false,
     };
   });
 
@@ -113,12 +113,12 @@ export function useAlbumForm(options: UseAlbumFormOptions): AlbumFormHandlers {
     setFormState(prev => {
       const newData = { ...prev.data, [field]: value };
       const newValidation = validateFormData(newData);
-      
+
       return {
         ...prev,
         data: newData,
         validation: newValidation,
-        isDirty: true
+        isDirty: true,
       };
     });
   }, []);
@@ -127,21 +127,21 @@ export function useAlbumForm(options: UseAlbumFormOptions): AlbumFormHandlers {
   const addTag = useCallback((tag: string) => {
     const normalizedTag = tag.trim().toLowerCase();
     if (!normalizedTag) return;
-    
+
     setFormState(prev => {
       if (prev.data.tags.includes(normalizedTag)) {
         return prev; // Tag já existe
       }
-      
+
       const newTags = [...prev.data.tags, normalizedTag];
       const newData = { ...prev.data, tags: newTags };
       const newValidation = validateFormData(newData);
-      
+
       return {
         ...prev,
         data: newData,
         validation: newValidation,
-        isDirty: true
+        isDirty: true,
       };
     });
   }, []);
@@ -151,12 +151,12 @@ export function useAlbumForm(options: UseAlbumFormOptions): AlbumFormHandlers {
       const newTags = prev.data.tags.filter(t => t !== tag);
       const newData = { ...prev.data, tags: newTags };
       const newValidation = validateFormData(newData);
-      
+
       return {
         ...prev,
         data: newData,
         validation: newValidation,
-        isDirty: true
+        isDirty: true,
       };
     });
   }, []);
@@ -166,7 +166,7 @@ export function useAlbumForm(options: UseAlbumFormOptions): AlbumFormHandlers {
     const validation = validateFormData(formState.data);
     setFormState(prev => ({
       ...prev,
-      validation
+      validation,
     }));
     return validation.isValid;
   }, [formState.data]);
@@ -187,19 +187,19 @@ export function useAlbumForm(options: UseAlbumFormOptions): AlbumFormHandlers {
           name: formState.data.name.trim(),
           description: formState.data.description.trim() || undefined,
           tags: formState.data.tags,
-          coverPhotoId: formState.data.coverPhotoId
+          coverPhotoId: formState.data.coverPhotoId,
         };
         result = await createAlbum(request);
       } else {
         if (!initialAlbum) {
           throw new Error('Initial album is required for edit mode');
         }
-        
+
         const request: UpdateAlbumRequest = {
           name: formState.data.name.trim(),
           description: formState.data.description.trim() || undefined,
           tags: formState.data.tags,
-          coverPhotoId: formState.data.coverPhotoId
+          coverPhotoId: formState.data.coverPhotoId,
         };
         await updateAlbum(initialAlbum.id, request);
         result = { ...initialAlbum, ...request, updatedAt: new Date() };
@@ -209,25 +209,16 @@ export function useAlbumForm(options: UseAlbumFormOptions): AlbumFormHandlers {
       setFormState(prev => ({
         ...prev,
         isSubmitting: false,
-        isDirty: false
+        isDirty: false,
       }));
 
       // Call success callback
       onSuccess?.(result);
-
     } catch (error) {
       setFormState(prev => ({ ...prev, isSubmitting: false }));
       throw error; // Re-throw para ser tratado pelo contexto
     }
-  }, [
-    formState.data, 
-    mode, 
-    initialAlbum, 
-    createAlbum, 
-    updateAlbum, 
-    validateForm, 
-    onSuccess
-  ]);
+  }, [formState.data, mode, initialAlbum, createAlbum, updateAlbum, validateForm, onSuccess]);
 
   // Form reset
   const resetForm = useCallback(() => {
@@ -236,7 +227,7 @@ export function useAlbumForm(options: UseAlbumFormOptions): AlbumFormHandlers {
       data: initialData,
       validation: validateFormData(initialData),
       isSubmitting: false,
-      isDirty: false
+      isDirty: false,
     });
   }, [initialAlbum]);
 
@@ -248,15 +239,13 @@ export function useAlbumForm(options: UseAlbumFormOptions): AlbumFormHandlers {
         ...prev,
         data: newData,
         validation: validateFormData(newData),
-        isDirty: false
+        isDirty: false,
       }));
     }
   }, [mode, initialAlbum]);
 
   // Computed properties
-  const canSubmit = formState.validation.isValid && 
-                    formState.isDirty && 
-                    !formState.isSubmitting;
+  const canSubmit = formState.validation.isValid && formState.isDirty && !formState.isSubmitting;
 
   return {
     formState,
@@ -266,6 +255,6 @@ export function useAlbumForm(options: UseAlbumFormOptions): AlbumFormHandlers {
     validateForm,
     submitForm,
     resetForm,
-    canSubmit
+    canSubmit,
   };
 }

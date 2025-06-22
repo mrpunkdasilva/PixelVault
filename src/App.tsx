@@ -36,10 +36,10 @@ function AppContent() {
   const [selectedPhoto, setSelectedPhoto] = useState<LegacyPhoto | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
-  
+
   // Album system state
   const [isAlbumFormOpen, setIsAlbumFormOpen] = useState(false);
-  
+
   // Hooks
   const { showSuccess, showError } = useNotificationHelpers();
   const { toggleTheme } = useTheme();
@@ -243,21 +243,21 @@ function AppContent() {
         return (
           <>
             {/* Quick Actions Bar */}
-            <div className="quick-actions">
+            <div className='quick-actions'>
               <UploadZone
                 onFileSelect={handleFileSelect}
                 onMultipleFilesSelect={handleMultipleFilesSelect}
                 uploading={uploading}
                 enableCompression={true}
               />
-              
-              <button 
-                className="albums-link-button"
+
+              <button
+                className='albums-link-button'
                 onClick={() => navigation.goToAlbums()}
-                title="View Albums"
+                title='View Albums'
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/>
+                <svg width='24' height='24' viewBox='0 0 24 24' fill='currentColor'>
+                  <path d='M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z' />
                 </svg>
                 <span>My Albums</span>
               </button>
@@ -306,10 +306,7 @@ function AppContent() {
 
       case 'albums':
         return (
-          <AlbumCarousel3D 
-            onAlbumClick={navigation.goToAlbum}
-            onCreateAlbum={handleCreateAlbum}
-          />
+          <AlbumCarousel3D onAlbumClick={navigation.goToAlbum} onCreateAlbum={handleCreateAlbum} />
         );
 
       case 'album-detail':
@@ -355,9 +352,7 @@ function AppContent() {
         />
 
         {/* Main Content Area */}
-        <div className="main-content">
-          {renderContent()}
-        </div>
+        <div className='main-content'>{renderContent()}</div>
       </div>
 
       {/* Modals */}
@@ -371,11 +366,11 @@ function AppContent() {
 
       {/* Album Form Modal */}
       {isAlbumFormOpen && (
-        <div className="modal-overlay" onClick={handleAlbumFormClose}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className='modal-overlay' onClick={handleAlbumFormClose}>
+          <div className='modal-content' onClick={e => e.stopPropagation()}>
             <AlbumForm
-              mode="create"
-              onSuccess={(album) => {
+              mode='create'
+              onSuccess={album => {
                 console.log('Album created:', album);
                 handleAlbumFormClose();
                 showSuccess('Album Created', `"${album.name}" has been created successfully.`);
@@ -399,5 +394,3 @@ export default function App() {
     </AlbumProvider>
   );
 }
-
-
