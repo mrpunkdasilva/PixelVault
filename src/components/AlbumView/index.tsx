@@ -5,14 +5,17 @@
  */
 
 import React, { useCallback, useState, useEffect } from 'react';
-import { useAlbums } from '../../hooks/useAlbums';
+import { useAlbum } from '../../contexts/AlbumContext';
 import { usePhotos } from '../../hooks/usePhotos';
 import { PhotoItem } from '../PhotoItem';
 import { EmptyState } from '../EmptyState';
 import { LoadingSkeletons } from '../LoadingSkeletons';
 import { AlbumForm } from '../AlbumForm';
+import { UploadZone } from '../UploadZone';
 import { useNotificationHelpers } from '../../contexts/NotificationContext';
-// import type { Album, Photo } from '../../types';
+import type { Photo } from '../../types/Photo';
+import type { LegacyPhoto } from '../../types/Photo';
+import * as Photos from '../../services/photos';
 import './styles.scss';
 
 interface AlbumViewProps {
@@ -31,18 +34,28 @@ export const AlbumView: React.FC<AlbumViewProps> = ({
   const [isEditingAlbum, setIsEditingAlbum] = useState(false);
   const [draggedPhoto, setDraggedPhoto] = useState<Photo | null>(null);
   const [isSelectionMode, setIsSelectionMode] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
   // Hooks
-  const { albums, loading: albumsLoading, updateAlbum, deleteAlbum } = useAlbums();
+  const { 
+    albums, 
+    currentAlbum,
+    ui: { isLoading, isUpdating, isDeleting },
+    loadAlbum,
+    updateAlbum, 
+    deleteAlbum 
+  } = useAlbum();
   const { photos, loading: photosLoading, addPhotoToAlbum, removePhotoFromAlbum } = usePhotos();
   const { showSuccess, showError, showInfo } = useNotificationHelpers();
 
-  // Get current album
-  const currentAlbum = albums.find(album => album.id === albumId);
-  const albumPhotos = photos.filter(photo => photo.albumId === albumId);
+  // Get current album (will be loaded by context)
+  const album = currentAlbum || albums.find(album => album.id === albumId);
+  const albumPhotos = album?.photos ? 
+    photos.filter(photo => album.photos.includes(photo.id)) : 
+    photos.filter(photo => photo.albumIds.includes(albumId));
 
   // Loading state
-  const isLoading = albumsLoading || photosLoading;
+  const loading = isLoading || photosLoading;
 
   // Handlers
   const handleEditAlbum = useCallback(() => {
@@ -50,22 +63,22 @@ export const AlbumView: React.FC<AlbumViewProps> = ({
   }, []);
 
   const handleDeleteAlbum = useCallback(async () => {
-    if (!currentAlbum) return;
+    if (!album) return;
 
     const confirmDelete = window.confirm(
-      `Are you sure you want to delete the album "${currentAlbum.name}"? This will remove ${albumPhotos.length} photos from the album.`
+      `Are you sure you want to delete the album "${album.name}"? This will remove ${albumPhotos.length} photos from the album.`
     );
 
     if (confirmDelete) {
       try {
         await deleteAlbum(albumId);
-        showSuccess('Album Deleted', `"${currentAlbum.name}" has been deleted successfully.`);
         onBackToAlbums();
       } catch (error) {
-        showError('Delete Failed', 'Failed to delete the album. Please try again.');
+        // Error handling is done in the context
+        console.error('Delete album error:', error);
       }
     }
-  }, [currentAlbum, albumPhotos.length, deleteAlbum, albumId, showSuccess, showError, onBackToAlbums]);
+  }, [album, albumPhotos.length, deleteAlbum, albumId, onBackToAlbums]);
 
   const handleSelectPhoto = useCallback((photoId: string) => {
     setSelectedPhotos(prev => {
@@ -139,6 +152,68 @@ export const AlbumView: React.FC<AlbumViewProps> = ({
     }
   }, [draggedPhoto, albumId, removePhotoFromAlbum, addPhotoToAlbum, showSuccess, showError]);
 
+  // Photo upload handlers
+  const handleFileSelect = useCallback(async (file: File) => {
+    setUploading(true);
+    try {
+      const result = await Photos.insert(file);
+      if (result instanceof Error) {
+        showError('Upload Failed', result.message);
+      } else {
+        // Convert legacy photo to new photo format and add to album
+        const newPhoto: Photo = {
+          id: Date.now().toString(),
+          name: result.name,
+          url: result.url,
+          size: 1024000,
+          mimeType: 'image/jpeg',
+          albumIds: [albumId],
+          uploadedAt: new Date(),
+          tags: []
+        };
+        
+        showSuccess('Photo Uploaded', 'Photo has been added to the album!');
+      }
+    } catch (error) {
+      showError('Upload Failed', 'Failed to upload photo to album.');
+    } finally {
+      setUploading(false);
+    }
+  }, [albumId, showSuccess, showError]);
+
+  const handleMultipleFilesSelect = useCallback(async (files: File[]) => {
+    setUploading(true);
+    let successCount = 0;
+    let errorCount = 0;
+
+    for (const file of files) {
+      try {
+        const result = await Photos.insert(file);
+        if (result instanceof Error) {
+          errorCount++;
+        } else {
+          successCount++;
+        }
+      } catch (error) {
+        errorCount++;
+      }
+    }
+
+    setUploading(false);
+
+    // Show appropriate notification
+    if (successCount > 0 && errorCount === 0) {
+      showSuccess(
+        'Photos Uploaded',
+        `${successCount} photo${successCount > 1 ? 's' : ''} added to album successfully!`,
+      );
+    } else if (successCount > 0 && errorCount > 0) {
+      showError('Partial Upload', `${successCount} photos uploaded, ${errorCount} failed`);
+    } else {
+      showError('Upload Failed', 'All uploads failed');
+    }
+  }, [albumId, showSuccess, showError]);
+
   // Keyboard shortcuts
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
@@ -147,6 +222,22 @@ export const AlbumView: React.FC<AlbumViewProps> = ({
         if (isSelectionMode) {
           handleSelectAll();
         }
+      } else if (e.ctrlKey && e.key === 'u') {
+        e.preventDefault();
+        // Trigger file upload
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*';
+        input.multiple = true;
+        input.onchange = (event) => {
+          const files = Array.from((event.target as HTMLInputElement).files || []);
+          if (files.length === 1) {
+            handleFileSelect(files[0]);
+          } else if (files.length > 1) {
+            handleMultipleFilesSelect(files);
+          }
+        };
+        input.click();
       } else if (e.key === 'Escape') {
         if (isSelectionMode) {
           handleToggleSelectionMode();
@@ -160,10 +251,17 @@ export const AlbumView: React.FC<AlbumViewProps> = ({
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [isSelectionMode, selectedPhotos.size, handleSelectAll, handleToggleSelectionMode, handleRemoveSelectedFromAlbum, isEditingAlbum]);
+  }, [isSelectionMode, selectedPhotos.size, handleSelectAll, handleToggleSelectionMode, handleRemoveSelectedFromAlbum, isEditingAlbum, handleFileSelect, handleMultipleFilesSelect]);
+
+  // Load album data when component mounts
+  useEffect(() => {
+    if (albumId && !currentAlbum) {
+      loadAlbum(albumId);
+    }
+  }, [albumId, currentAlbum, loadAlbum]);
 
   // Loading state
-  if (isLoading) {
+  if (loading) {
     return (
       <div className="album-view">
         <LoadingSkeletons type="photos" count={8} />
@@ -172,7 +270,7 @@ export const AlbumView: React.FC<AlbumViewProps> = ({
   }
 
   // Album not found
-  if (!currentAlbum) {
+  if (!album) {
     return (
       <div className="album-view">
         <EmptyState
@@ -203,7 +301,7 @@ export const AlbumView: React.FC<AlbumViewProps> = ({
           <span className="album-view__breadcrumb-separator">/</span>
           <span className="album-view__breadcrumb-text">Albums</span>
           <span className="album-view__breadcrumb-separator">/</span>
-          <span className="album-view__breadcrumb-current">{currentAlbum.name}</span>
+          <span className="album-view__breadcrumb-current">{album.name}</span>
         </div>
 
         <div className="album-view__actions">
@@ -271,25 +369,39 @@ export const AlbumView: React.FC<AlbumViewProps> = ({
       {/* Album Info */}
       <div className="album-view__info">
         <div className="album-view__title">
-          <h1>{currentAlbum.name}</h1>
+          <h1>{album.name}</h1>
           <span className="album-view__photo-count">
             {albumPhotos.length} photo{albumPhotos.length !== 1 ? 's' : ''}
           </span>
         </div>
 
-        {currentAlbum.description && (
-          <p className="album-view__description">{currentAlbum.description}</p>
+        {album.description && (
+          <p className="album-view__description">{album.description}</p>
         )}
 
-        {currentAlbum.tags && currentAlbum.tags.length > 0 && (
+        {album.tags && album.tags.length > 0 && (
           <div className="album-view__tags">
-            {currentAlbum.tags.map(tag => (
+            {album.tags.map(tag => (
               <span key={tag} className="album-view__tag">
                 {tag}
               </span>
             ))}
           </div>
         )}
+      </div>
+
+      {/* Upload Zone */}
+      <div className="album-view__upload-section">
+        <div className="album-view__upload-header">
+          <h3>Add Photos to Album</h3>
+          <p>Upload photos directly to "{album.name}"</p>
+        </div>
+        <UploadZone
+          onFileSelect={handleFileSelect}
+          onMultipleFilesSelect={handleMultipleFilesSelect}
+          uploading={uploading}
+          enableCompression={true}
+        />
       </div>
 
       {/* Photos Grid */}
@@ -339,10 +451,9 @@ export const AlbumView: React.FC<AlbumViewProps> = ({
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <AlbumForm
               mode="edit"
-              album={currentAlbum}
+              album={album}
               onSuccess={() => {
                 setIsEditingAlbum(false);
-                showSuccess('Album Updated', 'Album has been updated successfully.');
               }}
               onCancel={() => setIsEditingAlbum(false)}
             />

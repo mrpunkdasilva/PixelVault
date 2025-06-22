@@ -357,10 +357,41 @@
   }
 }
 
+// Upload section
+.album-view__upload-section {
+  margin: var(--spacing-xl) 0;
+  padding: var(--spacing-lg);
+  background: var(--background-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--border-radius-lg);
+}
+
+.album-view__upload-header {
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+
+  h3 {
+    margin: 0 0 var(--spacing-xs) 0;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+}
+
 // Dark theme adjustments
 [data-theme="dark"] {
   .album-view__photo-wrapper--selected::after {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+  }
+
+  .album-view__upload-section {
+    background: var(--background-tertiary);
+    border-color: var(--border-dark);
   }
 }

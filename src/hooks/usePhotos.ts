@@ -5,7 +5,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import type { Photo } from '../types';
+import type { Photo } from '../types/Photo';
 import * as Photos from '../services/photos';
 
 export const usePhotos = () => {
@@ -25,10 +25,10 @@ export const usePhotos = () => {
           url: photo.url,
           name: photo.name,
           size: 1024000, // Placeholder size
-          type: 'image/jpeg', // Placeholder type
-          albumId: undefined, // Not assigned to any album yet
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString()
+          mimeType: 'image/jpeg', // Placeholder type
+          albumIds: [], // Not assigned to any album yet
+          uploadedAt: new Date(),
+          tags: []
         }));
         setPhotos(convertedPhotos);
       } catch (error) {
@@ -46,7 +46,7 @@ export const usePhotos = () => {
     // TODO: Implement with photo service
     setPhotos(prev => prev.map(photo => 
       photo.id === photoId 
-        ? { ...photo, albumId, updatedAt: new Date().toISOString() }
+        ? { ...photo, albumIds: [...photo.albumIds, albumId] }
         : photo
     ));
   };
@@ -54,8 +54,8 @@ export const usePhotos = () => {
   const removePhotoFromAlbum = async (photoId: string, albumId: string) => {
     // TODO: Implement with photo service
     setPhotos(prev => prev.map(photo => 
-      photo.id === photoId && photo.albumId === albumId
-        ? { ...photo, albumId: undefined, updatedAt: new Date().toISOString() }
+      photo.id === photoId
+        ? { ...photo, albumIds: photo.albumIds.filter(id => id !== albumId) }
         : photo
     ));
   };
