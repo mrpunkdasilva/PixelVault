@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "eslint-plugin-react-perf": "^3.3.3",
-    "firebase": "^9.8.1",
+    "firebase": "^11.9.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "uuid": "^8.3.2"
