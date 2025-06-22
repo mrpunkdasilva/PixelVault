@@ -135,34 +135,40 @@ export const useNavigation = () => {
 export const useBreadcrumbs = (navigationState: NavigationState, albums: any[] = []) => {
   const breadcrumbs = [];
 
-  // Always start with Home
+  // Always start with Photos (Home)
   breadcrumbs.push({
-    label: 'Home',
+    label: 'Photos',
     view: 'photos' as NavigationView,
-    albumId: undefined
+    albumId: undefined,
+    isActive: navigationState.view === 'photos'
   });
 
   if (navigationState.view === 'albums') {
     breadcrumbs.push({
       label: 'Albums',
       view: 'albums' as NavigationView,
-      albumId: undefined
+      albumId: undefined,
+      isActive: true
     });
   }
 
   if (navigationState.view === 'album-detail' && navigationState.albumId) {
+    // Add Albums as intermediate step
     breadcrumbs.push({
       label: 'Albums',
       view: 'albums' as NavigationView,
-      albumId: undefined
+      albumId: undefined,
+      isActive: false
     });
 
+    // Add specific album
     const album = albums.find(a => a.id === navigationState.albumId);
     if (album) {
       breadcrumbs.push({
         label: album.name,
         view: 'album-detail' as NavigationView,
-        albumId: album.id
+        albumId: album.id,
+        isActive: true
       });
     }
   }

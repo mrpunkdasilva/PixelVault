@@ -36,161 +36,193 @@
 }
 
 .keyboard-shortcuts-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: var(--blur-md);
-  -webkit-backdrop-filter: var(--blur-md);
-  z-index: 1001;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacing-lg);
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(0, 0, 0, 0.9) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 2rem !important;
   animation: fadeIn 0.3s ease-out;
 }
 
 .keyboard-shortcuts-modal {
-  background: var(--color-surface-primary);
-  border: 1px solid var(--color-border-primary);
-  border-radius: var(--border-radius-large);
-  box-shadow: var(--shadow-xl);
-  max-width: 600px;
-  width: 100%;
-  max-height: 80vh;
-  overflow: hidden;
+  background: #1f1f1f !important;
+  border: 2px solid #444 !important;
+  border-radius: 16px !important;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  max-width: 650px !important;
+  width: 90% !important;
+  max-height: 85vh !important;
+  overflow: hidden !important;
   animation: modalSlideIn 0.3s ease-out;
+  margin: auto !important;
+  position: relative !important;
+  color: #ffffff !important;
 }
 
 .keyboard-shortcuts-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--spacing-lg);
-  border-bottom: 1px solid var(--color-border-secondary);
-  background: var(--color-surface-secondary);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 2rem 2rem 1.5rem !important;
+  border-bottom: 1px solid #333 !important;
+  background: transparent !important;
 
   h2 {
-    font-family: var(--font-pixel);
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-family: var(--font-pixel, monospace) !important;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin: 0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
   }
 }
 
 .keyboard-shortcuts-close {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  background: transparent;
-  color: var(--color-text-muted);
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: all var(--transition-fast);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  background: transparent !important;
+  color: #ccc !important;
+  border: 1px solid transparent !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
 
   &:hover {
-    background: var(--color-surface-hover);
-    color: var(--color-text-primary);
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
   }
 
   svg {
-    width: 20px;
-    height: 20px;
+    width: 24px !important;
+    height: 24px !important;
   }
 }
 
 .keyboard-shortcuts-content {
-  padding: var(--spacing-lg);
-  overflow-y: auto;
-  max-height: calc(80vh - 120px);
+  padding: 2rem !important;
+  overflow-y: auto !important;
+  max-height: calc(85vh - 140px) !important;
+  background: transparent !important;
+  
+  // Ensure content doesn't overflow viewport
+  @media (max-height: 600px) {
+    max-height: calc(90vh - 120px) !important;
+    padding: 1.5rem !important;
+  }
 }
 
 .keyboard-shortcuts-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
 }
 
 .keyboard-shortcut-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--spacing-sm) var(--spacing-md);
-  background: var(--color-surface-secondary);
-  border-radius: var(--border-radius);
-  transition: all var(--transition-fast);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 1.25rem 1.5rem !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease !important;
 
   &:hover {
-    background: var(--color-surface-hover);
-    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3) !important;
   }
 }
 
 .keyboard-shortcut-keys {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  flex-shrink: 0;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  flex-shrink: 0 !important;
 }
 
 .keyboard-key {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 32px;
-  height: 32px;
-  padding: 0 var(--spacing-sm);
-  background: var(--color-background-primary);
-  color: var(--color-text-primary);
-  border: 1px solid var(--color-border-primary);
-  border-radius: var(--border-radius-small);
-  font-family: var(--font-pixel);
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow:
-    0 1px 0 var(--color-border-primary),
-    0 1px 3px rgba(0, 0, 0, 0.3);
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 40px !important;
+  height: 36px !important;
+  padding: 0 0.75rem !important;
+  background: linear-gradient(145deg, #333, #222) !important;
+  color: #ffffff !important;
+  border: 1px solid #555 !important;
+  border-radius: 8px !important;
+  font-family: var(--font-pixel, monospace) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 
+    0 2px 0 #555,
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
 }
 
 .keyboard-plus {
-  color: var(--color-text-muted);
-  font-size: 12px;
-  font-weight: 600;
-  margin: 0 var(--spacing-xs);
+  color: #888 !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  margin: 0 0.25rem !important;
 }
 
 .keyboard-shortcut-description {
-  flex: 1;
-  margin-left: var(--spacing-lg);
-  font-family: var(--font-pixel);
-  font-size: 14px;
-  color: var(--color-text-secondary);
-  line-height: 1.4;
-  letter-spacing: 0.3px;
+  flex: 1 !important;
+  margin-left: 1.5rem !important;
+  font-family: var(--font-pixel, monospace) !important;
+  font-size: 15px !important;
+  color: #ccc !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0.5px !important;
 }
 
 .keyboard-shortcuts-footer {
-  margin-top: var(--spacing-lg);
-  padding-top: var(--spacing-lg);
-  border-top: 1px solid var(--color-border-secondary);
-  text-align: center;
+  margin-top: 2rem !important;
+  padding-top: 1.5rem !important;
+  border-top: 1px solid #333 !important;
+  text-align: center !important;
+  background: transparent !important;
 
   p {
-    font-family: var(--font-pixel);
-    font-size: 13px;
-    color: var(--color-text-muted);
-    margin: 0;
-    letter-spacing: 0.3px;
+    font-family: var(--font-pixel, monospace) !important;
+    font-size: 14px !important;
+    color: #888 !important;
+    margin: 0 !important;
+    letter-spacing: 0.5px !important;
+  }
+  
+  kbd {
+    background: linear-gradient(145deg, #333, #222) !important;
+    border: 1px solid #555 !important;
+    border-radius: 6px !important;
+    padding: 0.25rem 0.5rem !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin: 0 0.25rem !important;
+    box-shadow: 0 2px 0 #555, inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
   }
 }
 
@@ -217,46 +249,87 @@
 // Mobile adjustments
 @media (max-width: 640px) {
   .keyboard-shortcuts-overlay {
-    padding: var(--spacing-md);
+    padding: 1rem !important;
+    align-items: flex-start !important;
+    padding-top: 5vh !important;
   }
 
   .keyboard-shortcuts-modal {
-    max-height: 90vh;
+    max-height: 90vh !important;
+    width: 95% !important;
+    max-width: calc(100vw - 2rem) !important;
   }
 
   .keyboard-shortcuts-header {
-    padding: var(--spacing-md);
+    padding: 1.5rem 1rem 1rem !important;
 
     h2 {
-      font-size: 18px;
+      font-size: 20px !important;
     }
   }
 
   .keyboard-shortcuts-content {
-    padding: var(--spacing-md);
-    max-height: calc(90vh - 100px);
+    padding: 1.5rem 1rem !important;
+    max-height: calc(90vh - 120px) !important;
   }
 
   .keyboard-shortcut-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-sm);
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+    padding: 1rem !important;
   }
 
   .keyboard-shortcut-keys {
-    align-self: flex-start;
+    align-self: flex-start !important;
   }
 
   .keyboard-shortcut-description {
-    margin-left: 0;
-    font-size: 13px;
-    align-self: stretch;
+    margin-left: 0 !important;
+    font-size: 14px !important;
+    align-self: stretch !important;
   }
 
   .keyboard-key {
-    min-width: 28px;
-    height: 28px;
-    font-size: 11px;
+    min-width: 36px !important;
+    height: 32px !important;
+    font-size: 12px !important;
+  }
+}
+
+// Extra small devices adjustments
+@media (max-width: 480px) or (max-height: 500px) {
+  .keyboard-shortcuts-overlay {
+    padding: 0.5rem !important;
+    padding-top: 2vh !important;
+  }
+
+  .keyboard-shortcuts-modal {
+    max-height: 95vh !important;
+    width: 98% !important;
+    max-width: calc(100vw - 1rem) !important;
+  }
+
+  .keyboard-shortcuts-content {
+    padding: 1rem !important;
+    max-height: calc(95vh - 100px) !important;
+  }
+
+  .keyboard-shortcuts-header {
+    padding: 1rem !important;
+    
+    h2 {
+      font-size: 18px !important;
+    }
+  }
+
+  .keyboard-shortcut-item {
+    padding: 0.75rem !important;
+  }
+
+  .keyboard-key {
+    min-width: 32px !important;
+    height: 28px !important;
+    font-size: 11px !important;
   }
 }

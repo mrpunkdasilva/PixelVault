@@ -30,8 +30,9 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   onGoBack,
   className = ''
 }) => {
-  const handleItemClick = (item: BreadcrumbItem) => {
-    if (!item.isActive) {
+  const handleItemClick = (item: BreadcrumbItem, index: number) => {
+    // Don't navigate if it's the current (last) item
+    if (index !== items.length - 1) {
       onNavigate(item.view, item.albumId);
     }
   };
@@ -74,7 +75,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
               className={`breadcrumbs__item ${
                 index === items.length - 1 ? 'breadcrumbs__item--current' : ''
               }`}
-              onClick={() => handleItemClick(item)}
+              onClick={() => handleItemClick(item, index)}
               disabled={index === items.length - 1}
               title={item.label}
             >
