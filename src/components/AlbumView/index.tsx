@@ -45,7 +45,7 @@ export const AlbumView: React.FC<AlbumViewProps> = ({
     updateAlbum, 
     deleteAlbum 
   } = useAlbum();
-  const { photos, loading: photosLoading, addPhotoToAlbum, removePhotoFromAlbum } = usePhotos();
+  const { photos, loading: photosLoading, addPhotoToAlbum, removePhotoFromAlbum, addPhoto, refreshPhotos } = usePhotos();
   const { showSuccess, showError, showInfo } = useNotificationHelpers();
 
   // Get current album (will be loaded by context)
@@ -160,26 +160,39 @@ export const AlbumView: React.FC<AlbumViewProps> = ({
       if (result instanceof Error) {
         showError('Upload Failed', result.message);
       } else {
-        // Convert legacy photo to new photo format and add to album
+        // Convert legacy photo to new photo format
         const newPhoto: Photo = {
-          id: Date.now().toString(),
+          id: result.name, // Use Firebase storage name as ID
           name: result.name,
           url: result.url,
-          size: 1024000,
-          mimeType: 'image/jpeg',
+          size: file.size,
+          mimeType: file.type,
           albumIds: [albumId],
           uploadedAt: new Date(),
           tags: []
         };
         
-        showSuccess('Photo Uploaded', 'Photo has been added to the album!');
+        // Add photo to local state first
+        addPhoto(newPhoto);
+        
+        // Add photo to album using album service
+        try {
+          await addPhotoToAlbum(newPhoto.id, albumId);
+          showSuccess('Photo Uploaded', 'Photo has been added to the album!');
+          // Refresh photos to ensure consistency
+          await refreshPhotos();
+        } catch (albumError) {
+          console.error('Failed to add photo to album:', albumError);
+          showError('Album Association Failed', 'Photo uploaded but failed to add to album.');
+        }
       }
     } catch (error) {
+      console.error('Upload error:', error);
       showError('Upload Failed', 'Failed to upload photo to album.');
     } finally {
       setUploading(false);
     }
-  }, [albumId, showSuccess, showError]);
+  }, [albumId, addPhotoToAlbum, addPhoto, refreshPhotos, showSuccess, showError]);
 
   const handleMultipleFilesSelect = useCallback(async (files: File[]) => {
     setUploading(true);
@@ -192,14 +205,46 @@ export const AlbumView: React.FC<AlbumViewProps> = ({
         if (result instanceof Error) {
           errorCount++;
         } else {
-          successCount++;
+          // Convert legacy photo to new photo format
+          const newPhoto: Photo = {
+            id: result.name, // Use Firebase storage name as ID
+            name: result.name,
+            url: result.url,
+            size: file.size,
+            mimeType: file.type,
+            albumIds: [albumId],
+            uploadedAt: new Date(),
+            tags: []
+          };
+          
+          // Add photo to local state first
+          addPhoto(newPhoto);
+          
+          // Add photo to album using album service
+          try {
+            await addPhotoToAlbum(newPhoto.id, albumId);
+            successCount++;
+          } catch (albumError) {
+            console.error('Failed to add photo to album:', albumError);
+            errorCount++;
+          }
         }
       } catch (error) {
+        console.error('Upload error:', error);
         errorCount++;
       }
     }
 
     setUploading(false);
+
+    // Refresh photos to ensure consistency if any uploads succeeded
+    if (successCount > 0) {
+      try {
+        await refreshPhotos();
+      } catch (error) {
+        console.error('Failed to refresh photos after upload:', error);
+      }
+    }
 
     // Show appropriate notification
     if (successCount > 0 && errorCount === 0) {
@@ -212,7 +257,7 @@ export const AlbumView: React.FC<AlbumViewProps> = ({
     } else {
       showError('Upload Failed', 'All uploads failed');
     }
-  }, [albumId, showSuccess, showError]);
+  }, [albumId, addPhotoToAlbum, showSuccess, showError]);
 
   // Keyboard shortcuts
   useEffect(() => {
