@@ -47,6 +47,7 @@
   --color-text-secondary: #4da6d9;
   --color-text-muted: rgba(102, 217, 255, 0.6);
   --color-text-inverse: #0a0a0f;
+  --color-text-on-accent: #0a0a0f;
 
   // Accent colors
   --color-accent-primary: #66d9ff;
@@ -84,6 +85,9 @@
   --surface-color: var(--color-surface-primary);
   --surface-dark: var(--color-surface-secondary);
   --text-secondary-dark: var(--color-text-secondary);
+  
+  // RGB values for rgba usage
+  --color-accent-primary-rgb: 102, 217, 255;
 }
 
 // Light Theme
@@ -101,6 +105,7 @@
   --color-text-secondary: #334155;
   --color-text-muted: #64748b;
   --color-text-inverse: #ffffff;
+  --color-text-on-accent: #ffffff;
 
   // Accent colors
   --color-accent-primary: #2563eb;
@@ -138,6 +143,9 @@
   --skeleton-shimmer: rgba(15, 23, 42, 0.15);
   --skeleton-shimmer-dark: rgba(15, 23, 42, 0.18);
   --text-secondary: var(--color-text-secondary);
+  
+  // RGB values for rgba usage
+  --color-accent-primary-rgb: 37, 99, 235;
 }
 
 // Smooth theme transitions

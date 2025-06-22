@@ -57,17 +57,51 @@
 }
 
 .header {
+  width: 100%;
   margin: 0;
   padding: var(--spacing-2xl) 0;
-  text-align: center;
   margin-bottom: var(--spacing-3xl);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background: var(--color-surface-primary);
+  border-bottom: 1px solid var(--color-border-muted);
+  backdrop-filter: var(--blur-sm);
+  -webkit-backdrop-filter: var(--blur-sm);
+  position: relative;
+  z-index: 100;
+  
+  .header-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    
+    // Center the logo, controls on the right
+    > :first-child {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .header-controls {
+      margin-left: auto;
+      z-index: 1;
+    }
 
-  @media (max-width: 640px) {
-    flex-direction: column;
-    gap: var(--spacing-lg);
+    @media (max-width: 640px) {
+      flex-direction: column;
+      gap: var(--spacing-lg);
+      
+      > :first-child {
+        position: static;
+        transform: none;
+      }
+      
+      .header-controls {
+        margin-left: 0;
+      }
+    }
   }
 }
 
@@ -84,6 +118,11 @@
 .screen-warning {
   text-align: center;
   padding: var(--spacing-3xl) 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   .loading-text {
     font-family: var(--font-pixel);
@@ -166,6 +205,10 @@
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--spacing-lg);
   animation: fadeIn 0.6s ease-in-out;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  justify-content: center;
 
   @media (max-width: 1280px) {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -337,5 +380,584 @@
         font-size: 13px;
       }
     }
+  }
+}
+
+// =============================================================================
+// ALBUM SYSTEM STYLES - PHASE 2
+// =============================================================================
+
+// View Toggle Component
+.view-toggle {
+  display: flex;
+  background: var(--color-surface-secondary);
+  border-radius: var(--border-radius);
+  padding: 2px;
+  border: 1px solid var(--color-border-primary);
+  box-shadow: var(--shadow-sm);
+
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: none;
+    border-radius: calc(var(--border-radius) - 2px);
+    color: var(--color-text-secondary);
+    font-family: var(--font-pixel);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      transition: all 0.2s ease;
+    }
+
+    &:hover:not(&--active) {
+      background: var(--color-surface-primary);
+      color: var(--color-text-primary);
+      transform: translateY(-1px);
+    }
+
+    &--active {
+      background: var(--color-accent-primary);
+      color: var(--color-text-on-accent);
+      box-shadow: var(--shadow-md);
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        bottom: -1px;
+        background: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-hover));
+        border-radius: calc(var(--border-radius) - 1px);
+        z-index: -1;
+        opacity: 0.8;
+      }
+
+      svg {
+        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__button {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+}
+
+// Albums Section
+.albums-section {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.albums-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-2xl);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border-muted);
+
+  h2 {
+    font-family: var(--font-pixel);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 6px var(--color-accent-primary);
+
+    &::before {
+      content: "📁 ";
+      margin-right: 0.5rem;
+      filter: sepia(1) hue-rotate(200deg) brightness(1.2);
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: stretch;
+
+    h2 {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+}
+
+.create-album-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-accent-primary);
+  color: var(--color-text-on-accent);
+  border: none;
+  border-radius: var(--border-radius);
+  font-family: var(--font-pixel);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+
+  // Pixel border effect
+  &::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-hover));
+    border-radius: var(--border-radius);
+    z-index: -1;
+  }
+
+  // Hover effect
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    z-index: 0;
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+  }
+
+  span {
+    position: relative;
+    z-index: 1;
+  }
+
+  &:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+
+    &::after {
+      width: 200px;
+      height: 200px;
+    }
+
+    svg {
+      transform: rotate(90deg);
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 1rem;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+// Modal Overlay (for Album Form)
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+  animation: modalFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  // Enhanced glassmorphism effect
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.8) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+  }
+}
+
+.modal-content {
+  position: relative;
+  max-width: 95vw;
+  max-height: 95vh;
+  overflow-y: auto;
+  animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 16px;
+  
+  // Enhanced scrollbar
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--primary-color, #4f46e5);
+    border-radius: 4px;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: var(--primary-color-dark, #4338ca);
+    }
+  }
+  
+  // Remove default focus outline and add custom
+  &:focus {
+    outline: none;
+  }
+}
+
+// Modal animations
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.95);
+    filter: blur(4px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-10px) scale(0.98);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+// Modal exit animations (can be used with state management)
+@keyframes modalFadeOut {
+  from {
+    opacity: 1;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  to {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+  }
+}
+
+@keyframes modalSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.95);
+    filter: blur(4px);
+  }
+}
+
+// Enhanced pixel effects for album system
+@keyframes albumCardGlow {
+  0%, 100% {
+    box-shadow: 
+      0 0 5px var(--color-accent-primary),
+      0 0 10px var(--color-accent-primary),
+      inset 0 0 5px rgba(var(--color-accent-primary-rgb), 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 10px var(--color-accent-primary),
+      0 0 20px var(--color-accent-primary),
+      inset 0 0 10px rgba(var(--color-accent-primary-rgb), 0.2);
+  }
+}
+
+// Responsive adjustments for album system
+@media (max-width: 1024px) {
+  .albums-header h2 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .view-toggle {
+    order: -1;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .header-controls {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .albums-header h2 {
+    font-size: 1.25rem;
+    
+    &::before {
+      content: "📁";
+      margin-right: 0.25rem;
+    }
+  }
+
+  .create-album-button {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.85rem;
+  }
+}
+
+// =============================================================================
+// NEW APP LAYOUT - SIDEBAR + MAIN CONTENT
+// =============================================================================
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--color-background-primary);
+}
+
+.app-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; // Prevents flex item from overflowing
+  transition: margin-left 0.3s ease;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  
+  // Ensure content is properly centered within the area
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  // Content blocks should take full width within the max-width constraint
+  > * {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+// Header adjustments for new layout (removed - consolidated above)
+
+// Mobile responsive adjustments
+@media (max-width: 1024px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .app-content {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    &::before,
+    &::after {
+      display: none; // Disable background effects on mobile for performance
+    }
+  }
+
+  .area {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .header {
+    padding: var(--spacing-md) 0;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .main-content {
+    padding: 0 var(--spacing-sm);
+  }
+}
+
+// Photo list adjustments for new layout
+.photo-list {
+  // Maintain existing grid but adjust for sidebar
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+
+  @media (max-width: 1280px) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}
+
+// Improved performance and accessibility
+@media (prefers-reduced-motion: reduce) {
+  .app-content,
+  .main-content {
+    transition: none;
+  }
+
+  .container {
+    &::before,
+    &::after {
+      animation: none;
+    }
+  }
+}
+
+// High contrast mode support
+
+// Quick Actions Bar
+.quick-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+  
+  .albums-link-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-hover));
+    color: var(--color-text-on-accent);
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(var(--color-accent-primary-rgb), 0.3);
+    min-height: 58px; // Match upload zone height
+    font-family: var(--font-pixel);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    
+    svg {
+      width: 24px;
+      height: 24px;
+      filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+    }
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(var(--color-accent-primary-rgb), 0.4);
+      background: linear-gradient(135deg, var(--color-accent-hover), var(--color-accent-primary));
+      
+      svg {
+        filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+        transform: scale(1.1);
+      }
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// Responsive adjustments for quick actions
+@media (max-width: 768px) {
+  .quick-actions {
+    flex-direction: column;
+    
+    .albums-link-button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
+@media (prefers-contrast: high) {
+  .app-layout {
+    border: 2px solid var(--color-border-primary);
+  }
+
+  .header {
+    border-bottom: 2px solid var(--color-border-primary);
   }
 }

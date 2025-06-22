@@ -1,0 +1,53 @@
+/**
+ * AlbumGrid Styles
+ * Grid responsivo otimizado para performance
+ */
+
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
+  
+  // Performance: usar transform em vez de mudanças de layout
+  will-change: transform;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  // Animação suave para novos itens
+  > * {
+    animation: album-card-enter 0.3s ease-out;
+  }
+}
+
+// Animações otimizadas
+@keyframes album-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive grid para diferentes densidades
+.album-grid--compact {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.album-grid--spacious {
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}

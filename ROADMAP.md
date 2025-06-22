@@ -19,15 +19,15 @@ Este roadmap define o plano de desenvolvimento para transformar o PixelVault em 
 
 ### 📊 **PROGRESSO DAS FASES:**
 - **FASE 1**: 🟢 **~100% Completa** - Performance otimizada, falta apenas análise de bundle
-- **FASE 2**: 🔴 **0% Completa** - Próxima fase a ser iniciada
+- **FASE 2**: 🟢 **~95% Completa** - Sistema de álbuns implementado com navegação completa
 - **FASE 3**: 🔴 **0% Completa** 
 - **FASE 4**: 🟡 **~30% Completa** - Visualizador avançado parcialmente implementado
 
 ### 🎯 **PRÓXIMOS PASSOS RECOMENDADOS:**
-1. **Finalizar Fase 1** - Análise de bundle size e otimizações finais
-2. **Iniciar Fase 2** - Sistema de álbuns como próxima grande funcionalidade
-3. **Melhorar Fase 4** - Adicionar rotação de imagens e slideshow
-4. **Preparar infraestrutura** - Considerar backend para persistência de dados
+1. **Finalizar Fase 2** - Testes de integração e validação do sistema de álbuns
+2. **Iniciar Fase 3** - Sistema de busca avançada e metadados EXIF
+3. **Firebase Integration** - Conectar sistema de álbuns com backend
+4. **Performance Testing** - Validar bundle size e Core Web Vitals
 
 ---
 
@@ -107,16 +107,30 @@ Este roadmap define o plano de desenvolvimento para transformar o PixelVault em 
 *Prioridade: Alta*
 
 ### 2.1 Sistema de Álbuns
-- [ ] **Criação e Gerenciamento de Álbuns**
-  - Interface para criar/editar álbuns
-  - Mover fotos entre álbuns
-  - Capa personalizada para álbuns
-  - Ordenação personalizada
+- [x] **Criação e Gerenciamento de Álbuns**
+  - [x] Interface para criar/editar álbuns
+  - [x] Formulário com validação em tempo real
+  - [x] Sistema de tags para álbuns
+  - [x] Context API para gerenciamento de estado
+  - [x] Repository pattern para persistência
+  - [ ] Mover fotos entre álbuns (drag & drop implementado, falta integração)
+  - [ ] Capa personalizada para álbuns
+  - [ ] Ordenação personalizada
 
-- [ ] **Navegação Hierárquica**
-  - Breadcrumbs para navegação
-  - Sidebar com lista de álbuns
-  - Contadores de fotos por álbum
+- [x] **Interface de Álbuns**
+  - [x] Grid responsivo para exibição de álbuns
+  - [x] Cards com informações detalhadas
+  - [x] Estados de loading e erro
+  - [x] Ações inline (editar/deletar)
+  - [x] Toggle entre visualização de fotos e álbuns
+
+- [x] **Navegação Hierárquica**
+  - [x] Breadcrumbs para navegação
+  - [x] Sidebar com lista de álbuns
+  - [x] Contadores de fotos por álbum
+  - [x] Visualização individual de álbuns
+  - [x] Sistema de navegação sem router (useNavigation hook)
+  - [x] Keyboard shortcuts para navegação rápida
 
 ### 2.2 Sistema de Tags e Metadados
 - [ ] **Tags Personalizadas**

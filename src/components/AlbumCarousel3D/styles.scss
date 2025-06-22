@@ -1,0 +1,751 @@
+/**
+ * AlbumCarousel3D Styles
+ * Estilos para o carrossel 3D de álbuns com animações e efeitos visuais
+ */
+
+.album-carousel-3d {
+  width: 100%;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  
+  // Header with controls
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    
+    h2 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-hover));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  // Search box
+  .search-box {
+    position: relative;
+    min-width: 300px;
+    
+    input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      padding-right: 2.5rem;
+      border: 2px solid var(--color-border-primary);
+      border-radius: 50px;
+      background: var(--color-surface-primary);
+      color: var(--color-text-primary);
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      
+      &:focus {
+        outline: none;
+        border-color: var(--color-accent-primary);
+        box-shadow: 0 0 0 3px rgba(102, 217, 255, 0.1);
+      }
+      
+      &::placeholder {
+        color: var(--color-text-muted);
+      }
+    }
+    
+    svg {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+  }
+
+  // Sort select
+  .sort-select {
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--background-color);
+    color: var(--text-color);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+  }
+
+  // Create album button
+  .create-album-btn,
+  .create-first-album-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.3);
+    
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.4);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  .create-first-album-btn {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  // Main carousel container
+  &__container {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    perspective: 1000px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: linear-gradient(135deg, 
+      rgba(var(--primary-rgb), 0.05) 0%, 
+      rgba(var(--accent-rgb), 0.05) 100%);
+    box-shadow: 
+      0 20px 60px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  &__viewport {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+  }
+
+  // Navigation buttons
+  .carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(var(--background-rgb), 0.9);
+    backdrop-filter: blur(10px);
+    color: var(--text-color);
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+    
+    &:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: translateY(-50%) scale(1);
+    }
+    
+    &--prev {
+      left: 2rem;
+    }
+    
+    &--next {
+      right: 2rem;
+    }
+  }
+
+  // Indicators
+  &__indicators {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    z-index: 10;
+    
+    .indicator {
+      width: 12px;
+      height: 12px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &--active {
+        background: white;
+        transform: scale(1.2);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.8);
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  // Counter
+  &__counter {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    background: rgba(var(--background-rgb), 0.9);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  // Empty states
+  &__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+  }
+
+  .empty-state-3d {
+    text-align: center;
+    padding: 3rem;
+    
+    .empty-icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 2rem;
+      color: var(--text-muted);
+      opacity: 0.5;
+    }
+    
+    h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+    
+    p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__no-results {
+    text-align: center;
+    padding: 4rem 2rem;
+    
+    svg {
+      width: 80px;
+      height: 80px;
+      color: var(--text-muted);
+      opacity: 0.5;
+      margin-bottom: 1.5rem;
+    }
+    
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+    
+    p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    
+    .clear-search-btn {
+      padding: 0.75rem 1.5rem;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  // Keyboard hints
+  &__hints {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    
+    span {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+
+  // Loading state
+  &__loading {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// 3D Album Card
+.album-card-3d {
+  flex: 0 0 100%;
+  height: 100%;
+  position: relative;
+  padding: 2rem;
+  cursor: pointer;
+  
+  &__inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 16px;
+    
+    &:hover {
+      transform: rotateY(180deg);
+    }
+  }
+
+  &__front,
+  &__back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
+  }
+
+  &__front {
+    background: var(--card-background);
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__back {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  &__cover {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px 16px 0 0;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, 
+      rgba(var(--primary-rgb), 0.1), 
+      rgba(var(--accent-rgb), 0.1));
+    
+    svg {
+      width: 80px;
+      height: 80px;
+      color: var(--text-muted);
+      opacity: 0.5;
+    }
+  }
+
+  &__content {
+    padding: 2rem;
+    background: var(--card-background);
+    border-radius: 0 0 16px 16px;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    color: var(--text-color);
+    line-height: 1.2;
+  }
+
+  &__count {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin: 0 0 1rem 0;
+    font-weight: 500;
+  }
+
+  &__description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0 0 1.5rem 0;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__tag {
+    padding: 0.25rem 0.75rem;
+    background: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary-color);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    
+    &--more {
+      background: rgba(var(--text-rgb), 0.1);
+      color: var(--text-muted);
+    }
+  }
+
+  &__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    time {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+  }
+
+  &__badge {
+    background: var(--accent-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  // Back side content
+  &__back-content {
+    text-align: center;
+    
+    h4 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+    
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem 0;
+      
+      li {
+        padding: 0.5rem 0;
+        font-size: 1rem;
+        opacity: 0.9;
+        
+        &:not(:last-child) {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+      }
+    }
+    
+    .open-album-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: white;
+      color: var(--primary-color);
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 0 auto;
+      
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
+  // Active state (when this card is in focus)
+  &--active {
+    .album-card-3d__inner {
+      transform: scale(1.02);
+      z-index: 2;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 1200px) {
+  .album-carousel-3d {
+    padding: 1.5rem;
+    
+    &__container {
+      height: 500px;
+    }
+    
+    .carousel-nav {
+      width: 50px;
+      height: 50px;
+      
+      &--prev {
+        left: 1rem;
+      }
+      
+      &--next {
+        right: 1rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .album-carousel-3d {
+    padding: 1rem;
+    
+    &__header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1.5rem;
+      
+      h2 {
+        font-size: 2rem;
+        text-align: center;
+      }
+    }
+    
+    &__controls {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .search-box {
+      min-width: unset;
+    }
+    
+    &__container {
+      height: 400px;
+    }
+    
+    .carousel-nav {
+      width: 44px;
+      height: 44px;
+      
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+      
+      &--prev {
+        left: 0.5rem;
+      }
+      
+      &--next {
+        right: 0.5rem;
+      }
+    }
+    
+    &__counter {
+      bottom: 1rem;
+      right: 1rem;
+      font-size: 0.8rem;
+    }
+    
+    &__hints {
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+    }
+  }
+  
+  .album-card-3d {
+    padding: 1rem;
+    
+    &__content {
+      padding: 1.5rem;
+    }
+    
+    &__title {
+      font-size: 1.5rem;
+    }
+    
+    // Disable 3D effect on mobile for better performance
+    &__inner {
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .album-carousel-3d {
+    &__container {
+      height: 350px;
+    }
+    
+    &__header h2 {
+      font-size: 1.75rem;
+    }
+  }
+  
+  .album-card-3d {
+    &__content {
+      padding: 1rem;
+    }
+    
+    &__title {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+// Dark theme adjustments
+:root[data-theme="dark"] {
+  .album-carousel-3d {
+    &__container {
+      background: linear-gradient(135deg, 
+        rgba(var(--primary-rgb), 0.1) 0%, 
+        rgba(var(--accent-rgb), 0.1) 100%);
+    }
+  }
+  
+  .album-card-3d {
+    &__front {
+      background: var(--card-background);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    &__content {
+      background: var(--card-background);
+    }
+  }
+}
+
+// Reduced motion preferences
+@media (prefers-reduced-motion: reduce) {
+  .album-carousel-3d {
+    &__track {
+      transition: none;
+    }
+  }
+  
+  .album-card-3d {
+    &__inner {
+      transition: none;
+      
+      &:hover {
+        transform: none;
+      }
+    }
+    
+    &__cover img {
+      transition: none;
+      
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+  
+  .carousel-nav,
+  .create-album-btn,
+  .create-first-album-btn {
+    transition: none;
+  }
+}
