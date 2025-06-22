@@ -14,8 +14,8 @@
 }
 
 /* Remove list styles on ul, ol elements with a list role */
-ul[role='list'],
-ol[role='list'] {
+ul[role="list"],
+ol[role="list"] {
   list-style: none;
 }
 
@@ -28,7 +28,7 @@ html:focus-within {
 html,
 body {
   height: 100%;
-  font-family: var(--font-primary, 'Monaco', 'Consolas', 'Courier New', monospace);
+  font-family: var(--font-primary, "Monaco", "Consolas", "Courier New", monospace);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -146,9 +146,9 @@ legend {
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
-   scroll-behavior: auto;
+    scroll-behavior: auto;
   }
-  
+
   *,
   *::before,
   *::after {

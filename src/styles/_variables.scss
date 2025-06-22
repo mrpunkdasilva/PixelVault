@@ -3,26 +3,30 @@ $bg-primary: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0f1419 100%) !def
 $bg-secondary: rgba(102, 217, 255, 0.08) !default;
 $bg-glass: rgba(102, 217, 255, 0.12) !default;
 $bg-glass-hover: rgba(102, 217, 255, 0.18) !default;
-$bg-accent: #66D9FF !default;
-$bg-accent-hover: #99E6FF !default;
-$bg-danger: #FF6B6B !default;
-$bg-success: #51CF66 !default;
-$text-primary: #66D9FF !default;
-$text-secondary: #4DA6D9 !default;
+$bg-accent: #66d9ff !default;
+$bg-accent-hover: #99e6ff !default;
+$bg-danger: #ff6b6b !default;
+$bg-success: #51cf66 !default;
+$text-primary: #66d9ff !default;
+$text-secondary: #4da6d9 !default;
 $text-muted: rgba(102, 217, 255, 0.6) !default;
 $border-glass: rgba(102, 217, 255, 0.3) !default;
-$shadow-glass: 0 4px 8px rgba(0, 0, 0, 0.5), 0 0 16px rgba(102, 217, 255, 0.2) !default;
-$shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.6), 0 0 24px rgba(102, 217, 255, 0.3) !default;
+$shadow-glass:
+  0 4px 8px rgba(0, 0, 0, 0.5),
+  0 0 16px rgba(102, 217, 255, 0.2) !default;
+$shadow-hover:
+  0 6px 12px rgba(0, 0, 0, 0.6),
+  0 0 24px rgba(102, 217, 255, 0.3) !default;
 
 // 8bit Pixel Colors
-$pixel-blue: #66D9FF !default;
-$pixel-blue-dark: #4DA6D9 !default;
-$pixel-cyan: #66FFD9 !default;
-$pixel-purple: #9966FF !default;
-$pixel-pink: #FF66D9 !default;
-$pixel-green: #66FF99 !default;
-$pixel-yellow: #FFD966 !default;
-$pixel-orange: #FF9966 !default;
+$pixel-blue: #66d9ff !default;
+$pixel-blue-dark: #4da6d9 !default;
+$pixel-cyan: #66ffd9 !default;
+$pixel-purple: #9966ff !default;
+$pixel-pink: #ff66d9 !default;
+$pixel-green: #66ff99 !default;
+$pixel-yellow: #ffd966 !default;
+$pixel-orange: #ff9966 !default;
 
 // Layout Variables - 8bit Style
 $border-radius: 4px !default; // Bordas mais quadradas para estilo pixel
@@ -32,7 +36,7 @@ $max-width: 1200px !default;
 $container-padding: 24px !default;
 
 // 8bit Fonts
-$font-pixel: 'Monaco', 'Consolas', 'Courier New', monospace !default;
+$font-pixel: "Monaco", "Consolas", "Courier New", monospace !default;
 $font-primary: $font-pixel !default;
 
 // Spacing Variables
@@ -63,8 +67,13 @@ $blur-lg: blur(24px) !default;
 // 8bit Pixel Effects
 $pixel-border: 2px solid $pixel-blue !default;
 $pixel-border-thick: 3px solid $pixel-blue !default;
-$pixel-glow: 0 0 10px $pixel-blue, 0 0 20px rgba(102, 217, 255, 0.5) !default;
-$pixel-glow-strong: 0 0 15px $pixel-blue, 0 0 30px rgba(102, 217, 255, 0.7), 0 0 45px rgba(102, 217, 255, 0.4) !default;
+$pixel-glow:
+  0 0 10px $pixel-blue,
+  0 0 20px rgba(102, 217, 255, 0.5) !default;
+$pixel-glow-strong:
+  0 0 15px $pixel-blue,
+  0 0 30px rgba(102, 217, 255, 0.7),
+  0 0 45px rgba(102, 217, 255, 0.4) !default;
 
 // 8bit Mixins
 @mixin pixel-style {
@@ -86,13 +95,13 @@ $pixel-glow-strong: 0 0 15px $pixel-blue, 0 0 30px rgba(102, 217, 255, 0.7), 0 0
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 1px;
-  
+
   &:hover {
     background: $bg-glass-hover;
     box-shadow: $pixel-glow;
     transform: translateY(-1px);
   }
-  
+
   &:active {
     transform: translateY(0);
   }
@@ -106,7 +115,7 @@ $pixel-glow-strong: 0 0 15px $pixel-blue, 0 0 30px rgba(102, 217, 255, 0.7), 0 0
   backdrop-filter: $blur-sm;
   -webkit-backdrop-filter: $blur-sm;
   box-shadow: $shadow-glass;
-  
+
   &:hover {
     background: $bg-glass-hover;
     box-shadow: $shadow-hover;

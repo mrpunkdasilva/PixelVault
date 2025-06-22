@@ -1,4 +1,4 @@
-@use '../styles/variables' as *;
+@use "../../styles/variables" as *;
 
 .logo-container {
   display: flex;
@@ -17,25 +17,25 @@
 .brand-text {
   font-size: 28px;
   font-weight: 700;
-  font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
-  color: #66D9FF !important; // Azul bem claro - força a cor
+  font-family: "Monaco", "Consolas", "Courier New", monospace;
+  color: #66d9ff !important; // Azul bem claro - força a cor
   margin: 0; // Reset default h1 margins
   letter-spacing: 1px;
-  text-shadow: 
+  text-shadow:
     2px 2px 0px rgba(0, 0, 0, 0.5),
     0px 0px 12px rgba(102, 217, 255, 0.8),
     0px 0px 20px rgba(102, 217, 255, 0.4);
-  
+
   // Efeito 8bit pixelado
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
-  
+
   // Adiciona uma borda sutil para efeito retro
   position: relative;
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -1px;
     left: -1px;
@@ -45,11 +45,11 @@
     z-index: -1;
     border-radius: 2px;
   }
-  
+
   // Hover effect 8bit
   &:hover {
-    color: #99E6FF !important;
-    text-shadow: 
+    color: #99e6ff !important;
+    text-shadow:
       2px 2px 0px rgba(0, 0, 0, 0.6),
       0px 0px 16px rgba(102, 217, 255, 0.9),
       0px 0px 30px rgba(102, 217, 255, 0.5);
@@ -60,34 +60,36 @@
 
 .sub-text {
   font-size: 12px;
-  font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
-  color: #4DA6D9; // Azul mais escuro para contraste
+  font-family: "Monaco", "Consolas", "Courier New", monospace;
+  color: #4da6d9; // Azul mais escuro para contraste
   opacity: 0.9;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 2px 0 0 0;
   text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
-  
+
   // Efeito 8bit pixelado
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
-  
+
   // Pequena animação pixel
   &::after {
-    content: ' ▶';
+    content: " ▶";
     animation: pixelBlink 2s infinite;
-    color: #66D9FF;
+    color: #66d9ff;
   }
 }
 
 // Animação de piscar estilo 8bit
 @keyframes pixelBlink {
-  0%, 50% {
+  0%,
+  50% {
     opacity: 1;
   }
-  51%, 100% {
+  51%,
+  100% {
     opacity: 0;
   }
 }

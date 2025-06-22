@@ -1,4 +1,4 @@
 export type Photo = {
-    name: string;
-    url: string;
-}
+  name: string;
+  url: string;
+};

@@ -1,0 +1,317 @@
+name: 🐛 Bug Report
+description: Report a bug to help us improve PixelVault
+title: "[BUG] "
+labels: ["bug", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report! 🙏
+        Please search existing issues before creating a new one.
+
+  - type: input
+    id: url
+    attributes:
+      label: 🔗 URL where the bug occurred
+      description: What URL were you on when the bug happened?
+      placeholder: https://pixelvault.app/...
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 🐛 Bug Description
+      description: A clear and concise description of what the bug is.
+      placeholder: Describe what happened...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 🔄 Steps to Reproduce
+      description: Steps to reproduce the behavior
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: ✅ Expected Behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: ❌ Actual Behavior
+      description: A clear and concise description of what actually happened.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: 🌐 Browser
+      description: Which browser are you using?
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Opera
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: device
+    attributes:
+      label: 📱 Device Type
+      description: What type of device are you using?
+      options:
+        - Desktop
+        - Mobile
+        - Tablet
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: 💻 Operating System
+      description: What operating system are you using?
+      placeholder: e.g., Windows 11, macOS 13, iOS 16, Android 12
+    validations:
+      required: false
+
+  - type: textarea
+    id: console-errors
+    attributes:
+      label: 🔍 Console Errors
+      description: Any errors in the browser console? (Press F12 to open developer tools)
+      placeholder: Paste any error messages here...
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 📸 Screenshots
+      description: If applicable, add screenshots to help explain your problem.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: 🎯 Bug Severity
+      description: How severe is this bug?
+      options:
+        - "🔴 Critical - App is unusable"
+        - "🟡 High - Major feature broken"
+        - "🟠 Medium - Minor feature broken"
+        - "🟢 Low - Cosmetic issue"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: performance
+    attributes:
+      label: 📊 Performance Impact
+      description: Does this bug affect performance?
+      options:
+        - label: "Slow loading times"
+        - label: "High memory usage"
+        - label: "Unresponsive interface"
+        - label: "Battery drain"
+        - label: "No performance impact"
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: 📝 Additional Context
+      description: Add any other context about the problem here.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: ✅ Checklist
+      description: Please confirm the following
+      options:
+        - label: "I have searched existing issues to avoid duplicates"
+          required: true
+        - label: "I have provided enough information to reproduce the bug"
+          required: true
+        - label: "I understand this is a free, open-source project"
+          required: truename: 🐛 Bug Report
+description: Report a bug to help us improve PixelVault
+title: "[BUG] "
+labels: ["bug", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report! 🙏
+        Please search existing issues before creating a new one.
+
+  - type: input
+    id: url
+    attributes:
+      label: 🔗 URL where the bug occurred
+      description: What URL were you on when the bug happened?
+      placeholder: https://pixelvault.app/...
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 🐛 Bug Description
+      description: A clear and concise description of what the bug is.
+      placeholder: Describe what happened...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 🔄 Steps to Reproduce
+      description: Steps to reproduce the behavior
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: ✅ Expected Behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: ❌ Actual Behavior
+      description: A clear and concise description of what actually happened.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: 🌐 Browser
+      description: Which browser are you using?
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Opera
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: device
+    attributes:
+      label: 📱 Device Type
+      description: What type of device are you using?
+      options:
+        - Desktop
+        - Mobile
+        - Tablet
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: 💻 Operating System
+      description: What operating system are you using?
+      placeholder: e.g., Windows 11, macOS 13, iOS 16, Android 12
+    validations:
+      required: false
+
+  - type: textarea
+    id: console-errors
+    attributes:
+      label: 🔍 Console Errors
+      description: Any errors in the browser console? (Press F12 to open developer tools)
+      placeholder: Paste any error messages here...
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 📸 Screenshots
+      description: If applicable, add screenshots to help explain your problem.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: 🎯 Bug Severity
+      description: How severe is this bug?
+      options:
+        - "🔴 Critical - App is unusable"
+        - "🟡 High - Major feature broken"
+        - "🟠 Medium - Minor feature broken"
+        - "🟢 Low - Cosmetic issue"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: performance
+    attributes:
+      label: 📊 Performance Impact
+      description: Does this bug affect performance?
+      options:
+        - label: "Slow loading times"
+        - label: "High memory usage"
+        - label: "Unresponsive interface"
+        - label: "Battery drain"
+        - label: "No performance impact"
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: 📝 Additional Context
+      description: Add any other context about the problem here.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: ✅ Checklist
+      description: Please confirm the following
+      options:
+        - label: "I have searched existing issues to avoid duplicates"
+          required: true
+        - label: "I have provided enough information to reproduce the bug"
+          required: true
+        - label: "I understand this is a free, open-source project"
+          required: true

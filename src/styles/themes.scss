@@ -6,7 +6,7 @@
   --border-radius-small: 2px;
   --max-width: 1200px;
   --container-padding: 24px;
-  
+
   // Spacing
   --spacing-xs: 4px;
   --spacing-sm: 8px;
@@ -15,19 +15,19 @@
   --spacing-xl: 32px;
   --spacing-2xl: 48px;
   --spacing-3xl: 64px;
-  
+
   // Transitions
   --transition-fast: 0.2s ease-in-out;
   --transition-normal: 0.3s ease-in-out;
   --transition-slow: 0.5s ease-in-out;
-  
+
   // Blur effects
   --blur-sm: blur(8px);
   --blur-md: blur(16px);
   --blur-lg: blur(24px);
-  
+
   // Fonts
-  --font-pixel: 'Monaco', 'Consolas', 'Courier New', monospace;
+  --font-pixel: "Monaco", "Consolas", "Courier New", monospace;
   --font-primary: var(--font-pixel);
 }
 
@@ -41,41 +41,43 @@
   --color-surface-secondary: rgba(102, 217, 255, 0.15);
   --color-surface-hover: rgba(102, 217, 255, 0.18);
   --color-surface-active: rgba(102, 217, 255, 0.22);
-  
+
   // Text colors
-  --color-text-primary: #66D9FF;
-  --color-text-secondary: #4DA6D9;
+  --color-text-primary: #66d9ff;
+  --color-text-secondary: #4da6d9;
   --color-text-muted: rgba(102, 217, 255, 0.6);
   --color-text-inverse: #0a0a0f;
-  
+
   // Accent colors
-  --color-accent-primary: #66D9FF;
-  --color-accent-hover: #99E6FF;
-  --color-accent-active: #33CCFF;
-  
+  --color-accent-primary: #66d9ff;
+  --color-accent-hover: #99e6ff;
+  --color-accent-active: #33ccff;
+
   // Status colors
-  --color-success: #51CF66;
-  --color-success-hover: #69DB7C;
-  --color-warning: #FFD966;
-  --color-warning-hover: #FFE066;
-  --color-danger: #FF6B6B;
-  --color-danger-hover: #FF7979;
-  
+  --color-success: #51cf66;
+  --color-success-hover: #69db7c;
+  --color-warning: #ffd966;
+  --color-warning-hover: #ffe066;
+  --color-danger: #ff6b6b;
+  --color-danger-hover: #ff7979;
+
   // Border colors
   --color-border-primary: rgba(102, 217, 255, 0.25);
   --color-border-secondary: rgba(102, 217, 255, 0.12);
   --color-border-muted: rgba(102, 217, 255, 0.08);
-  
+
   // Shadow colors
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 6px rgba(102, 217, 255, 0.08);
   --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.5), 0 0 12px rgba(102, 217, 255, 0.12);
   --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.6), 0 0 18px rgba(102, 217, 255, 0.15);
   --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.7), 0 0 24px rgba(102, 217, 255, 0.2);
-  
+
   // Pixel glow effects (more subtle)
   --pixel-glow: 0 0 6px var(--color-accent-primary), 0 0 12px rgba(102, 217, 255, 0.2);
-  --pixel-glow-strong: 0 0 8px var(--color-accent-primary), 0 0 16px rgba(102, 217, 255, 0.25), 0 0 24px rgba(102, 217, 255, 0.15);
-  
+  --pixel-glow-strong:
+    0 0 8px var(--color-accent-primary), 0 0 16px rgba(102, 217, 255, 0.25),
+    0 0 24px rgba(102, 217, 255, 0.15);
+
   // Skeleton loading colors
   --skeleton-base: rgba(102, 217, 255, 0.08);
   --skeleton-shimmer: rgba(102, 217, 255, 0.15);
@@ -93,18 +95,18 @@
   --color-surface-secondary: rgba(248, 250, 252, 0.95);
   --color-surface-hover: rgba(59, 130, 246, 0.08);
   --color-surface-active: rgba(59, 130, 246, 0.12);
-  
+
   // Text colors
   --color-text-primary: #0f172a;
   --color-text-secondary: #334155;
   --color-text-muted: #64748b;
   --color-text-inverse: #ffffff;
-  
+
   // Accent colors
   --color-accent-primary: #2563eb;
   --color-accent-hover: #1d4ed8;
   --color-accent-active: #1e40af;
-  
+
   // Status colors
   --color-success: #059669;
   --color-success-hover: #047857;
@@ -112,22 +114,24 @@
   --color-warning-hover: #b45309;
   --color-danger: #dc2626;
   --color-danger-hover: #b91c1c;
-  
+
   // Border colors
   --color-border-primary: rgba(15, 23, 42, 0.2);
   --color-border-secondary: rgba(15, 23, 42, 0.1);
   --color-border-muted: rgba(15, 23, 42, 0.05);
-  
+
   // Shadow colors
   --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.08), 0 0 8px rgba(59, 130, 246, 0.05);
   --shadow-md: 0 4px 8px rgba(15, 23, 42, 0.12), 0 0 16px rgba(59, 130, 246, 0.08);
   --shadow-lg: 0 6px 12px rgba(15, 23, 42, 0.15), 0 0 24px rgba(59, 130, 246, 0.1);
   --shadow-xl: 0 8px 16px rgba(15, 23, 42, 0.2), 0 0 32px rgba(59, 130, 246, 0.12);
-  
+
   // Pixel glow effects
   --pixel-glow: 0 0 8px var(--color-accent-primary), 0 0 16px rgba(37, 99, 235, 0.2);
-  --pixel-glow-strong: 0 0 12px var(--color-accent-primary), 0 0 24px rgba(37, 99, 235, 0.3), 0 0 36px rgba(37, 99, 235, 0.15);
-  
+  --pixel-glow-strong:
+    0 0 12px var(--color-accent-primary), 0 0 24px rgba(37, 99, 235, 0.3),
+    0 0 36px rgba(37, 99, 235, 0.15);
+
   // Skeleton loading colors for light theme
   --skeleton-base: rgba(15, 23, 42, 0.08);
   --skeleton-base-dark: rgba(15, 23, 42, 0.12);
@@ -138,7 +142,7 @@
 
 // Smooth theme transitions
 * {
-  transition: 
+  transition:
     background-color var(--transition-normal),
     border-color var(--transition-normal),
     color var(--transition-normal),
@@ -152,11 +156,11 @@
     opacity: 0.25 !important;
     animation-duration: 0.3s !important;
   }
-  
+
   .empty-icon {
     animation-duration: 4s !important;
   }
-  
+
   .loading-text::after {
     animation-duration: 2.5s !important;
   }

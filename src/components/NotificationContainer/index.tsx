@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNotifications } from '../../contexts/NotificationContext';
-import { NotificationItem } from './NotificationItem';
-import './NotificationContainer.scss';
+import { NotificationItem } from './atoms/NotificationItem.tsx';
+import './styles.scss';
 
 export const NotificationContainer: React.FC = () => {
   const { notifications } = useNotifications();
@@ -11,12 +11,9 @@ export const NotificationContainer: React.FC = () => {
   }
 
   return (
-    <div className="notification-container">
-      {notifications.map((notification) => (
-        <NotificationItem
-          key={notification.id}
-          notification={notification}
-        />
+    <div className='notification-container'>
+      {notifications.map(notification => (
+        <NotificationItem key={notification.id} notification={notification} />
       ))}
     </div>
   );

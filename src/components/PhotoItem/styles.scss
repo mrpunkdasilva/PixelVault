@@ -1,0 +1,206 @@
+@use "../../styles/variables" as *;
+
+.photo-item-container {
+  @include pixel-card;
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all $transition-normal;
+
+  // Pixel border glow effect
+  &::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(
+      45deg,
+      $pixel-blue,
+      transparent,
+      $pixel-cyan,
+      transparent,
+      $pixel-blue
+    );
+    border-radius: $border-radius;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity $transition-normal;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.02) 50%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity $transition-normal;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $pixel-glow-strong;
+    border-color: $pixel-blue;
+    background: $bg-glass-hover;
+
+    &::before {
+      opacity: 1;
+    }
+
+    &::after {
+      opacity: 0.6;
+    }
+
+    .photo-overlay {
+      opacity: 1;
+    }
+
+    .photo-name {
+      color: $text-primary;
+      text-shadow: 0 0 4px rgba(102, 217, 255, 0.4);
+    }
+  }
+}
+
+.photo-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  margin-bottom: $spacing-md;
+  border-radius: $border-radius-small;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+
+  .photo-image {
+    border-radius: $border-radius-small;
+
+    .lazy-image {
+      transition: transform $transition-normal;
+    }
+  }
+
+  &:hover .photo-image .lazy-image.loaded {
+    transform: scale(1.05);
+  }
+}
+
+.photo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: $blur-sm;
+  -webkit-backdrop-filter: $blur-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity $transition-normal;
+  border-radius: $border-radius-small;
+
+  &.visible {
+    opacity: 1;
+  }
+
+  .photo-actions {
+    display: flex;
+    gap: $spacing-sm;
+  }
+}
+
+.action-btn {
+  @include pixel-button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: $spacing-sm;
+
+  &:hover {
+    background: $bg-glass-hover;
+    transform: scale(1.1) translateY(-1px);
+  }
+
+  &.view-btn:hover {
+    background: rgba(102, 217, 255, 0.2);
+    border-color: $pixel-blue;
+    box-shadow: 0 0 12px rgba(102, 217, 255, 0.4);
+  }
+
+  &.delete-btn:hover {
+    background: rgba(255, 107, 107, 0.2);
+    border-color: $bg-danger;
+    box-shadow: 0 0 12px rgba(255, 107, 107, 0.4);
+  }
+}
+
+.photo-info {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+
+  .photo-name {
+    @include pixel-style;
+    margin: 0;
+    color: $text-secondary;
+    font-size: 14px;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: all $transition-fast;
+    max-width: 100%;
+    letter-spacing: 0.5px;
+  }
+}
+
+// Removed shimmer and spin animations as they're now handled by LazyImage component
+
+// Mobile responsiveness
+@media (max-width: $breakpoint-md) {
+  .photo-item-container {
+    padding: $spacing-sm;
+
+    .photo-image-wrapper {
+      margin-bottom: $spacing-sm;
+    }
+
+    .photo-overlay {
+      .photo-actions {
+        gap: $spacing-xs;
+      }
+    }
+
+    .action-btn {
+      width: 36px;
+      height: 36px;
+      padding: $spacing-xs;
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    .photo-info {
+      .photo-name {
+        font-size: 12px;
+      }
+    }
+  }
+}
