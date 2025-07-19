@@ -135,10 +135,6 @@ export const AlbumView: React.FC<AlbumViewProps> = ({
   }, [selectedPhotos, removePhotoFromAlbum, albumId, showSuccess, showError]);
 
   
-  
-
-  
-
   // Photo upload handlers
   const handleFileSelect = useCallback(
     async (file: File) => {

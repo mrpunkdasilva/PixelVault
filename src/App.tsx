@@ -26,6 +26,7 @@ import { Breadcrumbs } from './components/Breadcrumbs';
 // Navigation system
 import { useNavigation, useBreadcrumbs } from './hooks/useNavigation';
 import { useAlbums } from './hooks/useAlbums';
+import { usePhotos } from './hooks/usePhotos';
 
 // Main App component wrapped with providers
 function AppContent() {
@@ -45,6 +46,7 @@ function AppContent() {
   const { toggleTheme } = useTheme();
   const navigation = useNavigation();
   const { albums } = useAlbums();
+  const { deletePhoto: deletePhotoFromHook } = usePhotos();
   const breadcrumbs = useBreadcrumbs(navigation.navigationState, albums);
 
   // Modal handlers
@@ -226,13 +228,17 @@ function AppContent() {
       `Are you sure you want to delete "${photoToDelete.name}"?`,
     );
     if (confirmDelete) {
-      // Here you would typically call a delete API
-      // For now, we'll just remove it from the local state
-      setPhotos(photos.filter(photo => photo.url !== photoToDelete.url));
-      if (selectedPhoto?.url === photoToDelete.url) {
-        handleCloseModal();
+      try {
+        await deletePhotoFromHook(photoToDelete.id);
+        setPhotos(photos.filter(photo => photo.id !== photoToDelete.id));
+        if (selectedPhoto?.id === photoToDelete.id) {
+          handleCloseModal();
+        }
+        showSuccess('Photo Deleted', `"${photoToDelete.name}" has been deleted successfully.`);
+      } catch (error) {
+        showError('Delete Failed', `Failed to delete "${photoToDelete.name}".`);
+        console.error('Error deleting photo from App.tsx:', error);
       }
-      showSuccess('Photo Deleted', `"${photoToDelete.name}" has been deleted successfully.`);
     }
   };
 

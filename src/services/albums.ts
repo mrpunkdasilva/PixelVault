@@ -242,7 +242,6 @@ class FirebaseAlbumRepository implements IAlbumRepository {
   }
 
   async removeAllPhotoAssociations(photoId: PhotoId): Promise<void> {
-    console.log(`Attempting to remove all associations for photo: ${photoId}`);
     try {
       const batch = writeBatch(db);
       const photosRef = collection(db, this.ALBUM_PHOTOS_COLLECTION);
@@ -250,11 +249,9 @@ class FirebaseAlbumRepository implements IAlbumRepository {
       const querySnapshot = await getDocs(q);
 
       const associationsToDelete = querySnapshot.docs.filter(doc => doc.data().photoId === photoId);
-      console.log(`Found ${associationsToDelete.length} associations to delete for photo: ${photoId}`);
 
       for (const associationDoc of associationsToDelete) {
         batch.delete(associationDoc.ref);
-        console.log(`Deleting association document: ${associationDoc.id} for photo: ${photoId}`);
         // Decrement photoCount in associated albums
         const albumId = associationDoc.data().albumId;
         const albumRef = doc(db, this.COLLECTION_NAME, albumId);
@@ -264,11 +261,9 @@ class FirebaseAlbumRepository implements IAlbumRepository {
             photoCount: Math.max(0, album.photoCount - 1),
             updatedAt: Timestamp.fromDate(new Date()),
           });
-          console.log(`Decremented photoCount for album: ${albumId}`);
         }
       }
       await batch.commit();
-      console.log(`Successfully removed all associations for photo: ${photoId}`);
     } catch (error) {
       console.error(`Error removing all associations for photo ${photoId}:`, error);
       throw new Error(`Failed to remove all associations for photo ${photoId}`);
