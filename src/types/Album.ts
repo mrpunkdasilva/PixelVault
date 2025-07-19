@@ -32,8 +32,10 @@ export interface UpdateAlbumRequest {
   tags?: string[];
 }
 
+import { Photo } from './Photo';
+
 export interface AlbumWithPhotos extends Album {
-  photos: PhotoId[];
+  photos: Photo[];
 }
 
 // Estados da UI

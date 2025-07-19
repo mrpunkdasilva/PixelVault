@@ -896,7 +896,8 @@
 // Quick Actions Bar
 .quick-actions {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
+  flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
   margin-bottom: 2rem;

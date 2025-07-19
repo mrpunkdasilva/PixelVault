@@ -27,6 +27,8 @@ import type {
   PhotoId,
   PhotoMoveOperation,
 } from '../types';
+import { Photo } from '../types/Photo';
+import * as Photos from './photos';
 
 // Interface do Repository (Dependency Inversion Principle)
 export interface IAlbumRepository {
@@ -38,6 +40,7 @@ export interface IAlbumRepository {
   delete(id: AlbumId): Promise<void>;
   addPhotoToAlbum(albumId: AlbumId, photoId: PhotoId): Promise<void>;
   removePhotoFromAlbum(albumId: AlbumId, photoId: PhotoId): Promise<void>;
+  removeAllPhotoAssociations(photoId: PhotoId): Promise<void>;
   movePhoto(operation: PhotoMoveOperation): Promise<void>;
 }
 
@@ -85,13 +88,17 @@ class FirebaseAlbumRepository implements IAlbumRepository {
       const q = query(photosRef, orderBy('addedAt', 'desc'));
       const querySnapshot = await getDocs(q);
 
-      const photoIds = querySnapshot.docs
+      const photoIds: PhotoId[] = querySnapshot.docs
         .filter(doc => doc.data().albumId === id)
         .map(doc => doc.data().photoId);
 
+      // Fetch all photos and filter by the photoIds associated with this album
+      const allPhotos = await Photos.getAll();
+      const albumPhotos = allPhotos.filter(photo => photoIds.includes(photo.id));
+
       return {
         ...album,
-        photos: photoIds,
+        photos: albumPhotos,
       };
     } catch (error) {
       console.error(`Error fetching album with photos ${id}:`, error);
@@ -236,6 +243,35 @@ class FirebaseAlbumRepository implements IAlbumRepository {
     }
   }
 
+  async removeAllPhotoAssociations(photoId: PhotoId): Promise<void> {
+    try {
+      const batch = writeBatch(db);
+      const photosRef = collection(db, this.ALBUM_PHOTOS_COLLECTION);
+      const q = query(photosRef);
+      const querySnapshot = await getDocs(q);
+
+      const associationsToDelete = querySnapshot.docs.filter(doc => doc.data().photoId === photoId);
+
+      for (const doc of associationsToDelete) {
+        batch.delete(doc.ref);
+        // Decrement photoCount in associated albums
+        const albumId = doc.data().albumId;
+        const albumRef = doc(db, this.COLLECTION_NAME, albumId);
+        const album = await this.getById(albumId);
+        if (album) {
+          batch.update(albumRef, {
+            photoCount: Math.max(0, album.photoCount - 1),
+            updatedAt: Timestamp.fromDate(new Date()),
+          });
+        }
+      }
+      await batch.commit();
+    } catch (error) {
+      console.error(`Error removing all associations for photo ${photoId}:`, error);
+      throw new Error(`Failed to remove all associations for photo ${photoId}`);
+    }
+  }
+
   async movePhoto(operation: PhotoMoveOperation): Promise<void> {
     try {
       const batch = writeBatch(db);
@@ -330,6 +366,18 @@ export class AlbumService {
 
   async removePhotoFromAlbum(albumId: AlbumId, photoId: PhotoId): Promise<void> {
     return this.repository.removePhotoFromAlbum(albumId, photoId);
+  }
+
+  async removeAllPhotoAssociations(photoId: PhotoId): Promise<void> {
+    return this.repository.removeAllPhotoAssociations(photoId);
+  }
+
+  async removeAllPhotoAssociations(photoId: PhotoId): Promise<void> {
+    return this.repository.removeAllPhotoAssociations(photoId);
+  }
+
+  async removeAllPhotoAssociations(photoId: PhotoId): Promise<void> {
+    return this.repository.removeAllPhotoAssociations(photoId);
   }
 
   async movePhotoBetweenAlbums(operation: PhotoMoveOperation): Promise<void> {
