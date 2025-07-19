@@ -5,6 +5,7 @@
   "dependencies": {
     "eslint-plugin-react-perf": "^3.3.3",
     "firebase": "^11.9.1",
+    "git-commit-msg-linter": "^5.0.8",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "uuid": "^11.1.0"
