@@ -20,11 +20,10 @@
     right: 0;
     bottom: 0;
     background: var(--color-background-secondary);
-    background-size:
-      800px 800px,
-      600px 600px,
-      20px 20px,
-      20px 20px;
+    background-size: 800px 800px,
+    600px 600px,
+    20px 20px,
+    20px 20px;
     pointer-events: none;
     z-index: 0;
     animation: pixelFloat 20s ease-in-out infinite;
@@ -141,7 +140,13 @@
   }
 
   .empty-state {
-    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: auto;
     margin: 0 auto;
     padding: var(--spacing-3xl);
     background: var(--color-surface-primary);
@@ -161,10 +166,10 @@
       right: -2px;
       bottom: -2px;
       background: linear-gradient(
-        45deg,
-        var(--color-accent-primary),
-        var(--color-accent-hover),
-        var(--color-accent-primary)
+                      45deg,
+                      var(--color-accent-primary),
+                      var(--color-accent-hover),
+                      var(--color-accent-primary)
       );
       border-radius: var(--border-radius);
       z-index: -1;
@@ -617,10 +622,10 @@
 
   // Enhanced glassmorphism effect
   background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0.8) 50%,
-    rgba(0, 0, 0, 0.6) 100%
+                  135deg,
+                  rgba(0, 0, 0, 0.6) 0%,
+                  rgba(0, 0, 0, 0.8) 50%,
+                  rgba(0, 0, 0, 0.6) 100%
   );
 
   @media (max-width: 768px) {
@@ -729,16 +734,14 @@
 @keyframes albumCardGlow {
   0%,
   100% {
-    box-shadow:
-      0 0 5px var(--color-accent-primary),
-      0 0 10px var(--color-accent-primary),
-      inset 0 0 5px rgba(var(--color-accent-primary-rgb), 0.1);
+    box-shadow: 0 0 5px var(--color-accent-primary),
+    0 0 10px var(--color-accent-primary),
+    inset 0 0 5px rgba(var(--color-accent-primary-rgb), 0.1);
   }
   50% {
-    box-shadow:
-      0 0 10px var(--color-accent-primary),
-      0 0 20px var(--color-accent-primary),
-      inset 0 0 10px rgba(var(--color-accent-primary-rgb), 0.2);
+    box-shadow: 0 0 10px var(--color-accent-primary),
+    0 0 20px var(--color-accent-primary),
+    inset 0 0 10px rgba(var(--color-accent-primary-rgb), 0.2);
   }
 }
 
@@ -953,6 +956,7 @@
     }
   }
 }
+
 @media (prefers-contrast: high) {
   .app-layout {
     border: 2px solid var(--color-border-primary);
