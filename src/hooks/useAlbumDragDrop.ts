@@ -35,7 +35,7 @@ interface DragDropHandlers {
 // Hook principal
 export function useAlbumDragDrop(): DragDropHandlers {
   const { movePhotoBetweenAlbums } = useAlbum();
-  const { showSuccess, showError } = useNotificationHelpers();
+  const { showError } = useNotificationHelpers();
 
   const [isDragging, setIsDragging] = useState(false);
   const [dragOverTarget, setDragOverTarget] = useState<AlbumId | null>(null);

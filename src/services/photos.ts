@@ -56,9 +56,11 @@ export const insert = async (file: File): Promise<Photo | Error> => {
 };
 
 export const deletePhoto = async (photoId: PhotoId): Promise<void> => {
+  console.log(`Attempting to delete photo: ${photoId} from Firebase Storage`);
   try {
     const photoRef = ref(storage, `images/${photoId}`);
     await deleteObject(photoRef);
+    console.log(`Successfully deleted photo: ${photoId} from Firebase Storage`);
   } catch (error) {
     console.error(`Error deleting photo ${photoId} from storage:`, error);
     throw new Error(`Failed to delete photo ${photoId} from storage`);

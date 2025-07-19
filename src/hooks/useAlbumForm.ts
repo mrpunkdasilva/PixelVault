@@ -6,7 +6,7 @@
 
 import { useState, useCallback, useEffect } from 'react';
 import { useAlbum } from '../contexts/AlbumContext';
-import type { Album, CreateAlbumRequest, UpdateAlbumRequest, AlbumId } from '../types';
+import type { Album, CreateAlbumRequest, UpdateAlbumRequest } from '../types';
 
 // Form data interface
 interface AlbumFormData {
@@ -95,7 +95,7 @@ const getInitialFormData = (album?: Album): AlbumFormData => ({
 
 export function useAlbumForm(options: UseAlbumFormOptions): AlbumFormHandlers {
   const { createAlbum, updateAlbum } = useAlbum();
-  const { mode, initialAlbum, onSuccess, onCancel } = options;
+  const { mode, initialAlbum, onSuccess } = options;
 
   // Form state
   const [formState, setFormState] = useState<FormState>(() => {

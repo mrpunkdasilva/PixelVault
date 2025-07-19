@@ -8,7 +8,7 @@ import { useState, useEffect, useCallback } from 'react';
 import type { Photo, PhotoId, AlbumId } from '../types/Photo';
 import * as Photos from '../services/photos';
 import { albumService } from '../services/albums';
-import { collection, getDocs, query } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../libs/firebase';
 
 export const usePhotos = () => {

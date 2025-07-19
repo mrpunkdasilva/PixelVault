@@ -25,4 +25,4 @@ export type {
 } from './Album';
 
 // Re-export para compatibilidade com código existente
-export type { LegacyPhoto as Photo } from './Photo';
+

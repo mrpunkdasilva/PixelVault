@@ -17,6 +17,7 @@ import type {
   PhotoMoveOperation,
   AlbumUIState,
 } from '../types';
+import { Photo } from '../types/Photo';
 
 // State interface
 interface AlbumState {
@@ -37,7 +38,7 @@ type AlbumAction =
   | { type: 'UPDATE_ALBUM'; payload: Album }
   | { type: 'REMOVE_ALBUM'; payload: AlbumId }
   | { type: 'SET_CURRENT_ALBUM'; payload: AlbumWithPhotos | null }
-  | { type: 'ADD_PHOTO_TO_CURRENT_ALBUM'; payload: PhotoId }
+  | { type: 'ADD_PHOTO_TO_CURRENT_ALBUM'; payload: Photo }
   | { type: 'REMOVE_PHOTO_FROM_CURRENT_ALBUM'; payload: PhotoId };
 
 // Context interface
@@ -159,7 +160,7 @@ function albumReducer(state: AlbumState, action: AlbumAction): AlbumState {
         ...state,
         currentAlbum: {
           ...state.currentAlbum,
-          photos: state.currentAlbum.photos.filter(id => id !== action.payload),
+          photos: state.currentAlbum.photos.filter(photo => photo.id !== action.payload),
           photoCount: Math.max(0, state.currentAlbum.photoCount - 1),
         },
       };
@@ -260,7 +261,11 @@ export function AlbumProvider({ children }: AlbumProviderProps) {
     withErrorHandling(async (albumId: AlbumId, photoId: PhotoId) => {
       await albumService.addPhotoToAlbum(albumId, photoId);
       if (state.currentAlbum?.id === albumId) {
-        dispatch({ type: 'ADD_PHOTO_TO_CURRENT_ALBUM', payload: photoId });
+        // Find the photo object from the global photos state
+        const photoToAdd = state.currentAlbum.photos.find(p => p.id === photoId);
+        if (photoToAdd) {
+          dispatch({ type: 'ADD_PHOTO_TO_CURRENT_ALBUM', payload: photoToAdd });
+        }
       }
       // Atualizar contador do álbum na lista
       const album = state.albums.find(a => a.id === albumId);
@@ -301,7 +306,11 @@ export function AlbumProvider({ children }: AlbumProviderProps) {
         dispatch({ type: 'REMOVE_PHOTO_FROM_CURRENT_ALBUM', payload: operation.photoId });
       }
       if (state.currentAlbum?.id === operation.toAlbumId) {
-        dispatch({ type: 'ADD_PHOTO_TO_CURRENT_ALBUM', payload: operation.photoId });
+        // Find the photo object from the global photos state
+        const photoToAdd = state.currentAlbum.photos.find(p => p.id === operation.photoId);
+        if (photoToAdd) {
+          dispatch({ type: 'ADD_PHOTO_TO_CURRENT_ALBUM', payload: photoToAdd });
+        }
       }
 
       // Atualizar contadores

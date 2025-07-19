@@ -7,9 +7,12 @@ type Props = {
   name: string;
   onClick?: () => void;
   onDelete?: () => void;
+  draggable?: boolean;
+  onDragStart?: (e: React.DragEvent) => void;
+  onDragEnd?: (e: React.DragEvent) => void;
 };
 
-export const PhotoItem = ({ url, name, onClick, onDelete }: Props) => {
+export const PhotoItem = ({ url, name, onClick, onDelete, draggable, onDragStart, onDragEnd }: Props) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleDelete = (e: React.MouseEvent) => {
@@ -25,6 +28,9 @@ export const PhotoItem = ({ url, name, onClick, onDelete }: Props) => {
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      draggable={draggable}
+      onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
     >
       <div className='photo-image-wrapper'>
         <LazyImage src={url} alt={name} className='photo-image' />

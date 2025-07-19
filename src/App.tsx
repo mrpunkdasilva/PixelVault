@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { LegacyPhoto } from './types/Photo';
+import { Photo } from './types/Photo';
 import './App.scss';
 
 import * as Photos from './services/photos';
@@ -32,8 +32,8 @@ function AppContent() {
   // Legacy photo state (for backward compatibility)
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [photos, setPhotos] = useState<LegacyPhoto[]>([]);
-  const [selectedPhoto, setSelectedPhoto] = useState<LegacyPhoto | null>(null);
+  const [photos, setPhotos] = useState<Photo[]>([]);
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
 
@@ -211,7 +211,7 @@ function AppContent() {
     }
   };
 
-  const handlePhotoClick = (photo: LegacyPhoto) => {
+  const handlePhotoClick = (photo: Photo) => {
     setSelectedPhoto(photo);
     setIsModalOpen(true);
   };
@@ -221,7 +221,7 @@ function AppContent() {
     setSelectedPhoto(null);
   };
 
-  const handleDeletePhoto = async (photoToDelete: LegacyPhoto) => {
+  const handleDeletePhoto = async (photoToDelete: Photo) => {
     const confirmDelete = window.confirm(
       `Are you sure you want to delete "${photoToDelete.name}"?`,
     );
@@ -272,9 +272,9 @@ function AppContent() {
 
             {!loading && photos.length > 0 && (
               <div className='photo-list'>
-                {photos.map((item, index) => (
+                {photos.map((item) => (
                   <PhotoItem
-                    key={index}
+                    key={item.id}
                     url={item.url}
                     name={item.name}
                     onClick={() => handlePhotoClick(item)}
@@ -314,7 +314,6 @@ function AppContent() {
           <AlbumView
             albumId={navigation.navigationState.albumId}
             onBackToAlbums={navigation.goToAlbums}
-            onNavigateToAlbum={navigation.goToAlbum}
           />
         ) : null;
 
