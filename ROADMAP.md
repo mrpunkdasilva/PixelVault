@@ -4,7 +4,7 @@
 
 Este roadmap define o plano de desenvolvimento para transformar o PixelVault em uma plataforma completa de gerenciamento de fotos, organizado em fases progressivas com funcionalidades bem definidas.
 
-## 🎯 **STATUS ATUAL** (Última atualização: 22/06/2025)
+## 🎯 **STATUS ATUAL** (Última atualização: 19/07/2025)
 
 ### ✅ **IMPLEMENTADO E FUNCIONANDO:**
 - **Sistema de Temas Dark/Light** - Completo com persistência
@@ -14,19 +14,20 @@ Este roadmap define o plano de desenvolvimento para transformar o PixelVault em 
 - **Atalhos de Teclado** - Sistema completo com modal de ajuda
 - **Interface Responsiva** - Adaptada para desktop e mobile
 - **Loading States** - Indicadores visuais para todas as operações
-- **🆕 Lazy Loading de Imagens** - Intersection Observer, placeholders, otimização de carregamento
-- **🆕 Code Splitting Básico** - Componentes lazy-loaded para melhor performance
+- **Lazy Loading de Imagens** - Intersection Observer, placeholders, otimização de carregamento
+- **Code Splitting Básico** - Componentes lazy-loaded para melhor performance
+- **Funcionalidade de Deletar Fotos** - Agora inclui remoção do Firebase Storage e associações no Firestore.
 
 ### 📊 **PROGRESSO DAS FASES:**
 - **FASE 1**: 🟢 **~100% Completa** - Performance otimizada, falta apenas análise de bundle
-- **FASE 2**: 🟢 **~95% Completa** - Sistema de álbuns implementado com navegação completa
+- **FASE 2**: 🟢 **~98% Completa** - Sistema de álbuns implementado com navegação completa e exibição correta de imagens
 - **FASE 3**: 🔴 **0% Completa** 
 - **FASE 4**: 🟡 **~30% Completa** - Visualizador avançado parcialmente implementado
 
 ### 🎯 **PRÓXIMOS PASSOS RECOMENDADOS:**
-1. **Finalizar Fase 2** - Testes de integração e validação do sistema de álbuns
+1. **Finalizar Fase 2** - Testes de integração e validação do sistema de álbuns (incluindo mover fotos entre álbuns)
 2. **Iniciar Fase 3** - Sistema de busca avançada e metadados EXIF
-3. **Firebase Integration** - Conectar sistema de álbuns com backend
+3. **Firebase Integration** - Conectar sistema de álbuns com backend (continuar refinando integrações)
 4. **Performance Testing** - Validar bundle size e Core Web Vitals
 
 ---
@@ -96,7 +97,7 @@ Este roadmap define o plano de desenvolvimento para transformar o PixelVault em 
 - [x] **Gerenciamento Básico de Fotos**
   - [x] Exibição em galeria responsiva
   - [x] Visualização individual em modal
-  - [x] Funcionalidade de deletar fotos
+  - [x] Funcionalidade de deletar fotos (agora com remoção do Firebase Storage e associações no Firestore)
   - [x] Confirmação antes de deletar
   - [x] Estados vazios informativos
 
@@ -388,19 +389,16 @@ Este roadmap define o plano de desenvolvimento para transformar o PixelVault em 
 
 ---
 
-*Última atualização: 22 de Junho de 2025*
-*Próxima revisão: 05 de Julho de 2025*
+*Última atualização: 19 de Julho de 2025*
+*Próxima revisão: 05 de Agosto de 2025*
 
 ---
 
 ## 📝 **CHANGELOG RECENTE**
 
-### 22/06/2025 - Performance e Lazy Loading
-- ✅ Implementado sistema completo de lazy loading de imagens
-- ✅ Criado hook `useLazyLoading` com Intersection Observer
-- ✅ Desenvolvido componente `LazyImage` com skeleton loading
-- ✅ Atualizado `PhotoItem` para usar lazy loading
-- ✅ Implementado code splitting básico com `LazyComponents`
-- ✅ Adicionado suporte a default exports para lazy loading
-- ✅ Otimizado loading states e transições visuais
-- 🔄 **Fase 1**: Progresso de 85% → 95%
+### 19/07/2025 - Correções e Melhorias de Exclusão de Fotos
+- ✅ Corrigida a exibição de imagens em álbuns, garantindo que as fotos sejam carregadas e exibidas corretamente.
+- ✅ Implementada a funcionalidade completa de exclusão de fotos, incluindo remoção do Firebase Storage e de todas as associações no Firestore.
+- ✅ Resolvidos diversos erros e avisos de TypeScript para garantir a estabilidade e qualidade do código.
+- 🔄 **FASE 1**: Progresso de 95% → 100%
+- 🔄 **FASE 2**: Progresso de 95% → 98%
