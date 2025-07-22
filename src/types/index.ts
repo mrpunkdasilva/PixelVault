@@ -25,4 +25,3 @@ export type {
 } from './Album';
 
 // Re-export para compatibilidade com código existente
-

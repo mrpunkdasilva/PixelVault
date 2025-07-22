@@ -278,7 +278,7 @@ function AppContent() {
 
             {!loading && photos.length > 0 && (
               <div className='photo-list'>
-                {photos.map((item) => (
+                {photos.map(item => (
                   <PhotoItem
                     key={item.id}
                     url={item.url}

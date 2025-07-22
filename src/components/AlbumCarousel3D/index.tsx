@@ -22,7 +22,7 @@ export const AlbumCarousel3D: React.FC<AlbumCarousel3DProps> = ({
   className = '',
 }) => {
   const { albums, ui } = useAlbum();
-  const {  } = useNotificationHelpers();
+  const {} = useNotificationHelpers();
 
   // State for carousel
   const [currentIndex, setCurrentIndex] = useState(0);

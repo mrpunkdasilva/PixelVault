@@ -23,14 +23,11 @@ interface AlbumViewProps {
   onBackToAlbums: () => void;
 }
 
-export const AlbumView: React.FC<AlbumViewProps> = ({
-  albumId,
-  onBackToAlbums,
-}) => {
+export const AlbumView: React.FC<AlbumViewProps> = ({ albumId, onBackToAlbums }) => {
   // States
   const [selectedPhotos, setSelectedPhotos] = useState<Set<string>>(new Set());
   const [isEditingAlbum, setIsEditingAlbum] = useState(false);
-  
+
   const [isSelectionMode, setIsSelectionMode] = useState(false);
   const [uploading, setUploading] = useState(false);
 
@@ -54,7 +51,8 @@ export const AlbumView: React.FC<AlbumViewProps> = ({
   const { showSuccess, showError } = useNotificationHelpers();
 
   // Get current album (will be loaded by context)
-  const album: AlbumWithPhotos | null = currentAlbum || albums.find(album => album.id === albumId) as AlbumWithPhotos;
+  const album: AlbumWithPhotos | null =
+    currentAlbum || (albums.find(album => album.id === albumId) as AlbumWithPhotos);
   const albumPhotos = album?.photos
     ? album.photos.filter(p => photos.some(fp => fp.id === p.id))
     : photos.filter(photo => photo.albumIds.includes(albumId));
@@ -134,7 +132,6 @@ export const AlbumView: React.FC<AlbumViewProps> = ({
     }
   }, [selectedPhotos, removePhotoFromAlbum, albumId, showSuccess, showError]);
 
-  
   // Photo upload handlers
   const handleFileSelect = useCallback(
     async (file: File) => {
@@ -465,7 +462,6 @@ export const AlbumView: React.FC<AlbumViewProps> = ({
                 onClick={() => !isSelectionMode && console.log('Open photo:', photo.id)}
                 onDelete={() => deletePhoto(photo.id)}
                 draggable={!isSelectionMode}
-                
               />
             </div>
           ))}

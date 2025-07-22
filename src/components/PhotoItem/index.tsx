@@ -12,7 +12,15 @@ type Props = {
   onDragEnd?: (e: React.DragEvent) => void;
 };
 
-export const PhotoItem = ({ url, name, onClick, onDelete, draggable, onDragStart, onDragEnd }: Props) => {
+export const PhotoItem = ({
+  url,
+  name,
+  onClick,
+  onDelete,
+  draggable,
+  onDragStart,
+  onDragEnd,
+}: Props) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleDelete = (e: React.MouseEvent) => {

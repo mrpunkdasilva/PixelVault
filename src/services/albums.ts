@@ -273,7 +273,7 @@ class FirebaseAlbumRepository implements IAlbumRepository {
   async movePhoto(operation: PhotoMoveOperation): Promise<void> {
     try {
       writeBatch(db);
-// Remover da origem
+      // Remover da origem
       await this.removePhotoFromAlbum(operation.fromAlbumId, operation.photoId);
 
       // Adicionar ao destino
