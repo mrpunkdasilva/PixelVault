@@ -6,6 +6,7 @@
 
 import React, { createContext, useContext, useReducer, useCallback, useEffect } from 'react';
 import { albumService } from '../services/albums';
+
 import { useNotificationHelpers } from './NotificationContext';
 import type {
   Album,
@@ -16,8 +17,8 @@ import type {
   PhotoId,
   PhotoMoveOperation,
   AlbumUIState,
+  Photo,
 } from '../types';
-import { Photo } from '../types/Photo';
 
 // State interface
 interface AlbumState {
@@ -260,14 +261,7 @@ export function AlbumProvider({ children }: AlbumProviderProps) {
   const addPhotoToAlbum = useCallback(
     withErrorHandling(async (albumId: AlbumId, photoId: PhotoId) => {
       await albumService.addPhotoToAlbum(albumId, photoId);
-      if (state.currentAlbum?.id === albumId) {
-        // Find the photo object from the global photos state
-        const photoToAdd = state.currentAlbum.photos.find(p => p.id === photoId);
-        if (photoToAdd) {
-          dispatch({ type: 'ADD_PHOTO_TO_CURRENT_ALBUM', payload: photoToAdd });
-        }
-      }
-      // Atualizar contador do álbum na lista
+      // Update album photo count in the albums list
       const album = state.albums.find(a => a.id === albumId);
       if (album) {
         dispatch({
@@ -275,17 +269,15 @@ export function AlbumProvider({ children }: AlbumProviderProps) {
           payload: { ...album, photoCount: album.photoCount + 1 },
         });
       }
+      // No need to refetch currentAlbum here, usePhotos will handle it
     }, 'Photo added to album'),
-    [withErrorHandling, state.currentAlbum, state.albums],
+    [withErrorHandling, state.albums],
   );
 
   const removePhotoFromAlbum = useCallback(
     withErrorHandling(async (albumId: AlbumId, photoId: PhotoId) => {
       await albumService.removePhotoFromAlbum(albumId, photoId);
-      if (state.currentAlbum?.id === albumId) {
-        dispatch({ type: 'REMOVE_PHOTO_FROM_CURRENT_ALBUM', payload: photoId });
-      }
-      // Atualizar contador do álbum na lista
+      // Update album photo count in the albums list
       const album = state.albums.find(a => a.id === albumId);
       if (album) {
         dispatch({
@@ -293,8 +285,9 @@ export function AlbumProvider({ children }: AlbumProviderProps) {
           payload: { ...album, photoCount: Math.max(0, album.photoCount - 1) },
         });
       }
+      // No need to remove from currentAlbum here, usePhotos will handle it
     }, 'Photo removed from album'),
-    [withErrorHandling, state.currentAlbum, state.albums],
+    [withErrorHandling, state.albums],
   );
 
   const movePhotoBetweenAlbums = useCallback(
@@ -303,14 +296,14 @@ export function AlbumProvider({ children }: AlbumProviderProps) {
 
       // Atualizar álbum atual se necessário
       if (state.currentAlbum?.id === operation.fromAlbumId) {
-        dispatch({ type: 'REMOVE_PHOTO_FROM_CURRENT_ALBUM', payload: operation.photoId });
+        // Refetch the current album to get the updated photo list
+        const updatedAlbum = await albumService.getAlbumWithPhotos(operation.fromAlbumId);
+        dispatch({ type: 'SET_CURRENT_ALBUM', payload: updatedAlbum });
       }
       if (state.currentAlbum?.id === operation.toAlbumId) {
-        // Find the photo object from the global photos state
-        const photoToAdd = state.currentAlbum.photos.find(p => p.id === operation.photoId);
-        if (photoToAdd) {
-          dispatch({ type: 'ADD_PHOTO_TO_CURRENT_ALBUM', payload: photoToAdd });
-        }
+        // Refetch the current album to get the updated photo list
+        const updatedAlbum = await albumService.getAlbumWithPhotos(operation.toAlbumId);
+        dispatch({ type: 'SET_CURRENT_ALBUM', payload: updatedAlbum });
       }
 
       // Atualizar contadores

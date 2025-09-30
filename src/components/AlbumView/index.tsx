@@ -12,10 +12,9 @@ import { EmptyState } from '../EmptyState';
 import { LoadingSkeletons } from '../LoadingSkeletons';
 import { AlbumForm } from '../AlbumForm';
 import { UploadZone } from '../UploadZone';
+import { PhotoModal } from '../PhotoModal'; // Import PhotoModal
 import { useNotificationHelpers } from '../../contexts/NotificationContext';
-import type { Photo } from '../../types/Photo';
-import type { AlbumWithPhotos } from '../../types';
-import * as Photos from '../../services/photos';
+import type { AlbumWithPhotos, Photo } from '../../types';
 import './styles.scss';
 
 interface AlbumViewProps {
@@ -27,6 +26,8 @@ export const AlbumView: React.FC<AlbumViewProps> = ({ albumId, onBackToAlbums })
   // States
   const [selectedPhotos, setSelectedPhotos] = useState<Set<string>>(new Set());
   const [isEditingAlbum, setIsEditingAlbum] = useState(false);
+  const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false); // New state
+  const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null); // New state
 
   const [isSelectionMode, setIsSelectionMode] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -42,20 +43,17 @@ export const AlbumView: React.FC<AlbumViewProps> = ({ albumId, onBackToAlbums })
   const {
     photos,
     loading: photosLoading,
-    addPhotoToAlbum,
     removePhotoFromAlbum,
     addPhoto,
     refreshPhotos,
     deletePhoto,
-  } = usePhotos();
+  } = usePhotos(albumId);
   const { showSuccess, showError } = useNotificationHelpers();
 
   // Get current album (will be loaded by context)
   const album: AlbumWithPhotos | null =
     currentAlbum || (albums.find(album => album.id === albumId) as AlbumWithPhotos);
-  const albumPhotos = album?.photos
-    ? album.photos.filter(p => photos.some(fp => fp.id === p.id))
-    : photos.filter(photo => photo.albumIds.includes(albumId));
+  const albumPhotos = photos;
 
   // Loading state
   const loading = isLoading || photosLoading;
@@ -137,36 +135,8 @@ export const AlbumView: React.FC<AlbumViewProps> = ({ albumId, onBackToAlbums })
     async (file: File) => {
       setUploading(true);
       try {
-        const result = await Photos.insert(file);
-        if (result instanceof Error) {
-          showError('Upload Failed', result.message);
-        } else {
-          // Convert legacy photo to new photo format
-          const newPhoto: Photo = {
-            id: result.name, // Use Firebase storage name as ID
-            name: result.name,
-            url: result.url,
-            size: file.size,
-            mimeType: file.type,
-            albumIds: [albumId],
-            uploadedAt: new Date(),
-            tags: [],
-          };
-
-          // Add photo to local state first
-          addPhoto(newPhoto);
-
-          // Add photo to album using album service
-          try {
-            await addPhotoToAlbum(newPhoto.id, albumId);
-            showSuccess('Photo Uploaded', 'Photo has been added to the album!');
-            // Refresh photos to ensure consistency
-            await refreshPhotos();
-          } catch (albumError) {
-            console.error('Failed to add photo to album:', albumError);
-            showError('Album Association Failed', 'Photo uploaded but failed to add to album.');
-          }
-        }
+        await addPhoto(file, albumId);
+        showSuccess('Photo Uploaded', 'Photo has been added to the album!');
       } catch (error) {
         console.error('Upload error:', error);
         showError('Upload Failed', 'Failed to upload photo to album.');
@@ -174,7 +144,7 @@ export const AlbumView: React.FC<AlbumViewProps> = ({ albumId, onBackToAlbums })
         setUploading(false);
       }
     },
-    [albumId, addPhotoToAlbum, addPhoto, refreshPhotos, showSuccess, showError],
+    [albumId, addPhoto, showSuccess, showError],
   );
 
   const handleMultipleFilesSelect = useCallback(
@@ -185,34 +155,8 @@ export const AlbumView: React.FC<AlbumViewProps> = ({ albumId, onBackToAlbums })
 
       for (const file of files) {
         try {
-          const result = await Photos.insert(file);
-          if (result instanceof Error) {
-            errorCount++;
-          } else {
-            // Convert legacy photo to new photo format
-            const newPhoto: Photo = {
-              id: result.name, // Use Firebase storage name as ID
-              name: result.name,
-              url: result.url,
-              size: file.size,
-              mimeType: file.type,
-              albumIds: [albumId],
-              uploadedAt: new Date(),
-              tags: [],
-            };
-
-            // Add photo to local state first
-            addPhoto(newPhoto);
-
-            // Add photo to album using album service
-            try {
-              await addPhotoToAlbum(newPhoto.id, albumId);
-              successCount++;
-            } catch (albumError) {
-              console.error('Failed to add photo to album:', albumError);
-              errorCount++;
-            }
-          }
+          await addPhoto(file, albumId);
+          successCount++;
         } catch (error) {
           console.error('Upload error:', error);
           errorCount++;
@@ -242,8 +186,20 @@ export const AlbumView: React.FC<AlbumViewProps> = ({ albumId, onBackToAlbums })
         showError('Upload Failed', 'All uploads failed');
       }
     },
-    [albumId, addPhotoToAlbum, showSuccess, showError],
+    [albumId, addPhoto, refreshPhotos, showSuccess, showError],
   );
+
+  const handlePhotoClick = useCallback((photo: Photo) => { // New handler
+    if (!isSelectionMode) {
+      setSelectedPhoto(photo);
+      setIsPhotoModalOpen(true);
+    }
+  }, [isSelectionMode]);
+
+  const handleClosePhotoModal = useCallback(() => { // New handler
+    setIsPhotoModalOpen(false);
+    setSelectedPhoto(null);
+  }, []);
 
   // Keyboard shortcuts
   useEffect(() => {
@@ -266,7 +222,7 @@ export const AlbumView: React.FC<AlbumViewProps> = ({ albumId, onBackToAlbums })
             handleFileSelect(files[0]);
           } else if (files.length > 1) {
             handleMultipleFilesSelect(files);
-          }
+          } 
         };
         input.click();
       } else if (e.key === 'Escape') {
@@ -274,6 +230,8 @@ export const AlbumView: React.FC<AlbumViewProps> = ({ albumId, onBackToAlbums })
           handleToggleSelectionMode();
         } else if (isEditingAlbum) {
           setIsEditingAlbum(false);
+        } else if (isPhotoModalOpen) { // Close photo modal on Escape
+          handleClosePhotoModal();
         }
       } else if (e.key === 'Delete' && selectedPhotos.size > 0) {
         handleRemoveSelectedFromAlbum();
@@ -289,6 +247,8 @@ export const AlbumView: React.FC<AlbumViewProps> = ({ albumId, onBackToAlbums })
     handleToggleSelectionMode,
     handleRemoveSelectedFromAlbum,
     isEditingAlbum,
+    isPhotoModalOpen,
+    handleClosePhotoModal,
     handleFileSelect,
     handleMultipleFilesSelect,
   ]);
@@ -459,7 +419,7 @@ export const AlbumView: React.FC<AlbumViewProps> = ({ albumId, onBackToAlbums })
               <PhotoItem
                 url={photo.url}
                 name={photo.name}
-                onClick={() => !isSelectionMode && console.log('Open photo:', photo.id)}
+                onClick={() => !isSelectionMode && handlePhotoClick(photo)}
                 onDelete={() => deletePhoto(photo.id)}
                 draggable={!isSelectionMode}
               />
@@ -490,6 +450,20 @@ export const AlbumView: React.FC<AlbumViewProps> = ({ albumId, onBackToAlbums })
             />
           </div>
         </div>
+      )}
+
+      {/* Photo Modal */}
+      {isPhotoModalOpen && selectedPhoto && (
+        <PhotoModal
+          isOpen={isPhotoModalOpen}
+          imageUrl={selectedPhoto.url}
+          imageName={selectedPhoto.name}
+          onClose={handleClosePhotoModal}
+          onDelete={() => {
+            deletePhoto(selectedPhoto.id);
+            handleClosePhotoModal();
+          }}
+        />
       )}
     </div>
   );

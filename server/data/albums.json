@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1edcb43d-a410-49a1-82ac-01cf01d28049",
+    "name": "asd",
+    "description": "asd",
+    "tags": [
+      "asd"
+    ],
+    "createdAt": "2025-09-29T21:16:06.310Z",
+    "updatedAt": "2025-09-29T21:16:06.310Z",
+    "photoCount": 4
+  },
+  {
+    "id": "bb1f68b8-df44-46fd-a942-19754ec614c8",
+    "name": "string",
+    "description": "string",
+    "tags": [
+      "string"
+    ],
+    "createdAt": "2025-09-29T21:36:47.375Z",
+    "updatedAt": "2025-09-29T21:59:47.786Z",
+    "photoCount": 2
+  },
+  {
+    "id": "ae2b39b7-7630-4778-8478-fdec1d0769e1",
+    "name": "string",
+    "description": "string",
+    "tags": [
+      "string"
+    ],
+    "createdAt": "2025-09-29T21:36:50.679Z",
+    "updatedAt": "2025-09-29T21:49:16.831Z",
+    "photoCount": 8
+  }
+]

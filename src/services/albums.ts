@@ -1,22 +1,9 @@
 /**
  * Albums Service
- * Repository pattern implementation para operações de álbuns
- * Segue princípios SOLID e abstrai a implementação do Firebase
+ * Repository pattern implementation for album operations
+ * Abstraction for self-hosted API
  */
 
-import {
-  collection,
-  doc,
-  getDocs,
-  getDoc,
-  addDoc,
-  updateDoc,
-  query,
-  orderBy,
-  Timestamp,
-  writeBatch,
-} from 'firebase/firestore';
-import { db } from '../libs/firebase';
 import type {
   Album,
   AlbumId,
@@ -26,7 +13,9 @@ import type {
   PhotoId,
   PhotoMoveOperation,
 } from '../types';
-import * as Photos from './photos';
+import { photoService } from './photos';
+
+const BASE_URL = 'http://localhost:3001/api'; // Our self-hosted backend URL
 
 // Interface do Repository (Dependency Inversion Principle)
 export interface IAlbumRepository {
@@ -38,22 +27,29 @@ export interface IAlbumRepository {
   delete(id: AlbumId): Promise<void>;
   addPhotoToAlbum(albumId: AlbumId, photoId: PhotoId): Promise<void>;
   removePhotoFromAlbum(albumId: AlbumId, photoId: PhotoId): Promise<void>;
-  removeAllPhotoAssociations(photoId: PhotoId): Promise<void>;
   movePhoto(operation: PhotoMoveOperation): Promise<void>;
 }
 
-// Implementação concreta do Repository
-class FirebaseAlbumRepository implements IAlbumRepository {
-  private readonly COLLECTION_NAME = 'albums';
-  private readonly ALBUM_PHOTOS_COLLECTION = 'album-photos';
+// Concrete implementation of the Repository using HTTP fetch
+class HttpAlbumRepository implements IAlbumRepository {
+  private readonly ALBUMS_ENDPOINT = `${BASE_URL}/albums`;
+
+  private parseAlbumDates(album: any): Album {
+    return {
+      ...album,
+      createdAt: new Date(album.createdAt),
+      updatedAt: new Date(album.updatedAt),
+    };
+  }
 
   async getAll(): Promise<Album[]> {
     try {
-      const albumsRef = collection(db, this.COLLECTION_NAME);
-      const q = query(albumsRef, orderBy('updatedAt', 'desc'));
-      const querySnapshot = await getDocs(q);
-
-      return querySnapshot.docs.map(doc => this.mapDocToAlbum(doc));
+      const response = await fetch(this.ALBUMS_ENDPOINT);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      return data.map(this.parseAlbumDates) as Album[];
     } catch (error) {
       console.error('Error fetching albums:', error);
       throw new Error('Failed to fetch albums');
@@ -62,14 +58,15 @@ class FirebaseAlbumRepository implements IAlbumRepository {
 
   async getById(id: AlbumId): Promise<Album | null> {
     try {
-      const albumRef = doc(db, this.COLLECTION_NAME, id);
-      const albumSnap = await getDoc(albumRef);
-
-      if (!albumSnap.exists()) {
+      const response = await fetch(`${this.ALBUMS_ENDPOINT}/${id}`);
+      if (response.status === 404) {
         return null;
       }
-
-      return this.mapDocToAlbum(albumSnap);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      return this.parseAlbumDates(data) as Album;
     } catch (error) {
       console.error(`Error fetching album ${id}:`, error);
       throw new Error(`Failed to fetch album ${id}`);
@@ -78,26 +75,21 @@ class FirebaseAlbumRepository implements IAlbumRepository {
 
   async getWithPhotos(id: AlbumId): Promise<AlbumWithPhotos | null> {
     try {
-      const album = await this.getById(id);
-      if (!album) return null;
-
-      // Buscar fotos do álbum
-      const photosRef = collection(db, this.ALBUM_PHOTOS_COLLECTION);
-      const q = query(photosRef, orderBy('addedAt', 'desc'));
-      const querySnapshot = await getDocs(q);
-
-      const photoIds: PhotoId[] = querySnapshot.docs
-        .filter(doc => doc.data().albumId === id)
-        .map(doc => doc.data().photoId);
-
-      // Fetch all photos and filter by the photoIds associated with this album
-      const allPhotos = await Photos.getAll();
-      const albumPhotos = allPhotos.filter(photo => photoIds.includes(photo.id));
-
+      const response = await fetch(`${this.ALBUMS_ENDPOINT}/${id}`);
+      if (response.status === 404) {
+        return null;
+      }
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      const album = this.parseAlbumDates(data);
+      // Assuming the backend now returns photos directly within the album object
+      // If not, this part needs to be adjusted based on the actual backend response
       return {
         ...album,
-        photos: albumPhotos,
-      };
+        photos: data.photos || [], // Assuming photos array is directly in the response
+      } as AlbumWithPhotos;
     } catch (error) {
       console.error(`Error fetching album with photos ${id}:`, error);
       throw new Error(`Failed to fetch album with photos ${id}`);
@@ -106,25 +98,18 @@ class FirebaseAlbumRepository implements IAlbumRepository {
 
   async create(request: CreateAlbumRequest): Promise<Album> {
     try {
-      const now = new Date();
-      const albumData = {
-        ...request,
-        createdAt: Timestamp.fromDate(now),
-        updatedAt: Timestamp.fromDate(now),
-        photoCount: 0,
-        tags: request.tags || [],
-      };
-
-      const docRef = await addDoc(collection(db, this.COLLECTION_NAME), albumData);
-
-      return {
-        id: docRef.id,
-        ...request,
-        createdAt: now,
-        updatedAt: now,
-        photoCount: 0,
-        tags: request.tags || [],
-      };
+      const response = await fetch(this.ALBUMS_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      return this.parseAlbumDates(data) as Album;
     } catch (error) {
       console.error('Error creating album:', error);
       throw new Error('Failed to create album');
@@ -133,20 +118,18 @@ class FirebaseAlbumRepository implements IAlbumRepository {
 
   async update(id: AlbumId, request: UpdateAlbumRequest): Promise<Album> {
     try {
-      const albumRef = doc(db, this.COLLECTION_NAME, id);
-      const updateData = {
-        ...request,
-        updatedAt: Timestamp.fromDate(new Date()),
-      };
-
-      await updateDoc(albumRef, updateData);
-
-      const updatedAlbum = await this.getById(id);
-      if (!updatedAlbum) {
-        throw new Error('Album not found after update');
+      const response = await fetch(`${this.ALBUMS_ENDPOINT}/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-
-      return updatedAlbum;
+      const data = await response.json();
+      return this.parseAlbumDates(data) as Album;
     } catch (error) {
       console.error(`Error updating album ${id}:`, error);
       throw new Error(`Failed to update album ${id}`);
@@ -155,22 +138,12 @@ class FirebaseAlbumRepository implements IAlbumRepository {
 
   async delete(id: AlbumId): Promise<void> {
     try {
-      const batch = writeBatch(db);
-
-      // Deletar o álbum
-      const albumRef = doc(db, this.COLLECTION_NAME, id);
-      batch.delete(albumRef);
-
-      // Deletar todas as relações álbum-foto
-      const photosRef = collection(db, this.ALBUM_PHOTOS_COLLECTION);
-      const q = query(photosRef);
-      const querySnapshot = await getDocs(q);
-
-      querySnapshot.docs
-        .filter(doc => doc.data().albumId === id)
-        .forEach(doc => batch.delete(doc.ref));
-
-      await batch.commit();
+      const response = await fetch(`${this.ALBUMS_ENDPOINT}/${id}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
     } catch (error) {
       console.error(`Error deleting album ${id}:`, error);
       throw new Error(`Failed to delete album ${id}`);
@@ -179,27 +152,16 @@ class FirebaseAlbumRepository implements IAlbumRepository {
 
   async addPhotoToAlbum(albumId: AlbumId, photoId: PhotoId): Promise<void> {
     try {
-      const batch = writeBatch(db);
-
-      // Adicionar relação álbum-foto
-      const albumPhotoRef = doc(collection(db, this.ALBUM_PHOTOS_COLLECTION));
-      batch.set(albumPhotoRef, {
-        albumId,
-        photoId,
-        addedAt: Timestamp.fromDate(new Date()),
+      const response = await fetch(`${this.ALBUMS_ENDPOINT}/${albumId}/photos`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ photoId }),
       });
-
-      // Atualizar contador do álbum
-      const albumRef = doc(db, this.COLLECTION_NAME, albumId);
-      const album = await this.getById(albumId);
-      if (album) {
-        batch.update(albumRef, {
-          photoCount: album.photoCount + 1,
-          updatedAt: Timestamp.fromDate(new Date()),
-        });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-
-      await batch.commit();
     } catch (error) {
       console.error(`Error adding photo ${photoId} to album ${albumId}:`, error);
       throw new Error(`Failed to add photo to album`);
@@ -208,107 +170,45 @@ class FirebaseAlbumRepository implements IAlbumRepository {
 
   async removePhotoFromAlbum(albumId: AlbumId, photoId: PhotoId): Promise<void> {
     try {
-      const batch = writeBatch(db);
-
-      // Remover relação álbum-foto
-      const photosRef = collection(db, this.ALBUM_PHOTOS_COLLECTION);
-      const q = query(photosRef);
-      const querySnapshot = await getDocs(q);
-
-      const relationDoc = querySnapshot.docs.find(doc => {
-        const data = doc.data();
-        return data.albumId === albumId && data.photoId === photoId;
+      const response = await fetch(`${this.ALBUMS_ENDPOINT}/${albumId}/photos/${photoId}`, {
+        method: 'DELETE',
       });
-
-      if (relationDoc) {
-        batch.delete(relationDoc.ref);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-
-      // Atualizar contador do álbum
-      const albumRef = doc(db, this.COLLECTION_NAME, albumId);
-      const album = await this.getById(albumId);
-      if (album) {
-        batch.update(albumRef, {
-          photoCount: Math.max(0, album.photoCount - 1),
-          updatedAt: Timestamp.fromDate(new Date()),
-        });
-      }
-
-      await batch.commit();
     } catch (error) {
       console.error(`Error removing photo ${photoId} from album ${albumId}:`, error);
       throw new Error(`Failed to remove photo from album`);
     }
   }
 
-  async removeAllPhotoAssociations(photoId: PhotoId): Promise<void> {
-    try {
-      const batch = writeBatch(db);
-      const photosRef = collection(db, this.ALBUM_PHOTOS_COLLECTION);
-      const q = query(photosRef);
-      const querySnapshot = await getDocs(q);
-
-      const associationsToDelete = querySnapshot.docs.filter(doc => doc.data().photoId === photoId);
-
-      for (const associationDoc of associationsToDelete) {
-        batch.delete(associationDoc.ref);
-        // Decrement photoCount in associated albums
-        const albumId = associationDoc.data().albumId;
-        const albumRef = doc(db, this.COLLECTION_NAME, albumId);
-        const album = await this.getById(albumId);
-        if (album) {
-          batch.update(albumRef, {
-            photoCount: Math.max(0, album.photoCount - 1),
-            updatedAt: Timestamp.fromDate(new Date()),
-          });
-        }
-      }
-      await batch.commit();
-    } catch (error) {
-      console.error(`Error removing all associations for photo ${photoId}:`, error);
-      throw new Error(`Failed to remove all associations for photo ${photoId}`);
-    }
-  }
-
   async movePhoto(operation: PhotoMoveOperation): Promise<void> {
     try {
-      writeBatch(db);
-      // Remover da origem
-      await this.removePhotoFromAlbum(operation.fromAlbumId, operation.photoId);
-
-      // Adicionar ao destino
-      await this.addPhotoToAlbum(operation.toAlbumId, operation.photoId);
+      const response = await fetch(`${BASE_URL}/photos/${operation.photoId}/move`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ fromAlbumId: operation.fromAlbumId, toAlbumId: operation.toAlbumId }),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
     } catch (error) {
       console.error('Error moving photo:', error);
       throw new Error('Failed to move photo between albums');
     }
   }
-
-  // Helper method para mapear documento do Firestore para Album
-  private mapDocToAlbum(doc: any): Album {
-    const data = doc.data();
-    return {
-      id: doc.id,
-      name: data.name,
-      description: data.description,
-      coverPhotoId: data.coverPhotoId,
-      createdAt: data.createdAt?.toDate() || new Date(),
-      updatedAt: data.updatedAt?.toDate() || new Date(),
-      photoCount: data.photoCount || 0,
-      tags: data.tags || [],
-      isDefault: data.isDefault || false,
-    };
-  }
 }
 
-// Singleton instance (pode ser injetada via DI futuramente)
-export const albumRepository: IAlbumRepository = new FirebaseAlbumRepository();
+// Singleton instance (can be injected via DI in the future)
+export const albumRepository: IAlbumRepository = new HttpAlbumRepository();
 
-// Service facade para uso na aplicação
+// Service facade for application use
 export class AlbumService {
   constructor(private repository: IAlbumRepository = albumRepository) {}
 
-  // Delegação simples para o repository
+  // Simple delegation to the repository
   async getAllAlbums(): Promise<Album[]> {
     return this.repository.getAll();
   }
@@ -318,11 +218,18 @@ export class AlbumService {
   }
 
   async getAlbumWithPhotos(id: AlbumId): Promise<AlbumWithPhotos | null> {
-    return this.repository.getWithPhotos(id);
+    const album = await this.repository.getById(id);
+    if (!album) {
+      return null;
+    }
+    const photos = await photoService.getPhotosByAlbumId(id);
+    return { ...album, photos };
   }
 
+  
+
   async createAlbum(request: CreateAlbumRequest): Promise<Album> {
-    // Validação de negócio
+    // Business validation
     if (!request.name.trim()) {
       throw new Error('Album name is required');
     }
@@ -335,7 +242,7 @@ export class AlbumService {
   }
 
   async updateAlbum(id: AlbumId, request: UpdateAlbumRequest): Promise<Album> {
-    // Validação de negócio
+    // Business validation
     if (request.name !== undefined && !request.name.trim()) {
       throw new Error('Album name cannot be empty');
     }
@@ -348,7 +255,7 @@ export class AlbumService {
   }
 
   async deleteAlbum(id: AlbumId): Promise<void> {
-    // Verificar se não é álbum padrão
+    // Check if it's not a default album
     const album = await this.repository.getById(id);
     if (album?.isDefault) {
       throw new Error('Cannot delete default album');
@@ -365,14 +272,10 @@ export class AlbumService {
     return this.repository.removePhotoFromAlbum(albumId, photoId);
   }
 
-  async removeAllPhotoAssociations(photoId: PhotoId): Promise<void> {
-    return this.repository.removeAllPhotoAssociations(photoId);
-  }
-
   async movePhotoBetweenAlbums(operation: PhotoMoveOperation): Promise<void> {
     return this.repository.movePhoto(operation);
   }
 }
 
-// Instance padrão para uso na aplicação
+// Default instance for application use
 export const albumService = new AlbumService();
