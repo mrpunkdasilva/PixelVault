@@ -32,26 +32,44 @@ export const AlbumCard: React.FC<AlbumCardProps> = ({
   const [showActions, setShowActions] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [coverImageUrl, setCoverImageUrl] = useState<string | undefined>(undefined); // State for cover image URL
+  const [coverImageError, setCoverImageError] = useState(false); // State for cover image loading error
 
   // Fetch cover image URL
   useEffect(() => {
     const fetchCoverImage = async () => {
+      setCoverImageError(false); // Reset error state
+      let photoToDisplayUrl: string | undefined;
+
+      // 1. Try to get the explicit cover photo
       if (album.coverPhotoId) {
         try {
           const photo = await photoService.getPhoto(album.coverPhotoId);
           if (photo) {
-            setCoverImageUrl(photo.url);
+            photoToDisplayUrl = photo.url;
           }
         } catch (error) {
-          console.error('Error fetching cover photo:', error);
-          setCoverImageUrl('/placeholder-album.svg'); // Fallback
+          console.error(`Error fetching cover photo ${album.coverPhotoId} for album ${album.id}:`, error);
+          // Fall through to get another photo
         }
-      } else {
-        setCoverImageUrl('/placeholder-album.svg'); // Default placeholder
       }
+
+      // 2. If no cover photo and album has photos, get the first one
+      if (!photoToDisplayUrl && album.photoCount > 0) {
+        try {
+          const photos = await photoService.getPhotosByAlbumId(album.id);
+          if (photos && photos.length > 0) {
+            photoToDisplayUrl = photos[0].url;
+          }
+        } catch (error) {
+          console.error(`Error fetching photos for album ${album.id}:`, error);
+        }
+      }
+
+      setCoverImageUrl(photoToDisplayUrl);
     };
+
     fetchCoverImage();
-  }, [album.coverPhotoId]);
+  }, [album.id, album.coverPhotoId, album.photoCount]);
 
   // Drag & Drop
   const dropZone = useAlbumDropZone(album.id);
@@ -120,17 +138,16 @@ export const AlbumCard: React.FC<AlbumCardProps> = ({
 
   // Render cover image
   const renderCoverImage = () => {
-    if (coverImageUrl) {
+    if (coverImageUrl && !coverImageError) {
       return (
         <div className='album-card__cover'>
           <img
             src={coverImageUrl} // Use the fetched URL
             alt={`${album.name} cover`}
             loading='lazy'
-            onError={e => {
-              // Fallback para placeholder
-              const target = e.target as HTMLImageElement;
-              target.src = '/placeholder-album.svg';
+            onError={() => {
+              console.error(`Failed to load image: ${coverImageUrl}`);
+              setCoverImageError(true);
             }}
           />
         </div>

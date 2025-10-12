@@ -12,7 +12,7 @@ import { useKeyboardShortcuts, KeyboardShortcut } from './hooks/useKeyboardShort
 import { useTheme } from './contexts/ThemeContext';
 
 // Album System imports
-import { AlbumProvider } from './contexts/AlbumContext';
+import { AlbumProvider, useAlbum } from './contexts/AlbumContext';
 import { AlbumCarousel3D } from './components/AlbumCarousel3D';
 import { AlbumForm } from './components/AlbumForm';
 import { AlbumView } from './components/AlbumView';
@@ -21,15 +21,13 @@ import { Breadcrumbs } from './components/Breadcrumbs';
 
 // Navigation system
 import { useNavigation, useBreadcrumbs } from './hooks/useNavigation';
-import { useAlbums } from './hooks/useAlbums';
-import { usePhotos } from './hooks/usePhotos';
+
+import { photoService } from './services/photos';
 
 // Main App component wrapped with providers
 function AppContent() {
   // Legacy photo state (for backward compatibility)
   const [uploading, setUploading] = useState(false);
-  // const [loading, setLoading] = useState(false); // Removed
-  // const [photos, setPhotos] = useState<Photo[]>([]); // Removed
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
@@ -41,8 +39,7 @@ function AppContent() {
   const { showSuccess, showError } = useNotificationHelpers();
   const { toggleTheme } = useTheme();
   const navigation = useNavigation();
-  const { albums } = useAlbums();
-  const { deletePhoto: deletePhotoFromHook, addPhoto } = usePhotos(); // Added addPhoto
+  const { albums, loadAlbums } = useAlbum();
   const breadcrumbs = useBreadcrumbs(navigation.navigationState, albums);
 
   // Modal handlers
@@ -163,14 +160,14 @@ function AppContent() {
     setUploading(true);
     // Assuming a default album for uploads if not in an album view
     const targetAlbumId = navigation.navigationState.albumId || 'default-album-id'; // TODO: Replace with actual default album ID logic
-    let result = await addPhoto(file, targetAlbumId); // Updated to use addPhoto from usePhotos
-    setUploading(false);
-
-    if (result instanceof Error) {
-      showError('Upload Failed', result.message);
-    } else {
-      // Photos are now managed by usePhotos hook, no need to update local state directly
+    try {
+      await photoService.uploadPhoto(file, targetAlbumId);
+      await loadAlbums(); // Refresh albums
       showSuccess('Photo Uploaded', 'Your photo has been successfully uploaded!');
+    } catch (error) {
+      showError('Upload Failed', error instanceof Error ? error.message : 'Unknown error');
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -178,22 +175,18 @@ function AppContent() {
     setUploading(true);
     let successCount = 0;
     let errorCount = 0;
-    // Assuming a default album for uploads if not in an album view
     const targetAlbumId = navigation.navigationState.albumId || 'default-album-id'; // TODO: Replace with actual default album ID logic
 
     for (const file of files) {
       try {
-        let result = await addPhoto(file, targetAlbumId); // Updated to use addPhoto from usePhotos
-        if (result instanceof Error) {
-          errorCount++;
-        } else {
-          successCount++;
-        }
+        await photoService.uploadPhoto(file, targetAlbumId);
+        successCount++;
       } catch (error) {
         errorCount++;
       }
     }
 
+    await loadAlbums(); // Refresh albums once after all uploads
     setUploading(false);
 
     // Show appropriate notification
@@ -225,8 +218,8 @@ function AppContent() {
     );
     if (confirmDelete) {
       try {
-        await deletePhotoFromHook(photoToDelete.id);
-        // setPhotos(photos.filter(photo => photo.id !== photoToDelete.id)); // Removed
+        await photoService.deletePhoto(photoToDelete.id);
+        await loadAlbums(); // Refresh albums
         if (selectedPhoto?.id === photoToDelete.id) {
           handleCloseModal();
         }

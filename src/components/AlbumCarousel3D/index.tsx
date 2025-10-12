@@ -363,10 +363,10 @@ const AlbumCard3D: React.FC<AlbumCard3DProps> = ({ album, isActive, onClick }) =
           }
         } catch (error) {
           console.error('Error fetching cover photo:', error);
-          setCoverImageUrl('/placeholder-album.svg'); // Fallback
+          setCoverImageUrl('/logo.svg'); // Fallback
         }
       } else {
-        setCoverImageUrl('/placeholder-album.svg'); // Default placeholder
+        setCoverImageUrl('/logo.svg'); // Default placeholder
       }
     };
     fetchCoverImage();
@@ -381,7 +381,7 @@ const AlbumCard3D: React.FC<AlbumCard3DProps> = ({ album, isActive, onClick }) =
           loading='lazy'
           onError={e => {
             const target = e.target as HTMLImageElement;
-            target.src = '/placeholder-album.svg';
+            target.src = '/logo.svg';
           }}
         />
       );
