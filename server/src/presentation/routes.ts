@@ -3,6 +3,8 @@ import { AlbumController } from './AlbumController';
 import { PhotoController } from './PhotoController';
 import { UploadController } from './UploadController';
 import { FileSystemAlbumRepository, FileSystemPhotoRepository } from '../infrastructure';
+import { FileService } from '../application/FileService';
+import { FileValidator } from '../application/FileValidator';
 import multer from 'multer';
 import path from 'path';
 
@@ -10,10 +12,12 @@ const router = Router();
 
 const albumRepository = new FileSystemAlbumRepository();
 const photoRepository = new FileSystemPhotoRepository();
+const fileService = new FileService();
+const fileValidator = new FileValidator();
 
 const albumController = new AlbumController(albumRepository, photoRepository);
 const photoController = new PhotoController(photoRepository, albumRepository); // Pass albumRepository
-const uploadController = new UploadController();
+const uploadController = new UploadController(fileService, fileValidator);
 
 const UPLOADS_DIR = path.join(__dirname, '..', '..', 'uploads');
 
@@ -23,7 +27,8 @@ const storage = multer.diskStorage({
     cb(null, UPLOADS_DIR);
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + '-' + file.originalname);
+    const newFilename = fileService.generateUniqueFilename(file.originalname);
+    cb(null, newFilename);
   },
 });
 
