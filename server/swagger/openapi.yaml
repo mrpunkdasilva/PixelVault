@@ -1,0 +1,406 @@
+openapi: 3.0.0
+info:
+  title: PixelVault API
+  version: 1.0.0
+  description: API for managing albums and photos in PixelVault application.
+
+servers:
+  - url: http://localhost:3001/api
+    description: Local Development Server
+
+paths:
+  /albums:
+    get:
+      summary: Get all albums
+      description: Retrieve a list of all albums.
+      responses:
+        '200':
+          description: A list of albums.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Album'
+    post:
+      summary: Create a new album
+      description: Create a new album with the provided details.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAlbumRequest'
+      responses:
+        '201':
+          description: The created album.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Album'
+  /albums/{id}:
+    get:
+      summary: Get an album by ID
+      description: Retrieve a single album by its ID.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID of the album to retrieve.
+      responses:
+        '200':
+          description: The album object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Album'
+        '404':
+          description: Album not found.
+    put:
+      summary: Update an album by ID
+      description: Update an existing album with the provided details.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID of the album to update.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAlbumRequest'
+      responses:
+        '200':
+          description: The updated album.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Album'
+        '404':
+          description: Album not found.
+    delete:
+      summary: Delete an album by ID
+      description: Delete an album and all its associated photos.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID of the album to delete.
+      responses:
+        '204':
+          description: Album deleted successfully.
+        '404':
+          description: Album not found.
+
+  /albums/{albumId}/photos:
+    get:
+      summary: Get photos for a specific album
+      description: Retrieve a list of photos belonging to a specific album.
+      parameters:
+        - in: path
+          name: albumId
+          schema:
+            type: string
+          required: true
+          description: ID of the album.
+      responses:
+        '200':
+          description: A list of photos in the album.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Photo'
+    post:
+      summary: Add a photo to an album
+      description: Add an existing photo to a specific album.
+      parameters:
+        - in: path
+          name: albumId
+          schema:
+            type: string
+          required: true
+          description: ID of the album.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                photoId:
+                  type: string
+                  description: ID of the photo to add.
+              required:
+                - photoId
+      responses:
+        '201':
+          description: Photo added to album.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Photo'
+        '404':
+          description: Album or Photo not found.
+
+  /albums/{albumId}/photos/{photoId}:
+    delete:
+      summary: Remove a photo from an album
+      description: Remove a photo's association with a specific album.
+      parameters:
+        - in: path
+          name: albumId
+          schema:
+            type: string
+          required: true
+          description: ID of the album.
+        - in: path
+          name: photoId
+          schema:
+            type: string
+          required: true
+          description: ID of the photo to remove.
+      responses:
+        '204':
+          description: Photo removed from album successfully.
+        '404':
+          description: Album or Photo not found.
+
+  /photos/upload:
+    post:
+      summary: Upload a new photo
+      description: Upload a new image file to the server.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+                  description: The image file to upload.
+      responses:
+        '200':
+          description: Photo uploaded successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  imageUrl:
+                    type: string
+                    format: url
+                  filename:
+                    type: string
+        '400':
+          description: No file uploaded.
+
+  /photos/{id}:
+    get:
+      summary: Get a photo by ID
+      description: Retrieve a single photo by its ID.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID of the photo to retrieve.
+      responses:
+        '200':
+          description: The photo object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Photo'
+        '404':
+          description: Photo not found.
+    delete:
+      summary: Delete a photo by ID
+      description: Delete a photo file and its metadata.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID of the photo to delete.
+      responses:
+        '204':
+          description: Photo deleted successfully.
+        '404':
+          description: Photo not found.
+
+  /photos/{photoId}/move:
+    post:
+      summary: Move a photo between albums
+      description: Move a photo from one album to another.
+      parameters:
+        - in: path
+          name: photoId
+          schema:
+            type: string
+          required: true
+          description: ID of the photo to move.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fromAlbumId:
+                  type: string
+                  description: ID of the album to move the photo from.
+                toAlbumId:
+                  type: string
+                  description: ID of the album to move the photo to.
+              required:
+                - fromAlbumId
+                - toAlbumId
+      responses:
+        '200':
+          description: Photo moved successfully.
+        '404':
+          description: Photo or album not found.
+
+components:
+  schemas:
+    Album:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the album.
+        name:
+          type: string
+          description: Name of the album.
+        description:
+          type: string
+          nullable: true
+          description: Optional description of the album.
+        coverPhotoId:
+          type: string
+          nullable: true
+          description: ID of the photo used as album cover.
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the album was created.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the album was last updated.
+        photoCount:
+          type: integer
+          description: Number of photos in the album.
+        tags:
+          type: array
+          items:
+            type: string
+          description: List of tags associated with the album.
+        isDefault:
+          type: boolean
+          description: Indicates if this is a default system album.
+      required:
+        - id
+        - name
+        - createdAt
+        - updatedAt
+        - photoCount
+        - tags
+        - isDefault
+
+    CreateAlbumRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the new album.
+        description:
+          type: string
+          nullable: true
+          description: Optional description of the new album.
+        tags:
+          type: array
+          items:
+            type: string
+          description: List of tags for the new album.
+      required:
+        - name
+
+    UpdateAlbumRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: New name for the album.
+        description:
+          type: string
+          nullable: true
+          description: New description for the album.
+        coverPhotoId:
+          type: string
+          nullable: true
+          description: New cover photo ID for the album.
+        tags:
+          type: array
+          items:
+            type: string
+          description: New list of tags for the album.
+
+    Photo:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the photo.
+        name:
+          type: string
+          description: Original filename or name of the photo.
+        url:
+          type: string
+          format: url
+          description: URL to access the photo file.
+        albumId:
+          type: string
+          format: uuid
+          description: ID of the album this photo belongs to.
+        uploadedAt:
+          type: string
+          format: date-time
+          description: Timestamp when the photo was uploaded.
+        size:
+          type: integer
+          description: Size of the photo file in bytes.
+        mimeType:
+          type: string
+          description: MIME type of the photo file.
+        tags:
+          type: array
+          items:
+            type: string
+          description: List of tags associated with the photo.
+      required:
+        - id
+        - name
+        - url
+        - albumId
+        - uploadedAt
+        - size
+        - mimeType
+        - tags
