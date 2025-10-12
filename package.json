@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "eslint-plugin-react-perf": "^3.3.3",
-    "firebase": "^11.9.1",
+    
     "git-commit-msg-linter": "^5.0.8",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -28,7 +28,8 @@
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css,scss,json}\"",
     "type-check": "tsc --noEmit",
     "test": "echo \"No tests specified\" && exit 0",
-    "ci:check": "npm run type-check && npm run lint && npm run format:check"
+    "ci:check": "npm run type-check && npm run lint && npm run format:check",
+    "start:server": "npm start --prefix server"
   },
   "devDependencies": {
     "@types/node": "^24.0.3",

@@ -1,13 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import { Photo } from './types/Photo';
 import './App.scss';
 
-import * as Photos from './services/photos';
-import { PhotoItem } from './components/PhotoItem';
 import { LogoWithText } from './components/LogoWithText';
-import { LoadingLogo } from './components/LoadingLogo';
-import { UploadZone } from './components/UploadZone';
 import { ThemeToggle } from './components/ThemeToggle';
 import { NotificationContainer } from './components/NotificationContainer';
 import { useNotificationHelpers } from './contexts/NotificationContext';
@@ -32,8 +28,8 @@ import { usePhotos } from './hooks/usePhotos';
 function AppContent() {
   // Legacy photo state (for backward compatibility)
   const [uploading, setUploading] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [photos, setPhotos] = useState<Photo[]>([]);
+  // const [loading, setLoading] = useState(false); // Removed
+  // const [photos, setPhotos] = useState<Photo[]>([]); // Removed
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isHelpOpen, setIsHelpOpen] = useState(false);
@@ -46,7 +42,7 @@ function AppContent() {
   const { toggleTheme } = useTheme();
   const navigation = useNavigation();
   const { albums } = useAlbums();
-  const { deletePhoto: deletePhotoFromHook } = usePhotos();
+  const { deletePhoto: deletePhotoFromHook, addPhoto } = usePhotos(); // Added addPhoto
   const breadcrumbs = useBreadcrumbs(navigation.navigationState, albums);
 
   // Modal handlers
@@ -152,27 +148,28 @@ function AppContent() {
 
   useKeyboardShortcuts(shortcuts);
 
-  useEffect(() => {
-    const getPhotos = async () => {
-      setLoading(true);
-      setPhotos(await Photos.getAll());
-      setLoading(false);
-    };
+  // Removed useEffect for Photos.getAll()
+  // useEffect(() => {
+  //   const getPhotos = async () => {
+  //     setLoading(true);
+  //     setPhotos(await Photos.getAll());
+  //     setLoading(false);
+  //   };
 
-    getPhotos();
-  }, []);
+  //   getPhotos();
+  // }, []);
 
   const handleFileSelect = async (file: File) => {
     setUploading(true);
-    let result = await Photos.insert(file);
+    // Assuming a default album for uploads if not in an album view
+    const targetAlbumId = navigation.navigationState.albumId || 'default-album-id'; // TODO: Replace with actual default album ID logic
+    let result = await addPhoto(file, targetAlbumId); // Updated to use addPhoto from usePhotos
     setUploading(false);
 
     if (result instanceof Error) {
       showError('Upload Failed', result.message);
     } else {
-      let newPhotoList = [...photos];
-      newPhotoList.unshift(result); // Add to beginning for better UX
-      setPhotos(newPhotoList);
+      // Photos are now managed by usePhotos hook, no need to update local state directly
       showSuccess('Photo Uploaded', 'Your photo has been successfully uploaded!');
     }
   };
@@ -181,15 +178,15 @@ function AppContent() {
     setUploading(true);
     let successCount = 0;
     let errorCount = 0;
-    let newPhotoList = [...photos];
+    // Assuming a default album for uploads if not in an album view
+    const targetAlbumId = navigation.navigationState.albumId || 'default-album-id'; // TODO: Replace with actual default album ID logic
 
     for (const file of files) {
       try {
-        let result = await Photos.insert(file);
+        let result = await addPhoto(file, targetAlbumId); // Updated to use addPhoto from usePhotos
         if (result instanceof Error) {
           errorCount++;
         } else {
-          newPhotoList.unshift(result); // Add to beginning for better UX
           successCount++;
         }
       } catch (error) {
@@ -198,7 +195,6 @@ function AppContent() {
     }
 
     setUploading(false);
-    setPhotos(newPhotoList);
 
     // Show appropriate notification
     if (successCount > 0 && errorCount === 0) {
@@ -230,7 +226,7 @@ function AppContent() {
     if (confirmDelete) {
       try {
         await deletePhotoFromHook(photoToDelete.id);
-        setPhotos(photos.filter(photo => photo.id !== photoToDelete.id));
+        // setPhotos(photos.filter(photo => photo.id !== photoToDelete.id)); // Removed
         if (selectedPhoto?.id === photoToDelete.id) {
           handleCloseModal();
         }
@@ -245,69 +241,9 @@ function AppContent() {
   // Render the appropriate content based on navigation state
   const renderContent = () => {
     switch (navigation.navigationState.view) {
-      case 'photos':
+      case 'photos': // This case will now display albums by default
         return (
-          <>
-            {/* Quick Actions Bar */}
-            <div className='quick-actions'>
-              <UploadZone
-                onFileSelect={handleFileSelect}
-                onMultipleFilesSelect={handleMultipleFilesSelect}
-                uploading={uploading}
-                enableCompression={true}
-              />
-
-              <button
-                className='albums-link-button'
-                onClick={() => navigation.goToAlbums()}
-                title='View Albums'
-              >
-                <svg width='24' height='24' viewBox='0 0 24 24' fill='currentColor'>
-                  <path d='M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z' />
-                </svg>
-                <span>My Albums</span>
-              </button>
-            </div>
-
-            {loading && (
-              <div className='screen-warning'>
-                <LoadingLogo size={80} />
-                <div className='loading-text'>Loading your photos...</div>
-              </div>
-            )}
-
-            {!loading && photos.length > 0 && (
-              <div className='photo-list'>
-                {photos.map(item => (
-                  <PhotoItem
-                    key={item.id}
-                    url={item.url}
-                    name={item.name}
-                    onClick={() => handlePhotoClick(item)}
-                    onDelete={() => handleDeletePhoto(item)}
-                  />
-                ))}
-              </div>
-            )}
-
-            {!loading && photos.length === 0 && (
-              <div className='screen-warning'>
-                <div className='empty-state'>
-                  <div className='empty-icon'>
-                    <svg width='80' height='80' viewBox='0 0 24 24' fill='none'>
-                      <path
-                        d='M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z'
-                        fill='currentColor'
-                        opacity='0.6'
-                      />
-                    </svg>
-                  </div>
-                  <h3>No photos yet</h3>
-                  <p>Upload your first photo to get started!</p>
-                </div>
-              </div>
-            )}
-          </>
+          <AlbumCarousel3D onAlbumClick={navigation.goToAlbum} onCreateAlbum={handleCreateAlbum} />
         );
 
       case 'albums':

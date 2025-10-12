@@ -4,11 +4,12 @@
  * Implementa drag & drop e interações de usuário
  */
 
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react'; // Added useEffect
 import { useAlbumDropZone } from '../../hooks/useAlbumDragDrop';
 import { useAlbum } from '../../contexts/AlbumContext';
 import { useNotificationHelpers } from '../../contexts/NotificationContext';
 import type { Album } from '../../types';
+import { photoService } from '../../services/photos'; // Import photoService
 import './styles.scss';
 
 interface AlbumCardProps {
@@ -30,6 +31,27 @@ export const AlbumCard: React.FC<AlbumCardProps> = ({
   const { showSuccess, showError } = useNotificationHelpers();
   const [showActions, setShowActions] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [coverImageUrl, setCoverImageUrl] = useState<string | undefined>(undefined); // State for cover image URL
+
+  // Fetch cover image URL
+  useEffect(() => {
+    const fetchCoverImage = async () => {
+      if (album.coverPhotoId) {
+        try {
+          const photo = await photoService.getPhoto(album.coverPhotoId);
+          if (photo) {
+            setCoverImageUrl(photo.url);
+          }
+        } catch (error) {
+          console.error('Error fetching cover photo:', error);
+          setCoverImageUrl('/placeholder-album.svg'); // Fallback
+        }
+      } else {
+        setCoverImageUrl('/placeholder-album.svg'); // Default placeholder
+      }
+    };
+    fetchCoverImage();
+  }, [album.coverPhotoId]);
 
   // Drag & Drop
   const dropZone = useAlbumDropZone(album.id);
@@ -98,11 +120,11 @@ export const AlbumCard: React.FC<AlbumCardProps> = ({
 
   // Render cover image
   const renderCoverImage = () => {
-    if (album.coverPhotoId) {
+    if (coverImageUrl) {
       return (
         <div className='album-card__cover'>
           <img
-            src={`/api/photos/${album.coverPhotoId}/thumbnail`}
+            src={coverImageUrl} // Use the fetched URL
             alt={`${album.name} cover`}
             loading='lazy'
             onError={e => {

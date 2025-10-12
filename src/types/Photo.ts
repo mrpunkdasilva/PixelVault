@@ -56,8 +56,13 @@ export interface PhotoUploadProgress {
   error?: string;
 }
 
-// Legacy type para compatibilidade (será removido gradualmente)
-export type LegacyPhoto = {
+export interface PhotoCreateEntryRequest {
   name: string;
   url: string;
-};
+  albumId: AlbumId;
+  size: number;
+  mimeType: string;
+  tags: string[];
+}
+
+

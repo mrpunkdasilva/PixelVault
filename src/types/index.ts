@@ -11,7 +11,6 @@ export type {
   ExifData,
   PhotoUploadRequest,
   PhotoUploadProgress,
-  LegacyPhoto,
 } from './Photo';
 
 export type {

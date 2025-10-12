@@ -8,6 +8,7 @@ import { useAlbum } from '../../contexts/AlbumContext';
 import { LoadingSkeletons } from '../LoadingSkeletons';
 import { useNotificationHelpers } from '../../contexts/NotificationContext';
 import type { Album } from '../../types';
+import { photoService } from '../../services/photos'; // Import photoService
 import './styles.scss';
 
 interface AlbumCarousel3DProps {
@@ -186,27 +187,27 @@ export const AlbumCarousel3D: React.FC<AlbumCarousel3DProps> = ({
               />
               <svg viewBox='0 0 24 24' fill='currentColor'>
                 <path d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z' />
-              </svg>
-            </div>
-
-            <select
-              value={sortBy}
-              onChange={e => setSortBy(e.target.value as any)}
-              className='sort-select'
-            >
-              <option value='date'>Sort by Date</option>
-              <option value='name'>Sort by Name</option>
-              <option value='photos'>Sort by Photos</option>
-            </select>
-
-            <button className='create-album-btn' onClick={onCreateAlbum}>
-              <svg viewBox='0 0 24 24' fill='currentColor'>
-                <path d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z' />
-              </svg>
-              Create Album
-            </button>
+            </svg>
           </div>
+
+          <select
+            value={sortBy}
+            onChange={e => setSortBy(e.target.value as any)}
+            className='sort-select'
+          >
+            <option value='date'>Sort by Date</option>
+            <option value='name'>Sort by Name</option>
+            <option value='photos'>Sort by Photos</option>
+          </select>
+
+          <button className='create-album-btn' onClick={onCreateAlbum}>
+            <svg viewBox='0 0 24 24' fill='currentColor'>
+              <path d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z' />
+            </svg>
+            Create Album
+          </button>
         </div>
+      </div>
 
         <div className='album-carousel-3d__no-results'>
           <svg viewBox='0 0 24 24' fill='currentColor'>
@@ -349,11 +350,33 @@ interface AlbumCard3DProps {
 }
 
 const AlbumCard3D: React.FC<AlbumCard3DProps> = ({ album, isActive, onClick }) => {
+  const [coverImageUrl, setCoverImageUrl] = useState<string | undefined>(undefined); // State for cover image URL
+
+  // Fetch cover image URL
+  useEffect(() => {
+    const fetchCoverImage = async () => {
+      if (album.coverPhotoId) {
+        try {
+          const photo = await photoService.getPhoto(album.coverPhotoId);
+          if (photo) {
+            setCoverImageUrl(photo.url);
+          }
+        } catch (error) {
+          console.error('Error fetching cover photo:', error);
+          setCoverImageUrl('/placeholder-album.svg'); // Fallback
+        }
+      } else {
+        setCoverImageUrl('/placeholder-album.svg'); // Default placeholder
+      }
+    };
+    fetchCoverImage();
+  }, [album.coverPhotoId]);
+
   const renderCoverImage = () => {
-    if (album.coverPhotoId) {
+    if (coverImageUrl) {
       return (
         <img
-          src={`/api/photos/${album.coverPhotoId}/thumbnail`}
+          src={coverImageUrl} // Use the fetched URL
           alt={`${album.name} cover`}
           loading='lazy'
           onError={e => {
